@@ -36,7 +36,7 @@ class HomePageScreenOption extends StatelessWidget {
           }
         },
         child: Card(
-          color: isClickable ? Theme.of(context).primaryColorDark : Colors.grey[500],
+          color: isClickable ? Theme.of(context).primaryColor : Colors.grey[500],
           elevation: 4.0,
           child: Center(
               child: Text(

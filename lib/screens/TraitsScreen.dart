@@ -27,6 +27,7 @@ class TraitsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Plots"),
+        centerTitle: true,
       ),
       body: GridView.count(
         crossAxisCount: 2,

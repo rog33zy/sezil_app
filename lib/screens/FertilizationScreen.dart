@@ -23,6 +23,7 @@ class FertilizationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Fertilization'),
+        centerTitle: true,
       ),
       body: GridView.count(
         crossAxisCount: 2,

@@ -9,11 +9,14 @@ class FieldProfileScreen extends StatelessWidget {
 
   static const routeName = '/field-profile';
 
+  static const cropTypes = <String>['Maize', 'Sorghum', 'Beans', 'Soybeans', 'Groundnuts', 'Cowpeas', 'Sunflower','Fallow-Land','Other',];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Field Profile"),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -24,6 +27,7 @@ class FieldProfileScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Soil Type',
@@ -32,6 +36,12 @@ class FieldProfileScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: <String>[
+              'Light',
+              'Heavy',
+              'Other',
+            ],
           ),
           ListWidgetComponent(
             title: 'Field Coordinates',
@@ -48,6 +58,8 @@ class FieldProfileScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: cropTypes,
           ),
           ListWidgetComponent(
             title: 'Crop Grown ${Seasons.seasonBeforeLast} Season',
@@ -56,6 +68,8 @@ class FieldProfileScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: cropTypes,
           ),
         ],
       ),

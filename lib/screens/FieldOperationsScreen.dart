@@ -89,6 +89,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Field Operations"),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -114,7 +115,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeTextValueHandler: methodOfLandPrepHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
-            listOfValues: [
+            listOfValues: <String>[
               "Ploughing",
               "Ripping",
               "Planting-Basins",

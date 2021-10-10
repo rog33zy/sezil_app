@@ -11,7 +11,7 @@ class EditCheckBoxesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final title = argumentsMap['title'];
-    final items = argumentsMap['listOfValues'] as List<dynamic>;
+    final items = argumentsMap['listOfValues'];
     return Scaffold(
       appBar: AppBar(
         title: Text(title),

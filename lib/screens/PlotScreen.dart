@@ -20,6 +20,7 @@ class PlotScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(plotName),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(

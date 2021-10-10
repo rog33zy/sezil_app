@@ -18,7 +18,8 @@ class HomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Welcome Rodgers"),
+        title: Text("Welcome, Rodgers 😃"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(

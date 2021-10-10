@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../constants/Seasons.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/LabeledCheckbox.dart';
 
 class CurrentSeasonVarietyScreen extends StatefulWidget {
   const CurrentSeasonVarietyScreen({Key? key}) : super(key: key);
@@ -68,6 +67,7 @@ class _CurrentSeasonVarietyScreenState
     return Scaffold(
       appBar: AppBar(
         title: Text('${Seasons.currentSeason} Variety'),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -104,6 +104,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: '${Seasons.previousSeason} Hectarage Grown (ha)',
@@ -112,6 +113,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Source of Seed',
@@ -128,6 +130,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Percent of Farmers Who Grow This Variety in Village',
@@ -136,6 +139,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
         ],
       ),

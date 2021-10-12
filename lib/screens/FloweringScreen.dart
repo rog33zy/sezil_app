@@ -15,7 +15,7 @@ class FloweringScreen extends StatelessWidget {
         title: Text('Flowering'),
       ),
       body: ListView(
-        children:[
+        children: [
           ListWidgetComponent(
             title: 'Growing Cycle Appreciation',
             subtitle: 'Blank',
@@ -23,6 +23,15 @@ class FloweringScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: <String>[
+              '1-Too Early Maturing',
+              '2-Early Maturing',
+              '3-Adapted For The Locality',
+              '4-Late Maturing',
+              '5-Too Late Maturing',
+            ],
+            isTrait: true,
           ),
           ListWidgetComponent(
             title: 'Pest Resistance',
@@ -31,6 +40,15 @@ class FloweringScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: <String>[
+              '1-Very High',
+              '2-High',
+              '3-Moderate',
+              '4-Low',
+              '5-Very Low',
+            ],
+            isTrait: true,
           ),
           ListWidgetComponent(
             title: 'Disease Resistance',
@@ -39,6 +57,14 @@ class FloweringScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            listOfValues: <String>[
+              '1-Very High',
+              '2-High',
+              '3-Moderate',
+              '4-Low',
+              '5-Very Low',
+            ],
+            isTrait: true,
           ),
         ],
       ),

@@ -23,6 +23,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Grain Hardness',
@@ -31,6 +32,15 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: <String>[
+              '1-Very Soft',
+              '2-Soft',
+              '3-Medium',
+              '4-Hard',
+              '5-Very Hard',
+            ],
+            isTrait: true,
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Panicles per Plot (Kg)',
@@ -39,6 +49,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Heads (Kg)',
@@ -47,6 +58,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Pods (Kg)',
@@ -55,6 +67,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Grain Yield (Kg)',
@@ -63,6 +76,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Grain Size',
@@ -71,6 +85,15 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: <String>[
+              '1-Very Good',
+              '2-Good',
+              '3-Fair',
+              '4-Bad',
+              '5-Very Bad',
+            ],
+            isTrait: true,
           ),
           ListWidgetComponent(
             title: 'Grain Colour',
@@ -79,6 +102,15 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: <String>[
+              '1-Very Good',
+              '2-Good',
+              '3-Fair',
+              '4-Bad',
+              '5-Very Bad',
+            ],
+            isTrait: true,
           ),
         ],
       ),

@@ -22,6 +22,14 @@ class PostPlantingScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
+            listOfValues: <String>[
+              '1-Very Good',
+              '2-Good',
+              '3-Fair',
+              '4-Bad',
+              '5-Very Bad',
+            ],
             isTrait: true,
           ),
           ListWidgetComponent(
@@ -31,6 +39,7 @@ class PostPlantingScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isNumberField: true,
           ),
         ],
       ),

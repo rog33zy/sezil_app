@@ -22,6 +22,7 @@ class PostPlantingScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isTrait: true,
           ),
           ListWidgetComponent(
             title: 'Plant Stand',

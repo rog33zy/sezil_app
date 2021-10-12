@@ -10,6 +10,7 @@ class GenericTextField extends StatefulWidget {
   final bool isDateField;
   final Function? updateDateInAllInputsMap;
   final Function? updateTextFieldInAllInputsMap;
+  final int? maxLines;
 
   const GenericTextField({
     required this.labelText,
@@ -20,6 +21,7 @@ class GenericTextField extends StatefulWidget {
     this.isDateField = false,
     this.updateDateInAllInputsMap,
     this.updateTextFieldInAllInputsMap,
+    this.maxLines,
   });
 
   @override
@@ -78,6 +80,7 @@ class _GenericTextFieldState extends State<GenericTextField> {
         vertical: 10,
       ),
       child: TextFormField(
+        maxLines: widget.maxLines,
         enabled: widget.isReadOnlyMode == false,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),

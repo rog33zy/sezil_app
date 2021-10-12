@@ -15,6 +15,7 @@ class ListWidgetComponent extends StatelessWidget {
   final bool isDropDownField;
   final List listOfValues;
   final bool isLeadingToCheckBoxScreen;
+  final bool isTrait;
 
   ListWidgetComponent({
     required this.title,
@@ -28,6 +29,7 @@ class ListWidgetComponent extends StatelessWidget {
     this.isDropDownField = false,
     this.listOfValues = const [],
     this.isLeadingToCheckBoxScreen = false,
+    this.isTrait = false,
   });
 
   @override
@@ -60,6 +62,7 @@ class ListWidgetComponent extends StatelessWidget {
               "onSubmitHandler": onSubmitHandler,
               "isDropDownField": isDropDownField,
               "listOfValues": listOfValues,
+              'isTrait': isTrait,
             },
           );
         }

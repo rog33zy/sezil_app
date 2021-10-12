@@ -8,18 +8,18 @@ class TraitsScreen extends StatelessWidget {
   static const routeName = "/plots-screen";
 
   static const listOfVarieties = [
-    "Lungwebungu-01",
-    "Lungwebungu-02",
-    "Wamusanga-01",
-    "Wamusanga-02",
-    "Bubebe-01",
-    "Bubebe-02",
-    "Lungwebungu-01",
-    "Lungwebungu-02",
-    "Wamusanga-01",
-    "Wamusanga-02",
-    "Bubebe-01",
-    "Bubebe-02",
+    "101",
+    "102",
+    "103",
+    "104",
+    "105",
+    "106",
+    "201",
+    "202",
+    "203",
+    "204",
+    "205",
+    "206",
   ];
 
   @override

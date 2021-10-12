@@ -38,6 +38,7 @@ class EditValueScreen extends StatelessWidget {
     final onSubmitHandler = argumentsMap['onSubmitHandler'];
     final isDropDownField = argumentsMap['isDropDownField'];
     final listOfValues = argumentsMap['listOfValues'];
+    final isTrait = argumentsMap['isTrait'];
 
     return Scaffold(
       appBar: AppBar(
@@ -53,6 +54,7 @@ class EditValueScreen extends StatelessWidget {
         onSubmitHandler,
         isDropDownField,
         listOfValues,
+        isTrait,
       ),
     );
   }
@@ -67,6 +69,7 @@ class EditValueScreen extends StatelessWidget {
     onSubmitHandler,
     isDropDownField,
     listOfValues,
+    isTrait,
   ) {
     return Form(
       key: _formKey,
@@ -93,6 +96,18 @@ class EditValueScreen extends StatelessWidget {
               hintText: "",
               initialValue: subtitle == "Blank" ? null : subtitle,
               updateDropDownValuesInAllInputsMap: onChangeTextValueHandler,
+            ),
+          if (isTrait)
+            GenericTextField(
+              labelText: 'General Comments',
+              validator:
+                  isDateField ? dateOfBirthValidator() : generalValidator(),
+              isNumberField: isNumberField,
+              isDateField: isDateField,
+              initialValue: subtitle == "Blank" ? null : subtitle,
+              updateTextFieldInAllInputsMap: onChangeTextValueHandler,
+              updateDateInAllInputsMap: onChangeDateValueHandler,
+              maxLines: 4,
             ),
           Padding(
             padding: const EdgeInsets.symmetric(

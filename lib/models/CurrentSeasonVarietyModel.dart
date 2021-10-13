@@ -5,8 +5,8 @@ class CurrentSeasonVarietyModel {
   double? previousSeasonHarvest;
   double? previousSeasonHectarage;
   String sourceOfSeed;
-  double? numberOfYearsGrown;
-  double? percentFarmersGrowingVariety;
+  int? numberOfYearsGrown;
+  int? percentFarmersGrowingVariety;
   String isUpToDateInServer;
 
   CurrentSeasonVarietyModel({

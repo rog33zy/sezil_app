@@ -53,4 +53,25 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
       },
     );
   }
+
+  Future<void> fetchAndSetCurrentSeasonVarietyObject() async {
+    final dataList = await DBHelper.getData('currentSeasonVariety');
+    if (dataList.isEmpty) {
+      _currentSeasonVarietyObject = CurrentSeasonVarietyModel();
+    } else {
+      final _updatedMap = dataList[0];
+      _currentSeasonVarietyObject = CurrentSeasonVarietyModel(
+        id: _updatedMap['id'],
+        lastUpdated: DateTime.parse(_updatedMap['lastUpdated']),
+        varietyName: _updatedMap['varietyName'],
+        previousSeasonHarvest: _updatedMap['previousSeasonHarvest'],
+        previousSeasonHectarage: _updatedMap['previousSeasonHectarage'],
+        sourceOfSeed: _updatedMap['sourceOfSeed'],
+        numberOfYearsGrown: _updatedMap['numberOfYearsGrown'],
+        percentFarmersGrowingVariety:
+            _updatedMap['percentFarmersGrowingVariety'],
+        isUpToDateInServer: _updatedMap['isUpToDateInServer'],
+      );
+    }
+  }
 }

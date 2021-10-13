@@ -66,14 +66,14 @@ class _CurrentSeasonVarietyScreenState
     void yearsGrownHandler(value) {
       setState(() {
         updatedCurrentSeasonVarietyObject.numberOfYearsGrown =
-            double.parse(value);
+            int.parse(value);
       });
     }
 
     void percentGrownHandler(value) {
       setState(() {
         updatedCurrentSeasonVarietyObject.percentFarmersGrowingVariety =
-            double.parse(value);
+            int.parse(value);
       });
     }
 

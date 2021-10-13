@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/FieldOperationsProvider.dart';
+import '../providers/CurrentSeasonVarietyProvider.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
@@ -23,6 +24,11 @@ class HomePageScreen extends StatelessWidget {
       context,
       listen: false,
     ).fetchAndSetFieldOperationsObject();
+
+    Provider.of<CurrentSeasonVarietyProvider>(
+      context,
+      listen: false,
+    ).fetchAndSetCurrentSeasonVarietyObject();
     
     return Scaffold(
       appBar: AppBar(

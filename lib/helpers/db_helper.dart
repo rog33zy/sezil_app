@@ -37,11 +37,11 @@ class DBHelper {
                   id TEXT PRIMARY KEY,
                   lastUpdated TEXT,
                   varietyName TEXT,
-                  previousSeasonHarvest num,
-                  previousSeasonHectarage num,
+                  previousSeasonHarvest REAL,
+                  previousSeasonHectarage REAL,
                   sourceOfSeed TEXT,
-                  numberOfYearsGrown num,
-                  percentFarmersGrowingVariety num,
+                  numberOfYearsGrown INTEGER,
+                  percentFarmersGrowingVariety INTEGER,
                   isUpToDateInServer TEXT
                 )
           ''',

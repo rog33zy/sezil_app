@@ -20,69 +20,62 @@ class FieldOperationsScreen extends StatefulWidget {
 
 class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
   @override
-  void initState() {
-    super.initState();
-    Provider.of<FieldOperationsProvider>(
-      context,
-      listen: false,
-    ).fetchAndSetFieldOperationsModel();
-  }
-
-  @override
   Widget build(BuildContext context) {
     FieldOperationsModel fieldOperationsModel =
         Provider.of<FieldOperationsProvider>(
       context,
       listen: true,
-    ).getFieldOperationsModel;
+    ).getFieldOperationsObject;
 
-    FieldOperationsModel updatedFieldOperationsModel =
+    FieldOperationsModel updatedFieldOperationsObject =
         Provider.of<FieldOperationsProvider>(
       context,
       listen: false,
-    ).getFieldOperationsModel;
+    ).getFieldOperationsObject;
 
     void dateOfLandPrepHandler(value) {
       setState(() {
-        updatedFieldOperationsModel.dateOfLandPreparation = value;
+        updatedFieldOperationsObject.dateOfLandPreparation = value;
       });
     }
 
     void methodOfLandPrepHandler(value) {
       setState(() {
-        updatedFieldOperationsModel.methodOfLandPreparation = value;
+        updatedFieldOperationsObject.methodOfLandPreparation = value;
       });
     }
 
     void dateOfPlantingHandler(value) {
       setState(() {
-        updatedFieldOperationsModel.dateOfPlanting = value;
+        updatedFieldOperationsObject.dateOfPlanting = value;
       });
     }
 
     void dateOfThinningHandler(value) {
       setState(() {
-        updatedFieldOperationsModel.dateOfThinning = value;
+        updatedFieldOperationsObject.dateOfThinning = value;
       });
     }
 
     void dateOfFirstWeedingHandler(value) {
       setState(() {
-        updatedFieldOperationsModel.dateOfFirstWeeding = value;
+        updatedFieldOperationsObject.dateOfFirstWeeding = value;
       });
     }
 
     void dateOfSecondWeedingHandler(value) {
       setState(() {
-        updatedFieldOperationsModel.dateOfSecondWeeding = value;
+        updatedFieldOperationsObject.dateOfSecondWeeding = value;
       });
     }
 
     void onSubmitHandler() {
+      updatedFieldOperationsObject.lastUpdated = DateTime.now();
+      updatedFieldOperationsObject.isUpToDateInServer = 'No';
       Provider.of<FieldOperationsProvider>(
         context,
         listen: false,
-      ).updateFieldOperationsModel(updatedFieldOperationsModel);
+      ).updateFieldOperationsObject(updatedFieldOperationsObject);
       Navigator.of(context).pop();
     }
 

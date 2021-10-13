@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/FieldOperationsProvider.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
@@ -16,6 +19,11 @@ class HomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<FieldOperationsProvider>(
+      context,
+      listen: false,
+    ).fetchAndSetFieldOperationsObject();
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Welcome, Rodgers 😃"),

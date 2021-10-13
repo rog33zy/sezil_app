@@ -1,27 +1,23 @@
 class CurrentSeasonVarietyModel {
   String id;
-  String fieldId;
   DateTime? lastUpdated;
   String varietyName;
-  String reasonsForGrowingVariety;
-  String mainFeaturesOfVariety;
   double? previousSeasonHarvest;
   double? previousSeasonHectarage;
   String sourceOfSeed;
   double? numberOfYearsGrown;
   double? percentFarmersGrowingVariety;
+  String isUpToDateInServer;
 
   CurrentSeasonVarietyModel({
-    required this.id,
-    required this.fieldId,
+    this.id = 'rtyd',
     this.lastUpdated,
     this.varietyName = '',
-    this.reasonsForGrowingVariety = '',
-    this.mainFeaturesOfVariety = '',
     this.previousSeasonHarvest,
     this.previousSeasonHectarage,
     this.sourceOfSeed = '',
     this.numberOfYearsGrown,
     this.percentFarmersGrowingVariety,
+    this.isUpToDateInServer = 'No',
   });
 }

@@ -5,87 +5,101 @@ import '../models/FieldOperationsModel.dart';
 import '../helpers/db_helper.dart';
 
 class FieldOperationsProvider with ChangeNotifier {
-  FieldOperationsModel _fieldOperationsModel = FieldOperationsModel();
+  FieldOperationsModel _fieldOperationsObject = FieldOperationsModel();
 
-  FieldOperationsModel get getFieldOperationsModel {
-    FieldOperationsModel _newFieldOperationsModel = new FieldOperationsModel(
-      dateOfLandPreparation: _fieldOperationsModel.dateOfLandPreparation,
-      methodOfLandPreparation: _fieldOperationsModel.methodOfLandPreparation,
-      dateOfPlanting: _fieldOperationsModel.dateOfPlanting,
-      dateOfThinning: _fieldOperationsModel.dateOfThinning,
-      dateOfFirstWeeding: _fieldOperationsModel.dateOfFirstWeeding,
-      dateOfSecondWeeding: _fieldOperationsModel.dateOfSecondWeeding,
+  FieldOperationsModel get getFieldOperationsObject {
+    FieldOperationsModel _newFieldOperationsModel = FieldOperationsModel(
+      id: _fieldOperationsObject.id,
+      lastUpdated: _fieldOperationsObject.lastUpdated,
+      dateOfLandPreparation: _fieldOperationsObject.dateOfLandPreparation,
+      methodOfLandPreparation: _fieldOperationsObject.methodOfLandPreparation,
+      dateOfPlanting: _fieldOperationsObject.dateOfPlanting,
+      dateOfThinning: _fieldOperationsObject.dateOfThinning,
+      dateOfFirstWeeding: _fieldOperationsObject.dateOfFirstWeeding,
+      dateOfSecondWeeding: _fieldOperationsObject.dateOfSecondWeeding,
+      isUpToDateInServer: _fieldOperationsObject.isUpToDateInServer,
     );
     return _newFieldOperationsModel;
   }
 
-  Future<void>? updateFieldOperationsModel(
-      FieldOperationsModel fieldOperationsModel) async {
-    _fieldOperationsModel = fieldOperationsModel;
+  Future<void>? updateFieldOperationsObject(
+      FieldOperationsModel updatedFieldOperationsObject) async {
+    _fieldOperationsObject = updatedFieldOperationsObject;
 
     notifyListeners();
 
     await DBHelper.insert(
       'fieldOperations',
       {
-        'id': fieldOperationsModel.id,
-        'fieldId': fieldOperationsModel.fieldId,
+        'id': updatedFieldOperationsObject.id,
+        'lastUpdated': updatedFieldOperationsObject.lastUpdated == null
+            ? 'NULL'
+            : updatedFieldOperationsObject.lastUpdated!.toIso8601String(),
         'dateOfLandPreparation':
-            fieldOperationsModel.dateOfLandPreparation == null
-                ? ''
-                : fieldOperationsModel.dateOfLandPreparation!.toIso8601String(),
-        'methodOfLandPreparation': fieldOperationsModel.methodOfLandPreparation,
-        'dateOfPlanting': fieldOperationsModel.dateOfPlanting == null
-            ? ''
-            : fieldOperationsModel.dateOfPlanting!.toIso8601String(),
-        'dateOfThinning': fieldOperationsModel.dateOfThinning == null
-            ? ''
-            : fieldOperationsModel.dateOfThinning!.toIso8601String(),
-        'dateOfFirstWeeding': fieldOperationsModel.dateOfFirstWeeding == null
-            ? ''
-            : fieldOperationsModel.dateOfFirstWeeding!.toIso8601String(),
-        'dateOfSecondWeeding': fieldOperationsModel.dateOfSecondWeeding == null
-            ? ''
-            : fieldOperationsModel.dateOfSecondWeeding!.toIso8601String(),
+            updatedFieldOperationsObject.dateOfLandPreparation == null
+                ? 'NULL'
+                : updatedFieldOperationsObject.dateOfLandPreparation!
+                    .toIso8601String(),
+        'methodOfLandPreparation':
+            updatedFieldOperationsObject.methodOfLandPreparation,
+        'dateOfPlanting': updatedFieldOperationsObject.dateOfPlanting == null
+            ? 'NULL'
+            : updatedFieldOperationsObject.dateOfPlanting!.toIso8601String(),
+        'dateOfThinning': updatedFieldOperationsObject.dateOfThinning == null
+            ? 'NULL'
+            : updatedFieldOperationsObject.dateOfThinning!.toIso8601String(),
+        'dateOfFirstWeeding':
+            updatedFieldOperationsObject.dateOfFirstWeeding == null
+                ? 'NULL'
+                : updatedFieldOperationsObject.dateOfFirstWeeding!
+                    .toIso8601String(),
+        'dateOfSecondWeeding':
+            updatedFieldOperationsObject.dateOfSecondWeeding == null
+                ? 'NULL'
+                : updatedFieldOperationsObject.dateOfSecondWeeding!
+                    .toIso8601String(),
         'isUpToDateInServer': "No",
       },
     );
   }
 
-  Future<void> fetchAndSetFieldOperationsModel() async {
+  Future<void> fetchAndSetFieldOperationsObject() async {
     final dataList = await DBHelper.getData('fieldOperations');
     if (dataList.isEmpty) {
-      _fieldOperationsModel = FieldOperationsModel();
+      _fieldOperationsObject = FieldOperationsModel();
+    } else {
+      final _updatedFieldOperationsObjectMap = dataList[0];
+      _fieldOperationsObject = FieldOperationsModel(
+        id: _updatedFieldOperationsObjectMap['id'],
+        dateOfLandPreparation:
+            _updatedFieldOperationsObjectMap['dateOfLandPreparation'] == 'NULL'
+                ? null
+                : DateTime.parse(
+                    _updatedFieldOperationsObjectMap['dateOfLandPreparation']),
+        methodOfLandPreparation:
+            _updatedFieldOperationsObjectMap['methodOfLandPreparation'],
+        dateOfPlanting: _updatedFieldOperationsObjectMap['dateOfPlanting'] == 'NULL'
+            ? null
+            : DateTime.parse(
+                _updatedFieldOperationsObjectMap['dateOfPlanting']),
+        dateOfThinning: _updatedFieldOperationsObjectMap['dateOfThinning'] == 'NULL'
+            ? null
+            : DateTime.parse(
+                _updatedFieldOperationsObjectMap['dateOfThinning']),
+        dateOfFirstWeeding:
+            _updatedFieldOperationsObjectMap['dateOfFirstWeeding'] == 'NULL'
+                ? null
+                : DateTime.parse(
+                    _updatedFieldOperationsObjectMap['dateOfFirstWeeding']),
+        dateOfSecondWeeding:
+            _updatedFieldOperationsObjectMap['dateOfSecondWeeding'] == 'NULL'
+                ? null
+                : DateTime.parse(
+                    _updatedFieldOperationsObjectMap['dateOfSecondWeeding']),
+        isUpToDateInServer:
+            _updatedFieldOperationsObjectMap['isUpToDateInServer'],
+      );
     }
-    final _updatedFieldOperationsModelMap = dataList[0];
-    _fieldOperationsModel = FieldOperationsModel(
-      id: _updatedFieldOperationsModelMap['id'],
-      fieldId: _updatedFieldOperationsModelMap['fieldId'],
-      dateOfLandPreparation:
-          _updatedFieldOperationsModelMap['dateOfLandPreparation'] == ''
-              ? null
-              : DateTime.parse(
-                  _updatedFieldOperationsModelMap['dateOfLandPreparation']),
-      methodOfLandPreparation:
-          _updatedFieldOperationsModelMap['methodOfLandPreparation'],
-      dateOfPlanting: _updatedFieldOperationsModelMap['dateOfPlanting'] == ''
-          ? null
-          : DateTime.parse(_updatedFieldOperationsModelMap['dateOfPlanting']),
-      dateOfThinning: _updatedFieldOperationsModelMap['dateOfThinning'] == ''
-          ? null
-          : DateTime.parse(_updatedFieldOperationsModelMap['dateOfThinning']),
-      dateOfFirstWeeding:
-          _updatedFieldOperationsModelMap['dateOfFirstWeeding'] == ''
-              ? null
-              : DateTime.parse(
-                  _updatedFieldOperationsModelMap['dateOfFirstWeeding']),
-      dateOfSecondWeeding:
-          _updatedFieldOperationsModelMap['dateOfSecondWeeding'] == ''
-              ? null
-              : DateTime.parse(
-                  _updatedFieldOperationsModelMap['dateOfSecondWeeding']),
-      isUpToDateInServer: _updatedFieldOperationsModelMap['isUpToDateInServer'],
-    );
     notifyListeners();
   }
 }

@@ -1,6 +1,5 @@
 class FieldOperationsModel {
   final String id;
-  final String fieldId;
   DateTime? lastUpdated;
   DateTime? dateOfLandPreparation;
   String methodOfLandPreparation;
@@ -12,10 +11,9 @@ class FieldOperationsModel {
 
   FieldOperationsModel({
     this.id = '3454',
-    this.fieldId = '2021-3r45',
     this.lastUpdated,
     this.dateOfLandPreparation,
-    this.methodOfLandPreparation = "Blank",
+    this.methodOfLandPreparation = 'Blank',
     this.dateOfPlanting,
     this.dateOfThinning,
     this.dateOfFirstWeeding,

@@ -19,13 +19,29 @@ class DBHelper {
               fieldOperations 
                 (
                   id TEXT PRIMARY KEY,
-                  fieldId TEXT, 
+                  lastUpdated TEXT,
                   dateOfLandPreparation TEXT,
                   methodOfLandPreparation TEXT,
                   dateOfPlanting TEXT,
                   dateOfThinning TEXT,
                   dateOfFirstWeeding TEXT,
                   dateOfSecondWeeding TEXT,
+                  isUpToDateInServer TEXT
+                )
+          ''',
+        );
+        await db.execute(
+          '''CREATE TABLE 
+              currentSeasonVariety 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  varietyName TEXT,
+                  previousSeasonHarvest num,
+                  previousSeasonHectarage num,
+                  sourceOfSeed TEXT,
+                  numberOfYearsGrown num,
+                  percentFarmersGrowingVariety num,
                   isUpToDateInServer TEXT
                 )
           ''',
@@ -37,7 +53,7 @@ class DBHelper {
 
   static Future<void>? insert(
     String tableName,
-    Map<String, Object> data,
+    Map<String, dynamic> data,
   ) async {
     final db = await DBHelper.database();
     await db.insert(

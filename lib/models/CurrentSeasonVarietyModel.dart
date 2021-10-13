@@ -12,10 +12,10 @@ class CurrentSeasonVarietyModel {
   CurrentSeasonVarietyModel({
     this.id = 'rtyd',
     this.lastUpdated,
-    this.varietyName = '',
+    this.varietyName = 'Blank',
     this.previousSeasonHarvest,
     this.previousSeasonHectarage,
-    this.sourceOfSeed = '',
+    this.sourceOfSeed = 'Blank',
     this.numberOfYearsGrown,
     this.percentFarmersGrowingVariety,
     this.isUpToDateInServer = 'No',

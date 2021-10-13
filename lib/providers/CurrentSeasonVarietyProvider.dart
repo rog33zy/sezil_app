@@ -8,7 +8,7 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
   CurrentSeasonVarietyModel _currentSeasonVarietyObject =
       CurrentSeasonVarietyModel();
 
-  CurrentSeasonVarietyModel get currentSeasonVarietyObject {
+  CurrentSeasonVarietyModel get getCurrentSeasonVarietyObject {
     CurrentSeasonVarietyModel _newCurrentSeasonVarietyObject =
         CurrentSeasonVarietyModel(
       id: _currentSeasonVarietyObject.id,

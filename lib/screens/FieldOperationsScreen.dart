@@ -12,7 +12,7 @@ import '../components/UI/ListWidgetComponent.dart';
 class FieldOperationsScreen extends StatefulWidget {
   const FieldOperationsScreen({Key? key}) : super(key: key);
 
-  static const routeName = "/field-operations";
+  static const routeName = '/field-operations';
 
   @override
   _FieldOperationsScreenState createState() => _FieldOperationsScreenState();
@@ -21,7 +21,7 @@ class FieldOperationsScreen extends StatefulWidget {
 class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
   @override
   Widget build(BuildContext context) {
-    FieldOperationsModel fieldOperationsModel =
+    FieldOperationsModel fieldOperationsObject =
         Provider.of<FieldOperationsProvider>(
       context,
       listen: true,
@@ -81,88 +81,88 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Field Operations"),
+        title: Text('Field Operations'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: "Date of Land Preparation",
-            subtitle: fieldOperationsModel.dateOfLandPreparation == null
-                ? "Blank"
-                : _formatDate(fieldOperationsModel.dateOfLandPreparation!),
-            value: fieldOperationsModel.dateOfLandPreparation == null
-                ? "Blank"
-                : fieldOperationsModel.dateOfLandPreparation!.toIso8601String(),
+            title: 'Date of Land Preparation',
+            subtitle: fieldOperationsObject.dateOfLandPreparation == null
+                ? 'Blank'
+                : _formatDate(fieldOperationsObject.dateOfLandPreparation!),
+            value: fieldOperationsObject.dateOfLandPreparation == null
+                ? 'Blank'
+                : fieldOperationsObject.dateOfLandPreparation!.toIso8601String(),
             isDateField: true,
             onChangeDateValueHandler: dateOfLandPrepHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
           ),
           ListWidgetComponent(
-            title: "Method of Land Preparation",
-            subtitle: fieldOperationsModel.methodOfLandPreparation,
-            value: fieldOperationsModel.methodOfLandPreparation,
+            title: 'Method of Land Preparation',
+            subtitle: fieldOperationsObject.methodOfLandPreparation,
+            value: fieldOperationsObject.methodOfLandPreparation,
             isDateField: false,
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: methodOfLandPrepHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
-              "Ploughing",
-              "Ripping",
-              "Planting-Basins",
-              "By-Hand",
-              "Other",
+              'Ploughing',
+              'Ripping',
+              'Planting-Basins',
+              'By-Hand',
+              'Other',
             ],
           ),
           ListWidgetComponent(
-            title: "Date of Planting",
-            value: fieldOperationsModel.dateOfPlanting == null
-                ? "Blank"
-                : fieldOperationsModel.dateOfPlanting!.toIso8601String(),
-            subtitle: fieldOperationsModel.dateOfPlanting == null
-                ? "Blank"
-                : _formatDate(fieldOperationsModel.dateOfPlanting!),
+            title: 'Date of Planting',
+            value: fieldOperationsObject.dateOfPlanting == null
+                ? 'Blank'
+                : fieldOperationsObject.dateOfPlanting!.toIso8601String(),
+            subtitle: fieldOperationsObject.dateOfPlanting == null
+                ? 'Blank'
+                : _formatDate(fieldOperationsObject.dateOfPlanting!),
             isDateField: true,
             onChangeDateValueHandler: dateOfPlantingHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
           ),
           ListWidgetComponent(
-            title: "Date of Thinning",
-            value: fieldOperationsModel.dateOfThinning == null
-                ? "Blank"
-                : fieldOperationsModel.dateOfThinning!.toIso8601String(),
-            subtitle: fieldOperationsModel.dateOfThinning == null
-                ? "Blank"
-                : _formatDate(fieldOperationsModel.dateOfThinning!),
+            title: 'Date of Thinning',
+            value: fieldOperationsObject.dateOfThinning == null
+                ? 'Blank'
+                : fieldOperationsObject.dateOfThinning!.toIso8601String(),
+            subtitle: fieldOperationsObject.dateOfThinning == null
+                ? 'Blank'
+                : _formatDate(fieldOperationsObject.dateOfThinning!),
             isDateField: true,
             onChangeDateValueHandler: dateOfThinningHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
           ),
           ListWidgetComponent(
-            title: "Date of First Weeding",
-            value: fieldOperationsModel.dateOfFirstWeeding == null
-                ? "Blank"
-                : fieldOperationsModel.dateOfFirstWeeding!.toIso8601String(),
-            subtitle: fieldOperationsModel.dateOfFirstWeeding == null
-                ? "Blank"
-                : _formatDate(fieldOperationsModel.dateOfFirstWeeding!),
+            title: 'Date of First Weeding',
+            value: fieldOperationsObject.dateOfFirstWeeding == null
+                ? 'Blank'
+                : fieldOperationsObject.dateOfFirstWeeding!.toIso8601String(),
+            subtitle: fieldOperationsObject.dateOfFirstWeeding == null
+                ? 'Blank'
+                : _formatDate(fieldOperationsObject.dateOfFirstWeeding!),
             isDateField: true,
             onChangeDateValueHandler: dateOfFirstWeedingHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
           ),
           ListWidgetComponent(
-            title: "Date of Second Weeding",
-            value: fieldOperationsModel.dateOfSecondWeeding == null
-                ? "Blank"
-                : fieldOperationsModel.dateOfSecondWeeding!.toIso8601String(),
-            subtitle: fieldOperationsModel.dateOfSecondWeeding == null
-                ? "Blank"
-                : _formatDate(fieldOperationsModel.dateOfSecondWeeding!),
+            title: 'Date of Second Weeding',
+            value: fieldOperationsObject.dateOfSecondWeeding == null
+                ? 'Blank'
+                : fieldOperationsObject.dateOfSecondWeeding!.toIso8601String(),
+            subtitle: fieldOperationsObject.dateOfSecondWeeding == null
+                ? 'Blank'
+                : _formatDate(fieldOperationsObject.dateOfSecondWeeding!),
             isDateField: true,
             onChangeDateValueHandler: dateOfSecondWeedingHandler,
             onChangeTextValueHandler: () {},

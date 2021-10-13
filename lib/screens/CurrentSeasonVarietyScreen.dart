@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+import 'package:recase/recase.dart';
+
+import '../providers/CurrentSeasonVarietyProvider.dart';
+
+import '../models/CurrentSeasonVarietyModel.dart';
+
 import '../constants/Seasons.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
@@ -16,53 +23,71 @@ class CurrentSeasonVarietyScreen extends StatefulWidget {
 
 class _CurrentSeasonVarietyScreenState
     extends State<CurrentSeasonVarietyScreen> {
-  // Set finalOptions = <String>{};
-  // bool reasonOneValue = false;
-  // bool reasonTwoValue = false;
-  // bool reasonThreeValue = false;
-
-  // void onChangedReasonOne(
-  //   bool newValue,
-  //   String pickedValue,
-  // ) {
-  //   setState(() {
-  //     reasonOneValue = newValue;
-  //     if (newValue) {
-  //       finalOptions.add(pickedValue);
-  //     } else {
-  //       finalOptions.remove(pickedValue);
-  //     }
-  //   });
-  // }
-
-  // void onChangedReasonTwo(
-  //   bool newValue,
-  //   String pickedValue,
-  // ) {
-  //   setState(() {
-  //     reasonTwoValue = newValue;
-  //     if (newValue) {
-  //       finalOptions.add(pickedValue);
-  //     } else {
-  //       finalOptions.remove(pickedValue);
-  //     }
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // List reasonsOptions = [
-    //   {
-    //     'label': 'Reason 1',
-    //     'value': reasonOneValue,
-    //     'onChanged': onChangedReasonOne,
-    //   },
-    //   {
-    //     'label': 'Reason 2',
-    //     'value': reasonTwoValue,
-    //     'onChanged': onChangedReasonTwo,
-    //   },
-    // ];
+    CurrentSeasonVarietyModel currentSeasonVarietyObject =
+        Provider.of<CurrentSeasonVarietyProvider>(
+      context,
+      listen: true,
+    ).getCurrentSeasonVarietyObject;
+
+    CurrentSeasonVarietyModel updatedCurrentSeasonVarietyObject =
+        Provider.of<CurrentSeasonVarietyProvider>(
+      context,
+      listen: false,
+    ).getCurrentSeasonVarietyObject;
+
+    void varietyNameHandler(String value) {
+      setState(() {
+        updatedCurrentSeasonVarietyObject.varietyName = value.titleCase;
+      });
+    }
+
+    void prevSeasonHarvestHandler(value) {
+      setState(() {
+        updatedCurrentSeasonVarietyObject.previousSeasonHarvest =
+            double.parse(value);
+      });
+    }
+
+    void prevSeasonHectarageHandler(value) {
+      setState(() {
+        updatedCurrentSeasonVarietyObject.previousSeasonHectarage =
+            double.parse(value);
+      });
+    }
+
+    void sourceOfSeedHandler(String value) {
+      setState(() {
+        updatedCurrentSeasonVarietyObject.sourceOfSeed = value.titleCase;
+      });
+    }
+
+    void yearsGrownHandler(value) {
+      setState(() {
+        updatedCurrentSeasonVarietyObject.numberOfYearsGrown =
+            double.parse(value);
+      });
+    }
+
+    void percentGrownHandler(value) {
+      setState(() {
+        updatedCurrentSeasonVarietyObject.percentFarmersGrowingVariety =
+            double.parse(value);
+      });
+    }
+
+    void onSubmitHandler() {
+      updatedCurrentSeasonVarietyObject.lastUpdated = DateTime.now();
+      updatedCurrentSeasonVarietyObject.isUpToDateInServer = 'No';
+
+      Provider.of<CurrentSeasonVarietyProvider>(
+        context,
+        listen: false,
+      ).updateCurrentSeasonVarietyObject(updatedCurrentSeasonVarietyObject);
+      Navigator.of(context).pop();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${Seasons.currentSeason} Variety'),
@@ -72,72 +97,74 @@ class _CurrentSeasonVarietyScreenState
         children: [
           ListWidgetComponent(
             title: 'Variety\'s Name',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: currentSeasonVarietyObject.varietyName,
+            value: currentSeasonVarietyObject.varietyName,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: varietyNameHandler,
+            onSubmitHandler: onSubmitHandler,
           ),
-          // ListWidgetComponent(
-          //   title: 'Reasons for Growing Variety',
-          //   subtitle: 'Blank',
-          //   value: 'Blank',
-          //   onChangeDateValueHandler: () {},
-          //   onChangeTextValueHandler: () {},
-          //   onSubmitHandler: () {},
-          //   isLeadingToCheckBoxScreen: true,
-          //   listOfValues: reasonsOptions,
-          // ),
-          // ListWidgetComponent(
-          //   title: 'Main Features of Variety',
-          //   subtitle: 'Blank',
-          //   value: 'Blank',
-          //   onChangeDateValueHandler: () {},
-          //   onChangeTextValueHandler: () {},
-          //   onSubmitHandler: () {},
-          // ),
           ListWidgetComponent(
             title: '${Seasons.previousSeason} Harvest (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: currentSeasonVarietyObject.previousSeasonHarvest == null
+                ? 'Blank'
+                : currentSeasonVarietyObject.previousSeasonHarvest.toString(),
+            value: currentSeasonVarietyObject.previousSeasonHarvest == null
+                ? ''
+                : currentSeasonVarietyObject.previousSeasonHarvest.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: prevSeasonHarvestHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
           ),
           ListWidgetComponent(
             title: '${Seasons.previousSeason} Hectarage Grown (ha)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: currentSeasonVarietyObject.previousSeasonHectarage == null
+                ? 'Blank'
+                : currentSeasonVarietyObject.previousSeasonHectarage.toString(),
+            value: currentSeasonVarietyObject.previousSeasonHectarage == null
+                ? ''
+                : currentSeasonVarietyObject.previousSeasonHectarage.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: prevSeasonHectarageHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Source of Seed',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: currentSeasonVarietyObject.sourceOfSeed,
+            value: currentSeasonVarietyObject.sourceOfSeed,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: sourceOfSeedHandler,
+            onSubmitHandler: onSubmitHandler,
           ),
           ListWidgetComponent(
             title: 'Num of Years You\'ve Grown This Variety',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: currentSeasonVarietyObject.numberOfYearsGrown == null
+                ? 'Blank'
+                : currentSeasonVarietyObject.numberOfYearsGrown.toString(),
+            value: currentSeasonVarietyObject.numberOfYearsGrown == null
+                ? ''
+                : currentSeasonVarietyObject.numberOfYearsGrown.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: yearsGrownHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
           ),
           ListWidgetComponent(
             title: 'Percent of Farmers Who Grow This Variety in Village',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle:
+                currentSeasonVarietyObject.percentFarmersGrowingVariety == null
+                    ? 'Blank'
+                    : currentSeasonVarietyObject.percentFarmersGrowingVariety
+                        .toString(),
+            value:
+                currentSeasonVarietyObject.percentFarmersGrowingVariety == null
+                    ? ''
+                    : currentSeasonVarietyObject.percentFarmersGrowingVariety
+                        .toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: percentGrownHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
           ),
         ],

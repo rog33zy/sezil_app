@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import './config/palette.dart';
 
 import './providers/FieldOperationsProvider.dart';
+import './providers/CurrentSeasonVarietyProvider.dart';
 
 import './screens/HomePageScreen.dart';
 import 'screens/TraitsScreen.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (ctx) => FieldOperationsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => CurrentSeasonVarietyProvider(),
         )
       ],
       child: MaterialApp(

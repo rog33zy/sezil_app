@@ -10,7 +10,7 @@ class CurrentSeasonVarietyModel {
   String isUpToDateInServer;
 
   CurrentSeasonVarietyModel({
-    this.id = 'rtyd',
+    required this.id,
     this.lastUpdated,
     this.varietyName = 'Blank',
     this.previousSeasonHarvest,

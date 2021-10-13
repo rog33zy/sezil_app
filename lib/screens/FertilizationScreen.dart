@@ -10,16 +10,26 @@ class FertilizationScreen extends StatelessWidget {
   static const routeName = '/fertilization';
 
   static const listOfSeasons = [
-    {'season':'2020-2021', 'isClickable': true,},
-    {'season':'2021-2022', 'isClickable': true,},
-    {'season':'2022-2023', 'isClickable': false,},
-    {'season':'2023-2024', 'isClickable': false,},
+    {
+      'season': '2020-2021',
+      'isClickable': true,
+    },
+    {
+      'season': '2021-2022',
+      'isClickable': true,
+    },
+    {
+      'season': '2022-2023',
+      'isClickable': false,
+    },
+    {
+      'season': '2023-2024',
+      'isClickable': false,
+    },
   ];
-
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Fertilization'),

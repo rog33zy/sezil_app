@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/FieldOperationsProvider.dart';
 import '../providers/CurrentSeasonVarietyProvider.dart';
+import '../providers/FertilizationProvider.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
@@ -29,7 +30,12 @@ class HomePageScreen extends StatelessWidget {
       context,
       listen: false,
     ).fetchAndSetCurrentSeasonVarietyObject();
-    
+
+    Provider.of<FertilizationProvider>(
+      context,
+      listen: false,
+    ).fetchAndSetFertilizationObjects();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Welcome, Rodgers 😃"),

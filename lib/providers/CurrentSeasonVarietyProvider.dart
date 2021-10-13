@@ -3,10 +3,13 @@ import 'package:flutter/foundation.dart';
 import '../models/CurrentSeasonVarietyModel.dart';
 
 import '../helpers/db_helper.dart';
+import '../helpers/id_generator_helper.dart';
 
 class CurrentSeasonVarietyProvider with ChangeNotifier {
   CurrentSeasonVarietyModel _currentSeasonVarietyObject =
-      CurrentSeasonVarietyModel();
+      CurrentSeasonVarietyModel(
+    id: IDGeneratorHelper.generateId(),
+  );
 
   CurrentSeasonVarietyModel get getCurrentSeasonVarietyObject {
     CurrentSeasonVarietyModel _newCurrentSeasonVarietyObject =
@@ -57,7 +60,9 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
   Future<void> fetchAndSetCurrentSeasonVarietyObject() async {
     final dataList = await DBHelper.getData('currentSeasonVariety');
     if (dataList.isEmpty) {
-      _currentSeasonVarietyObject = CurrentSeasonVarietyModel();
+      _currentSeasonVarietyObject = CurrentSeasonVarietyModel(
+        id: IDGeneratorHelper.generateId(),
+      );
     } else {
       final _updatedMap = dataList[0];
       _currentSeasonVarietyObject = CurrentSeasonVarietyModel(

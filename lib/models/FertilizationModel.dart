@@ -1,19 +1,21 @@
 class FertilizationModel {
   final String id;
-  final String fieldId;
   DateTime? lastUpdated;
+  final String season;
   String typeOfFertilizer;
   String nameOfFertilizer;
   double? quantityApplied;
-  String? timeOfApplication;
+  DateTime? timeOfApplication;
+  String isUpToDateInServer;
 
   FertilizationModel({
     required this.id,
-    required this.fieldId,
-    required this.lastUpdated,
-    this.typeOfFertilizer='',
-    this.nameOfFertilizer='',
+    this.lastUpdated,
+    required this.season,
+    this.typeOfFertilizer = '',
+    this.nameOfFertilizer = '',
     this.quantityApplied,
     this.timeOfApplication,
+    this.isUpToDateInServer = 'No',
   });
 }

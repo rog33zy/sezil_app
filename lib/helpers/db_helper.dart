@@ -30,6 +30,7 @@ class DBHelper {
                 )
           ''',
         );
+
         await db.execute(
           '''CREATE TABLE 
               currentSeasonVariety 
@@ -42,6 +43,22 @@ class DBHelper {
                   sourceOfSeed TEXT,
                   numberOfYearsGrown INTEGER,
                   percentFarmersGrowingVariety INTEGER,
+                  isUpToDateInServer TEXT
+                )
+          ''',
+        );
+
+        await db.execute(
+          '''CREATE TABLE 
+              fertilization 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  season TEXT,
+                  typeOfFertilizer TEXT,
+                  nameOfFertilizer TEXT,
+                  quantityApplied REAL,
+                  timeOfApplication TEXT,
                   isUpToDateInServer TEXT
                 )
           ''',

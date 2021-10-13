@@ -10,10 +10,11 @@ class DetailedFertilizationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
-    final title = argumentsMap['argument'];
+    final season = argumentsMap['argument'];
+    
     return Scaffold(
       appBar: AppBar(
-        title: Text('$title Fert Details'),
+        title: Text('$season Fert Details'),
       ),
       body: ListView(
         children: [

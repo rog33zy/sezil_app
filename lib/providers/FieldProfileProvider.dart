@@ -20,6 +20,7 @@ class FieldProfileProvider with ChangeNotifier {
       longitude: _fieldProfileObject.longitude,
       cropGrownPrevSeason: _fieldProfileObject.cropGrownPrevSeason,
       cropGrownTwoSeasonsAgo: _fieldProfileObject.cropGrownTwoSeasonsAgo,
+      isUpToDateInServer: _fieldProfileObject.isUpToDateInServer,
     );
     return _newFieldProfileObject;
   }
@@ -34,7 +35,7 @@ class FieldProfileProvider with ChangeNotifier {
       'fieldProfile',
       {
         'id': updatedFieldProfileObject.id,
-        'lastUpdated': updatedFieldProfileObject.lastUpdated,
+        'lastUpdated': updatedFieldProfileObject.lastUpdated!.toIso8601String(),
         'fieldSize': updatedFieldProfileObject.fieldSize,
         'soilType': updatedFieldProfileObject.soilType,
         'latitude': updatedFieldProfileObject.latitude,
@@ -42,6 +43,7 @@ class FieldProfileProvider with ChangeNotifier {
         'cropGrownPrevSeason': updatedFieldProfileObject.cropGrownPrevSeason,
         'cropGrownTwoSeasonsAgo':
             updatedFieldProfileObject.cropGrownTwoSeasonsAgo,
+        'isUpToDateInServer': updatedFieldProfileObject.isUpToDateInServer,
       },
     );
   }
@@ -56,13 +58,14 @@ class FieldProfileProvider with ChangeNotifier {
       final _updatedMap = dataList[0];
       _fieldProfileObject = FieldProfileModel(
         id: _updatedMap['id'],
-        lastUpdated: _updatedMap['lastUpdated'],
+        lastUpdated: DateTime.parse(_updatedMap['lastUpdated']),
         fieldSize: _updatedMap['fieldSize'],
         soilType: _updatedMap['soilType'],
         latitude: _updatedMap['latitude'],
         longitude: _updatedMap['longitude'],
         cropGrownPrevSeason: _updatedMap['cropGrownPrevSeason'],
         cropGrownTwoSeasonsAgo: _updatedMap['cropGrownTwoSeasonsAgo'],
+        isUpToDateInServer: _updatedMap['isUpToDateInServer'],
       );
     }
     notifyListeners();

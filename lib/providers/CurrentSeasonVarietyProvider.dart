@@ -39,7 +39,7 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
       {
         'id': updatedCurrentSeasonVarietyObject.id,
         'lastUpdated': updatedCurrentSeasonVarietyObject.lastUpdated == null
-            ? 'NULL'
+            ? null
             : updatedCurrentSeasonVarietyObject.lastUpdated!.toIso8601String(),
         'varietyName': updatedCurrentSeasonVarietyObject.varietyName,
         'previousSeasonHarvest':

@@ -7,6 +7,7 @@ class FieldProfileModel {
   double? longitude;
   String cropGrownPrevSeason;
   String cropGrownTwoSeasonsAgo;
+  String isUpToDateInServer;
 
   FieldProfileModel({
     required this.id,
@@ -17,5 +18,6 @@ class FieldProfileModel {
     this.longitude,
     this.cropGrownPrevSeason = 'Blank',
     this.cropGrownTwoSeasonsAgo = 'Blank',
+    this.isUpToDateInServer = 'No',
   });
 }

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/FieldOperationsProvider.dart';
 import '../providers/CurrentSeasonVarietyProvider.dart';
 import '../providers/FertilizationProvider.dart';
+import '../providers/FieldProfileProvider.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
@@ -35,6 +36,11 @@ class HomePageScreen extends StatelessWidget {
       context,
       listen: false,
     ).fetchAndSetFertilizationObjects();
+
+    Provider.of<FieldProfileProvider>(
+      context,
+      listen: false,
+    ).fetchAndSetFieldProfileObject();
 
     return Scaffold(
       appBar: AppBar(

@@ -75,7 +75,8 @@ class DBHelper {
                   latitude REAL,
                   longitude REAL,
                   cropGrownPrevSeason TEXT,
-                  cropGrownTwoSeasonsAgo TEXT
+                  cropGrownTwoSeasonsAgo TEXT,
+                  isUpToDateInServer TEXT
                 )
           ''',
         );

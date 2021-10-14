@@ -16,6 +16,7 @@ class ListWidgetComponent extends StatelessWidget {
   final List listOfValues;
   final bool isLeadingToCheckBoxScreen;
   final bool isTrait;
+  final bool isTextField;
 
   ListWidgetComponent({
     required this.title,
@@ -30,6 +31,7 @@ class ListWidgetComponent extends StatelessWidget {
     this.listOfValues = const [],
     this.isLeadingToCheckBoxScreen = false,
     this.isTrait = false,
+    this.isTextField = true,
   });
 
   @override
@@ -63,6 +65,7 @@ class ListWidgetComponent extends StatelessWidget {
               "isDropDownField": isDropDownField,
               "listOfValues": listOfValues,
               'isTrait': isTrait,
+              'isTextField': isTextField,
             },
           );
         }

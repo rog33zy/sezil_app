@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:location/location.dart';
+
 import '../components/UI/ListWidgetComponent.dart';
 
 import '../constants/Seasons.dart';
@@ -9,7 +11,28 @@ class FieldProfileScreen extends StatelessWidget {
 
   static const routeName = '/field-profile';
 
-  static const cropTypes = <String>['Maize', 'Sorghum', 'Beans', 'Soybeans', 'Groundnuts', 'Cowpeas', 'Sunflower','Fallow-Land','Other',];
+  static const cropTypes = <String>[
+    'Maize',
+    'Sorghum',
+    'Beans',
+    'Soybeans',
+    'Groundnuts',
+    'Cowpeas',
+    'Sunflower',
+    'Fallow-Land',
+    'Other',
+  ];
+
+  Future<void> getCurrentLocation() async {
+    try {
+      final locData = await Location().getLocation();
+
+      print(locData.latitude);
+      print(locData.longitude);
+    } catch (error) {
+      return;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +60,7 @@ class FieldProfileScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isDropDownField: true,
+            isTextField: false,
             listOfValues: <String>[
               'Light',
               'Heavy',
@@ -49,7 +73,8 @@ class FieldProfileScreen extends StatelessWidget {
             value: 'Blank',
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onSubmitHandler: getCurrentLocation,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Crop Grown ${Seasons.previousSeason} Season',
@@ -60,6 +85,7 @@ class FieldProfileScreen extends StatelessWidget {
             onSubmitHandler: () {},
             isDropDownField: true,
             listOfValues: cropTypes,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Crop Grown ${Seasons.seasonBeforeLast} Season',
@@ -70,6 +96,7 @@ class FieldProfileScreen extends StatelessWidget {
             onSubmitHandler: () {},
             isDropDownField: true,
             listOfValues: cropTypes,
+            isTextField: false,
           ),
         ],
       ),

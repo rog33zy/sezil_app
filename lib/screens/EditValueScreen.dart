@@ -39,6 +39,7 @@ class EditValueScreen extends StatelessWidget {
     final isDropDownField = argumentsMap['isDropDownField'];
     final listOfValues = argumentsMap['listOfValues'];
     final isTrait = argumentsMap['isTrait'];
+    final isTextField = argumentsMap['isTextField'];
 
     return Scaffold(
       appBar: AppBar(
@@ -55,6 +56,7 @@ class EditValueScreen extends StatelessWidget {
         isDropDownField,
         listOfValues,
         isTrait,
+        isTextField,
       ),
     );
   }
@@ -70,6 +72,7 @@ class EditValueScreen extends StatelessWidget {
     isDropDownField,
     listOfValues,
     isTrait,
+    isTextField,
   ) {
     return Form(
       key: _formKey,
@@ -78,7 +81,7 @@ class EditValueScreen extends StatelessWidget {
           SizedBox(
             height: 10.0,
           ),
-          if (!isDropDownField)
+          if (isTextField)
             GenericTextField(
               labelText: title,
               validator:

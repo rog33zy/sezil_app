@@ -115,6 +115,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
               'By-Hand',
               'Other',
             ],
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Date of Planting',

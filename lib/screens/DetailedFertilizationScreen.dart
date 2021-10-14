@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:recase/recase.dart';
 
 import '../providers/FertilizationProvider.dart';
 
@@ -21,6 +22,7 @@ class DetailedFertilizationScreen extends StatefulWidget {
 
 class _DetailedFertilizationScreenState
     extends State<DetailedFertilizationScreen> {
+  
   @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
@@ -43,9 +45,9 @@ class _DetailedFertilizationScreenState
       });
     }
 
-    void nameOfFertilizerHandler(value) {
+    void nameOfFertilizerHandler(String value) {
       setState(() {
-        updatedFertilizationObject.nameOfFertilizer = value;
+        updatedFertilizationObject.nameOfFertilizer = value.titleCase;
       });
     }
 

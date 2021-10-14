@@ -63,6 +63,22 @@ class DBHelper {
                 )
           ''',
         );
+
+        await db.execute(
+          '''CREATE TABLE 
+              fieldProfile 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  fieldSize REAL,
+                  soilType TEXT,
+                  latitude REAL,
+                  longitude REAL,
+                  cropGrownPrevSeason TEXT,
+                  cropGrownTwoSeasonsAgo TEXT
+                )
+          ''',
+        );
       },
     );
     return database;

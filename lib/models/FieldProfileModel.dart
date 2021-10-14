@@ -1,23 +1,21 @@
 class FieldProfileModel {
   final String id;
-  final String fieldId;
   DateTime? lastUpdated;
   double? fieldSize;
   String soilType;
   double? latitude;
   double? longitude;
   String cropGrownPrevSeason;
-  String cropGrownTwoSeasonsAgain;
+  String cropGrownTwoSeasonsAgo;
 
   FieldProfileModel({
     required this.id,
-    required this.fieldId,
     this.lastUpdated,
     this.fieldSize,
-    this.soilType = '',
+    this.soilType = 'Blank',
     this.latitude,
     this.longitude,
-    this.cropGrownPrevSeason = '',
-    this.cropGrownTwoSeasonsAgain = '',
+    this.cropGrownPrevSeason = 'Blank',
+    this.cropGrownTwoSeasonsAgo = 'Blank',
   });
 }

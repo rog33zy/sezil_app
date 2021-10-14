@@ -19,7 +19,7 @@ class PlotScreen extends StatelessWidget {
     final plotName = argumentsMap['argument'];
     return Scaffold(
       appBar: AppBar(
-        title: Text(plotName),
+        title: Text('Plot $plotName'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

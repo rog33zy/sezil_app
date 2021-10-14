@@ -33,29 +33,29 @@ class FieldOperationsProvider with ChangeNotifier {
       {
         'id': updatedFieldOperationsObject.id,
         'lastUpdated': updatedFieldOperationsObject.lastUpdated == null
-            ? 'NULL'
+            ? null
             : updatedFieldOperationsObject.lastUpdated!.toIso8601String(),
         'dateOfLandPreparation':
             updatedFieldOperationsObject.dateOfLandPreparation == null
-                ? 'NULL'
+                ? null
                 : updatedFieldOperationsObject.dateOfLandPreparation!
                     .toIso8601String(),
         'methodOfLandPreparation':
             updatedFieldOperationsObject.methodOfLandPreparation,
         'dateOfPlanting': updatedFieldOperationsObject.dateOfPlanting == null
-            ? 'NULL'
+            ? null
             : updatedFieldOperationsObject.dateOfPlanting!.toIso8601String(),
         'dateOfThinning': updatedFieldOperationsObject.dateOfThinning == null
-            ? 'NULL'
+            ? null
             : updatedFieldOperationsObject.dateOfThinning!.toIso8601String(),
         'dateOfFirstWeeding':
             updatedFieldOperationsObject.dateOfFirstWeeding == null
-                ? 'NULL'
+                ? null
                 : updatedFieldOperationsObject.dateOfFirstWeeding!
                     .toIso8601String(),
         'dateOfSecondWeeding':
             updatedFieldOperationsObject.dateOfSecondWeeding == null
-                ? 'NULL'
+                ? null
                 : updatedFieldOperationsObject.dateOfSecondWeeding!
                     .toIso8601String(),
         'isUpToDateInServer': "No",
@@ -71,23 +71,23 @@ class FieldOperationsProvider with ChangeNotifier {
       final _updatedMap = dataList[0];
       _fieldOperationsObject = FieldOperationsModel(
         id: _updatedMap['id'],
-        lastUpdated: _updatedMap['lastUpdated'] == 'NULL'
+        lastUpdated: _updatedMap['lastUpdated'] == null
             ? null
             : DateTime.parse(_updatedMap['lastUpdated']),
-        dateOfLandPreparation: _updatedMap['dateOfLandPreparation'] == 'NULL'
+        dateOfLandPreparation: _updatedMap['dateOfLandPreparation'] == null
             ? null
             : DateTime.parse(_updatedMap['dateOfLandPreparation']),
         methodOfLandPreparation: _updatedMap['methodOfLandPreparation'],
-        dateOfPlanting: _updatedMap['dateOfPlanting'] == 'NULL'
+        dateOfPlanting: _updatedMap['dateOfPlanting'] == null
             ? null
             : DateTime.parse(_updatedMap['dateOfPlanting']),
-        dateOfThinning: _updatedMap['dateOfThinning'] == 'NULL'
+        dateOfThinning: _updatedMap['dateOfThinning'] == null
             ? null
             : DateTime.parse(_updatedMap['dateOfThinning']),
-        dateOfFirstWeeding: _updatedMap['dateOfFirstWeeding'] == 'NULL'
+        dateOfFirstWeeding: _updatedMap['dateOfFirstWeeding'] == null
             ? null
             : DateTime.parse(_updatedMap['dateOfFirstWeeding']),
-        dateOfSecondWeeding: _updatedMap['dateOfSecondWeeding'] == 'NULL'
+        dateOfSecondWeeding: _updatedMap['dateOfSecondWeeding'] == null
             ? null
             : DateTime.parse(_updatedMap['dateOfSecondWeeding']),
         isUpToDateInServer: _updatedMap['isUpToDateInServer'],

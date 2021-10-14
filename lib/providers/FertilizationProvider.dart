@@ -15,6 +15,11 @@ class FertilizationProvider with ChangeNotifier {
     return [..._fertilizationObjects];
   }
 
+  FertilizationModel findBySeason(String season) {
+    return _fertilizationObjects
+        .firstWhere((element) => element.season == season);
+  }
+
   Future<void>? updateFertilizationObject(
       FertilizationModel updatedFertilizationObject) async {
     _fertilizationObjects[_fertilizationObjects.indexWhere(
@@ -33,8 +38,10 @@ class FertilizationProvider with ChangeNotifier {
         'typeOfFertilizer': updatedFertilizationObject.typeOfFertilizer,
         'nameOfFertilizer': updatedFertilizationObject.nameOfFertilizer,
         'quantityApplied': updatedFertilizationObject.quantityApplied,
-        'timeOfApplication':
-            updatedFertilizationObject.timeOfApplication!.toIso8601String(),
+        'timeOfApplication': updatedFertilizationObject.timeOfApplication ==
+                null
+            ? null
+            : updatedFertilizationObject.timeOfApplication!.toIso8601String(),
         'isUpToDateInServer': updatedFertilizationObject.isUpToDateInServer,
       },
     );
@@ -42,7 +49,7 @@ class FertilizationProvider with ChangeNotifier {
 
   Future<void> fetchAndSetFertilizationObjects() async {
     final dataList = await DBHelper.getData('fertilization');
-    print(dataList);
+
     if (dataList.isEmpty) {
       _fertilizationObjects = [
         FertilizationModel(
@@ -50,18 +57,46 @@ class FertilizationProvider with ChangeNotifier {
         FertilizationModel(
             id: IDGeneratorHelper.generateId(), season: '2021-2022'),
       ];
+      for (FertilizationModel fertObj in _fertilizationObjects) {
+        DBHelper.insert(
+          'fertilization',
+          {
+            'id': fertObj.id,
+            'lastUpdated': fertObj.lastUpdated == null
+                ? null
+                : fertObj.lastUpdated!.toIso8601String(),
+            'season': fertObj.season,
+            'typeOfFertilizer': fertObj.typeOfFertilizer,
+            'nameOfFertilizer': fertObj.nameOfFertilizer,
+            'quantityApplied': fertObj.quantityApplied,
+            'timeOfApplication': fertObj.timeOfApplication == null
+                ? null
+                : fertObj.timeOfApplication!.toIso8601String(),
+            'isUpToDateInServer': fertObj.isUpToDateInServer,
+          },
+        );
+      }
     } else {
       _fertilizationObjects = dataList
           .map(
-            (e) => FertilizationModel(
-              id: e['id'],
-              lastUpdated: e['lastUpdated'],
-              season: e['season'],
-              typeOfFertilizer: e['typeOfFertilizer'],
-              nameOfFertilizer: e['nameOfFertilizer'],
-              quantityApplied: e['quantityApplied'],
-              timeOfApplication: e['timeOfApplication'],
-              isUpToDateInServer: e['isUpToDateInServer'],
+            (fertilizationObjectMap) => FertilizationModel(
+              id: fertilizationObjectMap['id'],
+              lastUpdated: fertilizationObjectMap['lastUpdated'] == null
+                  ? null
+                  : DateTime.parse(
+                      fertilizationObjectMap['lastUpdated'],
+                    ),
+              season: fertilizationObjectMap['season'],
+              typeOfFertilizer: fertilizationObjectMap['typeOfFertilizer'],
+              nameOfFertilizer: fertilizationObjectMap['nameOfFertilizer'],
+              quantityApplied: fertilizationObjectMap['quantityApplied'],
+              timeOfApplication:
+                  fertilizationObjectMap['timeOfApplication'] == null
+                      ? null
+                      : DateTime.parse(
+                          fertilizationObjectMap['timeOfApplication'],
+                        ),
+              isUpToDateInServer: fertilizationObjectMap['isUpToDateInServer'],
             ),
           )
           .toList();

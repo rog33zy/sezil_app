@@ -17,10 +17,16 @@ class EditValueScreen extends StatelessWidget {
     };
   }
 
-  String? Function(String?) dateOfBirthValidator() {
+  String? Function(String?) generalCommentsValidator() {
+    return (value) {
+      return value;
+    };
+  }
+
+  String? Function(String?) dateValidator() {
     return (value) {
       if (value == null || value.length <= 0) {
-        return 'Please enter date of birth';
+        return 'Please enter date';
       }
       return null;
     };
@@ -85,7 +91,7 @@ class EditValueScreen extends StatelessWidget {
             GenericTextField(
               labelText: title,
               validator:
-                  isDateField ? dateOfBirthValidator() : generalValidator(),
+                  isDateField ? dateValidator() : generalValidator(),
               isNumberField: isNumberField,
               isDateField: isDateField,
               initialValue: subtitle == "Blank" ? null : subtitle,
@@ -103,8 +109,7 @@ class EditValueScreen extends StatelessWidget {
           if (isTrait)
             GenericTextField(
               labelText: 'General Comments',
-              validator:
-                  isDateField ? dateOfBirthValidator() : generalValidator(),
+              validator: generalCommentsValidator(),
               isNumberField: isNumberField,
               isDateField: isDateField,
               initialValue: subtitle == "Blank" ? null : subtitle,

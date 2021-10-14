@@ -10,9 +10,12 @@ class PostHarvestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
+    final plotName = argumentsMap['argument'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Post-Harvest'),
+        title: Text('Post Harvest - Plot $plotName'),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -41,6 +44,7 @@ class PostHarvestScreen extends StatelessWidget {
               '5-Very Hard',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Panicles per Plot (Kg)',
@@ -94,6 +98,7 @@ class PostHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Grain Colour',
@@ -111,6 +116,7 @@ class PostHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
         ],
       ),

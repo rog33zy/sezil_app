@@ -9,9 +9,12 @@ class PostPlantingScreen extends StatelessWidget {
   static const routeName = '/post-planting';
   @override
   Widget build(BuildContext context) {
+    final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
+    final plotName = argumentsMap['argument'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Post Planting'),
+        title: Text('Post Planting - Plot $plotName'),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -31,6 +34,7 @@ class PostPlantingScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Plant Stand',

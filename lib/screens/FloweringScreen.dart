@@ -10,9 +10,12 @@ class FloweringScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
+    final plotName = argumentsMap['argument'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flowering'),
+        title: Text('Flowering - Plot $plotName'),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -32,6 +35,7 @@ class FloweringScreen extends StatelessWidget {
               '5-Too Late Maturing',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Pest Resistance',
@@ -49,6 +53,7 @@ class FloweringScreen extends StatelessWidget {
               '5-Very Low',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Disease Resistance',
@@ -65,6 +70,7 @@ class FloweringScreen extends StatelessWidget {
               '5-Very Low',
             ],
             isTrait: true,
+            isTextField: false,
           ),
         ],
       ),

@@ -10,9 +10,12 @@ class HarvestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
+    final plotName = argumentsMap['argument'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Harvest'),
+        title: Text('Harvest - Plot $plotName'),
+        centerTitle: true,
       ),
       body: ListView(
         children: [

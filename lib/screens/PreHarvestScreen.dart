@@ -10,9 +10,12 @@ class PreHarvestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
+    final plotName = argumentsMap['argument'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pre-Harvest'),
+        title: Text('Pre Harvest - Plot $plotName'),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -32,6 +35,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Low',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Husk Cover',
@@ -46,6 +50,7 @@ class PreHarvestScreen extends StatelessWidget {
               '2-Partially',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Cob Size',
@@ -63,6 +68,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Number of Cobs per Plant',
@@ -80,6 +86,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Plant Height',
@@ -97,6 +104,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Bird Damage',
@@ -114,6 +122,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Heavy',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Panicle Appreciation',
@@ -131,6 +140,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Grain Quality Appreciation',
@@ -148,6 +158,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Head Size Appreciation',
@@ -165,6 +176,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Plant Growth Habit Appreciation',
@@ -182,6 +194,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Pod Length Appreciation',
@@ -199,6 +212,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Very Bad',
             ],
             isTrait: true,
+            isTextField: false,
           ),
           ListWidgetComponent(
             title: 'Willingness to Cultivate Next Season',
@@ -216,6 +230,7 @@ class PreHarvestScreen extends StatelessWidget {
               '5-Definitely Not',
             ],
             isTrait: true,
+            isTextField: false,
           ),
         ],
       ),

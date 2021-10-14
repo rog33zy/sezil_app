@@ -31,22 +31,27 @@ class PlotScreen extends StatelessWidget {
             HomePageScreenOption(
               title: "Post-Planting",
               routeName: PostPlantingScreen.routeName,
+              argument: plotName,
             ),
             HomePageScreenOption(
               title: "Flowering",
               routeName: FloweringScreen.routeName,
+              argument: plotName,
             ),
             HomePageScreenOption(
               title: "Pre-Harvest",
               routeName: PreHarvestScreen.routeName,
+              argument: plotName,
             ),
             HomePageScreenOption(
               title: "Harvest",
               routeName: HarvestScreen.routeName,
+              argument: plotName,
             ),
             HomePageScreenOption(
               title: "Post-Harvest",
               routeName: PostHarvestScreen.routeName,
+              argument: plotName,
             ),
           ],
         ),

@@ -19,7 +19,7 @@ class EditValueScreen extends StatelessWidget {
 
   String? Function(String?) generalCommentsValidator() {
     return (value) {
-      return value;
+      return null;
     };
   }
 
@@ -46,6 +46,9 @@ class EditValueScreen extends StatelessWidget {
     final listOfValues = argumentsMap['listOfValues'];
     final isTrait = argumentsMap['isTrait'];
     final isTextField = argumentsMap['isTextField'];
+    final onChangeGenComValueHandler =
+        argumentsMap['onChangeGenComValueHandler'];
+    final genComSubtitle = argumentsMap['genComSubtitle'];
 
     return Scaffold(
       appBar: AppBar(
@@ -63,6 +66,8 @@ class EditValueScreen extends StatelessWidget {
         listOfValues,
         isTrait,
         isTextField,
+        onChangeGenComValueHandler,
+        genComSubtitle,
       ),
     );
   }
@@ -79,6 +84,8 @@ class EditValueScreen extends StatelessWidget {
     listOfValues,
     isTrait,
     isTextField,
+    onChangeGenComValueHandler,
+    genComSubtitle,
   ) {
     return Form(
       key: _formKey,
@@ -90,8 +97,7 @@ class EditValueScreen extends StatelessWidget {
           if (isTextField)
             GenericTextField(
               labelText: title,
-              validator:
-                  isDateField ? dateValidator() : generalValidator(),
+              validator: isDateField ? dateValidator() : generalValidator(),
               isNumberField: isNumberField,
               isDateField: isDateField,
               initialValue: subtitle == "Blank" ? null : subtitle,
@@ -110,11 +116,8 @@ class EditValueScreen extends StatelessWidget {
             GenericTextField(
               labelText: 'General Comments',
               validator: generalCommentsValidator(),
-              isNumberField: isNumberField,
-              isDateField: isDateField,
-              initialValue: subtitle == "Blank" ? null : subtitle,
-              updateTextFieldInAllInputsMap: onChangeTextValueHandler,
-              updateDateInAllInputsMap: onChangeDateValueHandler,
+              initialValue: genComSubtitle == "Blank" ? null : genComSubtitle,
+              updateTextFieldInAllInputsMap: onChangeGenComValueHandler,
               maxLines: 4,
             ),
           Padding(

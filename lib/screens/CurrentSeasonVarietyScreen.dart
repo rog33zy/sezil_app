@@ -102,6 +102,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: varietyNameHandler,
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: '${Seasons.previousSeason} Harvest (Kg)',
@@ -115,6 +116,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeTextValueHandler: prevSeasonHarvestHandler,
             onSubmitHandler: onSubmitHandler,
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: '${Seasons.previousSeason} Hectarage Grown (ha)',
@@ -128,6 +130,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeTextValueHandler: prevSeasonHectarageHandler,
             onSubmitHandler: onSubmitHandler,
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Source of Seed',
@@ -136,6 +139,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: sourceOfSeedHandler,
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Num of Years You\'ve Grown This Variety',
@@ -149,6 +153,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeTextValueHandler: yearsGrownHandler,
             onSubmitHandler: onSubmitHandler,
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Percent of Farmers Who Grow This Variety in Village',
@@ -166,6 +171,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeTextValueHandler: percentGrownHandler,
             onSubmitHandler: onSubmitHandler,
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

@@ -27,6 +27,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isDateField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Number of Plants per Plot',
@@ -36,6 +37,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Number of Harvested Cobs per Plot',
@@ -45,6 +47,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Yield of Harvested Cobs per Plot (Kg)',
@@ -54,6 +57,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Number of Harvested Panicles per Plot',
@@ -63,6 +67,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Yield of Harvested Panicles per Plot (Kg)',
@@ -72,6 +77,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Number of Harvested Heads per Plot',
@@ -81,6 +87,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Yield of Harvested Heads per Plot (Kg)',
@@ -90,6 +97,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Number of Harvested Pods per Plot',
@@ -99,6 +107,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Yield of Harvested Pods per Plot (Kg)',
@@ -108,6 +117,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

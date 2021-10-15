@@ -17,6 +17,8 @@ class ListWidgetComponent extends StatelessWidget {
   final bool isLeadingToCheckBoxScreen;
   final bool isTrait;
   final bool isTextField;
+  final Function onChangeGenComValueHandler;
+  final String genComSubtitle;
 
   ListWidgetComponent({
     required this.title,
@@ -32,6 +34,8 @@ class ListWidgetComponent extends StatelessWidget {
     this.isLeadingToCheckBoxScreen = false,
     this.isTrait = false,
     this.isTextField = true,
+    required this.onChangeGenComValueHandler,
+    this.genComSubtitle = '',
   });
 
   @override
@@ -66,6 +70,8 @@ class ListWidgetComponent extends StatelessWidget {
               "listOfValues": listOfValues,
               'isTrait': isTrait,
               'isTextField': isTextField,
+              'onChangeGenComValueHandler': onChangeGenComValueHandler,
+              'genComSubtitle': genComSubtitle,
             },
           );
         }

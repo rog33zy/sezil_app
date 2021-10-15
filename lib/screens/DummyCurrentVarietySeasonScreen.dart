@@ -77,6 +77,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            onChangeGenComValueHandler: () {},
           ),
           // ListWidgetComponent(
           //   title: 'Reasons for Growing Variety',
@@ -104,6 +105,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: '${Seasons.previousSeason} Hectarage Grown (ha)',
@@ -113,6 +115,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Source of Seed',
@@ -121,6 +124,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Num of Years You\'ve Grown This Variety',
@@ -130,6 +134,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Percent of Farmers Who Grow This Variety in Village',
@@ -139,6 +144,7 @@ class _CurrentSeasonVarietyScreenState
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

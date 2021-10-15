@@ -98,6 +98,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeDateValueHandler: dateOfLandPrepHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Method of Land Preparation',
@@ -116,6 +117,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
               'Other',
             ],
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Date of Planting',
@@ -129,6 +131,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeDateValueHandler: dateOfPlantingHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Date of Thinning',
@@ -142,6 +145,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeDateValueHandler: dateOfThinningHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Date of First Weeding',
@@ -155,6 +159,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeDateValueHandler: dateOfFirstWeedingHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Date of Second Weeding',
@@ -168,6 +173,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeDateValueHandler: dateOfSecondWeedingHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

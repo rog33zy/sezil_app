@@ -80,6 +80,22 @@ class DBHelper {
                 )
           ''',
         );
+
+        await db.execute(
+          '''CREATE TABLE 
+              postPlanting 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  plotId TEXT,
+                  seedlingVigour TEXT,
+                  seedlingVigourComments TEXT,
+                  plantStand INTEGER,
+                  plantStandComments TEXT,
+                  isUpToDateInServer TEXT
+                )
+          ''',
+        );
       },
     );
     return database;

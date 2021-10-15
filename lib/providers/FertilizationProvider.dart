@@ -20,7 +20,7 @@ class FertilizationProvider with ChangeNotifier {
         .firstWhere((element) => element.season == season);
   }
 
-  Future<void>? updateFertilizationObject(
+  Future<void> updateFertilizationObject(
       FertilizationModel updatedFertilizationObject) async {
     _fertilizationObjects[_fertilizationObjects.indexWhere(
             (element) => element.id == updatedFertilizationObject.id)] =
@@ -28,7 +28,7 @@ class FertilizationProvider with ChangeNotifier {
 
     notifyListeners();
 
-    DBHelper.insert(
+    await DBHelper.insert(
       'fertilization',
       {
         'id': updatedFertilizationObject.id,

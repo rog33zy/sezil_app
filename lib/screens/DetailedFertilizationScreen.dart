@@ -88,6 +88,7 @@ class _DetailedFertilizationScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: typeOfFertilizationHandler,
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Name of Fertilizer',
@@ -96,6 +97,7 @@ class _DetailedFertilizationScreenState
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: nameOfFertilizerHandler,
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Quantity Applied (Kg)',
@@ -109,6 +111,7 @@ class _DetailedFertilizationScreenState
             onChangeTextValueHandler: quantityAppliedHandler,
             onSubmitHandler: onSubmitHandler,
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Time of Application',
@@ -124,6 +127,7 @@ class _DetailedFertilizationScreenState
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
             isDateField: true,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

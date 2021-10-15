@@ -1,30 +1,112 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../helpers/id_generator_helper.dart';
+
+import '../providers/PostPlantingProvider.dart';
+
+import '../models/PostPlantingModel.dart';
+
 import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
-class PostPlantingScreen extends StatelessWidget {
+class PostPlantingScreen extends StatefulWidget {
   const PostPlantingScreen({Key? key}) : super(key: key);
 
   static const routeName = '/post-planting';
+
+  @override
+  _PostPlantingScreenState createState() => _PostPlantingScreenState();
+}
+
+class _PostPlantingScreenState extends State<PostPlantingScreen> {
   @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
-    final plotName = argumentsMap['argument'];
+    final plotId = argumentsMap['argument'];
+    bool isObjectExisiting = Provider.of<PostPlantingProvider>(
+      context,
+      listen: false,
+    ).isExisting(plotId);
+    if (!isObjectExisiting) {
+      PostPlantingModel newPostPlantingObject = PostPlantingModel(
+        id: IDGeneratorHelper.generateId(),
+        lastUpdated: DateTime.now(),
+        plotId: plotId,
+      );
+      Provider.of<PostPlantingProvider>(
+        context,
+        listen: false,
+      ).updatePostPlantingObject(
+        newPostPlantingObject,
+        false,
+      );
+    }
+    PostPlantingModel postPlantingObject = Provider.of<PostPlantingProvider>(
+      context,
+      listen: true,
+    ).findByPlot(plotId);
+
+    PostPlantingModel updatedPostPlantingObject =
+        Provider.of<PostPlantingProvider>(
+      context,
+      listen: false,
+    ).findByPlot(plotId);
+
+    void seedlingVigourHandler(value) {
+      setState(() {
+        updatedPostPlantingObject.seedlingVigour = value;
+      });
+    }
+
+    void seedlingVigourCommentsHandler(value) {
+      setState(() {
+        updatedPostPlantingObject.seedlingVigourComments = value;
+      });
+    }
+
+    void plantStandHandler(value) {
+      setState(() {
+        updatedPostPlantingObject.plantStand = int.parse(value);
+      });
+    }
+
+    void plantStandCommentsHandler(value) {
+      setState(() {
+        updatedPostPlantingObject.plantStandComments = value;
+      });
+    }
+
+    void onSubmitHandler() {
+      updatedPostPlantingObject.lastUpdated = DateTime.now();
+      updatedPostPlantingObject.isUpToDateInServer = 'No';
+
+      Provider.of<PostPlantingProvider>(
+        context,
+        listen: false,
+      ).updatePostPlantingObject(
+        updatedPostPlantingObject,
+        true,
+      );
+
+      Navigator.of(context).pop();
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Post Planting - Plot $plotName'),
+        title: Text('Post Planting - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
             title: 'Seedling Vigour',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postPlantingObject.seedlingVigour,
+            value: postPlantingObject.seedlingVigour,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: seedlingVigourHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -35,15 +117,24 @@ class PostPlantingScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: seedlingVigourCommentsHandler,
+            genComSubtitle: postPlantingObject.seedlingVigourComments,
           ),
           ListWidgetComponent(
             title: 'Plant Stand',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postPlantingObject.plantStand == null
+                ? 'Blank'
+                : postPlantingObject.plantStand.toString(),
+            value: postPlantingObject.plantStand == null
+                ? 'Blank'
+                : postPlantingObject.plantStand.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: plantStandHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
+            isTrait: true,
+            onChangeGenComValueHandler: plantStandCommentsHandler,
+            genComSubtitle: postPlantingObject.plantStandComments,
           ),
         ],
       ),

@@ -27,6 +27,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Grain Hardness',
@@ -45,6 +46,7 @@ class PostHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Panicles per Plot (Kg)',
@@ -54,6 +56,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Heads (Kg)',
@@ -63,6 +66,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Pods (Kg)',
@@ -72,6 +76,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Grain Yield (Kg)',
@@ -81,6 +86,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Grain Size',
@@ -99,6 +105,7 @@ class PostHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Grain Colour',
@@ -117,6 +124,7 @@ class PostHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

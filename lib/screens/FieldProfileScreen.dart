@@ -118,6 +118,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             onChangeTextValueHandler: fieldSizeHandler,
             onSubmitHandler: onSubmitHandler,
             isNumberField: true,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Soil Type',
@@ -133,6 +134,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
               'Heavy',
               'Other',
             ],
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Field Coordinates',
@@ -146,6 +148,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             onChangeTextValueHandler: () {},
             onSubmitHandler: fieldCoordinatesHandler,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Crop Grown ${Seasons.previousSeason} Season',
@@ -157,6 +160,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             isDropDownField: true,
             listOfValues: FieldProfileScreen.cropTypes,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Crop Grown ${Seasons.seasonBeforeLast} Season',
@@ -168,6 +172,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             isDropDownField: true,
             listOfValues: FieldProfileScreen.cropTypes,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

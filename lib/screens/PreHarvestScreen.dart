@@ -36,6 +36,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Husk Cover',
@@ -51,6 +52,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Cob Size',
@@ -69,6 +71,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Number of Cobs per Plant',
@@ -87,6 +90,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Plant Height',
@@ -105,6 +109,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Bird Damage',
@@ -123,6 +128,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Panicle Appreciation',
@@ -141,6 +147,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Grain Quality Appreciation',
@@ -159,6 +166,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Head Size Appreciation',
@@ -177,6 +185,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Plant Growth Habit Appreciation',
@@ -195,6 +204,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Pod Length Appreciation',
@@ -213,6 +223,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Willingness to Cultivate Next Season',
@@ -231,6 +242,7 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

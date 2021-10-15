@@ -36,6 +36,7 @@ class FloweringScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Pest Resistance',
@@ -54,6 +55,7 @@ class FloweringScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Disease Resistance',
@@ -71,6 +73,7 @@ class FloweringScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
+            onChangeGenComValueHandler: () {},
           ),
         ],
       ),

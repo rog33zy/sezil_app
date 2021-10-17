@@ -70,6 +70,7 @@ class PostPlantingProvider with ChangeNotifier {
                 postPlantingObject['seedlingVigourComments'],
             plantStand: postPlantingObject['plantStand'],
             plantStandComments: postPlantingObject['plantStandComments'],
+            isUpToDateInServer: postPlantingObject['isUpToDateInServer'],
           ),
         )
         .toList();

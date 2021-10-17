@@ -96,6 +96,24 @@ class DBHelper {
                 )
           ''',
         );
+
+        await db.execute(
+          '''CREATE TABLE 
+              flowering 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  plotId TEXT,
+                  growingCycleAppreciation TEXT,
+                  growingCycleAppreciationComments TEXT,
+                  pestResistance TEXT,
+                  pestResistanceComments TEXT,
+                  diseasesResistance TEXT,
+                  diseasesResistanceComments TEXT,
+                  isUpToDateInServer TEXT
+                )
+          ''',
+        );
       },
     );
     return database;

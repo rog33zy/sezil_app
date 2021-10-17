@@ -64,6 +64,7 @@ class FloweringScreen extends StatelessWidget {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: () {},
             onSubmitHandler: () {},
+            isDropDownField: true,
             listOfValues: <String>[
               '1-Very High',
               '2-High',

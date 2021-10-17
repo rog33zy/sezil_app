@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../helpers/id_generator_helper.dart';
+
+import '../providers/FloweringProvider.dart';
+
+import '../models/FloweringModel.dart';
+
 import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
@@ -11,21 +19,93 @@ class FloweringScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
-    final plotName = argumentsMap['argument'];
+    final plotId = argumentsMap['argument'];
+
+    final bool isObjectExisiting = Provider.of<FloweringProvider>(
+      context,
+      listen: false,
+    ).isExisting(plotId);
+
+    if (!isObjectExisiting) {
+      FloweringModel newFloweringObject = FloweringModel(
+        id: IDGeneratorHelper.generateId(),
+        lastUpdated: DateTime.now(),
+        plotId: plotId,
+      );
+
+      Provider.of<FloweringProvider>(
+        context,
+        listen: false,
+      ).updateFloweringObject(
+        newFloweringObject,
+        false,
+      );
+    }
+
+    final FloweringModel floweringObject = Provider.of<FloweringProvider>(
+      context,
+      listen: true,
+    ).findByPlot(plotId);
+
+    final FloweringModel updatedFloweringObject =
+        Provider.of<FloweringProvider>(
+      context,
+      listen: false,
+    ).findByPlot(plotId);
+
+    void growingCycleAppreciationHandler(value) {
+      updatedFloweringObject.growingCycleAppreciation = value;
+    }
+
+    void growingCycleAppreciationCommentsHandler(value) {
+      updatedFloweringObject.growingCycleAppreciationComments = value;
+    }
+
+    void pestResistanceHandler(value) {
+      updatedFloweringObject.pestResistance = value;
+    }
+
+    void pestResistanceCommentsHandler(value) {
+      updatedFloweringObject.pestResistanceComments = value;
+    }
+
+    void diseasesResistanceHandler(value) {
+      updatedFloweringObject.diseasesResistance = value;
+    }
+
+    void diseasesResistanceCommentsHandler(value) {
+      updatedFloweringObject.diseasesResistanceComments = value;
+    }
+
+    void onSubmitHandler() {
+      updatedFloweringObject.lastUpdated = DateTime.now();
+      updatedFloweringObject.isUpToDateInServer = 'No';
+
+      Provider.of<FloweringProvider>(
+        context,
+        listen: false,
+      ).updateFloweringObject(
+        updatedFloweringObject,
+        true,
+      );
+
+      Navigator.of(context).pop();
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flowering - Plot $plotName'),
+        title: Text('Flowering - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
             title: 'Growing Cycle Appreciation',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: floweringObject.growingCycleAppreciation,
+            value: floweringObject.growingCycleAppreciation,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: growingCycleAppreciationHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Too Early Maturing',
@@ -36,15 +116,16 @@ class FloweringScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: growingCycleAppreciationCommentsHandler,
+            genComSubtitle: floweringObject.growingCycleAppreciationComments,
           ),
           ListWidgetComponent(
             title: 'Pest Resistance',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: floweringObject.pestResistance,
+            value: floweringObject.pestResistance,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: pestResistanceHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very High',
@@ -55,15 +136,16 @@ class FloweringScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: pestResistanceCommentsHandler,
+            genComSubtitle: floweringObject.pestResistanceComments,
           ),
           ListWidgetComponent(
             title: 'Disease Resistance',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: floweringObject.diseasesResistance,
+            value: floweringObject.diseasesResistance,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: diseasesResistanceHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very High',
@@ -74,7 +156,8 @@ class FloweringScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: diseasesResistanceCommentsHandler,
+            genComSubtitle: floweringObject.diseasesResistanceComments,
           ),
         ],
       ),

@@ -9,6 +9,7 @@ import './providers/CurrentSeasonVarietyProvider.dart';
 import './providers/FertilizationProvider.dart';
 import './providers/FieldProfileProvider.dart';
 import './providers/PostPlantingProvider.dart';
+import './providers/FloweringProvider.dart';
 
 import './screens/HomePageScreen.dart';
 import 'screens/TraitsScreen.dart';
@@ -51,6 +52,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (ctx) => PostPlantingProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => FloweringProvider(),
         ),
       ],
       child: MaterialApp(

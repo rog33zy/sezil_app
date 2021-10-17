@@ -11,21 +11,16 @@ import '../models/PostPlantingModel.dart';
 import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
-class PostPlantingScreen extends StatefulWidget {
+class PostPlantingScreen extends StatelessWidget {
   const PostPlantingScreen({Key? key}) : super(key: key);
 
   static const routeName = '/post-planting';
 
   @override
-  _PostPlantingScreenState createState() => _PostPlantingScreenState();
-}
-
-class _PostPlantingScreenState extends State<PostPlantingScreen> {
-  @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
-    bool isObjectExisiting = Provider.of<PostPlantingProvider>(
+    final bool isObjectExisiting = Provider.of<PostPlantingProvider>(
       context,
       listen: false,
     ).isExisting(plotId);
@@ -43,39 +38,33 @@ class _PostPlantingScreenState extends State<PostPlantingScreen> {
         false,
       );
     }
-    PostPlantingModel postPlantingObject = Provider.of<PostPlantingProvider>(
+
+    final PostPlantingModel postPlantingObject =
+        Provider.of<PostPlantingProvider>(
       context,
       listen: true,
     ).findByPlot(plotId);
 
-    PostPlantingModel updatedPostPlantingObject =
+    final PostPlantingModel updatedPostPlantingObject =
         Provider.of<PostPlantingProvider>(
       context,
       listen: false,
     ).findByPlot(plotId);
 
     void seedlingVigourHandler(value) {
-      setState(() {
-        updatedPostPlantingObject.seedlingVigour = value;
-      });
+      updatedPostPlantingObject.seedlingVigour = value;
     }
 
     void seedlingVigourCommentsHandler(value) {
-      setState(() {
-        updatedPostPlantingObject.seedlingVigourComments = value;
-      });
+      updatedPostPlantingObject.seedlingVigourComments = value;
     }
 
     void plantStandHandler(value) {
-      setState(() {
-        updatedPostPlantingObject.plantStand = int.parse(value);
-      });
+      updatedPostPlantingObject.plantStand = int.parse(value);
     }
 
     void plantStandCommentsHandler(value) {
-      setState(() {
-        updatedPostPlantingObject.plantStandComments = value;
-      });
+      updatedPostPlantingObject.plantStandComments = value;
     }
 
     void onSubmitHandler() {

@@ -43,7 +43,7 @@ class FloweringProvider with ChangeNotifier {
       'flowering',
       {
         'id': updatedFloweringObject.id,
-        'lastUpdated': updatedFloweringObject.lastUpdated!.toIso8601String(),
+        'lastUpdated': updatedFloweringObject.lastUpdated.toIso8601String(),
         'plotId': updatedFloweringObject.plotId,
         'growingCycleAppreciation':
             updatedFloweringObject.growingCycleAppreciation,
@@ -67,12 +67,15 @@ class FloweringProvider with ChangeNotifier {
             id: floweringObject['id'],
             lastUpdated: DateTime.parse(floweringObject['lastUpdated']),
             plotId: floweringObject['plotId'],
-            growingCycleAppreciation: floweringObject['growingCycleAppreciation'],
-            growingCycleAppreciationComments: floweringObject['growingCycleAppreciationComments'],
+            growingCycleAppreciation:
+                floweringObject['growingCycleAppreciation'],
+            growingCycleAppreciationComments:
+                floweringObject['growingCycleAppreciationComments'],
             pestResistance: floweringObject['pestResistance'],
             pestResistanceComments: floweringObject['pestResistanceComments'],
             diseasesResistance: floweringObject['diseasesResistance'],
-            diseasesResistanceComments: floweringObject['diseasesResistanceComments'],
+            diseasesResistanceComments:
+                floweringObject['diseasesResistanceComments'],
             isUpToDateInServer: floweringObject['isUpToDateInServer'],
           ),
         )

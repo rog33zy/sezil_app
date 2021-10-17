@@ -39,6 +39,11 @@ class PlotScreen extends StatelessWidget {
               argument: plotName,
             ),
             HomePageScreenOption(
+              title: "Post-Flowering",
+              routeName: FloweringScreen.routeName,
+              argument: plotName,
+            ),
+            HomePageScreenOption(
               title: "Pre-Harvest",
               routeName: PreHarvestScreen.routeName,
               argument: plotName,

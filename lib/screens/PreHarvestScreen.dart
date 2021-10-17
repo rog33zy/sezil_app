@@ -11,10 +11,10 @@ class PreHarvestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
-    final plotName = argumentsMap['argument'];
+    final plotId = argumentsMap['argument'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pre Harvest - Plot $plotName'),
+        title: Text('Pre Harvest - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(

@@ -114,6 +114,114 @@ class DBHelper {
                 )
           ''',
         );
+
+        await db.execute(
+          '''CREATE TABLE 
+              postFlowering 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  plotId TEXT,
+                  pestResistance TEXT,
+                  pestResistanceComments TEXT,
+                  diseasesResistance TEXT,
+                  diseasesResistanceComments TEXT,
+                  isUpToDateInServer TEXT
+                )
+          ''',
+        );
+
+        await db.execute(
+          '''CREATE TABLE 
+              preHarvest 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  plotId TEXT,
+                  lodgingResistance TEXT,
+                  lodgingResistanceComments TEXT,
+                  huskCover TEXT,
+                  huskCoverComments TEXT,
+                  cobSize TEXT,
+                  cobSizeComments TEXT,
+                  numberOfCobsPerPlant TEXT,
+                  numberOfCobsPerPlantComments TEXT,
+                  plantHeight TEXT,
+                  plantHeightComments TEXT,
+                  birdDamage TEXT,
+                  birdDamageComments TEXT,
+                  panicleAppreciation TEXT,
+                  panicleAppreciationComments TEXT,
+                  grainQualityAppreciation TEXT,
+                  grainQualityAppreciationComments TEXT,
+                  headSizeAppreciation TEXT,
+                  headSizeAppreciationComments TEXT,
+                  plantGrowthHabitAppreciation TEXT,
+                  plantGrowthHabitAppreciationComments TEXT,
+                  willingnessToCultivateNextSeason TEXT,
+                  willingnessToCultivateNextSeasonComments TEXT,
+                  isUpToDateInServer TEXT
+                )
+          ''',
+        );
+
+        await db.execute(
+          '''CREATE TABLE 
+              harvest 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  plotId TEXT,
+                  int? numberOfPlants,
+                  numberOfPlantsComments TEXT,
+                  numberOfHarvestedCobs INTEGER,
+                  numberOfHarvestedCobsComments TEXT,
+                  yieldOfHarvestedCobs REAL,
+                  yieldOfHarvestedCobsComments TEXT,
+                  numberOfHarvestedPanicles INTEGER,
+                  numberOfHarvestedPaniclesComments TEXT,
+                  yieldOfHarvestedPanicles REAL,
+                  yieldOfHarvestedPaniclesComments TEXT,
+                  numberOfHarvestedHeads INTEGER,
+                  numberOfHarvestedHeadsComments TEXT,
+                  yieldOfHarvestedHeads REAL,
+                  yieldOfHarvestedHeadsComments TEXT,
+                  numberOfHarvestedPods INTEGER,
+                  numberOfHarvestedPodsComments TEXT,
+                  yieldOfHarvestedPods REAL,
+                  yieldOfHarvestedPodsComments TEXT,
+                  isUpToDateInServer TEXT
+                )
+          ''',
+        );
+
+        await db.execute(
+          '''CREATE TABLE 
+              postHarvest 
+                (
+                  id TEXT PRIMARY KEY,
+                  lastUpdated TEXT,
+                  plotId TEXT,
+                  yieldOfDriedCobs REAL,
+                  yieldOfDriedCobsComments TEXT,
+                  grainHardness TEXT,
+                  grainHardnessComments TEXT,
+                  yieldOfDriedPanicles REAL,
+                  yieldOfDriedPaniclesComments TEXT,
+                  yieldOfDriedHeads REAL,
+                  yieldOfDriedHeadsComments TEXT,
+                  yieldsOfDriedPods REAL,
+                  yieldsOfDriedPodsComments TEXT,
+                  grainsYield REAL,
+                  grainsYieldComments TEXT,
+                  grainSize TEXT,
+                  grainSizeComments TEXT,
+                  grainColour TEXT,
+                  grainColourComments TEXT,
+                  isUpToDateInServer TEXT
+                )
+          ''',
+        );
       },
     );
     return database;

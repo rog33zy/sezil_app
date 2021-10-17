@@ -10,6 +10,7 @@ import './providers/FertilizationProvider.dart';
 import './providers/FieldProfileProvider.dart';
 import './providers/PostPlantingProvider.dart';
 import './providers/FloweringProvider.dart';
+import 'providers/PreHarvestProvider.dart';
 
 import './screens/HomePageScreen.dart';
 import 'screens/TraitsScreen.dart';
@@ -56,9 +57,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => FloweringProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => PreHarvestProvider(),
+        ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'SeZIL App',
         theme: ThemeData(
           primarySwatch: Palette.gnaColorSwatch,
         ),

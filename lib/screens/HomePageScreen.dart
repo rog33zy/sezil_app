@@ -7,7 +7,10 @@ import '../providers/FertilizationProvider.dart';
 import '../providers/FieldProfileProvider.dart';
 import '../providers/PostPlantingProvider.dart';
 import '../providers/FloweringProvider.dart';
+import '../providers/PostFloweringProvider.dart';
 import '../providers/PreHarvestProvider.dart';
+import '../providers/HarvestProvider.dart';
+import '../providers/PostHarvestProvider.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
@@ -55,10 +58,25 @@ class HomePageScreen extends StatelessWidget {
       listen: false,
     ).fetchAndSetFloweringObjects();
 
+    Provider.of<PostFloweringProvider>(
+      context,
+      listen: false,
+    ).fetchAndSetPostFloweringObjects();
+
     Provider.of<PreHarvestProvider>(
       context,
       listen: false,
     ).fetchAndSetPreHarvestObjects();
+
+    Provider.of<HarvestProvider>(
+      context,
+      listen: false,
+    ).fetchAndSetHarvestObjects();
+
+    Provider.of<PostHarvestProvider>(
+      context,
+      listen: false,
+    ).fetchAndSetPostHarvestObjects();
 
     return Scaffold(
       appBar: AppBar(

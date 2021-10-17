@@ -10,7 +10,10 @@ import './providers/FertilizationProvider.dart';
 import './providers/FieldProfileProvider.dart';
 import './providers/PostPlantingProvider.dart';
 import './providers/FloweringProvider.dart';
-import 'providers/PreHarvestProvider.dart';
+import './providers/PostFloweringProvider.dart';
+import './providers/PreHarvestProvider.dart';
+import './providers/HarvestProvider.dart';
+import './providers/PostHarvestProvider.dart';
 
 import './screens/HomePageScreen.dart';
 import 'screens/TraitsScreen.dart';
@@ -58,7 +61,16 @@ class MyApp extends StatelessWidget {
           create: (ctx) => FloweringProvider(),
         ),
         ChangeNotifierProvider(
+          create: (ctx) => PostFloweringProvider(),
+        ),
+        ChangeNotifierProvider(
           create: (ctx) => PreHarvestProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => HarvestProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => PostHarvestProvider(),
         ),
       ],
       child: MaterialApp(

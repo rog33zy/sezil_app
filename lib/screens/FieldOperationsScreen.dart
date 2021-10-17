@@ -9,16 +9,11 @@ import '../models/FieldOperationsModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
 
-class FieldOperationsScreen extends StatefulWidget {
+class FieldOperationsScreen extends StatelessWidget {
   const FieldOperationsScreen({Key? key}) : super(key: key);
 
   static const routeName = '/field-operations';
 
-  @override
-  _FieldOperationsScreenState createState() => _FieldOperationsScreenState();
-}
-
-class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
   @override
   Widget build(BuildContext context) {
     FieldOperationsModel fieldOperationsObject =
@@ -34,39 +29,27 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
     ).getFieldOperationsObject;
 
     void dateOfLandPrepHandler(value) {
-      setState(() {
-        updatedFieldOperationsObject.dateOfLandPreparation = value;
-      });
+      updatedFieldOperationsObject.dateOfLandPreparation = value;
     }
 
     void methodOfLandPrepHandler(value) {
-      setState(() {
-        updatedFieldOperationsObject.methodOfLandPreparation = value;
-      });
+      updatedFieldOperationsObject.methodOfLandPreparation = value;
     }
 
     void dateOfPlantingHandler(value) {
-      setState(() {
-        updatedFieldOperationsObject.dateOfPlanting = value;
-      });
+      updatedFieldOperationsObject.dateOfPlanting = value;
     }
 
     void dateOfThinningHandler(value) {
-      setState(() {
-        updatedFieldOperationsObject.dateOfThinning = value;
-      });
+      updatedFieldOperationsObject.dateOfThinning = value;
     }
 
     void dateOfFirstWeedingHandler(value) {
-      setState(() {
-        updatedFieldOperationsObject.dateOfFirstWeeding = value;
-      });
+      updatedFieldOperationsObject.dateOfFirstWeeding = value;
     }
 
     void dateOfSecondWeedingHandler(value) {
-      setState(() {
-        updatedFieldOperationsObject.dateOfSecondWeeding = value;
-      });
+      updatedFieldOperationsObject.dateOfSecondWeeding = value;
     }
 
     void onSubmitHandler() {
@@ -93,7 +76,8 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
                 : _formatDate(fieldOperationsObject.dateOfLandPreparation!),
             value: fieldOperationsObject.dateOfLandPreparation == null
                 ? 'Blank'
-                : fieldOperationsObject.dateOfLandPreparation!.toIso8601String(),
+                : fieldOperationsObject.dateOfLandPreparation!
+                    .toIso8601String(),
             isDateField: true,
             onChangeDateValueHandler: dateOfLandPrepHandler,
             onChangeTextValueHandler: () {},

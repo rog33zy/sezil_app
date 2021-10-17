@@ -11,7 +11,7 @@ import '../components/UI/ListWidgetComponent.dart';
 
 import '../constants/Seasons.dart';
 
-class FieldProfileScreen extends StatefulWidget {
+class FieldProfileScreen extends StatelessWidget {
   const FieldProfileScreen({Key? key}) : super(key: key);
 
   static const routeName = '/field-profile';
@@ -29,11 +29,6 @@ class FieldProfileScreen extends StatefulWidget {
   ];
 
   @override
-  _FieldProfileScreenState createState() => _FieldProfileScreenState();
-}
-
-class _FieldProfileScreenState extends State<FieldProfileScreen> {
-  @override
   Widget build(BuildContext context) {
     FieldProfileModel fieldProfileObject = Provider.of<FieldProfileProvider>(
       context,
@@ -47,15 +42,11 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
     ).getFieldProfileObject;
 
     void fieldSizeHandler(value) {
-      setState(() {
-        updatedFieldProfileObject.fieldSize = double.parse(value);
-      });
+      updatedFieldProfileObject.fieldSize = double.parse(value);
     }
 
     void soilTypeHandler(value) {
-      setState(() {
-        updatedFieldProfileObject.soilType = value;
-      });
+      updatedFieldProfileObject.soilType = value;
     }
 
     void fieldCoordinatesHandler() async {
@@ -76,15 +67,11 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
     }
 
     void cropGrownPrevSeasonHandler(value) {
-      setState(() {
-        updatedFieldProfileObject.cropGrownPrevSeason = value;
-      });
+      updatedFieldProfileObject.cropGrownPrevSeason = value;
     }
 
     void cropGrownSeasonBeforeLastHandler(value) {
-      setState(() {
-        updatedFieldProfileObject.cropGrownTwoSeasonsAgo = value;
-      });
+      updatedFieldProfileObject.cropGrownTwoSeasonsAgo = value;
     }
 
     void onSubmitHandler() {

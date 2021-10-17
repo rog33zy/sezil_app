@@ -11,18 +11,11 @@ import '../constants/Seasons.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
 
-class CurrentSeasonVarietyScreen extends StatefulWidget {
+class CurrentSeasonVarietyScreen extends StatelessWidget {
   const CurrentSeasonVarietyScreen({Key? key}) : super(key: key);
 
   static const routeName = '/current-season-variety';
 
-  @override
-  _CurrentSeasonVarietyScreenState createState() =>
-      _CurrentSeasonVarietyScreenState();
-}
-
-class _CurrentSeasonVarietyScreenState
-    extends State<CurrentSeasonVarietyScreen> {
   @override
   Widget build(BuildContext context) {
     CurrentSeasonVarietyModel currentSeasonVarietyObject =
@@ -38,43 +31,30 @@ class _CurrentSeasonVarietyScreenState
     ).getCurrentSeasonVarietyObject;
 
     void varietyNameHandler(String value) {
-      setState(() {
-        updatedCurrentSeasonVarietyObject.varietyName = value.titleCase;
-      });
+      updatedCurrentSeasonVarietyObject.varietyName = value.titleCase;
     }
 
     void prevSeasonHarvestHandler(value) {
-      setState(() {
-        updatedCurrentSeasonVarietyObject.previousSeasonHarvest =
-            double.parse(value);
-      });
+      updatedCurrentSeasonVarietyObject.previousSeasonHarvest =
+          double.parse(value);
     }
 
     void prevSeasonHectarageHandler(value) {
-      setState(() {
-        updatedCurrentSeasonVarietyObject.previousSeasonHectarage =
-            double.parse(value);
-      });
+      updatedCurrentSeasonVarietyObject.previousSeasonHectarage =
+          double.parse(value);
     }
 
     void sourceOfSeedHandler(String value) {
-      setState(() {
-        updatedCurrentSeasonVarietyObject.sourceOfSeed = value.titleCase;
-      });
+      updatedCurrentSeasonVarietyObject.sourceOfSeed = value.titleCase;
     }
 
     void yearsGrownHandler(value) {
-      setState(() {
-        updatedCurrentSeasonVarietyObject.numberOfYearsGrown =
-            int.parse(value);
-      });
+      updatedCurrentSeasonVarietyObject.numberOfYearsGrown = int.parse(value);
     }
 
     void percentGrownHandler(value) {
-      setState(() {
-        updatedCurrentSeasonVarietyObject.percentFarmersGrowingVariety =
-            int.parse(value);
-      });
+      updatedCurrentSeasonVarietyObject.percentFarmersGrowingVariety =
+          int.parse(value);
     }
 
     void onSubmitHandler() {

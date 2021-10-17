@@ -56,9 +56,9 @@ class PostHarvestProvider with ChangeNotifier {
         'yieldOfDriedHeads': updatedPostHarvestObject.yieldOfDriedHeads,
         'yieldOfDriedHeadsComments':
             updatedPostHarvestObject.yieldOfDriedHeadsComments,
-        'yieldsOfDriedPods': updatedPostHarvestObject.yieldsOfDriedPods,
-        'yieldsOfDriedPodsComments':
-            updatedPostHarvestObject.yieldsOfDriedPodsComments,
+        'yieldOfDriedPods': updatedPostHarvestObject.yieldOfDriedPods,
+        'yieldOfDriedPodsComments':
+            updatedPostHarvestObject.yieldOfDriedPodsComments,
         'grainsYield': updatedPostHarvestObject.grainsYield,
         'grainsYieldComments': updatedPostHarvestObject.grainsYieldComments,
         'grainSize': updatedPostHarvestObject.grainSize,
@@ -79,7 +79,7 @@ class PostHarvestProvider with ChangeNotifier {
             lastUpdated: DateTime.parse(postHarvestObject['lastUpdated']),
             plotId: postHarvestObject['plotId'],
             yieldOfDriedCobs: postHarvestObject['yieldOfDriedCobs'],
-            yieldOfDriedCobsComments: postHarvestObject[''],
+            yieldOfDriedCobsComments: postHarvestObject['yieldOfDriedCobsComments'],
             grainHardness: postHarvestObject['yieldOfDriedCobsComments'],
             grainHardnessComments: postHarvestObject['grainHardnessComments'],
             yieldOfDriedPanicles: postHarvestObject['yieldOfDriedPanicles'],
@@ -88,9 +88,9 @@ class PostHarvestProvider with ChangeNotifier {
             yieldOfDriedHeads: postHarvestObject['yieldOfDriedHeads'],
             yieldOfDriedHeadsComments:
                 postHarvestObject['yieldOfDriedHeadsComments'],
-            yieldsOfDriedPods: postHarvestObject['yieldsOfDriedPods'],
-            yieldsOfDriedPodsComments:
-                postHarvestObject['yieldsOfDriedPodsComments'],
+            yieldOfDriedPods: postHarvestObject['yieldOfDriedPods'],
+            yieldOfDriedPodsComments:
+                postHarvestObject['yieldOfDriedPodsComments'],
             grainsYield: postHarvestObject['grainsYield'],
             grainsYieldComments: postHarvestObject['grainsYieldComments'],
             grainSize: postHarvestObject['grainSize'],

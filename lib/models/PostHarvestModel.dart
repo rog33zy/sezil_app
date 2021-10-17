@@ -10,8 +10,8 @@ class PostHarvestModel {
   String yieldOfDriedPaniclesComments;
   double? yieldOfDriedHeads;
   String yieldOfDriedHeadsComments;
-  double? yieldsOfDriedPods;
-  String yieldsOfDriedPodsComments;
+  double? yieldOfDriedPods;
+  String yieldOfDriedPodsComments;
   double? grainsYield;
   String grainsYieldComments;
   String grainSize;
@@ -32,8 +32,8 @@ class PostHarvestModel {
     this.yieldOfDriedPaniclesComments = 'Blank',
     this.yieldOfDriedHeads,
     this.yieldOfDriedHeadsComments = 'Blank',
-    this.yieldsOfDriedPods,
-    this.yieldsOfDriedPodsComments = 'Blank',
+    this.yieldOfDriedPods,
+    this.yieldOfDriedPodsComments = 'Blank',
     this.grainsYield,
     this.grainsYieldComments = 'Blank',
     this.grainSize = 'Blank',

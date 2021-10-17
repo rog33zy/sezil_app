@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../helpers/id_generator_helper.dart';
+
+import '../providers/PostHarvestProvider.dart';
+
+import '../models/PostHarvestModel.dart';
+
 import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
@@ -11,31 +19,151 @@ class PostHarvestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
-    final plotName = argumentsMap['argument'];
+    final plotId = argumentsMap['argument'];
+
+    final bool isObjectExisiting = Provider.of<PostHarvestProvider>(
+      context,
+      listen: false,
+    ).isExisting(plotId);
+    if (!isObjectExisiting) {
+      PostHarvestModel newPostHarvestObject = PostHarvestModel(
+        id: IDGeneratorHelper.generateId(),
+        lastUpdated: DateTime.now(),
+        plotId: plotId,
+      );
+      Provider.of<PostHarvestProvider>(
+        context,
+        listen: false,
+      ).updatePostHarvestObject(
+        newPostHarvestObject,
+        false,
+      );
+    }
+
+    final PostHarvestModel postHarvestObject = Provider.of<PostHarvestProvider>(
+      context,
+      listen: true,
+    ).findByPlot(
+      plotId,
+    );
+
+    final PostHarvestModel updatedPostHarvestObject =
+        Provider.of<PostHarvestProvider>(
+      context,
+      listen: false,
+    ).findByPlot(
+      plotId,
+    );
+
+    void driedCobsYieldHandler(value) {
+      updatedPostHarvestObject.yieldOfDriedCobs = double.parse(value);
+    }
+
+    void driedCobsYieldCommentsHandler(value) {
+      updatedPostHarvestObject.yieldOfDriedCobsComments = value;
+    }
+
+    void grainHardnessHandler(value) {
+      updatedPostHarvestObject.grainHardness = value;
+    }
+
+    void grainHardnessCommentsHandler(value) {
+      updatedPostHarvestObject.grainHardnessComments = value;
+    }
+
+    void driedPaniclesYieldHandler(value) {
+      updatedPostHarvestObject.yieldOfDriedPanicles = double.parse(value);
+    }
+
+    void driedPaniclesYieldCommentsHandler(value) {
+      updatedPostHarvestObject.yieldOfDriedPaniclesComments = value;
+    }
+
+    void driedHeadsYieldHandler(value) {
+      updatedPostHarvestObject.yieldOfDriedHeads = double.parse(value);
+    }
+
+    void driedHeadsYieldCommentsHandler(value) {
+      updatedPostHarvestObject.yieldOfDriedHeadsComments = value;
+    }
+
+    void driedPodsYieldHandler(value) {
+      updatedPostHarvestObject.yieldOfDriedPods = double.parse(value);
+    }
+
+    void driedPodsYieldCommentsHandler(value) {
+      updatedPostHarvestObject.yieldOfDriedPodsComments = value;
+    }
+
+    void grainsYieldHandler(value) {
+      updatedPostHarvestObject.grainsYield = double.parse(value);
+    }
+
+    void grainsYieldCommentsHandler(value) {
+      updatedPostHarvestObject.grainsYieldComments = value;
+    }
+
+    void grainSizeHandler(value) {
+      updatedPostHarvestObject.grainSize = value;
+    }
+
+    void grainSizeCommentsHandler(value) {
+      updatedPostHarvestObject.grainSizeComments = value;
+    }
+
+    void grainColourHandler(value) {
+      updatedPostHarvestObject.grainColour = value;
+    }
+
+    void grainColourCommentsHandler(value) {
+      updatedPostHarvestObject.grainColourComments = value;
+    }
+
+    void onSubmitHandler() {
+      updatedPostHarvestObject.lastUpdated = DateTime.now();
+      updatedPostHarvestObject.isUpToDateInServer = 'No';
+
+      Provider.of<PostHarvestProvider>(
+        context,
+        listen: false,
+      ).updatePostHarvestObject(
+        updatedPostHarvestObject,
+        true,
+      );
+
+      Navigator.of(context).pop();
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Post Harvest - Plot $plotName'),
+        title: Text('Post Harvest - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
             title: 'Yield of Dried Cobs (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postHarvestObject.yieldOfDriedCobs == null
+                ? 'Blank'
+                : postHarvestObject.yieldOfDriedCobs.toString(),
+            value: postHarvestObject.yieldOfDriedCobs == null
+                ? 'Blank'
+                : postHarvestObject.yieldOfDriedCobs.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: driedCobsYieldHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: driedCobsYieldCommentsHandler,
+            isTrait: true,
+            genComSubtitle: postHarvestObject.yieldOfDriedCobsComments,
           ),
           ListWidgetComponent(
             title: 'Grain Hardness',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postHarvestObject.grainHardness,
+            value: postHarvestObject.grainHardness,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: grainHardnessHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Soft',
@@ -46,55 +174,80 @@ class PostHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: grainHardnessCommentsHandler,
+            genComSubtitle: postHarvestObject.grainHardnessComments,
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Panicles per Plot (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postHarvestObject.yieldOfDriedPanicles == null
+                ? 'Blank'
+                : postHarvestObject.yieldOfDriedPanicles.toString(),
+            value: postHarvestObject.yieldOfDriedPanicles == null
+                ? 'Blank'
+                : postHarvestObject.yieldOfDriedPanicles.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: driedPaniclesYieldHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: driedPaniclesYieldCommentsHandler,
+            isTrait: true,
+            genComSubtitle: postHarvestObject.yieldOfDriedPaniclesComments,
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Heads (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postHarvestObject.yieldOfDriedHeads == null
+                ? 'Blank'
+                : postHarvestObject.yieldOfDriedHeads.toString(),
+            value: postHarvestObject.yieldOfDriedHeads == null
+                ? 'Blank'
+                : postHarvestObject.yieldOfDriedHeads.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: driedHeadsYieldHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: driedHeadsYieldCommentsHandler,
+            isTrait: true,
+            genComSubtitle: postHarvestObject.yieldOfDriedHeadsComments,
           ),
           ListWidgetComponent(
             title: 'Yield of Dried Pods (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postHarvestObject.yieldOfDriedPods == null
+                ? 'Blank'
+                : postHarvestObject.yieldOfDriedPods.toString(),
+            value: postHarvestObject.yieldOfDriedPods == null
+                ? 'Blank'
+                : postHarvestObject.yieldOfDriedPods.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: driedPodsYieldHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: driedPodsYieldCommentsHandler,
+            isTrait: true,
+            genComSubtitle: postHarvestObject.yieldOfDriedPodsComments,
           ),
           ListWidgetComponent(
             title: 'Grain Yield (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postHarvestObject.grainsYield == null
+                ? 'Blank'
+                : postHarvestObject.grainsYield.toString(),
+            value: postHarvestObject.grainsYield == null
+                ? 'Blank'
+                : postHarvestObject.grainsYield.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: grainsYieldHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: grainsYieldCommentsHandler,
+            isTrait: true,
+            genComSubtitle: postHarvestObject.grainsYieldComments,
           ),
           ListWidgetComponent(
             title: 'Grain Size',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postHarvestObject.grainSize,
+            value: postHarvestObject.grainSize,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: grainSizeHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -105,15 +258,16 @@ class PostHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: grainSizeCommentsHandler,
+            genComSubtitle: postHarvestObject.grainSizeComments,
           ),
           ListWidgetComponent(
             title: 'Grain Colour',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: postHarvestObject.grainColour,
+            value: postHarvestObject.grainColour,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: grainColourHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -124,7 +278,8 @@ class PostHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: grainColourCommentsHandler,
+            genComSubtitle: postHarvestObject.grainColourComments,
           ),
         ],
       ),

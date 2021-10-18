@@ -2,6 +2,7 @@ class HarvestModel {
   final String id;
   DateTime lastUpdated;
   final String plotId;
+  DateTime? harvestDate;
   int? numberOfPlants;
   String numberOfPlantsComments;
   int? numberOfHarvestedCobs;
@@ -26,6 +27,7 @@ class HarvestModel {
     required this.id,
     required this.lastUpdated,
     required this.plotId,
+    this.harvestDate,
     this.numberOfPlants,
     this.numberOfPlantsComments = 'Blank',
     this.numberOfHarvestedCobs,

@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:provider/provider.dart';
+
+import '../helpers/id_generator_helper.dart';
+
+import '../providers/HarvestProvider.dart';
+
+import '../models/HarvestModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
@@ -13,117 +20,302 @@ class HarvestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
-    final plotName = argumentsMap['argument'];
+    final plotId = argumentsMap['argument'];
+
+    final bool isObjectExisiting = Provider.of<HarvestProvider>(
+      context,
+      listen: false,
+    ).isExisting(plotId);
+    if (!isObjectExisiting) {
+      HarvestModel newHarvestObject = HarvestModel(
+        id: IDGeneratorHelper.generateId(),
+        lastUpdated: DateTime.now(),
+        plotId: plotId,
+      );
+      Provider.of<HarvestProvider>(
+        context,
+        listen: false,
+      ).updateHarvestObject(
+        newHarvestObject,
+        false,
+      );
+    }
+
+    final HarvestModel harvestObject = Provider.of<HarvestProvider>(
+      context,
+      listen: true,
+    ).findByPlot(plotId);
+
+    final HarvestModel updatedHarvestObject = Provider.of<HarvestProvider>(
+      context,
+      listen: false,
+    ).findByPlot(plotId);
+
+    void harvestDateHandler(value) {
+      updatedHarvestObject.harvestDate = value;
+    }
+
+    void numberOfPlantsHandler(String value) {
+      updatedHarvestObject.numberOfPlants = int.parse(value);
+    }
+
+    void numberOfPlantsCommentsHandler(String value) {
+      updatedHarvestObject.numberOfPlantsComments = value;
+    }
+
+    void numberOfHarvestedCobsHandler(String value) {
+      updatedHarvestObject.numberOfHarvestedCobs = int.parse(value);
+    }
+
+    void numberOfHarvestedCobsCommentsHandler(String value) {
+      updatedHarvestObject.numberOfHarvestedCobsComments = value;
+    }
+
+    void yieldOfHarvestedCobsHandler(String value) {
+      updatedHarvestObject.yieldOfHarvestedCobs = double.parse(value);
+    }
+
+    void yieldOfHarvestedCobsCommentsHandler(String value) {
+      updatedHarvestObject.yieldOfHarvestedCobsComments = value;
+    }
+
+    void numberOfHarvestedPaniclesHandler(String value) {
+      updatedHarvestObject.numberOfHarvestedPanicles = int.parse(value);
+    }
+
+    
+
+    void numberOfHarvestedPaniclesCommentsHandler(String value) {
+      updatedHarvestObject.numberOfHarvestedPaniclesComments = value;
+    }
+
+    void yieldOfHarvestedPaniclesHandler(String value) {
+      updatedHarvestObject.yieldOfHarvestedPanicles = double.parse(value);
+    }
+
+    void yieldOfHarvestedPaniclesCommentsHandler(String value) {
+      updatedHarvestObject.yieldOfHarvestedPaniclesComments = value;
+    }
+
+    void numberOfHarvestedHeadsHandler(String value) {
+      updatedHarvestObject.numberOfHarvestedHeads = int.parse(value);
+    }
+
+    void numberOfHarvestedHeadsCommentsHandler(String value) {
+      updatedHarvestObject.numberOfHarvestedHeadsComments = value;
+    }
+
+    void yieldOfHarvestedHeadsHandler(String value) {
+      updatedHarvestObject.yieldOfHarvestedHeads = double.parse(value);
+    }
+
+    void yieldOfHarvestedHeadsCommentsHandler(String value) {
+      updatedHarvestObject.yieldOfHarvestedHeadsComments = value;
+    }
+
+    void numberOfHarvestedPodsHandler(String value) {
+      updatedHarvestObject.numberOfHarvestedPods = int.parse(value);
+    }
+
+    void numberOfHarvestedPodsCommentsHandler(String value) {
+      updatedHarvestObject.numberOfHarvestedPodsComments = value;
+    }
+
+    void yieldOfHarvestedPodsHandler(String value) {
+      updatedHarvestObject.yieldOfHarvestedPods = double.parse(value);
+    }
+
+    void yieldOfHarvestedPodsCommentsHandler(String value) {
+      updatedHarvestObject.yieldOfHarvestedPodsComments = value;
+    }
+
+    void onSubmitHandler() {
+      updatedHarvestObject.lastUpdated = DateTime.now();
+      updatedHarvestObject.isUpToDateInServer = 'No';
+
+      Provider.of<HarvestProvider>(
+        context,
+        listen: false,
+      ).updateHarvestObject(
+        updatedHarvestObject,
+        true,
+      );
+
+      Navigator.of(context).pop();
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Harvest - Plot $plotName'),
+        title: Text('Harvest - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
             title: 'Date of Harvest',
-            subtitle: 'Blank',
-            value: 'Blank',
-            onChangeDateValueHandler: () {},
+            subtitle: harvestObject.harvestDate == null
+                ? 'Blank'
+                : _formatDate(harvestObject.harvestDate),
+            value: harvestObject.harvestDate == null
+                ? 'Blank'
+                : harvestObject.harvestDate!.toIso8601String(),
+            onChangeDateValueHandler: harvestDateHandler,
             onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onSubmitHandler: onSubmitHandler,
             isDateField: true,
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
             title: 'Number of Plants per Plot',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.numberOfPlants == null
+                ? 'Blank'
+                : harvestObject.numberOfPlants.toString(),
+            value: harvestObject.numberOfPlants == null
+                ? 'Blank'
+                : harvestObject.numberOfPlants.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: numberOfPlantsHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: numberOfPlantsCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.numberOfPlantsComments,
           ),
           ListWidgetComponent(
             title: 'Number of Harvested Cobs per Plot',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.numberOfHarvestedCobs == null
+                ? 'Blank'
+                : harvestObject.numberOfHarvestedCobs.toString(),
+            value: harvestObject.numberOfHarvestedCobs == null
+                ? 'Blank'
+                : harvestObject.numberOfHarvestedCobs.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: numberOfHarvestedCobsHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: numberOfHarvestedCobsCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.numberOfHarvestedCobsComments,
           ),
           ListWidgetComponent(
             title: 'Yield of Harvested Cobs per Plot (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.yieldOfHarvestedCobs == null
+                ? 'Blank'
+                : harvestObject.yieldOfHarvestedCobs.toString(),
+            value: harvestObject.yieldOfHarvestedCobs == null
+                ? 'Blank'
+                : harvestObject.yieldOfHarvestedCobs.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: yieldOfHarvestedCobsHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: yieldOfHarvestedCobsCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.yieldOfHarvestedCobsComments,
           ),
           ListWidgetComponent(
             title: 'Number of Harvested Panicles per Plot',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.numberOfHarvestedPanicles == null
+                ? 'Blank'
+                : harvestObject.numberOfHarvestedPanicles.toString(),
+            value: harvestObject.numberOfHarvestedPanicles == null
+                ? 'Blank'
+                : harvestObject.numberOfHarvestedPanicles.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: numberOfHarvestedPaniclesHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: numberOfHarvestedPaniclesCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.numberOfHarvestedPaniclesComments,
           ),
           ListWidgetComponent(
             title: 'Yield of Harvested Panicles per Plot (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.yieldOfHarvestedPanicles == null
+                ? 'Blank'
+                : harvestObject.yieldOfHarvestedPanicles.toString(),
+            value: harvestObject.yieldOfHarvestedPanicles == null
+                ? 'Blank'
+                : harvestObject.yieldOfHarvestedPanicles.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: yieldOfHarvestedPaniclesHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: yieldOfHarvestedPaniclesCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.yieldOfHarvestedPaniclesComments,
           ),
           ListWidgetComponent(
             title: 'Number of Harvested Heads per Plot',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.numberOfHarvestedHeads == null
+                ? 'Blank'
+                : harvestObject.numberOfHarvestedHeads.toString(),
+            value: harvestObject.numberOfHarvestedHeads == null
+                ? 'Blank'
+                : harvestObject.numberOfHarvestedHeads.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: numberOfHarvestedHeadsHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: numberOfHarvestedHeadsCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.numberOfHarvestedHeadsComments,
           ),
           ListWidgetComponent(
             title: 'Yield of Harvested Heads per Plot (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.yieldOfHarvestedHeads == null
+                ? 'Blank'
+                : harvestObject.yieldOfHarvestedHeads.toString(),
+            value: harvestObject.yieldOfHarvestedHeads == null
+                ? 'Blank'
+                : harvestObject.yieldOfHarvestedHeads.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: yieldOfHarvestedHeadsHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: yieldOfHarvestedHeadsCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.yieldOfHarvestedHeadsComments,
           ),
           ListWidgetComponent(
             title: 'Number of Harvested Pods per Plot',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.numberOfHarvestedPods == null
+                ? 'Blank'
+                : harvestObject.numberOfHarvestedPods.toString(),
+            value: harvestObject.numberOfHarvestedPods == null
+                ? 'Blank'
+                : harvestObject.numberOfHarvestedPods.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: numberOfHarvestedPodsHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: numberOfHarvestedPodsCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.numberOfHarvestedPodsComments,
           ),
           ListWidgetComponent(
             title: 'Yield of Harvested Pods per Plot (Kg)',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: harvestObject.yieldOfHarvestedPods == null
+                ? 'Blank'
+                : harvestObject.yieldOfHarvestedPods.toString(),
+            value: harvestObject.yieldOfHarvestedPods == null
+                ? 'Blank'
+                : harvestObject.yieldOfHarvestedPods.toString(),
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: yieldOfHarvestedPodsHandler,
+            onSubmitHandler: onSubmitHandler,
             isNumberField: true,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: yieldOfHarvestedPodsCommentsHandler,
+            isTrait: true,
+            genComSubtitle: harvestObject.yieldOfHarvestedPodsComments,
           ),
         ],
       ),
       floatingActionButton: FloatingActionButtonComp(),
     );
+  }
+
+  String _formatDate(dateTimeObject) {
+    return DateFormat.yMMMd().format(dateTimeObject);
   }
 }

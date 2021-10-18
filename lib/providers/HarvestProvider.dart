@@ -45,6 +45,10 @@ class HarvestProvider with ChangeNotifier {
         'id': updatedHarvestObject.id,
         'lastUpdated': updatedHarvestObject.lastUpdated.toIso8601String(),
         'plotId': updatedHarvestObject.plotId,
+        'harvestDate': updatedHarvestObject.harvestDate == null
+            ? null
+            : updatedHarvestObject.harvestDate!.toIso8601String(),
+        'numberOfPlants': updatedHarvestObject.numberOfPlants,
         'numberOfPlantsComments': updatedHarvestObject.numberOfPlantsComments,
         'numberOfHarvestedCobs': updatedHarvestObject.numberOfHarvestedCobs,
         'numberOfHarvestedCobsComments':
@@ -85,6 +89,10 @@ class HarvestProvider with ChangeNotifier {
             id: harvestObject['id'],
             lastUpdated: DateTime.parse(harvestObject['lastUpdated']),
             plotId: harvestObject['plotId'],
+            harvestDate: harvestObject['harvestDate'] == null
+                ? null
+                : DateTime.parse(harvestObject['harvestDate']),
+            numberOfPlants: harvestObject['numberOfPlants'],
             numberOfPlantsComments: harvestObject['numberOfPlantsComments'],
             numberOfHarvestedCobs: harvestObject['numberOfHarvestedCobs'],
             numberOfHarvestedCobsComments:

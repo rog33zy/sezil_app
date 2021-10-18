@@ -73,6 +73,9 @@ class PreHarvestProvider with ChangeNotifier {
             updatedPreHarvestObject.plantGrowthHabitAppreciation,
         'plantGrowthHabitAppreciationComments':
             updatedPreHarvestObject.plantGrowthHabitAppreciationComments,
+        'podLengthAppreciation': updatedPreHarvestObject.podLengthAppreciation,
+        'podLengthAppreciationComments':
+            updatedPreHarvestObject.podLengthAppreciationComments,
         'willingnessToCultivateNextSeason':
             updatedPreHarvestObject.willingnessToCultivateNextSeason,
         'willingnessToCultivateNextSeasonComments':
@@ -118,6 +121,9 @@ class PreHarvestProvider with ChangeNotifier {
                 preHarvestObject['plantGrowthHabitAppreciation'],
             plantGrowthHabitAppreciationComments:
                 preHarvestObject['plantGrowthHabitAppreciationComments'],
+            podLengthAppreciation: preHarvestObject['podLengthAppreciation'],
+            podLengthAppreciationComments:
+                preHarvestObject['podLengthAppreciationComments'],
             willingnessToCultivateNextSeason:
                 preHarvestObject['willingnessToCultivateNextSeason'],
             willingnessToCultivateNextSeasonComments:

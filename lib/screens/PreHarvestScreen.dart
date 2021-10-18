@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../helpers/id_generator_helper.dart';
+
+import '../providers/PreHarvestProvider.dart';
+
+import '../models/PreHarvestModel.dart';
+
 import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
@@ -12,6 +20,148 @@ class PreHarvestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
+
+    final bool isObjectExisiting = Provider.of<PreHarvestProvider>(
+      context,
+      listen: false,
+    ).isExisting(plotId);
+    if (!isObjectExisiting) {
+      PreHarvestModel newPreHarvestObject = PreHarvestModel(
+        id: IDGeneratorHelper.generateId(),
+        lastUpdated: DateTime.now(),
+        plotId: plotId,
+      );
+      Provider.of<PreHarvestProvider>(
+        context,
+        listen: false,
+      ).updatePreHarvestObject(
+        newPreHarvestObject,
+        false,
+      );
+    }
+
+    final PreHarvestModel preHarvestObject = Provider.of<PreHarvestProvider>(
+      context,
+      listen: true,
+    ).findByPlot(plotId);
+
+    final PreHarvestModel updatedPreHarvestObject =
+        Provider.of<PreHarvestProvider>(
+      context,
+      listen: false,
+    ).findByPlot(plotId);
+
+    void lodgingResistanceHandler(String value) {
+      updatedPreHarvestObject.lodgingResistance = value;
+    }
+
+    void lodgingResistanceCommentsHandler(String value) {
+      updatedPreHarvestObject.lodgingResistanceComments = value;
+    }
+
+    void huskCoverHandler(String value) {
+      updatedPreHarvestObject.huskCover = value;
+    }
+
+    void huskCoverCommentsHandler(String value) {
+      updatedPreHarvestObject.huskCoverComments = value;
+    }
+
+    void cobSizeHandler(String value) {
+      updatedPreHarvestObject.cobSize = value;
+    }
+
+    void cobSizeCommentsHandler(String value) {
+      updatedPreHarvestObject.cobSizeComments = value;
+    }
+
+    void numberOfCobsPerPlantHandler(String value) {
+      updatedPreHarvestObject.numberOfCobsPerPlant = value;
+    }
+
+    void numberOfCobsPerPlantCommentsHandler(String value) {
+      updatedPreHarvestObject.numberOfCobsPerPlantComments = value;
+    }
+
+    void plantHeightHandler(String value) {
+      updatedPreHarvestObject.plantHeight = value;
+    }
+
+    void plantHeightCommentsHandler(String value) {
+      updatedPreHarvestObject.plantHeightComments = value;
+    }
+
+    void birdDamageHandler(String value) {
+      updatedPreHarvestObject.birdDamage = value;
+    }
+
+    void birdDamageCommentsHandler(String value) {
+      updatedPreHarvestObject.birdDamageComments = value;
+    }
+
+    void panicleAppreciationHandler(String value) {
+      updatedPreHarvestObject.panicleAppreciation = value;
+    }
+
+    void panicleAppreciationCommentsHandler(String value) {
+      updatedPreHarvestObject.panicleAppreciationComments = value;
+    }
+
+    void grainQualityAppreciationHandler(String value) {
+      updatedPreHarvestObject.grainQualityAppreciation = value;
+    }
+
+    void grainQualityAppreciationCommentsHandler(String value) {
+      updatedPreHarvestObject.grainQualityAppreciationComments = value;
+    }
+
+    void headSizeAppreciationHandler(String value) {
+      updatedPreHarvestObject.headSizeAppreciation = value;
+    }
+
+    void headSizeAppreciationCommentsHandler(String value) {
+      updatedPreHarvestObject.headSizeAppreciationComments = value;
+    }
+
+    void plantGrowthHabitAppreciationHandler(String value) {
+      updatedPreHarvestObject.plantGrowthHabitAppreciation = value;
+    }
+
+    void plantGrowthHabitAppreciationCommentsHandler(String value) {
+      updatedPreHarvestObject.plantGrowthHabitAppreciationComments = value;
+    }
+
+    void podLengthAppreciationHandler(String value) {
+      updatedPreHarvestObject.podLengthAppreciation = value;
+    }
+
+    void podLengthAppreciationCommentsHandler(String value) {
+      updatedPreHarvestObject.podLengthAppreciationComments = value;
+    }
+
+    void willingnessHandler(String value) {
+      updatedPreHarvestObject.willingnessToCultivateNextSeason = value;
+    }
+
+    void willingnessCommentsHandler(String value) {
+      updatedPreHarvestObject.willingnessToCultivateNextSeasonComments = value;
+    }
+
+    void onSubmitHandler() {
+      updatedPreHarvestObject.lastUpdated = DateTime.now();
+      updatedPreHarvestObject.isUpToDateInServer = 'No';
+
+      Provider.of<PreHarvestProvider>(
+        context,
+        listen: false,
+      ).updatePreHarvestObject(
+        updatedPreHarvestObject,
+        true,
+      );
+
+      Navigator.of(context).pop();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Pre Harvest - Plot $plotId'),
@@ -21,11 +171,11 @@ class PreHarvestScreen extends StatelessWidget {
         children: [
           ListWidgetComponent(
             title: 'Lodging Resistance',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.lodgingResistance,
+            value: preHarvestObject.lodgingResistance,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: lodgingResistanceHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very High',
@@ -36,15 +186,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: lodgingResistanceCommentsHandler,
+            genComSubtitle: preHarvestObject.lodgingResistanceComments,
           ),
           ListWidgetComponent(
             title: 'Husk Cover',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.huskCover,
+            value: preHarvestObject.huskCover,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: huskCoverHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Fully',
@@ -52,15 +203,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: huskCoverCommentsHandler,
+            genComSubtitle: preHarvestObject.huskCoverComments,
           ),
           ListWidgetComponent(
             title: 'Cob Size',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.cobSize,
+            value: preHarvestObject.cobSize,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: cobSizeHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -71,15 +223,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: cobSizeCommentsHandler,
+            genComSubtitle: preHarvestObject.cobSizeComments,
           ),
           ListWidgetComponent(
             title: 'Number of Cobs per Plant',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.numberOfCobsPerPlant,
+            value: preHarvestObject.numberOfCobsPerPlant,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: numberOfCobsPerPlantHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -90,15 +243,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: numberOfCobsPerPlantCommentsHandler,
+            genComSubtitle: preHarvestObject.numberOfCobsPerPlantComments,
           ),
           ListWidgetComponent(
             title: 'Plant Height',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.plantHeight,
+            value: preHarvestObject.plantHeight,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: plantHeightHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -109,15 +263,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: plantHeightCommentsHandler,
+            genComSubtitle: preHarvestObject.plantHeightComments,
           ),
           ListWidgetComponent(
             title: 'Bird Damage',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.birdDamage,
+            value: preHarvestObject.birdDamage,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: birdDamageHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Slight Damage',
@@ -128,15 +283,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: birdDamageCommentsHandler,
+            genComSubtitle: preHarvestObject.birdDamageComments,
           ),
           ListWidgetComponent(
             title: 'Panicle Appreciation',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.panicleAppreciation,
+            value: preHarvestObject.panicleAppreciation,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: panicleAppreciationHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -147,15 +303,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: panicleAppreciationCommentsHandler,
+            genComSubtitle: preHarvestObject.panicleAppreciationComments,
           ),
           ListWidgetComponent(
             title: 'Grain Quality Appreciation',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.grainQualityAppreciation,
+            value: preHarvestObject.grainQualityAppreciation,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: grainQualityAppreciationHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -166,15 +323,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: grainQualityAppreciationCommentsHandler,
+            genComSubtitle: preHarvestObject.grainQualityAppreciationComments,
           ),
           ListWidgetComponent(
             title: 'Head Size Appreciation',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.headSizeAppreciation,
+            value: preHarvestObject.headSizeAppreciation,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: headSizeAppreciationHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -185,15 +343,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: headSizeAppreciationCommentsHandler,
+            genComSubtitle: preHarvestObject.headSizeAppreciationComments,
           ),
           ListWidgetComponent(
             title: 'Plant Growth Habit Appreciation',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.plantGrowthHabitAppreciation,
+            value: preHarvestObject.plantGrowthHabitAppreciation,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: plantGrowthHabitAppreciationHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -204,15 +363,18 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler:
+                plantGrowthHabitAppreciationCommentsHandler,
+            genComSubtitle:
+                preHarvestObject.plantGrowthHabitAppreciationComments,
           ),
           ListWidgetComponent(
             title: 'Pod Length Appreciation',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.podLengthAppreciation,
+            value: preHarvestObject.podLengthAppreciation,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: podLengthAppreciationHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Very Good',
@@ -223,15 +385,16 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: podLengthAppreciationCommentsHandler,
+            genComSubtitle: preHarvestObject.podLengthAppreciationComments,
           ),
           ListWidgetComponent(
             title: 'Willingness to Cultivate Next Season',
-            subtitle: 'Blank',
-            value: 'Blank',
+            subtitle: preHarvestObject.willingnessToCultivateNextSeason,
+            value: preHarvestObject.willingnessToCultivateNextSeason,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: () {},
+            onChangeTextValueHandler: willingnessHandler,
+            onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: <String>[
               '1-Yes, Very Sure',
@@ -242,7 +405,9 @@ class PreHarvestScreen extends StatelessWidget {
             ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: () {},
+            onChangeGenComValueHandler: willingnessCommentsHandler,
+            genComSubtitle:
+                preHarvestObject.willingnessToCultivateNextSeasonComments,
           ),
         ],
       ),

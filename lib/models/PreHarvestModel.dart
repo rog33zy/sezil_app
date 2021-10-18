@@ -22,6 +22,8 @@ class PreHarvestModel {
   String headSizeAppreciationComments;
   String plantGrowthHabitAppreciation;
   String plantGrowthHabitAppreciationComments;
+  String podLengthAppreciation;
+  String podLengthAppreciationComments;
   String willingnessToCultivateNextSeason;
   String willingnessToCultivateNextSeasonComments;
   String isUpToDateInServer;
@@ -50,6 +52,8 @@ class PreHarvestModel {
     this.headSizeAppreciationComments = 'Blank',
     this.plantGrowthHabitAppreciation = 'Blank',
     this.plantGrowthHabitAppreciationComments = 'Blank',
+    this.podLengthAppreciation = 'Blank',
+    this.podLengthAppreciationComments = 'Blank',
     this.willingnessToCultivateNextSeason = 'Blank',
     this.willingnessToCultivateNextSeasonComments = 'Blank',
     this.isUpToDateInServer = 'No',

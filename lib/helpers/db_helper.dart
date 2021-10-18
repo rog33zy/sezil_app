@@ -158,6 +158,8 @@ class DBHelper {
                   headSizeAppreciationComments TEXT,
                   plantGrowthHabitAppreciation TEXT,
                   plantGrowthHabitAppreciationComments TEXT,
+                  podLengthAppreciation TEXT,
+                  podLengthAppreciationComments TEXT,
                   willingnessToCultivateNextSeason TEXT,
                   willingnessToCultivateNextSeasonComments TEXT,
                   isUpToDateInServer TEXT

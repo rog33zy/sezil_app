@@ -55,8 +55,9 @@ class DBHelper {
                   id TEXT PRIMARY KEY,
                   lastUpdated TEXT,
                   season TEXT,
-                  typeOfFertilizer TEXT,
-                  nameOfFertilizer TEXT,
+                  typeOfDressing TEXT,
+                  nameOfOrganicFertilizer TEXT,
+                  nameOfSyntheticFertilizer TEXT,
                   quantityApplied REAL,
                   timeOfApplication TEXT,
                   isUpToDateInServer TEXT

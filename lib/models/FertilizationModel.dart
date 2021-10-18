@@ -2,8 +2,9 @@ class FertilizationModel {
   final String id;
   DateTime? lastUpdated;
   final String season;
-  String typeOfFertilizer;
-  String nameOfFertilizer;
+  final String typeOfDressing;
+  String nameOfOrganicFertilizer;
+  String nameOfSyntheticFertilizer;
   double? quantityApplied;
   DateTime? timeOfApplication;
   String isUpToDateInServer;
@@ -12,8 +13,9 @@ class FertilizationModel {
     required this.id,
     this.lastUpdated,
     required this.season,
-    this.typeOfFertilizer = 'Blank',
-    this.nameOfFertilizer = 'Blank',
+    required this.typeOfDressing,
+    this.nameOfOrganicFertilizer = 'Blank',
+    this.nameOfSyntheticFertilizer = 'Blank',
     this.quantityApplied,
     this.timeOfApplication,
     this.isUpToDateInServer = 'No',

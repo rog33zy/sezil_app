@@ -28,52 +28,52 @@ class _DetailedFertilizationScreenState
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final season = argumentsMap['argument'];
 
-    FertilizationModel fertilizationObject = Provider.of<FertilizationProvider>(
-      context,
-      listen: true,
-    ).findBySeason(season);
+    // FertilizationModel fertilizationObject = Provider.of<FertilizationProvider>(
+    //   context,
+    //   listen: true,
+    // ).findBySeason(season);
 
-    FertilizationModel updatedFertilizationObject =
-        Provider.of<FertilizationProvider>(
-      context,
-      listen: false,
-    ).findBySeason(season);
+    // FertilizationModel updatedFertilizationObject =
+    //     Provider.of<FertilizationProvider>(
+    //   context,
+    //   listen: false,
+    // ).findBySeason(season);
 
-    void typeOfFertilizationHandler(value) {
-      setState(() {
-        updatedFertilizationObject.typeOfFertilizer = value;
-      });
-    }
+    // void typeOfFertilizationHandler(value) {
+    //   setState(() {
+    //     updatedFertilizationObject.typeOfFertilizer = value;
+    //   });
+    // }
 
-    void nameOfFertilizerHandler(String value) {
-      setState(() {
-        updatedFertilizationObject.nameOfFertilizer = value.titleCase;
-      });
-    }
+    // void nameOfFertilizerHandler(String value) {
+    //   setState(() {
+    //     updatedFertilizationObject.nameOfFertilizer = value.titleCase;
+    //   });
+    // }
 
-    void quantityAppliedHandler(value) {
-      setState(() {
-        updatedFertilizationObject.quantityApplied = double.parse(value);
-      });
-    }
+    // void quantityAppliedHandler(value) {
+    //   setState(() {
+    //     updatedFertilizationObject.quantityApplied = double.parse(value);
+    //   });
+    // }
 
-    void timeOfApplicationHandler(value) {
-      setState(() {
-        updatedFertilizationObject.timeOfApplication = value;
-      });
-    }
+    // void timeOfApplicationHandler(value) {
+    //   setState(() {
+    //     updatedFertilizationObject.timeOfApplication = value;
+    //   });
+    // }
 
-    void onSubmitHandler() {
-      updatedFertilizationObject.lastUpdated = DateTime.now();
-      updatedFertilizationObject.isUpToDateInServer = 'No';
+    // void onSubmitHandler() {
+    //   updatedFertilizationObject.lastUpdated = DateTime.now();
+    //   updatedFertilizationObject.isUpToDateInServer = 'No';
 
-      Provider.of<FertilizationProvider>(
-        context,
-        listen: false,
-      ).updateFertilizationObject(updatedFertilizationObject);
+    //   Provider.of<FertilizationProvider>(
+    //     context,
+    //     listen: false,
+    //   ).updateFertilizationObject(updatedFertilizationObject);
 
-      Navigator.of(context).pop();
-    }
+    //   Navigator.of(context).pop();
+    // }
 
     return Scaffold(
       appBar: AppBar(
@@ -81,54 +81,54 @@ class _DetailedFertilizationScreenState
       ),
       body: ListView(
         children: [
-          ListWidgetComponent(
-            title: 'Type of Fertilizer',
-            subtitle: fertilizationObject.typeOfFertilizer,
-            value: fertilizationObject.typeOfFertilizer,
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: typeOfFertilizationHandler,
-            onSubmitHandler: onSubmitHandler,
-            onChangeGenComValueHandler: () {},
-          ),
-          ListWidgetComponent(
-            title: 'Name of Fertilizer',
-            subtitle: fertilizationObject.nameOfFertilizer,
-            value: fertilizationObject.nameOfFertilizer,
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: nameOfFertilizerHandler,
-            onSubmitHandler: onSubmitHandler,
-            onChangeGenComValueHandler: () {},
-          ),
-          ListWidgetComponent(
-            title: 'Quantity Applied (Kg)',
-            subtitle: fertilizationObject.quantityApplied == null
-                ? 'Blank'
-                : fertilizationObject.quantityApplied.toString(),
-            value: fertilizationObject.quantityApplied == null
-                ? 'Blank'
-                : fertilizationObject.quantityApplied.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: quantityAppliedHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: () {},
-          ),
-          ListWidgetComponent(
-            title: 'Time of Application',
-            subtitle: fertilizationObject.timeOfApplication == null
-                ? 'Blank'
-                : _formatDate(
-                    fertilizationObject.timeOfApplication,
-                  ),
-            value: fertilizationObject.timeOfApplication == null
-                ? 'Blank'
-                : fertilizationObject.timeOfApplication!.toIso8601String(),
-            onChangeDateValueHandler: timeOfApplicationHandler,
-            onChangeTextValueHandler: () {},
-            onSubmitHandler: onSubmitHandler,
-            isDateField: true,
-            onChangeGenComValueHandler: () {},
-          ),
+          // ListWidgetComponent(
+          //   title: 'Type of Fertilizer',
+          //   subtitle: fertilizationObject.typeOfFertilizer,
+          //   value: fertilizationObject.typeOfFertilizer,
+          //   onChangeDateValueHandler: () {},
+          //   onChangeTextValueHandler: typeOfFertilizationHandler,
+          //   onSubmitHandler: onSubmitHandler,
+          //   onChangeGenComValueHandler: () {},
+          // ),
+          // ListWidgetComponent(
+          //   title: 'Name of Fertilizer',
+          //   subtitle: fertilizationObject.nameOfFertilizer,
+          //   value: fertilizationObject.nameOfFertilizer,
+          //   onChangeDateValueHandler: () {},
+          //   onChangeTextValueHandler: nameOfFertilizerHandler,
+          //   onSubmitHandler: onSubmitHandler,
+          //   onChangeGenComValueHandler: () {},
+          // ),
+          // ListWidgetComponent(
+          //   title: 'Quantity Applied (Kg)',
+          //   subtitle: fertilizationObject.quantityApplied == null
+          //       ? 'Blank'
+          //       : fertilizationObject.quantityApplied.toString(),
+          //   value: fertilizationObject.quantityApplied == null
+          //       ? 'Blank'
+          //       : fertilizationObject.quantityApplied.toString(),
+          //   onChangeDateValueHandler: () {},
+          //   onChangeTextValueHandler: quantityAppliedHandler,
+          //   onSubmitHandler: onSubmitHandler,
+          //   isNumberField: true,
+          //   onChangeGenComValueHandler: () {},
+          // ),
+          // ListWidgetComponent(
+          //   title: 'Time of Application',
+          //   subtitle: fertilizationObject.timeOfApplication == null
+          //       ? 'Blank'
+          //       : _formatDate(
+          //           fertilizationObject.timeOfApplication,
+          //         ),
+          //   value: fertilizationObject.timeOfApplication == null
+          //       ? 'Blank'
+          //       : fertilizationObject.timeOfApplication!.toIso8601String(),
+          //   onChangeDateValueHandler: timeOfApplicationHandler,
+          //   onChangeTextValueHandler: () {},
+          //   onSubmitHandler: onSubmitHandler,
+          //   isDateField: true,
+          //   onChangeGenComValueHandler: () {},
+          // ),
         ],
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/SeasonCrop.dart';
+
 import '../components/homePageScreen/HomePageScreenOption.dart';
 
 import 'PostPlantingScreen.dart';
@@ -12,6 +14,8 @@ class PlotScreen extends StatelessWidget {
   const PlotScreen({Key? key}) : super(key: key);
 
   static const routeName = "/plot-screen";
+
+  final String crop = SeasonCrop.Crop;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +42,12 @@ class PlotScreen extends StatelessWidget {
               routeName: FloweringScreen.routeName,
               argument: plotName,
             ),
-            HomePageScreenOption(
-              title: "Post-Flowering",
-              routeName: FloweringScreen.routeName,
-              argument: plotName,
-            ),
+            if (crop == 'Sunflower')
+              HomePageScreenOption(
+                title: "Post-Flowering",
+                routeName: FloweringScreen.routeName,
+                argument: plotName,
+              ),
             HomePageScreenOption(
               title: "Pre-Harvest",
               routeName: PreHarvestScreen.routeName,

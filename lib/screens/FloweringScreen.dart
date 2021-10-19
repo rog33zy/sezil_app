@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../helpers/id_generator_helper.dart';
 
+import '../constants/SeasonCrop.dart';
+
 import '../providers/FloweringProvider.dart';
 
 import '../models/FloweringModel.dart';
@@ -15,6 +17,8 @@ class FloweringScreen extends StatelessWidget {
   const FloweringScreen({Key? key}) : super(key: key);
 
   static const routeName = '/flowering';
+
+  final crop = SeasonCrop.Crop;
 
   @override
   Widget build(BuildContext context) {
@@ -119,46 +123,48 @@ class FloweringScreen extends StatelessWidget {
             onChangeGenComValueHandler: growingCycleAppreciationCommentsHandler,
             genComSubtitle: floweringObject.growingCycleAppreciationComments,
           ),
-          ListWidgetComponent(
-            title: 'Pest Resistance',
-            subtitle: floweringObject.pestResistance,
-            value: floweringObject.pestResistance,
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: pestResistanceHandler,
-            onSubmitHandler: onSubmitHandler,
-            isDropDownField: true,
-            listOfValues: <String>[
-              '1-Very High',
-              '2-High',
-              '3-Moderate',
-              '4-Low',
-              '5-Very Low',
-            ],
-            isTrait: true,
-            isTextField: false,
-            onChangeGenComValueHandler: pestResistanceCommentsHandler,
-            genComSubtitle: floweringObject.pestResistanceComments,
-          ),
-          ListWidgetComponent(
-            title: 'Disease Resistance',
-            subtitle: floweringObject.diseasesResistance,
-            value: floweringObject.diseasesResistance,
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: diseasesResistanceHandler,
-            onSubmitHandler: onSubmitHandler,
-            isDropDownField: true,
-            listOfValues: <String>[
-              '1-Very High',
-              '2-High',
-              '3-Moderate',
-              '4-Low',
-              '5-Very Low',
-            ],
-            isTrait: true,
-            isTextField: false,
-            onChangeGenComValueHandler: diseasesResistanceCommentsHandler,
-            genComSubtitle: floweringObject.diseasesResistanceComments,
-          ),
+          if (crop != 'Sunflower')
+            ListWidgetComponent(
+              title: 'Pest Resistance',
+              subtitle: floweringObject.pestResistance,
+              value: floweringObject.pestResistance,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: pestResistanceHandler,
+              onSubmitHandler: onSubmitHandler,
+              isDropDownField: true,
+              listOfValues: <String>[
+                '1-Very High',
+                '2-High',
+                '3-Moderate',
+                '4-Low',
+                '5-Very Low',
+              ],
+              isTrait: true,
+              isTextField: false,
+              onChangeGenComValueHandler: pestResistanceCommentsHandler,
+              genComSubtitle: floweringObject.pestResistanceComments,
+            ),
+          if (crop != 'Sunflower')
+            ListWidgetComponent(
+              title: 'Disease Resistance',
+              subtitle: floweringObject.diseasesResistance,
+              value: floweringObject.diseasesResistance,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: diseasesResistanceHandler,
+              onSubmitHandler: onSubmitHandler,
+              isDropDownField: true,
+              listOfValues: <String>[
+                '1-Very High',
+                '2-High',
+                '3-Moderate',
+                '4-Low',
+                '5-Very Low',
+              ],
+              isTrait: true,
+              isTextField: false,
+              onChangeGenComValueHandler: diseasesResistanceCommentsHandler,
+              genComSubtitle: floweringObject.diseasesResistanceComments,
+            ),
         ],
       ),
       floatingActionButton: FloatingActionButtonComp(),

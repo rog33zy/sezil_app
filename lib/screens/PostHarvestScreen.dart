@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../helpers/id_generator_helper.dart';
 
+import '../constants/SeasonCrop.dart';
+
 import '../providers/PostHarvestProvider.dart';
 
 import '../models/PostHarvestModel.dart';
@@ -15,6 +17,8 @@ class PostHarvestScreen extends StatelessWidget {
   const PostHarvestScreen({Key? key}) : super(key: key);
 
   static const routeName = '/post-harvest';
+
+  final crop = SeasonCrop.Crop;
 
   @override
   Widget build(BuildContext context) {
@@ -141,6 +145,7 @@ class PostHarvestScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          if (crop == 'Maize')
           ListWidgetComponent(
             title: 'Yield of Dried Cobs (Kg)',
             subtitle: postHarvestObject.yieldOfDriedCobs == null
@@ -157,6 +162,7 @@ class PostHarvestScreen extends StatelessWidget {
             isTrait: true,
             genComSubtitle: postHarvestObject.yieldOfDriedCobsComments,
           ),
+          if (crop == 'Maize')
           ListWidgetComponent(
             title: 'Grain Hardness',
             subtitle: postHarvestObject.grainHardness,
@@ -177,8 +183,9 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeGenComValueHandler: grainHardnessCommentsHandler,
             genComSubtitle: postHarvestObject.grainHardnessComments,
           ),
+          if (crop == 'Sorghum')
           ListWidgetComponent(
-            title: 'Yield of Dried Panicles per Plot (Kg)',
+            title: 'Yield of Dried Panicles (Kg)',
             subtitle: postHarvestObject.yieldOfDriedPanicles == null
                 ? 'Blank'
                 : postHarvestObject.yieldOfDriedPanicles.toString(),
@@ -193,6 +200,7 @@ class PostHarvestScreen extends StatelessWidget {
             isTrait: true,
             genComSubtitle: postHarvestObject.yieldOfDriedPaniclesComments,
           ),
+          if (crop == 'Sunflower')
           ListWidgetComponent(
             title: 'Yield of Dried Heads (Kg)',
             subtitle: postHarvestObject.yieldOfDriedHeads == null
@@ -209,6 +217,7 @@ class PostHarvestScreen extends StatelessWidget {
             isTrait: true,
             genComSubtitle: postHarvestObject.yieldOfDriedHeadsComments,
           ),
+          if (crop == 'Beans')
           ListWidgetComponent(
             title: 'Yield of Dried Pods (Kg)',
             subtitle: postHarvestObject.yieldOfDriedPods == null
@@ -225,6 +234,7 @@ class PostHarvestScreen extends StatelessWidget {
             isTrait: true,
             genComSubtitle: postHarvestObject.yieldOfDriedPodsComments,
           ),
+          if (crop == 'Sunflower')
           ListWidgetComponent(
             title: 'Grain Yield (Kg)',
             subtitle: postHarvestObject.grainsYield == null
@@ -241,6 +251,7 @@ class PostHarvestScreen extends StatelessWidget {
             isTrait: true,
             genComSubtitle: postHarvestObject.grainsYieldComments,
           ),
+          if (crop == 'Sunflower')
           ListWidgetComponent(
             title: 'Grain Size',
             subtitle: postHarvestObject.grainSize,
@@ -261,6 +272,7 @@ class PostHarvestScreen extends StatelessWidget {
             onChangeGenComValueHandler: grainSizeCommentsHandler,
             genComSubtitle: postHarvestObject.grainSizeComments,
           ),
+          if (crop == 'Beans')
           ListWidgetComponent(
             title: 'Grain Colour',
             subtitle: postHarvestObject.grainColour,

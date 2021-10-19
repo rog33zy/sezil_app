@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 
 import '../helpers/id_generator_helper.dart';
 
+import '../constants/SeasonCrop.dart';
+
 import '../providers/HarvestProvider.dart';
 
 import '../models/HarvestModel.dart';
@@ -16,6 +18,8 @@ class HarvestScreen extends StatelessWidget {
   const HarvestScreen({Key? key}) : super(key: key);
 
   static const routeName = '/harvest';
+
+  final crop = SeasonCrop.Crop;
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +86,6 @@ class HarvestScreen extends StatelessWidget {
     void numberOfHarvestedPaniclesHandler(String value) {
       updatedHarvestObject.numberOfHarvestedPanicles = int.parse(value);
     }
-
-    
 
     void numberOfHarvestedPaniclesCommentsHandler(String value) {
       updatedHarvestObject.numberOfHarvestedPaniclesComments = value;
@@ -166,7 +168,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Number of Plants per Plot',
+            title: 'Number of Plants',
             subtitle: harvestObject.numberOfPlants == null
                 ? 'Blank'
                 : harvestObject.numberOfPlants.toString(),
@@ -181,134 +183,144 @@ class HarvestScreen extends StatelessWidget {
             isTrait: true,
             genComSubtitle: harvestObject.numberOfPlantsComments,
           ),
-          ListWidgetComponent(
-            title: 'Number of Harvested Cobs per Plot',
-            subtitle: harvestObject.numberOfHarvestedCobs == null
-                ? 'Blank'
-                : harvestObject.numberOfHarvestedCobs.toString(),
-            value: harvestObject.numberOfHarvestedCobs == null
-                ? 'Blank'
-                : harvestObject.numberOfHarvestedCobs.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: numberOfHarvestedCobsHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: numberOfHarvestedCobsCommentsHandler,
-            isTrait: true,
-            genComSubtitle: harvestObject.numberOfHarvestedCobsComments,
-          ),
-          ListWidgetComponent(
-            title: 'Yield of Harvested Cobs per Plot (Kg)',
-            subtitle: harvestObject.yieldOfHarvestedCobs == null
-                ? 'Blank'
-                : harvestObject.yieldOfHarvestedCobs.toString(),
-            value: harvestObject.yieldOfHarvestedCobs == null
-                ? 'Blank'
-                : harvestObject.yieldOfHarvestedCobs.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: yieldOfHarvestedCobsHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: yieldOfHarvestedCobsCommentsHandler,
-            isTrait: true,
-            genComSubtitle: harvestObject.yieldOfHarvestedCobsComments,
-          ),
-          ListWidgetComponent(
-            title: 'Number of Harvested Panicles per Plot',
-            subtitle: harvestObject.numberOfHarvestedPanicles == null
-                ? 'Blank'
-                : harvestObject.numberOfHarvestedPanicles.toString(),
-            value: harvestObject.numberOfHarvestedPanicles == null
-                ? 'Blank'
-                : harvestObject.numberOfHarvestedPanicles.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: numberOfHarvestedPaniclesHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: numberOfHarvestedPaniclesCommentsHandler,
-            isTrait: true,
-            genComSubtitle: harvestObject.numberOfHarvestedPaniclesComments,
-          ),
-          ListWidgetComponent(
-            title: 'Yield of Harvested Panicles per Plot (Kg)',
-            subtitle: harvestObject.yieldOfHarvestedPanicles == null
-                ? 'Blank'
-                : harvestObject.yieldOfHarvestedPanicles.toString(),
-            value: harvestObject.yieldOfHarvestedPanicles == null
-                ? 'Blank'
-                : harvestObject.yieldOfHarvestedPanicles.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: yieldOfHarvestedPaniclesHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: yieldOfHarvestedPaniclesCommentsHandler,
-            isTrait: true,
-            genComSubtitle: harvestObject.yieldOfHarvestedPaniclesComments,
-          ),
-          ListWidgetComponent(
-            title: 'Number of Harvested Heads per Plot',
-            subtitle: harvestObject.numberOfHarvestedHeads == null
-                ? 'Blank'
-                : harvestObject.numberOfHarvestedHeads.toString(),
-            value: harvestObject.numberOfHarvestedHeads == null
-                ? 'Blank'
-                : harvestObject.numberOfHarvestedHeads.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: numberOfHarvestedHeadsHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: numberOfHarvestedHeadsCommentsHandler,
-            isTrait: true,
-            genComSubtitle: harvestObject.numberOfHarvestedHeadsComments,
-          ),
-          ListWidgetComponent(
-            title: 'Yield of Harvested Heads per Plot (Kg)',
-            subtitle: harvestObject.yieldOfHarvestedHeads == null
-                ? 'Blank'
-                : harvestObject.yieldOfHarvestedHeads.toString(),
-            value: harvestObject.yieldOfHarvestedHeads == null
-                ? 'Blank'
-                : harvestObject.yieldOfHarvestedHeads.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: yieldOfHarvestedHeadsHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: yieldOfHarvestedHeadsCommentsHandler,
-            isTrait: true,
-            genComSubtitle: harvestObject.yieldOfHarvestedHeadsComments,
-          ),
-          ListWidgetComponent(
-            title: 'Number of Harvested Pods per Plot',
-            subtitle: harvestObject.numberOfHarvestedPods == null
-                ? 'Blank'
-                : harvestObject.numberOfHarvestedPods.toString(),
-            value: harvestObject.numberOfHarvestedPods == null
-                ? 'Blank'
-                : harvestObject.numberOfHarvestedPods.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: numberOfHarvestedPodsHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: numberOfHarvestedPodsCommentsHandler,
-            isTrait: true,
-            genComSubtitle: harvestObject.numberOfHarvestedPodsComments,
-          ),
-          ListWidgetComponent(
-            title: 'Yield of Harvested Pods per Plot (Kg)',
-            subtitle: harvestObject.yieldOfHarvestedPods == null
-                ? 'Blank'
-                : harvestObject.yieldOfHarvestedPods.toString(),
-            value: harvestObject.yieldOfHarvestedPods == null
-                ? 'Blank'
-                : harvestObject.yieldOfHarvestedPods.toString(),
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: yieldOfHarvestedPodsHandler,
-            onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
-            onChangeGenComValueHandler: yieldOfHarvestedPodsCommentsHandler,
-            isTrait: true,
-            genComSubtitle: harvestObject.yieldOfHarvestedPodsComments,
-          ),
+          if (crop == 'Maize')
+            ListWidgetComponent(
+              title: 'Number of Harvested Cobs',
+              subtitle: harvestObject.numberOfHarvestedCobs == null
+                  ? 'Blank'
+                  : harvestObject.numberOfHarvestedCobs.toString(),
+              value: harvestObject.numberOfHarvestedCobs == null
+                  ? 'Blank'
+                  : harvestObject.numberOfHarvestedCobs.toString(),
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: numberOfHarvestedCobsHandler,
+              onSubmitHandler: onSubmitHandler,
+              isNumberField: true,
+              onChangeGenComValueHandler: numberOfHarvestedCobsCommentsHandler,
+              isTrait: true,
+              genComSubtitle: harvestObject.numberOfHarvestedCobsComments,
+            ),
+          if (crop == 'Maize')
+            ListWidgetComponent(
+              title: 'Yield of Harvested Cobs (Kg)',
+              subtitle: harvestObject.yieldOfHarvestedCobs == null
+                  ? 'Blank'
+                  : harvestObject.yieldOfHarvestedCobs.toString(),
+              value: harvestObject.yieldOfHarvestedCobs == null
+                  ? 'Blank'
+                  : harvestObject.yieldOfHarvestedCobs.toString(),
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: yieldOfHarvestedCobsHandler,
+              onSubmitHandler: onSubmitHandler,
+              isNumberField: true,
+              onChangeGenComValueHandler: yieldOfHarvestedCobsCommentsHandler,
+              isTrait: true,
+              genComSubtitle: harvestObject.yieldOfHarvestedCobsComments,
+            ),
+          if (crop == 'Sorghum')
+            ListWidgetComponent(
+              title: 'Number of Harvested Panicles',
+              subtitle: harvestObject.numberOfHarvestedPanicles == null
+                  ? 'Blank'
+                  : harvestObject.numberOfHarvestedPanicles.toString(),
+              value: harvestObject.numberOfHarvestedPanicles == null
+                  ? 'Blank'
+                  : harvestObject.numberOfHarvestedPanicles.toString(),
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: numberOfHarvestedPaniclesHandler,
+              onSubmitHandler: onSubmitHandler,
+              isNumberField: true,
+              onChangeGenComValueHandler:
+                  numberOfHarvestedPaniclesCommentsHandler,
+              isTrait: true,
+              genComSubtitle: harvestObject.numberOfHarvestedPaniclesComments,
+            ),
+          if (crop == 'Sorghum')
+            ListWidgetComponent(
+              title: 'Yield of Harvested Panicles (Kg)',
+              subtitle: harvestObject.yieldOfHarvestedPanicles == null
+                  ? 'Blank'
+                  : harvestObject.yieldOfHarvestedPanicles.toString(),
+              value: harvestObject.yieldOfHarvestedPanicles == null
+                  ? 'Blank'
+                  : harvestObject.yieldOfHarvestedPanicles.toString(),
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: yieldOfHarvestedPaniclesHandler,
+              onSubmitHandler: onSubmitHandler,
+              isNumberField: true,
+              onChangeGenComValueHandler:
+                  yieldOfHarvestedPaniclesCommentsHandler,
+              isTrait: true,
+              genComSubtitle: harvestObject.yieldOfHarvestedPaniclesComments,
+            ),
+          if (crop == 'Sunflower')
+            ListWidgetComponent(
+              title: 'Number of Harvested Heads',
+              subtitle: harvestObject.numberOfHarvestedHeads == null
+                  ? 'Blank'
+                  : harvestObject.numberOfHarvestedHeads.toString(),
+              value: harvestObject.numberOfHarvestedHeads == null
+                  ? 'Blank'
+                  : harvestObject.numberOfHarvestedHeads.toString(),
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: numberOfHarvestedHeadsHandler,
+              onSubmitHandler: onSubmitHandler,
+              isNumberField: true,
+              onChangeGenComValueHandler: numberOfHarvestedHeadsCommentsHandler,
+              isTrait: true,
+              genComSubtitle: harvestObject.numberOfHarvestedHeadsComments,
+            ),
+          if (crop == 'Sunflower')
+            ListWidgetComponent(
+              title: 'Yield of Harvested Heads (Kg)',
+              subtitle: harvestObject.yieldOfHarvestedHeads == null
+                  ? 'Blank'
+                  : harvestObject.yieldOfHarvestedHeads.toString(),
+              value: harvestObject.yieldOfHarvestedHeads == null
+                  ? 'Blank'
+                  : harvestObject.yieldOfHarvestedHeads.toString(),
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: yieldOfHarvestedHeadsHandler,
+              onSubmitHandler: onSubmitHandler,
+              isNumberField: true,
+              onChangeGenComValueHandler: yieldOfHarvestedHeadsCommentsHandler,
+              isTrait: true,
+              genComSubtitle: harvestObject.yieldOfHarvestedHeadsComments,
+            ),
+          if (crop == 'Beans')
+            ListWidgetComponent(
+              title: 'Number of Harvested Pods',
+              subtitle: harvestObject.numberOfHarvestedPods == null
+                  ? 'Blank'
+                  : harvestObject.numberOfHarvestedPods.toString(),
+              value: harvestObject.numberOfHarvestedPods == null
+                  ? 'Blank'
+                  : harvestObject.numberOfHarvestedPods.toString(),
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: numberOfHarvestedPodsHandler,
+              onSubmitHandler: onSubmitHandler,
+              isNumberField: true,
+              onChangeGenComValueHandler: numberOfHarvestedPodsCommentsHandler,
+              isTrait: true,
+              genComSubtitle: harvestObject.numberOfHarvestedPodsComments,
+            ),
+          if (crop == 'Beans')
+            ListWidgetComponent(
+              title: 'Yield of Harvested Pods (Kg)',
+              subtitle: harvestObject.yieldOfHarvestedPods == null
+                  ? 'Blank'
+                  : harvestObject.yieldOfHarvestedPods.toString(),
+              value: harvestObject.yieldOfHarvestedPods == null
+                  ? 'Blank'
+                  : harvestObject.yieldOfHarvestedPods.toString(),
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: yieldOfHarvestedPodsHandler,
+              onSubmitHandler: onSubmitHandler,
+              isNumberField: true,
+              onChangeGenComValueHandler: yieldOfHarvestedPodsCommentsHandler,
+              isTrait: true,
+              genComSubtitle: harvestObject.yieldOfHarvestedPodsComments,
+            ),
         ],
       ),
       floatingActionButton: FloatingActionButtonComp(),

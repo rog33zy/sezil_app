@@ -32,6 +32,7 @@ import './screens/PostHarvestScreen.dart';
 import './screens/EditCheckBoxesScreen.dart';
 import './screens/QRViewScreen.dart';
 import './screens/FertDressingScreen.dart';
+import './screens/SynchronizeScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -99,6 +100,7 @@ class MyApp extends StatelessWidget {
           EditCheckBoxesScreen.routeName: (ctx) => EditCheckBoxesScreen(),
           QRViewScreen.routeName: (ctx) => QRViewScreen(),
           FertDressingScreen.routeName: (ctx) => FertDressingScreen(),
+          SynchronizeScreen.routeName: (ctx) => SynchronizeScreen(),
         },
       ),
     );

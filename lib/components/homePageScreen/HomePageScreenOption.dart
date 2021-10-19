@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HomePageScreenOption extends StatelessWidget {
   final String title;
   final String routeName;
-  final String? argument;
+  final dynamic argument;
   final bool isClickable;
 
   HomePageScreenOption({

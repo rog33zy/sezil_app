@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 
-import 'DetailedFertilizationScreen.dart';
+import './FertDressingScreen.dart';
 
 class FertilizationScreen extends StatelessWidget {
   const FertilizationScreen({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class FertilizationScreen extends StatelessWidget {
           (index) {
             return HomePageScreenOption(
               title: listOfSeasons[index]['season'] as String,
-              routeName: DetailedFertilizationScreen.routeName,
+              routeName: FertDressingScreen.routeName,
               argument: listOfSeasons[index]['season'] as String,
               isClickable: listOfSeasons[index]['isClickable'] as bool,
             );

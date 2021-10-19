@@ -3,13 +3,24 @@ import 'package:flutter/foundation.dart';
 import '../models/FertilizationModel.dart';
 
 import '../helpers/db_helper.dart';
-import '../helpers/id_generator_helper.dart';
 
 class FertilizationProvider with ChangeNotifier {
   List<FertilizationModel> _fertilizationObjectsList = [];
 
   List<FertilizationModel> get getFertilizationObjectsList {
     return [..._fertilizationObjectsList];
+  }
+
+  bool isExisting(String season, String typeOfDressing) {
+    final relevantList = _fertilizationObjectsList.where(
+      (element) =>
+          element.season == season && element.typeOfDressing == typeOfDressing,
+    );
+    if (relevantList.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   FertilizationModel findFertObject(String season, String typeOfDressing) {
@@ -20,12 +31,16 @@ class FertilizationProvider with ChangeNotifier {
   }
 
   Future<void> updateFertilizationObject(
-      FertilizationModel updatedFertilizationObject) async {
-    _fertilizationObjectsList[_fertilizationObjectsList.indexWhere(
-            (element) => element.id == updatedFertilizationObject.id)] =
-        updatedFertilizationObject;
+      FertilizationModel updatedFertilizationObject, bool isExisiting) async {
+    if (isExisiting) {
+      _fertilizationObjectsList[_fertilizationObjectsList.indexWhere(
+              (element) => element.id == updatedFertilizationObject.id)] =
+          updatedFertilizationObject;
 
-    notifyListeners();
+      notifyListeners();
+    } else {
+      _fertilizationObjectsList.add(updatedFertilizationObject);
+    }
 
     await DBHelper.insert(
       'fertilization',

@@ -1,32 +1,22 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
+
+import '../constants/SeasonCrop.dart';
+import '../constants/Varieties.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 import './PlotScreen.dart';
 
 class TraitsScreen extends StatelessWidget {
   const TraitsScreen({Key? key}) : super(key: key);
-  static const routeName = "/plots-screen";
+  static const routeName = '/plots-screen';
 
-  static const listOfVarieties = [
-    "101",
-    "102",
-    "103",
-    "104",
-    "105",
-    "106",
-    "201",
-    "202",
-    "203",
-    "204",
-    "205",
-    "206",
-  ];
+  static final listOfVarieties = Varieties.varieties[SeasonCrop.Crop] as List;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Plots"),
+        title: Text('Plots'),
         centerTitle: true,
       ),
       body: GridView.count(

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../../providers/AuthProvider.dart';
+
 import '../../screens/SynchronizeScreen.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -7,6 +11,10 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
     return Drawer(
       child: Column(
         children: [
@@ -34,6 +42,20 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(SynchronizeScreen.routeName);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(
+              Icons.exit_to_app,
+            ),
+            title: const Text(
+              'LOGOUT',
+            ),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushReplacementNamed('/');
+              authProvider.logout();
             },
           ),
           const Divider(),

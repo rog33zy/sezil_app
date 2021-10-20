@@ -1,13 +1,14 @@
-// import 'dart:developer';
 import 'dart:developer';
 import 'dart:io';
+
+import '../constants/SeasonCrop.dart';
+import '../constants/Varieties.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import 'PlotScreen.dart';
-import 'TraitsScreen.dart';
 
 class QRViewScreen extends StatefulWidget {
   const QRViewScreen({Key? key}) : super(key: key);
@@ -41,63 +42,6 @@ class _QRViewScreenState extends State<QRViewScreen> {
             flex: 4,
             child: _buildQrView(context),
           ),
-          // Expanded(
-          //   flex: 1,
-          //   child: FittedBox(
-          //     fit: BoxFit.contain,
-          //     child: Column(
-          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //       children: [
-          //         if (result != null)
-          //           Text(
-          //               'Barcode Type: ${describeEnum(result!.format)} Data: ${result!.code}')
-          //         else
-          //           Text('Scan a code'),
-          //         Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           crossAxisAlignment: CrossAxisAlignment.center,
-          //           children: [
-          //             Container(
-          //               margin: EdgeInsets.all(8),
-          //               child: ElevatedButton(
-          //                 onPressed: () async {
-          //                   await controller?.toggleFlash();
-          //                   setState(() {});
-          //                 },
-          //                 child: FutureBuilder(
-          //                   future: controller?.getFlashStatus(),
-          //                   builder: (context, snapshot) {
-          //                     return Text('Flash: ${snapshot.data}');
-          //                   },
-          //                 ),
-          //               ),
-          //             ),
-          //             Container(
-          //               margin: EdgeInsets.all(8),
-          //               child: ElevatedButton(
-          //                 onPressed: () async {
-          //                   await controller?.flipCamera();
-          //                   setState(() {});
-          //                 },
-          //                 child: FutureBuilder(
-          //                   future: controller?.getCameraInfo(),
-          //                   builder: (context, snapshot) {
-          //                     if (snapshot.data != null) {
-          //                       return Text(
-          //                           'Camera facing ${describeEnum(snapshot.data!)}');
-          //                     } else {
-          //                       return Text('loading');
-          //                     }
-          //                   },
-          //                 ),
-          //               ),
-          //             )
-          //           ],
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // )
         ],
       ),
     );
@@ -123,6 +67,7 @@ class _QRViewScreenState extends State<QRViewScreen> {
   }
 
   void _onQRViewCreated(QRViewController controller) {
+    final List plots = Varieties.varieties[SeasonCrop.Crop] as List;
     setState(() {
       this.controller = controller;
     });
@@ -131,11 +76,11 @@ class _QRViewScreenState extends State<QRViewScreen> {
       setState(() {
         result = scanData;
       });
-      if (result!.code == 'Bubebe-01') {
-        Navigator.of(context).pushReplacementNamed(PlotScreen.routeName,
+      if (plots.contains(result!.code)) {
+        Navigator.of(context).popAndPushNamed(PlotScreen.routeName,
             arguments: {'argument': result!.code});
       } else {
-        Navigator.of(context).pushReplacementNamed(TraitsScreen.routeName);
+        Navigator.of(context).pushReplacementNamed('/');
       }
     });
   }

@@ -14,6 +14,7 @@ import './providers/PostFloweringProvider.dart';
 import './providers/PreHarvestProvider.dart';
 import './providers/HarvestProvider.dart';
 import './providers/PostHarvestProvider.dart';
+import './providers/AuthProvider.dart';
 
 import './screens/HomePageScreen.dart';
 import 'screens/TraitsScreen.dart';
@@ -33,6 +34,8 @@ import './screens/EditCheckBoxesScreen.dart';
 import './screens/QRViewScreen.dart';
 import './screens/FertDressingScreen.dart';
 import './screens/SynchronizeScreen.dart';
+import './screens/LoginScreen.dart';
+import './screens/LoadingScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,6 +47,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<AuthProvider>(
+          create: (ctx) => AuthProvider(),
+        ),
         ChangeNotifierProvider(
           create: (ctx) => FieldOperationsProvider(),
         ),
@@ -75,33 +81,47 @@ class MyApp extends StatelessWidget {
           create: (ctx) => PostHarvestProvider(),
         ),
       ],
-      child: MaterialApp(
-        title: 'SeZIL App',
-        theme: ThemeData(
-          primarySwatch: Palette.gnaColorSwatch,
+      child: Consumer<AuthProvider>(
+        builder: (ctx, authProvider, _) => MaterialApp(
+          title: 'SeZIL App',
+          theme: ThemeData(
+            primarySwatch: Palette.gnaColorSwatch,
+          ),
+          home: authProvider.isAuth
+              ? HomePageScreen()
+              : FutureBuilder(
+                  future: authProvider.tryAutoLogin(),
+                  builder: (
+                    ctx,
+                    authResultsSnapshot,
+                  ) =>
+                      authResultsSnapshot.connectionState ==
+                              ConnectionState.waiting
+                          ? LoadingScreen()
+                          : LoginScreen(),
+                ),
+          routes: {
+            TraitsScreen.routeName: (ctx) => TraitsScreen(),
+            FieldProfileScreen.routeName: (ctx) => FieldProfileScreen(),
+            FieldOperationsScreen.routeName: (ctx) => FieldOperationsScreen(),
+            CurrentSeasonVarietyScreen.routeName: (ctx) =>
+                CurrentSeasonVarietyScreen(),
+            FertilizationScreen.routeName: (ctx) => FertilizationScreen(),
+            PlotScreen.routeName: (ctx) => PlotScreen(),
+            EditValueScreen.routeName: (ctx) => EditValueScreen(),
+            DetailedFertilizationScreen.routeName: (ctx) =>
+                DetailedFertilizationScreen(),
+            PostPlantingScreen.routeName: (ctx) => PostPlantingScreen(),
+            FloweringScreen.routeName: (ctx) => FloweringScreen(),
+            PreHarvestScreen.routeName: (ctx) => PreHarvestScreen(),
+            HarvestScreen.routeName: (ctx) => HarvestScreen(),
+            PostHarvestScreen.routeName: (ctx) => PostHarvestScreen(),
+            EditCheckBoxesScreen.routeName: (ctx) => EditCheckBoxesScreen(),
+            QRViewScreen.routeName: (ctx) => QRViewScreen(),
+            FertDressingScreen.routeName: (ctx) => FertDressingScreen(),
+            SynchronizeScreen.routeName: (ctx) => SynchronizeScreen(),
+          },
         ),
-        home: HomePageScreen(),
-        routes: {
-          TraitsScreen.routeName: (ctx) => TraitsScreen(),
-          FieldProfileScreen.routeName: (ctx) => FieldProfileScreen(),
-          FieldOperationsScreen.routeName: (ctx) => FieldOperationsScreen(),
-          CurrentSeasonVarietyScreen.routeName: (ctx) =>
-              CurrentSeasonVarietyScreen(),
-          FertilizationScreen.routeName: (ctx) => FertilizationScreen(),
-          PlotScreen.routeName: (ctx) => PlotScreen(),
-          EditValueScreen.routeName: (ctx) => EditValueScreen(),
-          DetailedFertilizationScreen.routeName: (ctx) =>
-              DetailedFertilizationScreen(),
-          PostPlantingScreen.routeName: (ctx) => PostPlantingScreen(),
-          FloweringScreen.routeName: (ctx) => FloweringScreen(),
-          PreHarvestScreen.routeName: (ctx) => PreHarvestScreen(),
-          HarvestScreen.routeName: (ctx) => HarvestScreen(),
-          PostHarvestScreen.routeName: (ctx) => PostHarvestScreen(),
-          EditCheckBoxesScreen.routeName: (ctx) => EditCheckBoxesScreen(),
-          QRViewScreen.routeName: (ctx) => QRViewScreen(),
-          FertDressingScreen.routeName: (ctx) => FertDressingScreen(),
-          SynchronizeScreen.routeName: (ctx) => SynchronizeScreen(),
-        },
       ),
     );
   }

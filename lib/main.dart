@@ -36,6 +36,7 @@ import './screens/FertDressingScreen.dart';
 import './screens/SynchronizeScreen.dart';
 import './screens/LoginScreen.dart';
 import './screens/LoadingScreen.dart';
+import './screens/PostFloweringScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -120,6 +121,7 @@ class MyApp extends StatelessWidget {
             QRViewScreen.routeName: (ctx) => QRViewScreen(),
             FertDressingScreen.routeName: (ctx) => FertDressingScreen(),
             SynchronizeScreen.routeName: (ctx) => SynchronizeScreen(),
+            PostFloweringScreen.routeName: (ctx) => PostFloweringScreen(),
           },
         ),
       ),

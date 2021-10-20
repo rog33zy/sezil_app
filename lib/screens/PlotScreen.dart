@@ -10,6 +10,7 @@ import 'FloweringScreen.dart';
 import 'PreHarvestScreen.dart';
 import 'HarvestScreen.dart';
 import 'PostHarvestScreen.dart';
+import 'PostFloweringScreen.dart';
 
 class PlotScreen extends StatelessWidget {
   PlotScreen({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class PlotScreen extends StatelessWidget {
             if (crop == 'Sunflower')
               HomePageScreenOption(
                 title: "Post-Flowering",
-                routeName: FloweringScreen.routeName,
+                routeName: PostFloweringScreen.routeName,
                 argument: plotName,
               ),
             HomePageScreenOption(

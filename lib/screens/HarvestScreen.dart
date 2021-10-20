@@ -3,9 +3,9 @@ import 'package:intl/intl.dart';
 
 import 'package:provider/provider.dart';
 
-import '../helpers/id_generator_helper.dart';
+import '../providers/AuthProvider.dart';
 
-import '../constants/SeasonCrop.dart';
+import '../helpers/id_generator_helper.dart';
 
 import '../providers/HarvestProvider.dart';
 
@@ -15,14 +15,17 @@ import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
 class HarvestScreen extends StatelessWidget {
-  const HarvestScreen({Key? key}) : super(key: key);
+  HarvestScreen({Key? key}) : super(key: key);
 
   static const routeName = '/harvest';
 
-  final crop = SeasonCrop.Crop;
 
   @override
   Widget build(BuildContext context) {
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
 

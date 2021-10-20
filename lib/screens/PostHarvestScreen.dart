@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../helpers/id_generator_helper.dart';
+import '../providers/AuthProvider.dart';
 
-import '../constants/SeasonCrop.dart';
+import '../helpers/id_generator_helper.dart';
 
 import '../providers/PostHarvestProvider.dart';
 
@@ -14,14 +14,16 @@ import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
 class PostHarvestScreen extends StatelessWidget {
-  const PostHarvestScreen({Key? key}) : super(key: key);
+  PostHarvestScreen({Key? key}) : super(key: key);
 
   static const routeName = '/post-harvest';
 
-  final crop = SeasonCrop.Crop;
-
   @override
   Widget build(BuildContext context) {
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
 

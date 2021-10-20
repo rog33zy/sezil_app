@@ -43,7 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
       if (value!.isEmpty) {
         return 'Please enter value';
       }
-      return null;
     };
   }
 

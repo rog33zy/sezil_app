@@ -1,7 +1,10 @@
 import 'dart:developer';
 import 'dart:io';
 
-import '../constants/SeasonCrop.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/AuthProvider.dart';
+
 import '../constants/Varieties.dart';
 
 import 'package:flutter/foundation.dart';
@@ -48,6 +51,7 @@ class _QRViewScreenState extends State<QRViewScreen> {
   }
 
   Widget _buildQrView(BuildContext context) {
+    
     var scanArea = (MediaQuery.of(context).size.width < 400 ||
             MediaQuery.of(context).size.height < 400)
         ? 150.0
@@ -67,7 +71,11 @@ class _QRViewScreenState extends State<QRViewScreen> {
   }
 
   void _onQRViewCreated(QRViewController controller) {
-    final List plots = Varieties.varieties[SeasonCrop.Crop] as List;
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
+    final List plots = Varieties.varieties[crop] as List;
     setState(() {
       this.controller = controller;
     });

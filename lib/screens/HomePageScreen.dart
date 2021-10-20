@@ -11,6 +11,7 @@ import '../providers/PostFloweringProvider.dart';
 import '../providers/PreHarvestProvider.dart';
 import '../providers/HarvestProvider.dart';
 import '../providers/PostHarvestProvider.dart';
+import '../providers/AuthProvider.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
@@ -29,6 +30,11 @@ class HomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
     Provider.of<FieldOperationsProvider>(
       context,
       listen: false,
@@ -81,7 +87,7 @@ class HomePageScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Welcome, Rodgers 😃"),
+        title: Text("Welcome, ${authProvider.firstName![0]}Farmer 😃"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

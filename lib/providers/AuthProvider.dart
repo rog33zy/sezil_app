@@ -13,6 +13,7 @@ class AuthProvider with ChangeNotifier {
   Timer? _authTimer;
   bool? _isFieldFinanceAdmin;
   bool? _isSezilMotherTrialFarmer;
+  String _crop = 'Maize';
 
   bool get isAuth {
     return _token != null;
@@ -43,14 +44,33 @@ class AuthProvider with ChangeNotifier {
     return _isSezilMotherTrialFarmer;
   }
 
+  String get crop {
+    return _crop;
+  }
+
   Future<void> _authenticateUser(Map<String, String> userInputsMap,
       {bool isRefreshing = false}) async {
     _token = 'accessToken';
     _refreshToken = 'refreshToken';
-    _username = 'username';
-    _firstName = 'firstName';
+    _username = userInputsMap['username'];
     _expiryDate = DateTime(2022);
 
+    if (_username == 'sorghum') {
+      _crop = 'Sorghum';
+      _firstName = 'SorghumFarmer';
+    } else if (_username == 'maize') {
+      _crop = 'Maize';
+      _firstName = 'MaizeFarmer';
+    } else if (_username == 'beans') {
+      _crop = 'Beans';
+      _firstName = 'BeansFarmer';
+    } else if (_username == 'sunflower') {
+      _crop = 'Sunflower';
+      _firstName = 'SunflowerFarmer';
+    } else {
+      _crop = 'Maize';
+      _firstName = 'MaizeFarmer';
+    }
     _autoLogout();
 
     notifyListeners();
@@ -65,6 +85,7 @@ class AuthProvider with ChangeNotifier {
         'expiryDate': _expiryDate!.toIso8601String(),
         'isFieldFinanceAdmin': _isFieldFinanceAdmin,
         'isSourceFieldSupervisor': _isSezilMotherTrialFarmer,
+        'crop': _crop,
       },
     );
     prefs.setString(
@@ -106,6 +127,7 @@ class AuthProvider with ChangeNotifier {
     _isFieldFinanceAdmin = extractedUserData['isFieldFinanceAdmin'];
     _isSezilMotherTrialFarmer = extractedUserData['isSourceFieldSupervisor'];
     _expiryDate = expiryDate;
+    _crop = extractedUserData['crop'];
 
     notifyListeners();
     _autoLogout();

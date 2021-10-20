@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../constants/SeasonCrop.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/AuthProvider.dart';
+
 import '../constants/Varieties.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
@@ -10,10 +13,16 @@ class TraitsScreen extends StatelessWidget {
   const TraitsScreen({Key? key}) : super(key: key);
   static const routeName = '/plots-screen';
 
-  static final listOfVarieties = Varieties.varieties[SeasonCrop.Crop] as List;
+  
 
   @override
   Widget build(BuildContext context) {
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
+
+   final listOfVarieties = Varieties.varieties[crop] as List;
     return Scaffold(
       appBar: AppBar(
         title: Text('Plots'),

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import '../providers/AuthProvider.dart';
+
 import '../helpers/id_generator_helper.dart';
 
-import '../constants/SeasonCrop.dart';
 
 import '../providers/PreHarvestProvider.dart';
 
@@ -14,14 +15,18 @@ import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
 class PreHarvestScreen extends StatelessWidget {
-  const PreHarvestScreen({Key? key}) : super(key: key);
+   PreHarvestScreen({Key? key}) : super(key: key);
 
   static const routeName = '/pre-harvest';
 
-  final crop = SeasonCrop.Crop;
 
   @override
   Widget build(BuildContext context) {
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
+    
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
 

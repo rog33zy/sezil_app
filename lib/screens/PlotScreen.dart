@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../constants/SeasonCrop.dart';
+import '../providers/AuthProvider.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
 
@@ -11,14 +12,16 @@ import 'HarvestScreen.dart';
 import 'PostHarvestScreen.dart';
 
 class PlotScreen extends StatelessWidget {
-  const PlotScreen({Key? key}) : super(key: key);
+  PlotScreen({Key? key}) : super(key: key);
 
   static const routeName = "/plot-screen";
 
-  final String crop = SeasonCrop.Crop;
-
   @override
   Widget build(BuildContext context) {
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotName = argumentsMap['argument'];
     return Scaffold(

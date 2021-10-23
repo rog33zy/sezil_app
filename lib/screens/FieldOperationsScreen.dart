@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:recase/recase.dart';
+
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -48,8 +50,47 @@ class FieldOperationsScreen extends StatelessWidget {
       updatedFieldOperationsObject.dateOfFirstWeeding = value;
     }
 
+    void firstWeedingIsManualHandler(value) {
+      updatedFieldOperationsObject.firstWeedingIsManual = value;
+    }
+
+    void firstWeedingHerbicideNameHandler(String value) {
+      updatedFieldOperationsObject.firstWeedingHerbicideName = value.titleCase;
+    }
+
+    void firstWeedingHerbicideQtyHandler(String value) {
+      updatedFieldOperationsObject.firstWeedingHerbicideQty =
+          double.parse(value.titleCase);
+    }
+
+    void dateOfPesticideApplicationHandler(value) {
+      updatedFieldOperationsObject.dateOfSecondWeeding = value;
+    }
+
+    void pesticideNameHandler(String value) {
+      updatedFieldOperationsObject.pesticideName = value.titleCase;
+    }
+
+    void pesticideApplicationQtyHandler(String value) {
+      updatedFieldOperationsObject.pesticideApplicationQty =
+          double.parse(value.titleCase);
+    }
+
     void dateOfSecondWeedingHandler(value) {
       updatedFieldOperationsObject.dateOfSecondWeeding = value;
+    }
+
+    void secondWeedingIsManualHandler(value) {
+      updatedFieldOperationsObject.secondWeedingIsManual = value;
+    }
+
+    void secondWeedingHerbicideNameHandler(String value) {
+      updatedFieldOperationsObject.secondWeedingHerbicideName = value.titleCase;
+    }
+
+    void secondWeedingHerbicideQtyHandler(String value) {
+      updatedFieldOperationsObject.secondWeedingHerbicideQty =
+          double.parse(value.titleCase);
     }
 
     void onSubmitHandler() {
@@ -146,6 +187,90 @@ class FieldOperationsScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
+            title: 'Was First Weeding Manual?',
+            subtitle: fieldOperationsObject.firstWeedingIsManual,
+            value: fieldOperationsObject.firstWeedingIsManual,
+            isDateField: false,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: firstWeedingIsManualHandler,
+            onSubmitHandler: onSubmitHandler,
+            isDropDownField: true,
+            listOfValues: <String>[
+              'Yes',
+              'No',
+            ],
+            isTextField: false,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
+            title: 'First Weeding Herbicide Name',
+            subtitle: fieldOperationsObject.firstWeedingHerbicideName,
+            value: fieldOperationsObject.firstWeedingHerbicideName,
+            isDateField: false,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: firstWeedingHerbicideNameHandler,
+            onSubmitHandler: onSubmitHandler,
+            isTextField: true,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
+            title: 'First Weeding Herbicide Qty (Kg)',
+            subtitle: fieldOperationsObject.firstWeedingHerbicideQty == null
+                ? 'Blank'
+                : fieldOperationsObject.firstWeedingHerbicideQty.toString(),
+            value: fieldOperationsObject.firstWeedingHerbicideQty == null
+                ? 'Blank'
+                : fieldOperationsObject.firstWeedingHerbicideQty.toString(),
+            isDateField: false,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: firstWeedingHerbicideQtyHandler,
+            onSubmitHandler: onSubmitHandler,
+            isNumberField: true,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
+            title: 'Date of Pesticide Application',
+            value: fieldOperationsObject.dateOfPesticideApplication == null
+                ? 'Blank'
+                : fieldOperationsObject.dateOfPesticideApplication!
+                    .toIso8601String(),
+            subtitle: fieldOperationsObject.dateOfPesticideApplication == null
+                ? 'Blank'
+                : _formatDate(
+                    fieldOperationsObject.dateOfPesticideApplication!),
+            isDateField: true,
+            onChangeDateValueHandler: dateOfPesticideApplicationHandler,
+            onChangeTextValueHandler: () {},
+            onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
+            title: 'Pesticide Name',
+            subtitle: fieldOperationsObject.pesticideName,
+            value: fieldOperationsObject.pesticideName,
+            isDateField: false,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: pesticideNameHandler,
+            onSubmitHandler: onSubmitHandler,
+            isTextField: true,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
+            title: 'Pesticide Qty (Kg)',
+            subtitle: fieldOperationsObject.pesticideApplicationQty == null
+                ? 'Blank'
+                : fieldOperationsObject.pesticideApplicationQty.toString(),
+            value: fieldOperationsObject.pesticideApplicationQty == null
+                ? 'Blank'
+                : fieldOperationsObject.pesticideApplicationQty.toString(),
+            isDateField: false,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: pesticideApplicationQtyHandler,
+            onSubmitHandler: onSubmitHandler,
+            isNumberField: true,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
             title: 'Date of Second Weeding',
             value: fieldOperationsObject.dateOfSecondWeeding == null
                 ? 'Blank'
@@ -157,6 +282,48 @@ class FieldOperationsScreen extends StatelessWidget {
             onChangeDateValueHandler: dateOfSecondWeedingHandler,
             onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
+            title: 'Was Second Weeding Manual?',
+            subtitle: fieldOperationsObject.secondWeedingIsManual,
+            value: fieldOperationsObject.secondWeedingIsManual,
+            isDateField: false,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: secondWeedingIsManualHandler,
+            onSubmitHandler: onSubmitHandler,
+            isDropDownField: true,
+            listOfValues: <String>[
+              'Yes',
+              'No',
+            ],
+            isTextField: false,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
+            title: 'Second Weeding Herbicide Name',
+            subtitle: fieldOperationsObject.secondWeedingHerbicideName,
+            value: fieldOperationsObject.secondWeedingHerbicideName,
+            isDateField: false,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: secondWeedingHerbicideNameHandler,
+            onSubmitHandler: onSubmitHandler,
+            isTextField: true,
+            onChangeGenComValueHandler: () {},
+          ),
+          ListWidgetComponent(
+            title: 'Second Weeding Herbicide Qty (Kg)',
+            subtitle: fieldOperationsObject.secondWeedingHerbicideQty == null
+                ? 'Blank'
+                : fieldOperationsObject.secondWeedingHerbicideQty.toString(),
+            value: fieldOperationsObject.secondWeedingHerbicideQty == null
+                ? 'Blank'
+                : fieldOperationsObject.secondWeedingHerbicideQty.toString(),
+            isDateField: false,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: secondWeedingHerbicideQtyHandler,
+            onSubmitHandler: onSubmitHandler,
+            isNumberField: true,
             onChangeGenComValueHandler: () {},
           ),
         ],

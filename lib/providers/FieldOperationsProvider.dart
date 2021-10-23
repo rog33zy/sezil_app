@@ -19,7 +19,20 @@ class FieldOperationsProvider with ChangeNotifier {
       dateOfPlanting: _fieldOperationsObject.dateOfPlanting,
       dateOfThinning: _fieldOperationsObject.dateOfThinning,
       dateOfFirstWeeding: _fieldOperationsObject.dateOfFirstWeeding,
+      firstWeedingIsManual: _fieldOperationsObject.firstWeedingIsManual,
+      firstWeedingHerbicideName:
+          _fieldOperationsObject.firstWeedingHerbicideName,
+      firstWeedingHerbicideQty: _fieldOperationsObject.firstWeedingHerbicideQty,
+      dateOfPesticideApplication:
+          _fieldOperationsObject.dateOfPesticideApplication,
+      pesticideName: _fieldOperationsObject.pesticideName,
+      pesticideApplicationQty: _fieldOperationsObject.pesticideApplicationQty,
       dateOfSecondWeeding: _fieldOperationsObject.dateOfSecondWeeding,
+      secondWeedingIsManual: _fieldOperationsObject.secondWeedingIsManual,
+      secondWeedingHerbicideName:
+          _fieldOperationsObject.secondWeedingHerbicideName,
+      secondWeedingHerbicideQty:
+          _fieldOperationsObject.secondWeedingHerbicideQty,
       isUpToDateInServer: _fieldOperationsObject.isUpToDateInServer,
     );
     return _newFieldOperationsModel;
@@ -56,12 +69,32 @@ class FieldOperationsProvider with ChangeNotifier {
                 ? null
                 : updatedFieldOperationsObject.dateOfFirstWeeding!
                     .toIso8601String(),
+        'firstWeedingIsManual':
+            updatedFieldOperationsObject.firstWeedingIsManual,
+        'firstWeedingHerbicideName':
+            updatedFieldOperationsObject.firstWeedingHerbicideName,
+        'firstWeedingHerbicideQty':
+            updatedFieldOperationsObject.firstWeedingHerbicideQty,
+        'dateOfPesticideApplication':
+            updatedFieldOperationsObject.dateOfPesticideApplication == null
+                ? null
+                : updatedFieldOperationsObject.dateOfPesticideApplication!
+                    .toIso8601String(),
+        'pesticideName': updatedFieldOperationsObject.pesticideName,
+        'pesticideApplicationQty':
+            updatedFieldOperationsObject.pesticideApplicationQty,
         'dateOfSecondWeeding':
             updatedFieldOperationsObject.dateOfSecondWeeding == null
                 ? null
                 : updatedFieldOperationsObject.dateOfSecondWeeding!
                     .toIso8601String(),
-        'isUpToDateInServer': "No",
+        'secondWeedingIsManual':
+            updatedFieldOperationsObject.secondWeedingIsManual,
+        'secondWeedingHerbicideName':
+            updatedFieldOperationsObject.secondWeedingHerbicideName,
+        'secondWeedingHerbicideQty':
+            updatedFieldOperationsObject.secondWeedingHerbicideQty,
+        'isUpToDateInServer': 'No',
       },
     );
   }
@@ -91,9 +124,21 @@ class FieldOperationsProvider with ChangeNotifier {
         dateOfFirstWeeding: _updatedMap['dateOfFirstWeeding'] == null
             ? null
             : DateTime.parse(_updatedMap['dateOfFirstWeeding']),
+        firstWeedingIsManual: _updatedMap['firstWeedingIsManual'],
+        firstWeedingHerbicideName: _updatedMap['firstWeedingHerbicideName'],
+        firstWeedingHerbicideQty: _updatedMap['firstWeedingHerbicideQty'],
+        dateOfPesticideApplication:
+            _updatedMap['dateOfPesticideApplication'] == null
+                ? null
+                : _updatedMap['dateOfPesticideApplication'],
+        pesticideName: _updatedMap['pesticideName'],
+        pesticideApplicationQty: _updatedMap['pesticideApplicationQty'],
         dateOfSecondWeeding: _updatedMap['dateOfSecondWeeding'] == null
             ? null
             : DateTime.parse(_updatedMap['dateOfSecondWeeding']),
+        secondWeedingIsManual: _updatedMap['secondWeedingIsManual'],
+        secondWeedingHerbicideName: _updatedMap['secondWeedingHerbicideName'],
+        secondWeedingHerbicideQty: _updatedMap['secondWeedingHerbicideQty'],
         isUpToDateInServer: _updatedMap['isUpToDateInServer'],
       );
     }

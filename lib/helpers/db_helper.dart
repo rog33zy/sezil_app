@@ -25,7 +25,16 @@ class DBHelper {
                   dateOfPlanting TEXT,
                   dateOfThinning TEXT,
                   dateOfFirstWeeding TEXT,
+                  firstWeedingIsManual TEXT,
+                  firstWeedingHerbicideName TEXT,
+                  firstWeedingHerbicideQty REAL,
+                  dateOfPesticideApplication TEXT,
+                  pesticideName TEXT,
+                  pesticideApplicationQty REAL,
                   dateOfSecondWeeding TEXT,
+                  secondWeedingIsManual TEXT,
+                  secondWeedingHerbicideName TEXT,
+                  secondWeedingHerbicideQty REAL,
                   isUpToDateInServer TEXT
                 )
           ''',

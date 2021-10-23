@@ -6,7 +6,16 @@ class FieldOperationsModel {
   DateTime? dateOfPlanting;
   DateTime? dateOfThinning;
   DateTime? dateOfFirstWeeding;
+  String firstWeedingIsManual;
+  String firstWeedingHerbicideName;
+  double? firstWeedingHerbicideQty;
+  DateTime? dateOfPesticideApplication;
+  String pesticideName;
+  double? pesticideApplicationQty;
   DateTime? dateOfSecondWeeding;
+  String secondWeedingIsManual;
+  String secondWeedingHerbicideName;
+  double? secondWeedingHerbicideQty;
   String isUpToDateInServer;
 
   FieldOperationsModel({
@@ -17,7 +26,16 @@ class FieldOperationsModel {
     this.dateOfPlanting,
     this.dateOfThinning,
     this.dateOfFirstWeeding,
+    this.firstWeedingIsManual = 'Blank',
+    this.firstWeedingHerbicideName = 'Blank',
+    this.firstWeedingHerbicideQty,
+    this.dateOfPesticideApplication,
+    this.pesticideName = 'Blank',
+    this.pesticideApplicationQty,
     this.dateOfSecondWeeding,
+    this.secondWeedingIsManual = 'Blank',
+    this.secondWeedingHerbicideName = 'Blank',
+    this.secondWeedingHerbicideQty,
     this.isUpToDateInServer = 'No',
   });
 }

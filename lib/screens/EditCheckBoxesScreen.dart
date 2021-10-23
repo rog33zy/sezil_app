@@ -20,8 +20,9 @@ class EditCheckBoxesScreen extends StatelessWidget {
         itemCount: items.length,
         itemBuilder: (context, index) {
           return LabeledCheckbox(
+            value: items[index]['value'],
             label: items[index]['label'],
-            onChangedTwo: items[index]['onChanged'],
+            onChangedValue: items[index]['onChanged'],
           );
         },
       ),

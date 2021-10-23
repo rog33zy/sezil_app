@@ -10,7 +10,7 @@ class FieldOperationsModel {
   String isUpToDateInServer;
 
   FieldOperationsModel({
-    this.id = '3454',
+    required this.id,
     this.lastUpdated,
     this.dateOfLandPreparation,
     this.methodOfLandPreparation = 'Blank',

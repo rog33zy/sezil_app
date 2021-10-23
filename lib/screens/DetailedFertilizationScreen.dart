@@ -16,7 +16,6 @@ class DetailedFertilizationScreen extends StatelessWidget {
 
   static const routeName = '/detailed-fertilization';
 
-
   @override
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
@@ -55,22 +54,20 @@ class DetailedFertilizationScreen extends StatelessWidget {
       listen: false,
     ).findFertObject(season, typeOfDressing);
 
-    
-
     void organicFertilizerHandler(value) {
-        updatedFertilizationObject.nameOfOrganicFertilizer = value;
+      updatedFertilizationObject.nameOfOrganicFertilizer = value;
     }
 
     void syntheticFertilizerHandler(String value) {
-        updatedFertilizationObject.nameOfSyntheticFertilizer = value;
+      updatedFertilizationObject.nameOfSyntheticFertilizer = value;
     }
 
     void quantityAppliedHandler(value) {
-        updatedFertilizationObject.quantityApplied = double.parse(value);
+      updatedFertilizationObject.quantityApplied = double.parse(value);
     }
 
     void timeOfApplicationHandler(value) {
-        updatedFertilizationObject.timeOfApplication = value;
+      updatedFertilizationObject.timeOfApplication = value;
     }
 
     void onSubmitHandler() {
@@ -80,7 +77,10 @@ class DetailedFertilizationScreen extends StatelessWidget {
       Provider.of<FertilizationProvider>(
         context,
         listen: false,
-      ).updateFertilizationObject(updatedFertilizationObject, true,);
+      ).updateFertilizationObject(
+        updatedFertilizationObject,
+        true,
+      );
 
       Navigator.of(context).pop();
     }
@@ -100,7 +100,7 @@ class DetailedFertilizationScreen extends StatelessWidget {
             onSubmitHandler: onSubmitHandler,
             onChangeGenComValueHandler: () {},
             listOfValues: <String>[
-              'Cow Manure',
+              'Kraal Manure',
               'Other',
               'None',
             ],
@@ -150,7 +150,7 @@ class DetailedFertilizationScreen extends StatelessWidget {
                 ? 'Blank'
                 : fertilizationObject.timeOfApplication!.toIso8601String(),
             onChangeDateValueHandler: timeOfApplicationHandler,
-            onChangeTextValueHandler: (){},
+            onChangeTextValueHandler: () {},
             onSubmitHandler: onSubmitHandler,
             isDateField: true,
             onChangeGenComValueHandler: () {},

@@ -71,12 +71,14 @@ class DBHelper {
                 (
                   id TEXT PRIMARY KEY,
                   lastUpdated TEXT,
-                  fieldSize REAL,
+                  fieldSize TEXT,
                   soilType TEXT,
                   latitude REAL,
                   longitude REAL,
                   cropGrownPrevSeason TEXT,
                   cropGrownTwoSeasonsAgo TEXT,
+                  prevSeasonWeedingManual TEXT,
+                  prevSeasonWeedingChemicalName TEXT,
                   isUpToDateInServer TEXT
                 )
           ''',

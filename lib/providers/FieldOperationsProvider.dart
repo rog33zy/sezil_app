@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
+import 'package:sezil_app/helpers/id_generator_helper.dart';
 
 import '../models/FieldOperationsModel.dart';
 
 import '../helpers/db_helper.dart';
+import '../helpers/id_generator_helper.dart';
 
 class FieldOperationsProvider with ChangeNotifier {
-  FieldOperationsModel _fieldOperationsObject = FieldOperationsModel();
+  FieldOperationsModel _fieldOperationsObject =
+      FieldOperationsModel(id: IDGeneratorHelper.generateId());
 
   FieldOperationsModel get getFieldOperationsObject {
     FieldOperationsModel _newFieldOperationsModel = FieldOperationsModel(
@@ -66,7 +69,8 @@ class FieldOperationsProvider with ChangeNotifier {
   Future<void> fetchAndSetFieldOperationsObject() async {
     final dataList = await DBHelper.getData('fieldOperations');
     if (dataList.isEmpty) {
-      _fieldOperationsObject = FieldOperationsModel();
+      _fieldOperationsObject =
+          FieldOperationsModel(id: IDGeneratorHelper.generateId());
     } else {
       final _updatedMap = dataList[0];
       _fieldOperationsObject = FieldOperationsModel(

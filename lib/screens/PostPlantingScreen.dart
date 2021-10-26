@@ -6,6 +6,7 @@ import '../helpers/id_generator_helper.dart';
 import '../helpers/next_field_helper.dart';
 
 import '../providers/PostPlantingProvider.dart';
+import '../providers/AuthProvider.dart';
 
 import '../models/PostPlantingModel.dart';
 
@@ -86,6 +87,11 @@ class PostPlantingScreen extends StatelessWidget {
       Navigator.of(context).pop();
     }
 
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Post Planting - Plot $plotId'),
@@ -138,12 +144,12 @@ class PostPlantingScreen extends StatelessWidget {
           NextPlotFloatingActionButtonComp(
             routeName: routeName,
             argument: NextFieldHelper.findNextFieldPlotId(
-              'Maize',
+              crop,
               plotId,
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 14,
           ),
           QRViewFloatingActionButtonComp(),
         ],

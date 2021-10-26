@@ -14,7 +14,7 @@ import '../providers/PostHarvestProvider.dart';
 import '../providers/AuthProvider.dart';
 
 import '../components/homePageScreen/HomePageScreenOption.dart';
-import '../components/UI/QRViewFloatingActionButtonComp.dart';
+// import '../components/UI/QRViewFloatingActionButtonComp.dart';
 import '../components/UI/AppDrawer.dart';
 
 import 'TraitsScreen.dart';
@@ -119,7 +119,7 @@ class HomePageScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: QRViewFloatingActionButtonComp(),
+      // floatingActionButton: QRViewFloatingActionButtonComp(),
       drawer: AppDrawer(),
     );
   }

@@ -18,18 +18,6 @@ class FieldProfileScreen extends StatefulWidget {
 
   static const routeName = '/field-profile';
 
-  static const cropTypes = <String>[
-    'Maize',
-    'Sorghum',
-    'Beans',
-    'Soybeans',
-    'Groundnuts',
-    'Cowpeas',
-    'Sunflower',
-    'Fallow-Land',
-    'Other',
-  ];
-
   @override
   State<FieldProfileScreen> createState() => _FieldProfileScreenState();
 }
@@ -609,11 +597,15 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
     } else {
       finalOptionsPrevSeasonSet.remove(pickedValue);
     }
+    finalOptionsPrevSeasonSet.remove('');
+
     finalStringPrevSeason = finalOptionsPrevSeasonSet.join(',');
+
     updatedFieldProfileObject.cropGrownPrevSeason = finalStringPrevSeason;
 
     updatedFieldProfileObject.lastUpdated = DateTime.now();
     updatedFieldProfileObject.isUpToDateInServer = 'No';
+
     Provider.of<FieldProfileProvider>(
       context,
       listen: false,
@@ -626,6 +618,8 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
     } else {
       finalOptionsSeasonBeforeLastSet.remove(pickedValue);
     }
+    finalOptionsSeasonBeforeLastSet.remove('');
+
     finalStringSeasonBeforeLast = finalOptionsSeasonBeforeLastSet.join(',');
     updatedFieldProfileObject.cropGrownTwoSeasonsAgo =
         finalStringSeasonBeforeLast;

@@ -22,7 +22,7 @@ class FieldOperationsModel {
     required this.id,
     this.lastUpdated,
     this.dateOfLandPreparation,
-    this.methodOfLandPreparation = 'Blank',
+    this.methodOfLandPreparation = '',
     this.dateOfPlanting,
     this.dateOfThinning,
     this.dateOfFirstWeeding,

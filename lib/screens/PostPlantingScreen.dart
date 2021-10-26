@@ -24,7 +24,7 @@ class PostPlantingScreen extends StatelessWidget {
       context,
       listen: false,
     ).isExisting(plotId);
-    
+
     if (!isObjectExisiting) {
       PostPlantingModel newPostPlantingObject = PostPlantingModel(
         id: IDGeneratorHelper.generateId(),
@@ -128,7 +128,22 @@ class PostPlantingScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButtonComp(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: null,
+            child: Icon(
+              Icons.arrow_right_alt_outlined,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          FloatingActionButtonComp(),
+        ],
+      ),
     );
   }
 }

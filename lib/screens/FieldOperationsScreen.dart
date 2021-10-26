@@ -11,10 +11,109 @@ import '../models/FieldOperationsModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
 
-class FieldOperationsScreen extends StatelessWidget {
+class FieldOperationsScreen extends StatefulWidget {
   const FieldOperationsScreen({Key? key}) : super(key: key);
 
   static const routeName = '/field-operations';
+
+  @override
+  State<FieldOperationsScreen> createState() => _FieldOperationsScreenState();
+}
+
+class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
+  var updatedFieldOperationsObject;
+  Set finalOptionsSet = <String>{};
+  var finalString;
+  var ploughingValue;
+  var rippingValue;
+  var plantingBasinsValue;
+  var byHandValue;
+  var otherValue;
+
+  @override
+  void initState() {
+    super.initState();
+
+    updatedFieldOperationsObject = Provider.of<FieldOperationsProvider>(
+      context,
+      listen: false,
+    ).getFieldOperationsObject;
+
+    finalOptionsSet =
+        updatedFieldOperationsObject.methodOfLandPreparation.split(',').toSet();
+    ploughingValue = finalOptionsSet.contains('Ploughing');
+    rippingValue = finalOptionsSet.contains('Ripping');
+    plantingBasinsValue = finalOptionsSet.contains('Planting-Basins');
+    byHandValue = finalOptionsSet.contains('By-Hand');
+    otherValue = finalOptionsSet.contains('Other');
+
+    finalString = finalOptionsSet.join(',');
+  }
+
+  void onChangedPloughingValue(
+    bool newValue,
+    String pickedValue,
+  ) {
+    setState(() {
+      ploughingValue = newValue;
+      optionHandler(
+        newValue,
+        pickedValue,
+      );
+    });
+  }
+
+  void onChangedRippingValue(
+    bool newValue,
+    String pickedValue,
+  ) {
+    setState(() {
+      rippingValue = newValue;
+      optionHandler(
+        newValue,
+        pickedValue,
+      );
+    });
+  }
+
+  void onChangedPlantingBasinsValue(
+    bool newValue,
+    String pickedValue,
+  ) {
+    setState(() {
+      plantingBasinsValue = newValue;
+      optionHandler(
+        newValue,
+        pickedValue,
+      );
+    });
+  }
+
+  void onChangedByHandValue(
+    bool newValue,
+    String pickedValue,
+  ) {
+    setState(() {
+      byHandValue = newValue;
+      optionHandler(
+        newValue,
+        pickedValue,
+      );
+    });
+  }
+
+  void onChangedOtherValue(
+    bool newValue,
+    String pickedValue,
+  ) {
+    setState(() {
+      otherValue = newValue;
+      optionHandler(
+        newValue,
+        pickedValue,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +123,36 @@ class FieldOperationsScreen extends StatelessWidget {
       listen: true,
     ).getFieldOperationsObject;
 
-    FieldOperationsModel updatedFieldOperationsObject =
-        Provider.of<FieldOperationsProvider>(
-      context,
-      listen: false,
-    ).getFieldOperationsObject;
+    List methodOfLandPreparationOptions = [
+      {
+        'label': 'Ploughing',
+        'value': ploughingValue as bool,
+        'onChanged': onChangedPloughingValue,
+      },
+      {
+        'label': 'Ripping',
+        'value': rippingValue as bool,
+        'onChanged': onChangedRippingValue,
+      },
+      {
+        'label': 'Planting-Basins',
+        'value': plantingBasinsValue as bool,
+        'onChanged': onChangedPlantingBasinsValue,
+      },
+      {
+        'label': 'By-Hand',
+        'value': byHandValue as bool,
+        'onChanged': onChangedByHandValue,
+      },
+      {
+        'label': 'Other',
+        'value': otherValue as bool,
+        'onChanged': onChangedOtherValue,
+      },
+    ];
 
     void dateOfLandPrepHandler(value) {
       updatedFieldOperationsObject.dateOfLandPreparation = value;
-    }
-
-    void methodOfLandPrepHandler(value) {
-      updatedFieldOperationsObject.methodOfLandPreparation = value;
     }
 
     void dateOfPlantingHandler(value) {
@@ -127,21 +244,18 @@ class FieldOperationsScreen extends StatelessWidget {
           ),
           ListWidgetComponent(
             title: 'Method of Land Preparation',
-            subtitle: fieldOperationsObject.methodOfLandPreparation,
+            subtitle: fieldOperationsObject.methodOfLandPreparation == ''
+                ? 'Blank'
+                : fieldOperationsObject.methodOfLandPreparation,
             value: fieldOperationsObject.methodOfLandPreparation,
             isDateField: false,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: methodOfLandPrepHandler,
-            onSubmitHandler: onSubmitHandler,
+            onChangeTextValueHandler: () {},
+            onSubmitHandler: () {},
             isDropDownField: true,
-            listOfValues: <String>[
-              'Ploughing',
-              'Ripping',
-              'Planting-Basins',
-              'By-Hand',
-              'Other',
-            ],
+            listOfValues: methodOfLandPreparationOptions,
             isTextField: false,
+            isLeadingToCheckBoxScreen: true,
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
@@ -333,5 +447,26 @@ class FieldOperationsScreen extends StatelessWidget {
 
   String _formatDate(dateTimeObject) {
     return DateFormat.yMMMd().format(dateTimeObject);
+  }
+
+  void optionHandler(newValue, pickedValue) {
+    if (newValue) {
+      finalOptionsSet.add(pickedValue);
+    } else {
+      finalOptionsSet.remove(pickedValue);
+    }
+    finalOptionsSet.remove('');
+
+    finalString = finalOptionsSet.join(',');
+
+    updatedFieldOperationsObject.methodOfLandPreparation = finalString;
+
+    updatedFieldOperationsObject.lastUpdated = DateTime.now();
+    updatedFieldOperationsObject.isUpToDateInServer = 'No';
+
+    Provider.of<FieldOperationsProvider>(
+      context,
+      listen: false,
+    ).updateFieldOperationsObject(updatedFieldOperationsObject);
   }
 }

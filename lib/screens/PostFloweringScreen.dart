@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../helpers/id_generator_helper.dart';
 
 import '../providers/PostFloweringProvider.dart';
-import '../providers//AuthProvider.dart';
+import '../providers/AuthProvider.dart';
 
 import '../models/PostFloweringModel.dart';
 
@@ -19,6 +19,11 @@ class PostFloweringScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
+
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
 
@@ -85,11 +90,6 @@ class PostFloweringScreen extends StatelessWidget {
 
       Navigator.of(context).pop();
     }
-
-    final String crop = Provider.of<AuthProvider>(
-      context,
-      listen: false,
-    ).crop;
 
     return Scaffold(
       appBar: AppBar(

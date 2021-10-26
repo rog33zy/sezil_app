@@ -597,7 +597,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
     } else {
       finalOptionsPrevSeasonSet.remove(pickedValue);
     }
-    finalOptionsPrevSeasonSet.remove('');
+    finalOptionsPrevSeasonSet.remove('Blank');
 
     finalStringPrevSeason = finalOptionsPrevSeasonSet.join(',');
 
@@ -618,7 +618,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
     } else {
       finalOptionsSeasonBeforeLastSet.remove(pickedValue);
     }
-    finalOptionsSeasonBeforeLastSet.remove('');
+    finalOptionsSeasonBeforeLastSet.remove('Blank');
 
     finalStringSeasonBeforeLast = finalOptionsSeasonBeforeLastSet.join(',');
     updatedFieldProfileObject.cropGrownTwoSeasonsAgo =

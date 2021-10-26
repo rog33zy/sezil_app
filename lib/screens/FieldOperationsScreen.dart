@@ -455,7 +455,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
     } else {
       finalOptionsSet.remove(pickedValue);
     }
-    finalOptionsSet.remove('');
+    finalOptionsSet.remove('Blank');
 
     finalString = finalOptionsSet.join(',');
 

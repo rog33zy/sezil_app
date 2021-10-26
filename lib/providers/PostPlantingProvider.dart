@@ -50,6 +50,12 @@ class PostPlantingProvider with ChangeNotifier {
             updatedPostPlantingObject.seedlingVigourComments,
         'plantStand': updatedPostPlantingObject.plantStand,
         'plantStandComments': updatedPostPlantingObject.plantStandComments,
+        'pestResistance': updatedPostPlantingObject.pestResistance,
+        'pestResistanceComments':
+            updatedPostPlantingObject.pestResistanceComments,
+        'diseasesResistance': updatedPostPlantingObject.diseasesResistance,
+        'diseasesResistanceComments':
+            updatedPostPlantingObject.diseasesResistanceComments,
         'isUpToDateInServer': updatedPostPlantingObject.isUpToDateInServer,
       },
     );
@@ -68,6 +74,12 @@ class PostPlantingProvider with ChangeNotifier {
                 postPlantingObject['seedlingVigourComments'],
             plantStand: postPlantingObject['plantStand'],
             plantStandComments: postPlantingObject['plantStandComments'],
+            pestResistance: postPlantingObject['pestResistance'],
+            pestResistanceComments:
+                postPlantingObject['pestResistanceComments'],
+            diseasesResistance: postPlantingObject['diseasesResistance'],
+            diseasesResistanceComments:
+                postPlantingObject['diseasesResistanceComments'],
             isUpToDateInServer: postPlantingObject['isUpToDateInServer'],
           ),
         )

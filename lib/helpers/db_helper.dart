@@ -104,6 +104,10 @@ class DBHelper {
                   seedlingVigourComments TEXT,
                   plantStand INTEGER,
                   plantStandComments TEXT,
+                  pestResistance TEXT,
+                  pestResistanceComments TEXT,
+                  diseasesResistance TEXT,
+                  diseasesResistanceComments TEXT,
                   isUpToDateInServer TEXT
                 )
           ''',

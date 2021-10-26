@@ -6,6 +6,10 @@ class PostPlantingModel {
   String seedlingVigourComments;
   int? plantStand;
   String plantStandComments;
+  String pestResistance;
+  String pestResistanceComments;
+  String diseasesResistance;
+  String diseasesResistanceComments;
   String isUpToDateInServer;
 
   PostPlantingModel({
@@ -16,6 +20,10 @@ class PostPlantingModel {
     this.plantStand,
     this.seedlingVigourComments = 'Blank',
     this.plantStandComments = 'Blank',
+    this.pestResistance = 'Blank',
+    this.pestResistanceComments = 'Blank',
+    this.diseasesResistance = 'Blank',
+    this.diseasesResistanceComments = 'Blank',
     this.isUpToDateInServer = 'No',
   });
 }

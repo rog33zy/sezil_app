@@ -85,6 +85,22 @@ class PostPlantingScreen extends StatelessWidget {
       Navigator.of(context).pop();
     }
 
+    void pestResistanceHandler(value) {
+      updatedPostPlantingObject.pestResistance = value;
+    }
+
+    void pestResistanceCommentsHandler(value) {
+      updatedPostPlantingObject.pestResistanceComments = value;
+    }
+
+    void diseasesResistanceHandler(value) {
+      updatedPostPlantingObject.diseasesResistance = value;
+    }
+
+    void diseasesResistanceCommentsHandler(value) {
+      updatedPostPlantingObject.diseasesResistanceComments = value;
+    }
+
     final String crop = Provider.of<AuthProvider>(
       context,
       listen: false,
@@ -133,6 +149,48 @@ class PostPlantingScreen extends StatelessWidget {
             onChangeGenComValueHandler: plantStandCommentsHandler,
             genComSubtitle: postPlantingObject.plantStandComments,
           ),
+          if (crop == 'Beans')
+            ListWidgetComponent(
+              title: 'Pest Resistance',
+              subtitle: postPlantingObject.pestResistance,
+              value: postPlantingObject.pestResistance,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: pestResistanceHandler,
+              onSubmitHandler: onSubmitHandler,
+              isDropDownField: true,
+              listOfValues: <String>[
+                '1-Very High',
+                '2-High',
+                '3-Moderate',
+                '4-Low',
+                '5-Very Low',
+              ],
+              isTrait: true,
+              isTextField: false,
+              onChangeGenComValueHandler: pestResistanceCommentsHandler,
+              genComSubtitle: postPlantingObject.pestResistanceComments,
+            ),
+          if (crop == 'Beans')
+            ListWidgetComponent(
+              title: 'Disease Resistance',
+              subtitle: postPlantingObject.diseasesResistance,
+              value: postPlantingObject.diseasesResistance,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: diseasesResistanceHandler,
+              onSubmitHandler: onSubmitHandler,
+              isDropDownField: true,
+              listOfValues: <String>[
+                '1-Very High',
+                '2-High',
+                '3-Moderate',
+                '4-Low',
+                '5-Very Low',
+              ],
+              isTrait: true,
+              isTextField: false,
+              onChangeGenComValueHandler: diseasesResistanceCommentsHandler,
+              genComSubtitle: postPlantingObject.diseasesResistanceComments,
+            ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

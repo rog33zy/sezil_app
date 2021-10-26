@@ -5,11 +5,12 @@ import 'package:provider/provider.dart';
 import '../helpers/id_generator_helper.dart';
 
 import '../providers/PostFloweringProvider.dart';
+import '../providers//AuthProvider.dart';
 
 import '../models/PostFloweringModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/QRViewFloatingActionButtonComp.dart';
+import '../components/UI/PlotsFloatingButtons.dart';
 
 class PostFloweringScreen extends StatelessWidget {
   PostFloweringScreen({Key? key}) : super(key: key);
@@ -85,6 +86,11 @@ class PostFloweringScreen extends StatelessWidget {
       Navigator.of(context).pop();
     }
 
+    final String crop = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).crop;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('PostFlowering - Plot $plotId'),
@@ -134,7 +140,11 @@ class PostFloweringScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: QRViewFloatingActionButtonComp(),
+      floatingActionButton: PlotsFloatingButtons(
+        routeName: routeName,
+        crop: crop,
+        plotId: plotId,
+      ),
     );
   }
 }

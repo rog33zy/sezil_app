@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../helpers/id_generator_helper.dart';
-import '../helpers/next_field_helper.dart';
 
 import '../providers/PostPlantingProvider.dart';
 import '../providers/AuthProvider.dart';
@@ -11,8 +10,7 @@ import '../providers/AuthProvider.dart';
 import '../models/PostPlantingModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/QRViewFloatingActionButtonComp.dart';
-import '../components/UI/NextPlotFloatingActionButtonComp.dart';
+import '../components/UI/PlotsFloatingButtons.dart';
 
 class PostPlantingScreen extends StatelessWidget {
   const PostPlantingScreen({Key? key}) : super(key: key);
@@ -138,22 +136,8 @@ class PostPlantingScreen extends StatelessWidget {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          NextPlotFloatingActionButtonComp(
-            routeName: routeName,
-            argument: NextFieldHelper.findNextFieldPlotId(
-              crop,
-              plotId,
-            ),
-          ),
-          SizedBox(
-            height: 14,
-          ),
-          QRViewFloatingActionButtonComp(),
-        ],
-      ),
+      floatingActionButton: PlotsFloatingButtons(
+          routeName: routeName, crop: crop, plotId: plotId),
     );
   }
 }

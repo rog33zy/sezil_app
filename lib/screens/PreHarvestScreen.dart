@@ -11,7 +11,7 @@ import '../providers/PreHarvestProvider.dart';
 import '../models/PreHarvestModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/QRViewFloatingActionButtonComp.dart';
+import '../components/UI/PlotsFloatingButtons.dart';
 
 class PreHarvestScreen extends StatelessWidget {
   PreHarvestScreen({Key? key}) : super(key: key);
@@ -461,7 +461,11 @@ class PreHarvestScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: QRViewFloatingActionButtonComp(),
+      floatingActionButton: PlotsFloatingButtons(
+        routeName: routeName,
+        crop: crop,
+        plotId: plotId,
+      ),
     );
   }
 }

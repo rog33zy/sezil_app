@@ -11,7 +11,7 @@ import '../providers/PostHarvestProvider.dart';
 import '../models/PostHarvestModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/QRViewFloatingActionButtonComp.dart';
+import '../components/UI/PlotsFloatingButtons.dart';
 
 class PostHarvestScreen extends StatelessWidget {
   PostHarvestScreen({Key? key}) : super(key: key);
@@ -297,7 +297,11 @@ class PostHarvestScreen extends StatelessWidget {
             ),
         ],
       ),
-      floatingActionButton: QRViewFloatingActionButtonComp(),
+      floatingActionButton: PlotsFloatingButtons(
+        routeName: routeName,
+        crop: crop,
+        plotId: plotId,
+      ),
     );
   }
 }

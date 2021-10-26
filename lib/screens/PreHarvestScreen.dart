@@ -6,7 +6,6 @@ import '../providers/AuthProvider.dart';
 
 import '../helpers/id_generator_helper.dart';
 
-
 import '../providers/PreHarvestProvider.dart';
 
 import '../models/PreHarvestModel.dart';
@@ -15,10 +14,9 @@ import '../components/UI/ListWidgetComponent.dart';
 import '../components/UI/FloatingActionButtonComp.dart';
 
 class PreHarvestScreen extends StatelessWidget {
-   PreHarvestScreen({Key? key}) : super(key: key);
+  PreHarvestScreen({Key? key}) : super(key: key);
 
   static const routeName = '/pre-harvest';
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class PreHarvestScreen extends StatelessWidget {
       context,
       listen: false,
     ).crop;
-    
+
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
 
@@ -130,6 +128,14 @@ class PreHarvestScreen extends StatelessWidget {
 
     void headSizeAppreciationCommentsHandler(String value) {
       updatedPreHarvestObject.headSizeAppreciationComments = value;
+    }
+
+    void numberOfHeadsAppreciationHandler(String value) {
+      updatedPreHarvestObject.numberOfHeadsAppreciation = value;
+    }
+
+    void numberOfHeadsAppreciationCommentsHandler(String value) {
+      updatedPreHarvestObject.numberOfHeadsAppreciationComments = value;
     }
 
     void plantGrowthHabitAppreciationHandler(String value) {
@@ -364,6 +370,29 @@ class PreHarvestScreen extends StatelessWidget {
               isTextField: false,
               onChangeGenComValueHandler: headSizeAppreciationCommentsHandler,
               genComSubtitle: preHarvestObject.headSizeAppreciationComments,
+            ),
+          if (crop == 'Sunflower')
+            ListWidgetComponent(
+              title: 'Number of Heads Appreciation',
+              subtitle: preHarvestObject.numberOfHeadsAppreciation,
+              value: preHarvestObject.numberOfHeadsAppreciation,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: numberOfHeadsAppreciationHandler,
+              onSubmitHandler: onSubmitHandler,
+              isDropDownField: true,
+              listOfValues: <String>[
+                '1-Very Good',
+                '2-Good',
+                '3-Fair',
+                '4-Bad',
+                '5-Very Bad',
+              ],
+              isTrait: true,
+              isTextField: false,
+              onChangeGenComValueHandler:
+                  numberOfHeadsAppreciationCommentsHandler,
+              genComSubtitle:
+                  preHarvestObject.numberOfHeadsAppreciationComments,
             ),
           if (crop == 'Beans')
             ListWidgetComponent(

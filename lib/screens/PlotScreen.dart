@@ -46,7 +46,7 @@ class PlotScreen extends StatelessWidget {
               routeName: FloweringScreen.routeName,
               argument: plotName,
             ),
-            if (crop == 'Sunflower')
+            if (crop != 'Sorghum')
               HomePageScreenOption(
                 title: "Post-Flowering",
                 routeName: PostFloweringScreen.routeName,

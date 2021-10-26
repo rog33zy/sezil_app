@@ -20,6 +20,8 @@ class PreHarvestModel {
   String grainQualityAppreciationComments;
   String headSizeAppreciation;
   String headSizeAppreciationComments;
+  String numberOfHeadsAppreciation;
+  String numberOfHeadsAppreciationComments;
   String plantGrowthHabitAppreciation;
   String plantGrowthHabitAppreciationComments;
   String podLengthAppreciation;
@@ -50,6 +52,8 @@ class PreHarvestModel {
     this.grainQualityAppreciationComments = 'Blank',
     this.headSizeAppreciation = 'Blank',
     this.headSizeAppreciationComments = 'Blank',
+    this.numberOfHeadsAppreciation = 'Blank',
+    this.numberOfHeadsAppreciationComments = 'Blank',
     this.plantGrowthHabitAppreciation = 'Blank',
     this.plantGrowthHabitAppreciationComments = 'Blank',
     this.podLengthAppreciation = 'Blank',

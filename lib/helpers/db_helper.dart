@@ -168,6 +168,8 @@ class DBHelper {
                   grainQualityAppreciationComments TEXT,
                   headSizeAppreciation TEXT,
                   headSizeAppreciationComments TEXT,
+                  numberOfHeadsAppreciation TEXT,
+                  numberOfHeadsAppreciationComments TEXT,
                   plantGrowthHabitAppreciation TEXT,
                   plantGrowthHabitAppreciationComments TEXT,
                   podLengthAppreciation TEXT,

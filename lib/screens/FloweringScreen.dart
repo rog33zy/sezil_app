@@ -18,7 +18,6 @@ class FloweringScreen extends StatelessWidget {
 
   static const routeName = '/flowering';
 
-
   @override
   Widget build(BuildContext context) {
     final String crop = Provider.of<AuthProvider>(
@@ -127,7 +126,7 @@ class FloweringScreen extends StatelessWidget {
             onChangeGenComValueHandler: growingCycleAppreciationCommentsHandler,
             genComSubtitle: floweringObject.growingCycleAppreciationComments,
           ),
-          if (crop != 'Sunflower')
+          if (crop == 'Sorghum')
             ListWidgetComponent(
               title: 'Pest Resistance',
               subtitle: floweringObject.pestResistance,
@@ -148,7 +147,7 @@ class FloweringScreen extends StatelessWidget {
               onChangeGenComValueHandler: pestResistanceCommentsHandler,
               genComSubtitle: floweringObject.pestResistanceComments,
             ),
-          if (crop != 'Sunflower')
+          if (crop == 'Sorghum')
             ListWidgetComponent(
               title: 'Disease Resistance',
               subtitle: floweringObject.diseasesResistance,

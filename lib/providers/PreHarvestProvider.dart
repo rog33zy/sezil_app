@@ -69,6 +69,10 @@ class PreHarvestProvider with ChangeNotifier {
         'headSizeAppreciation': updatedPreHarvestObject.headSizeAppreciation,
         'headSizeAppreciationComments':
             updatedPreHarvestObject.headSizeAppreciationComments,
+        'numberOfHeadsAppreciation':
+            updatedPreHarvestObject.numberOfHeadsAppreciation,
+        'numberOfHeadsAppreciationComments':
+            updatedPreHarvestObject.numberOfHeadsAppreciationComments,
         'plantGrowthHabitAppreciation':
             updatedPreHarvestObject.plantGrowthHabitAppreciation,
         'plantGrowthHabitAppreciationComments':
@@ -117,6 +121,10 @@ class PreHarvestProvider with ChangeNotifier {
             headSizeAppreciation: preHarvestObject['headSizeAppreciation'],
             headSizeAppreciationComments:
                 preHarvestObject['headSizeAppreciationComments'],
+            numberOfHeadsAppreciation:
+                preHarvestObject['numberOfHeadsAppreciation'],
+            numberOfHeadsAppreciationComments:
+                preHarvestObject['numberOfHeadsAppreciationComments'],
             plantGrowthHabitAppreciation:
                 preHarvestObject['plantGrowthHabitAppreciation'],
             plantGrowthHabitAppreciationComments:

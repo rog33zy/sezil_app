@@ -16,11 +16,8 @@ class PostFloweringScreen extends StatelessWidget {
 
   static const routeName = '/post-flowering';
 
-
   @override
   Widget build(BuildContext context) {
-    
-
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
 
@@ -45,7 +42,8 @@ class PostFloweringScreen extends StatelessWidget {
       );
     }
 
-    final PostFloweringModel postFloweringObject = Provider.of<PostFloweringProvider>(
+    final PostFloweringModel postFloweringObject =
+        Provider.of<PostFloweringProvider>(
       context,
       listen: true,
     ).findByPlot(plotId);
@@ -94,47 +92,46 @@ class PostFloweringScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-      
-            ListWidgetComponent(
-              title: 'Pest Resistance',
-              subtitle: postFloweringObject.pestResistance,
-              value: postFloweringObject.pestResistance,
-              onChangeDateValueHandler: () {},
-              onChangeTextValueHandler: pestResistanceHandler,
-              onSubmitHandler: onSubmitHandler,
-              isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very High',
-                '2-High',
-                '3-Moderate',
-                '4-Low',
-                '5-Very Low',
-              ],
-              isTrait: true,
-              isTextField: false,
-              onChangeGenComValueHandler: pestResistanceCommentsHandler,
-              genComSubtitle: postFloweringObject.pestResistanceComments,
-            ),
-            ListWidgetComponent(
-              title: 'Disease Resistance',
-              subtitle: postFloweringObject.diseasesResistance,
-              value: postFloweringObject.diseasesResistance,
-              onChangeDateValueHandler: () {},
-              onChangeTextValueHandler: diseasesResistanceHandler,
-              onSubmitHandler: onSubmitHandler,
-              isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very High',
-                '2-High',
-                '3-Moderate',
-                '4-Low',
-                '5-Very Low',
-              ],
-              isTrait: true,
-              isTextField: false,
-              onChangeGenComValueHandler: diseasesResistanceCommentsHandler,
-              genComSubtitle: postFloweringObject.diseasesResistanceComments,
-            ),
+          ListWidgetComponent(
+            title: 'Pest Resistance',
+            subtitle: postFloweringObject.pestResistance,
+            value: postFloweringObject.pestResistance,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: pestResistanceHandler,
+            onSubmitHandler: onSubmitHandler,
+            isDropDownField: true,
+            listOfValues: <String>[
+              '1-Very High',
+              '2-High',
+              '3-Moderate',
+              '4-Low',
+              '5-Very Low',
+            ],
+            isTrait: true,
+            isTextField: false,
+            onChangeGenComValueHandler: pestResistanceCommentsHandler,
+            genComSubtitle: postFloweringObject.pestResistanceComments,
+          ),
+          ListWidgetComponent(
+            title: 'Disease Resistance',
+            subtitle: postFloweringObject.diseasesResistance,
+            value: postFloweringObject.diseasesResistance,
+            onChangeDateValueHandler: () {},
+            onChangeTextValueHandler: diseasesResistanceHandler,
+            onSubmitHandler: onSubmitHandler,
+            isDropDownField: true,
+            listOfValues: <String>[
+              '1-Very High',
+              '2-High',
+              '3-Moderate',
+              '4-Low',
+              '5-Very Low',
+            ],
+            isTrait: true,
+            isTextField: false,
+            onChangeGenComValueHandler: diseasesResistanceCommentsHandler,
+            genComSubtitle: postFloweringObject.diseasesResistanceComments,
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButtonComp(),

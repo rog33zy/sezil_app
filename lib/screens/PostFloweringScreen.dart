@@ -9,7 +9,7 @@ import '../providers/PostFloweringProvider.dart';
 import '../models/PostFloweringModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/FloatingActionButtonComp.dart';
+import '../components/UI/QRViewFloatingActionButtonComp.dart';
 
 class PostFloweringScreen extends StatelessWidget {
   PostFloweringScreen({Key? key}) : super(key: key);
@@ -134,7 +134,7 @@ class PostFloweringScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButtonComp(),
+      floatingActionButton: QRViewFloatingActionButtonComp(),
     );
   }
 }

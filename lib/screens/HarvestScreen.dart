@@ -12,13 +12,12 @@ import '../providers/HarvestProvider.dart';
 import '../models/HarvestModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/FloatingActionButtonComp.dart';
+import '../components/UI/QRViewFloatingActionButtonComp.dart';
 
 class HarvestScreen extends StatelessWidget {
   HarvestScreen({Key? key}) : super(key: key);
 
   static const routeName = '/harvest';
-
 
   @override
   Widget build(BuildContext context) {
@@ -326,7 +325,7 @@ class HarvestScreen extends StatelessWidget {
             ),
         ],
       ),
-      floatingActionButton: FloatingActionButtonComp(),
+      floatingActionButton: QRViewFloatingActionButtonComp(),
     );
   }
 

@@ -11,7 +11,7 @@ import '../providers/FloweringProvider.dart';
 import '../models/FloweringModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/FloatingActionButtonComp.dart';
+import '../components/UI/QRViewFloatingActionButtonComp.dart';
 
 class FloweringScreen extends StatelessWidget {
   FloweringScreen({Key? key}) : super(key: key);
@@ -170,7 +170,7 @@ class FloweringScreen extends StatelessWidget {
             ),
         ],
       ),
-      floatingActionButton: FloatingActionButtonComp(),
+      floatingActionButton: QRViewFloatingActionButtonComp(),
     );
   }
 }

@@ -34,13 +34,11 @@ class PostPlantingProvider with ChangeNotifier {
       _postPlantingObjectsList[_postPlantingObjectsList.indexWhere(
               (element) => element.id == updatedPostPlantingObject.id)] =
           updatedPostPlantingObject;
-          notifyListeners();
-          
+      notifyListeners();
     } else {
       _postPlantingObjectsList.add(updatedPostPlantingObject);
     }
-    
-  
+
     await DBHelper.insert(
       'postPlanting',
       {

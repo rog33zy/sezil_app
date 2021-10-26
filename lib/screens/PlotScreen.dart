@@ -24,10 +24,10 @@ class PlotScreen extends StatelessWidget {
       listen: false,
     ).crop;
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
-    final plotName = argumentsMap['argument'];
+    final plotId = argumentsMap['argument'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Plot $plotName'),
+        title: Text('Plot $plotId'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -39,33 +39,33 @@ class PlotScreen extends StatelessWidget {
             HomePageScreenOption(
               title: "Post-Planting",
               routeName: PostPlantingScreen.routeName,
-              argument: plotName,
+              argument: plotId,
             ),
             HomePageScreenOption(
               title: "Flowering",
               routeName: FloweringScreen.routeName,
-              argument: plotName,
+              argument: plotId,
             ),
             if (crop != 'Sorghum')
               HomePageScreenOption(
                 title: "Post-Flowering",
                 routeName: PostFloweringScreen.routeName,
-                argument: plotName,
+                argument: plotId,
               ),
             HomePageScreenOption(
               title: "Pre-Harvest",
               routeName: PreHarvestScreen.routeName,
-              argument: plotName,
+              argument: plotId,
             ),
             HomePageScreenOption(
               title: "Harvest",
               routeName: HarvestScreen.routeName,
-              argument: plotName,
+              argument: plotId,
             ),
             HomePageScreenOption(
               title: "Post-Harvest",
               routeName: PostHarvestScreen.routeName,
-              argument: plotName,
+              argument: plotId,
             ),
           ],
         ),

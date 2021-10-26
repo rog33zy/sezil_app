@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../helpers/id_generator_helper.dart';
+import '../helpers/next_field_helper.dart';
 
 import '../providers/PostPlantingProvider.dart';
 
 import '../models/PostPlantingModel.dart';
 
 import '../components/UI/ListWidgetComponent.dart';
-import '../components/UI/FloatingActionButtonComp.dart';
+import '../components/UI/QRViewFloatingActionButtonComp.dart';
+import '../components/UI/NextPlotFloatingActionButtonComp.dart';
 
 class PostPlantingScreen extends StatelessWidget {
   const PostPlantingScreen({Key? key}) : super(key: key);
@@ -20,6 +22,7 @@ class PostPlantingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
+
     final bool isObjectExisiting = Provider.of<PostPlantingProvider>(
       context,
       listen: false,
@@ -132,16 +135,17 @@ class PostPlantingScreen extends StatelessWidget {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            onPressed: null,
-            child: Icon(
-              Icons.arrow_right_alt_outlined,
+          NextPlotFloatingActionButtonComp(
+            routeName: routeName,
+            argument: NextFieldHelper.findNextFieldPlotId(
+              'Maize',
+              plotId,
             ),
           ),
           SizedBox(
             height: 10,
           ),
-          FloatingActionButtonComp(),
+          QRViewFloatingActionButtonComp(),
         ],
       ),
     );

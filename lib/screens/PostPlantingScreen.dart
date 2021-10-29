@@ -110,6 +110,7 @@ class PostPlantingScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Post Planting - Plot $plotId'),
         centerTitle: true,
+        backgroundColor: Color(0xFF257150),
       ),
       body: ListView(
         children: [

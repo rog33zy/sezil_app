@@ -17,11 +17,11 @@ import '../components/homePageScreen/HomePageScreenOption.dart';
 // import '../components/UI/QRViewFloatingActionButtonComp.dart';
 import '../components/UI/AppDrawer.dart';
 
-import 'TraitsScreen.dart';
 import 'FieldProfileScreen.dart';
 import 'FieldOperationsScreen.dart';
 import 'CurrentSeasonVarietyScreen.dart';
 import 'FertilizationScreen.dart';
+import 'TraitsScreen.dart';
 
 import '../constants/Seasons.dart';
 
@@ -87,8 +87,10 @@ class HomePageScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Welcome, ${authProvider.firstName![0]}Farmer 😃"),
+        title: Text('Welcome, ${authProvider.firstName![0]}Farmer 😃'),
         centerTitle: true,
+        // backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Color(0xFF257150),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -97,23 +99,23 @@ class HomePageScreen extends StatelessWidget {
               height: 10.0,
             ),
             HomePageScreenOption(
-              title: "Traits",
+              title: 'Traits',
               routeName: TraitsScreen.routeName,
             ),
             HomePageScreenOption(
-              title: "Field Profile",
+              title: 'Field Profile',
               routeName: FieldProfileScreen.routeName,
             ),
             HomePageScreenOption(
-              title: "Field Operations",
+              title: 'Field Operations',
               routeName: FieldOperationsScreen.routeName,
             ),
             HomePageScreenOption(
-              title: "${Seasons.currentSeason} Variety",
+              title: '${Seasons.currentSeason} Variety',
               routeName: CurrentSeasonVarietyScreen.routeName,
             ),
             HomePageScreenOption(
-              title: "Fertilization",
+              title: 'Fertilization',
               routeName: FertilizationScreen.routeName,
             ),
           ],

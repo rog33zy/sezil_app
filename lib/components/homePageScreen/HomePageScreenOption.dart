@@ -4,6 +4,7 @@ class HomePageScreenOption extends StatelessWidget {
   final String title;
   final String routeName;
   final dynamic argument;
+  final dynamic argument2;
   final bool isClickable;
 
   HomePageScreenOption({
@@ -11,6 +12,7 @@ class HomePageScreenOption extends StatelessWidget {
     required this.routeName,
     this.argument,
     this.isClickable = true,
+    this.argument2 = '',
   });
 
   @override
@@ -29,6 +31,7 @@ class HomePageScreenOption extends StatelessWidget {
               routeName,
               arguments: {
                 'argument': argument,
+                'argument2': argument2,
               },
             );
           } else {
@@ -36,7 +39,7 @@ class HomePageScreenOption extends StatelessWidget {
           }
         },
         child: Card(
-          color: isClickable ? Theme.of(context).primaryColor : Colors.grey[500],
+          color: isClickable ? Color(0xFF257150) : Colors.grey[500],
           elevation: 4.0,
           child: Center(
               child: Text(

@@ -17,8 +17,8 @@ import './providers/PostHarvestProvider.dart';
 import './providers/AuthProvider.dart';
 
 import './screens/HomePageScreen.dart';
+import 'screens/PlotsScreen.dart';
 import 'screens/TraitsScreen.dart';
-import './screens/PlotScreen.dart';
 import './screens/FieldOperationsScreen.dart';
 import './screens/EditValueScreen.dart';
 import './screens/FieldProfileScreen.dart';
@@ -108,7 +108,7 @@ class MyApp extends StatelessWidget {
             CurrentSeasonVarietyScreen.routeName: (ctx) =>
                 CurrentSeasonVarietyScreen(),
             FertilizationScreen.routeName: (ctx) => FertilizationScreen(),
-            PlotScreen.routeName: (ctx) => PlotScreen(),
+            PlotsScreen.routeName: (ctx) => PlotsScreen(),
             EditValueScreen.routeName: (ctx) => EditValueScreen(),
             DetailedFertilizationScreen.routeName: (ctx) =>
                 DetailedFertilizationScreen(),

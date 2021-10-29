@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import 'PlotScreen.dart';
 import 'TraitsScreen.dart';
 
 class QRViewScreen extends StatefulWidget {
@@ -132,7 +131,7 @@ class _QRViewScreenState extends State<QRViewScreen> {
         result = scanData;
       });
       if (result!.code == 'Bubebe-01') {
-        Navigator.of(context).pushReplacementNamed(PlotScreen.routeName,
+        Navigator.of(context).pushReplacementNamed(TraitsScreen.routeName,
             arguments: {'argument': result!.code});
       } else {
         Navigator.of(context).pushReplacementNamed(TraitsScreen.routeName);

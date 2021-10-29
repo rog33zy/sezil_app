@@ -11,7 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import 'PlotScreen.dart';
+import 'TraitsScreen.dart';
 
 class QRViewScreen extends StatefulWidget {
   const QRViewScreen({Key? key}) : super(key: key);
@@ -51,7 +51,6 @@ class _QRViewScreenState extends State<QRViewScreen> {
   }
 
   Widget _buildQrView(BuildContext context) {
-    
     var scanArea = (MediaQuery.of(context).size.width < 400 ||
             MediaQuery.of(context).size.height < 400)
         ? 150.0
@@ -85,7 +84,7 @@ class _QRViewScreenState extends State<QRViewScreen> {
         result = scanData;
       });
       if (plots.contains(result!.code)) {
-        Navigator.of(context).popAndPushNamed(PlotScreen.routeName,
+        Navigator.of(context).popAndPushNamed(TraitsScreen.routeName,
             arguments: {'argument': result!.code});
       } else {
         Navigator.of(context).pushReplacementNamed('/');

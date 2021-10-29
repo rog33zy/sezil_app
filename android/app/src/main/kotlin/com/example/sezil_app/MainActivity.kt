@@ -1,4 +1,4 @@
-package com.example.sezil_app
+package com.goodnatureagro.sezil_app
 
 import io.flutter.embedding.android.FlutterActivity
 

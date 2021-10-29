@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../components/UI/AppDrawer.dart';
 
-
 class SynchronizeScreen extends StatefulWidget {
   static const routeName = '/synchronize-screen';
-  
+
   const SynchronizeScreen({Key? key}) : super(key: key);
 
   @override
@@ -16,7 +15,6 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
   var _isLoading = false;
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Synchronize'),
@@ -27,9 +25,8 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
             height: MediaQuery.of(context).size.height * 0.3,
           ),
           Center(
-              child: Text(
-                  'There are 0 items to be synced.'),),
-       
+            child: Text('There are 0 items to be synced.'),
+          ),
           Center(
             child: ConstrainedBox(
               constraints: BoxConstraints.tightFor(
@@ -43,7 +40,10 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                       ),
                     )
                   : ElevatedButton(
-                      onPressed: (){},
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFFF6C00),
+                      ),
+                      onPressed: () {},
                       child: const Text('Sync'),
                     ),
             ),

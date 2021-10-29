@@ -14,7 +14,7 @@ class HomePageFloatingActionButtonComp extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).pushReplacementNamed('/');
         },
-        backgroundColor: Colors.deepOrangeAccent,
+        backgroundColor: Color(0xFFFF6C00),
         child: Icon(
           Icons.house,
         ),

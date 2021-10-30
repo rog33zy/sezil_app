@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import 'package:recase/recase.dart';
 
+import '../providers/RegisterSezilFarmerProvider.dart';
+
 import '../models/UserModel.dart';
 
 import '../components/UI/AppDrawer.dart';
@@ -21,6 +23,10 @@ class RegisterSezilFarmerScreen extends StatefulWidget {
 
 class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
   final _formKey = GlobalKey<FormState>();
+
+  bool _isLoading = false;
+
+  String _errorMessage = "";
 
   UserModel newUserObject = UserModel();
 
@@ -81,28 +87,59 @@ class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
                 validator: _generalValidator(),
                 updateTextFieldInAllInputsMap: updateLastNameValue,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 0,
-                  vertical: 10,
-                ),
-                child: Center(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints.tightFor(
-                      width: 240,
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text('Register Farmer'),
+              if (_isLoading) const CircularProgressIndicator(),
+              if (!_isLoading)
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 0,
+                    vertical: 10,
+                  ),
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints.tightFor(
+                        width: 240,
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() {
+                              _isLoading = true;
+                            });
+                            await Provider.of<RegisterSezilFarmerProvider>(
+                              context,
+                              listen: false,
+                            )
+                                .registerFarmer(newUserObject)
+                                .then(
+                                  (_) => {
+                                    setState(
+                                      () {
+                                        _isLoading = false;
+                                      },
+                                    ),
+                                    Navigator.of(context)
+                                        .pushReplacementNamed('/'),
+                                  },
+                                )
+                                .catchError((error) {
+                              setState(() {
+                                _isLoading = false;
+                                _errorMessage = error;
+                              });
+                            });
+                          }
+                        },
+                        child: const Text('Register Farmer'),
+                      ),
                     ),
                   ),
                 ),
-              )
+              Text(_errorMessage),
             ],
           ),
         ),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
     );
   }
 }

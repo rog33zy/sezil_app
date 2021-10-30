@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 import '../models/UserModel.dart';
 
+import '../constants/BaseUrls.dart';
+
 class RegisterSezilFarmerProvider with ChangeNotifier {
   String? accessToken;
 
@@ -15,7 +17,9 @@ class RegisterSezilFarmerProvider with ChangeNotifier {
   }
 
   Future<void> registerFarmer(UserModel newUserObject) async {
-    final url = Uri.parse('uri');
+    final url = Uri.parse(
+      'https://${BaseUrls.authBaseUrl}/api/authenticate/add_employee/',
+    );
 
     final response = await http.post(
       url,
@@ -38,7 +42,8 @@ class RegisterSezilFarmerProvider with ChangeNotifier {
 
     final username = responseData['user']['username'];
 
-    final url2 = Uri.parse('df');
+    final url2 =
+        Uri.parse('https://${BaseUrls.sourceUrl}/api/accounts/create/');
 
     await http.post(
       url2,

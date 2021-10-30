@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../providers/AuthProvider.dart';
 
 import '../../screens/SynchronizeScreen.dart';
+import '../../screens/RegisterSezilFarmerScreen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -29,6 +30,18 @@ class AppDrawer extends StatelessWidget {
             title: const Text('HOMEPAGE'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed('/');
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.app_registration,
+            ),
+            title: const Text('REGISTER FARMER'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(
+                RegisterSezilFarmerScreen.routeName,
+              );
             },
           ),
           const Divider(),

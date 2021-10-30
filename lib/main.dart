@@ -15,6 +15,7 @@ import './providers/PreHarvestProvider.dart';
 import './providers/HarvestProvider.dart';
 import './providers/PostHarvestProvider.dart';
 import './providers/AuthProvider.dart';
+import 'providers/SynchronizeTraitsProvider.dart';
 
 import './screens/HomePageScreen.dart';
 import 'screens/PlotsScreen.dart';
@@ -37,6 +38,7 @@ import './screens/SynchronizeScreen.dart';
 import './screens/LoginScreen.dart';
 import './screens/LoadingScreen.dart';
 import './screens/PostFloweringScreen.dart';
+import './screens/RegisterSezilFarmerScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -81,6 +83,27 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => PostHarvestProvider(),
         ),
+        ChangeNotifierProxyProvider6<
+            AuthProvider,
+            PostPlantingProvider,
+            FloweringProvider,
+            PostFloweringProvider,
+            PreHarvestProvider,
+            HarvestProvider,
+            SynchronizeTraitsProvider>(
+          create: (_) => SynchronizeTraitsProvider(),
+          update: (ctx,
+              authProvider,
+              postPlantingProvider,
+              floweringProvider,
+              postFloweringProvider,
+              preHarvestProvider,
+              harvestProvider,
+              syncTraitsProvider) {
+            syncTraitsProvider!.accessToken = authProvider.accessToken;
+            return syncTraitsProvider;
+          },
+        )
       ],
       child: Consumer<AuthProvider>(
         builder: (ctx, authProvider, _) => MaterialApp(
@@ -122,6 +145,8 @@ class MyApp extends StatelessWidget {
             FertDressingScreen.routeName: (ctx) => FertDressingScreen(),
             SynchronizeScreen.routeName: (ctx) => SynchronizeScreen(),
             PostFloweringScreen.routeName: (ctx) => PostFloweringScreen(),
+            RegisterSezilFarmerScreen.routeName: (ctx) =>
+                RegisterSezilFarmerScreen(),
           },
         ),
       ),

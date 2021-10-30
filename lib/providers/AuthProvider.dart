@@ -5,25 +5,26 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider with ChangeNotifier {
-  String? _token;
+  String? _accessToken;
   String? _refreshToken;
   String? _username;
   String? _firstName;
+  String? _farmerId;
   DateTime? _expiryDate;
   Timer? _authTimer;
-  bool? _isFieldFinanceAdmin;
+  bool? _isHRAdmin;
   bool? _isSezilMotherTrialFarmer;
   String _crop = 'Maize';
 
   bool get isAuth {
-    return _token != null;
+    return _accessToken != null;
   }
 
-  String? get token {
+  String? get accessToken {
     if (_expiryDate != null &&
         _expiryDate!.isAfter(DateTime.now()) &&
-        _token != null) {
-      return _token;
+        _accessToken != null) {
+      return _accessToken;
     }
     return null;
   }
@@ -36,12 +37,12 @@ class AuthProvider with ChangeNotifier {
     return _firstName;
   }
 
-  bool? get isFieldFinanceAdmin {
-    return _isFieldFinanceAdmin;
+  String? get farmerId {
+    return _farmerId;
   }
 
-  bool? get isSourceFieldSupervisor {
-    return _isSezilMotherTrialFarmer;
+  bool? get isHRAdmin {
+    return _isHRAdmin;
   }
 
   String get crop {
@@ -50,7 +51,7 @@ class AuthProvider with ChangeNotifier {
 
   Future<void> _authenticateUser(Map<String, String> userInputsMap,
       {bool isRefreshing = false}) async {
-    _token = 'accessToken';
+    _accessToken = 'accessToken';
     _refreshToken = 'refreshToken';
     _username = userInputsMap['username'];
     _expiryDate = DateTime(2022);
@@ -78,12 +79,12 @@ class AuthProvider with ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     final userData = json.encode(
       {
-        'token': _token,
+        'token': _accessToken,
         'refreshToken': _refreshToken,
         'username': _username,
         'firstName': _firstName,
         'expiryDate': _expiryDate!.toIso8601String(),
-        'isFieldFinanceAdmin': _isFieldFinanceAdmin,
+        'isHRAdmin': _isHRAdmin,
         'isSourceFieldSupervisor': _isSezilMotherTrialFarmer,
         'crop': _crop,
       },
@@ -120,11 +121,11 @@ class AuthProvider with ChangeNotifier {
       return false;
     }
 
-    _token = extractedUserData['token'];
+    _accessToken = extractedUserData['token'];
     _refreshToken = extractedUserData['refreshToken'];
     _username = extractedUserData['username'];
     _firstName = extractedUserData['firstName'];
-    _isFieldFinanceAdmin = extractedUserData['isFieldFinanceAdmin'];
+    _isHRAdmin = extractedUserData['isHRAdmin'];
     _isSezilMotherTrialFarmer = extractedUserData['isSourceFieldSupervisor'];
     _expiryDate = expiryDate;
     _crop = extractedUserData['crop'];
@@ -135,7 +136,7 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<void> logout() async {
-    _token = null;
+    _accessToken = null;
     _firstName = null;
     _expiryDate = null;
 

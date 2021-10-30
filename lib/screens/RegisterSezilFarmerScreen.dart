@@ -1,0 +1,108 @@
+import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
+
+import 'package:recase/recase.dart';
+
+import '../models/UserModel.dart';
+
+import '../components/UI/AppDrawer.dart';
+import '../components/forms/GenericTextField.dart';
+
+class RegisterSezilFarmerScreen extends StatefulWidget {
+  const RegisterSezilFarmerScreen({Key? key}) : super(key: key);
+
+  static const routeName = '/register-farmer';
+
+  @override
+  State<RegisterSezilFarmerScreen> createState() =>
+      _RegisterSezilFarmerScreenState();
+}
+
+class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
+  final _formKey = GlobalKey<FormState>();
+
+  UserModel newUserObject = UserModel();
+
+  String? Function(String?) _generalValidator() {
+    return (value) {
+      if (value!.isEmpty) {
+        return 'Please enter value';
+      }
+      return null;
+    };
+  }
+
+  void Function()? updateFirstNameValue(String value) {
+    newUserObject.firstName = value.titleCase;
+  }
+
+  void Function()? updateLastNameValue(String value) {
+    newUserObject.lastName = value.titleCase;
+  }
+
+  void Function()? updateEmailValue(String value) {
+    newUserObject.email = value;
+  }
+
+  void Function()? updateFarmerIdValue(String value) {
+    newUserObject.farmerId = value.toUpperCase();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Register Farmer'),
+        centerTitle: true,
+      ),
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              GenericTextField(
+                labelText: 'First Name',
+                validator: _generalValidator(),
+                updateTextFieldInAllInputsMap: updateFirstNameValue,
+              ),
+              GenericTextField(
+                labelText: 'Last Name',
+                validator: _generalValidator(),
+                updateTextFieldInAllInputsMap: updateLastNameValue,
+              ),
+              GenericTextField(
+                labelText: 'Email',
+                validator: _generalValidator(),
+                updateTextFieldInAllInputsMap: updateEmailValue,
+              ),
+              GenericTextField(
+                labelText: 'Farmer ID',
+                validator: _generalValidator(),
+                updateTextFieldInAllInputsMap: updateLastNameValue,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 0,
+                  vertical: 10,
+                ),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints.tightFor(
+                      width: 240,
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Register Farmer'),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+      drawer: AppDrawer(),
+    );
+  }
+}

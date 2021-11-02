@@ -11,6 +11,14 @@ class PostFloweringProvider with ChangeNotifier {
     return [..._postFloweringObjectsList];
   }
 
+  List<PostFloweringModel> get postFloweringObjectsToBeSynced {
+    return _postFloweringObjectsList
+        .where(
+          (element) => element.isUpToDateInServer == 'No',
+        )
+        .toList();
+  }
+
   bool isExisting(String plotId) {
     final relevantList =
         _postFloweringObjectsList.where((element) => element.plotId == plotId);
@@ -46,7 +54,8 @@ class PostFloweringProvider with ChangeNotifier {
         'lastUpdated': updatedPostFloweringObject.lastUpdated.toIso8601String(),
         'plotId': updatedPostFloweringObject.plotId,
         'pestResistance': updatedPostFloweringObject.pestResistance,
-        'pestResistanceComments': updatedPostFloweringObject.pestResistanceComments,
+        'pestResistanceComments':
+            updatedPostFloweringObject.pestResistanceComments,
         'diseasesResistance': updatedPostFloweringObject.diseasesResistance,
         'diseasesResistanceComments':
             updatedPostFloweringObject.diseasesResistanceComments,
@@ -64,7 +73,8 @@ class PostFloweringProvider with ChangeNotifier {
             lastUpdated: DateTime.parse(postFloweringObject['lastUpdated']),
             plotId: postFloweringObject['plotId'],
             pestResistance: postFloweringObject['pestResistance'],
-            pestResistanceComments: postFloweringObject['pestResistanceComments'],
+            pestResistanceComments:
+                postFloweringObject['pestResistanceComments'],
             diseasesResistance: postFloweringObject['diseasesResistance'],
             diseasesResistanceComments:
                 postFloweringObject['diseasesResistanceComments'],

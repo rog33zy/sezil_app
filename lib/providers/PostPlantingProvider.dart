@@ -11,6 +11,14 @@ class PostPlantingProvider with ChangeNotifier {
     return [..._postPlantingObjectsList];
   }
 
+  List<PostPlantingModel> get postPlantingObjectsToBeSynced {
+    return _postPlantingObjectsList
+        .where(
+          (element) => element.isUpToDateInServer == 'No',
+        )
+        .toList();
+  }
+
   bool isExisting(String plotId) {
     final relevantList =
         _postPlantingObjectsList.where((element) => element.plotId == plotId);

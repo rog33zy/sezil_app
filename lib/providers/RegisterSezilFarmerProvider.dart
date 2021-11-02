@@ -42,8 +42,7 @@ class RegisterSezilFarmerProvider with ChangeNotifier {
 
     final username = responseData['user']['username'];
 
-    final url2 =
-        Uri.parse('https://${BaseUrls.sourceUrl}/api/accounts/create/');
+    final url2 = Uri.parse('https://${BaseUrls.sezilUrl}/api/accounts/create/');
 
     await http.post(
       url2,

@@ -11,6 +11,14 @@ class PreHarvestProvider with ChangeNotifier {
     return [..._preHarvestObjectsList];
   }
 
+  List<PreHarvestModel> get preHarvestObjectsToBeSynced {
+    return _preHarvestObjectsList
+        .where(
+          (element) => element.isUpToDateInServer == 'No',
+        )
+        .toList();
+  }
+
   bool isExisting(String plotId) {
     final relevantList =
         _preHarvestObjectsList.where((element) => element.plotId == plotId);

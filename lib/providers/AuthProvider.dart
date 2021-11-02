@@ -152,7 +152,7 @@ class AuthProvider with ChangeNotifier {
 
       if (_isSezilMotherTrialFarmer!) {
         final url2 = Uri.parse(
-          'https://${BaseUrls.sourceUrl}/api/accounts/farmer_details/$_username/',
+          'https://${BaseUrls.sezilUrl}/api/accounts/farmer_details/$_username/',
         );
 
         final response2 = await http.get(

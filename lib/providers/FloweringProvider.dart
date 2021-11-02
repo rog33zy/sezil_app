@@ -11,6 +11,14 @@ class FloweringProvider with ChangeNotifier {
     return [..._floweringObjectsList];
   }
 
+  List<FloweringModel> get floweringObjectsToBeSynced {
+    return _floweringObjectsList
+        .where(
+          (element) => element.isUpToDateInServer == 'No',
+        )
+        .toList();
+  }
+
   bool isExisting(String plotId) {
     final relevantList =
         _floweringObjectsList.where((element) => element.plotId == plotId);

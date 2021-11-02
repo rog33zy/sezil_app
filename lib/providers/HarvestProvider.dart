@@ -11,6 +11,14 @@ class HarvestProvider with ChangeNotifier {
     return [..._harvestObjectsList];
   }
 
+  List<HarvestModel> get harvestObjectsToBeSynced {
+    return _harvestObjectsList
+        .where(
+          (element) => element.isUpToDateInServer == 'No',
+        )
+        .toList();
+  }
+
   bool isExisting(String plotId) {
     final relevantList =
         _harvestObjectsList.where((element) => element.plotId == plotId);

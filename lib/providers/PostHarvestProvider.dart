@@ -11,6 +11,14 @@ class PostHarvestProvider with ChangeNotifier {
     return [..._postHarvestObjectsList];
   }
 
+  List<PostHarvestModel> get postHarvestObjectsToBeSynced {
+    return _postHarvestObjectsList
+        .where(
+          (element) => element.isUpToDateInServer == 'No',
+        )
+        .toList();
+  }
+
   bool isExisting(String plotId) {
     final relevantList =
         _postHarvestObjectsList.where((element) => element.plotId == plotId);
@@ -79,7 +87,8 @@ class PostHarvestProvider with ChangeNotifier {
             lastUpdated: DateTime.parse(postHarvestObject['lastUpdated']),
             plotId: postHarvestObject['plotId'],
             yieldOfDriedCobs: postHarvestObject['yieldOfDriedCobs'],
-            yieldOfDriedCobsComments: postHarvestObject['yieldOfDriedCobsComments'],
+            yieldOfDriedCobsComments:
+                postHarvestObject['yieldOfDriedCobsComments'],
             grainHardness: postHarvestObject['yieldOfDriedCobsComments'],
             grainHardnessComments: postHarvestObject['grainHardnessComments'],
             yieldOfDriedPanicles: postHarvestObject['yieldOfDriedPanicles'],

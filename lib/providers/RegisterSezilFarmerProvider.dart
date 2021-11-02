@@ -51,6 +51,7 @@ class RegisterSezilFarmerProvider with ChangeNotifier {
         {
           'username': username,
           'farmer_id': newUserObject.farmerId,
+          'crop': newUserObject.crop,
         },
       ),
       headers: {

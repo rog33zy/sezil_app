@@ -20,7 +20,7 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: [
           AppBar(
-            title: Text('Hello ${authProvider.firstName![0]}Farmer'),
+            title: Text('Hello ${authProvider.firstName!}'),
             automaticallyImplyLeading: false,
           ),
           ListTile(

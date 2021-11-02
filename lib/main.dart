@@ -15,7 +15,8 @@ import './providers/PreHarvestProvider.dart';
 import './providers/HarvestProvider.dart';
 import './providers/PostHarvestProvider.dart';
 import './providers/AuthProvider.dart';
-import 'providers/SynchronizeTraitsProvider.dart';
+import './providers/SynchronizeTraitsProvider.dart';
+import './providers/RegisterSezilFarmerProvider.dart';
 
 import './screens/HomePageScreen.dart';
 import 'screens/PlotsScreen.dart';
@@ -82,6 +83,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (ctx) => PostHarvestProvider(),
+        ),
+        ChangeNotifierProxyProvider<AuthProvider, RegisterSezilFarmerProvider>(
+          create: (_) => RegisterSezilFarmerProvider(),
+          update: (ctx, authProvider, registerFarmerProvider) {
+            return registerFarmerProvider!..auth = authProvider.accessToken!;
+          },
         ),
         ChangeNotifierProxyProvider6<
             AuthProvider,

@@ -87,7 +87,7 @@ class HomePageScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome, ${authProvider.firstName![0]}Farmer 😃'),
+        title: Text('Welcome, ${authProvider.firstName!} 😃'),
         centerTitle: true,
         // backgroundColor: Theme.of(context).primaryColor,
         backgroundColor: Color(0xFF257150),

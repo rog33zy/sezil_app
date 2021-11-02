@@ -10,6 +10,7 @@ import '../models/UserModel.dart';
 
 import '../components/UI/AppDrawer.dart';
 import '../components/forms/GenericTextField.dart';
+import '../components/forms/DropdownTextField.dart';
 
 class RegisterSezilFarmerScreen extends StatefulWidget {
   const RegisterSezilFarmerScreen({Key? key}) : super(key: key);
@@ -55,6 +56,10 @@ class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
     newUserObject.farmerId = value.toUpperCase();
   }
 
+  void Function()? updateCropValue(String value) {
+    newUserObject.crop = value;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +90,18 @@ class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
               GenericTextField(
                 labelText: 'Farmer ID',
                 validator: _generalValidator(),
-                updateTextFieldInAllInputsMap: updateLastNameValue,
+                updateTextFieldInAllInputsMap: updateFarmerIdValue,
+              ),
+              DropdownTextField(
+                labelText: 'Crop',
+                listOfValues: <String>[
+                  'Maize',
+                  'Beans',
+                  'Sorghum',
+                  'Sunflower',
+                ],
+                hintText: 'Please select crop',
+                updateDropDownValuesInAllInputsMap: updateCropValue,
               ),
               if (_isLoading) const CircularProgressIndicator(),
               if (!_isLoading)
@@ -124,7 +140,7 @@ class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
                                 .catchError((error) {
                               setState(() {
                                 _isLoading = false;
-                                _errorMessage = error;
+                                _errorMessage = error.toString();
                               });
                             });
                           }

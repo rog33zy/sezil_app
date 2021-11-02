@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../providers/AuthProvider.dart';
 
+import '../models/UserModel.dart';
+
 import '../components/forms/GenericTextField.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,10 +16,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  Map<String, String> allInputsMap = {
-    'username': '',
-    'password': '',
-  };
+
+  UserModel userObject = UserModel();
+
   var _isLoading = false;
 
   void _showErrorDialog(String message) {
@@ -47,11 +48,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void Function()? _updateUsernameValue(String value) {
-    allInputsMap['username'] = value;
+    userObject.username = value;
   }
 
   void Function()? _updatePasswordValue(String value) {
-    allInputsMap['password'] = value;
+    userObject.password = value;
   }
 
   @override
@@ -102,14 +103,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
-                                  setState(() {
-                                    _isLoading = true;
-                                  });
+                                  setState(
+                                    () {
+                                      _isLoading = true;
+                                    },
+                                  );
                                   try {
                                     await Provider.of<AuthProvider>(
                                       context,
                                       listen: false,
-                                    ).login(allInputsMap);
+                                    ).login(userObject);
                                   } catch (error) {
                                     _showErrorDialog(
                                       'Kindly check you\'ve entered the right credentials and that you\'re connected to the internet',

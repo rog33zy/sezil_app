@@ -82,5 +82,6 @@ class PostFloweringProvider with ChangeNotifier {
           ),
         )
         .toList();
+    notifyListeners();
   }
 }

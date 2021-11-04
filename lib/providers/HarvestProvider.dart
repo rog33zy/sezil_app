@@ -131,5 +131,6 @@ class HarvestProvider with ChangeNotifier {
           ),
         )
         .toList();
+    notifyListeners();
   }
 }

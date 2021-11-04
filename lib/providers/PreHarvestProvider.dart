@@ -148,5 +148,6 @@ class PreHarvestProvider with ChangeNotifier {
           ),
         )
         .toList();
+    notifyListeners();
   }
 }

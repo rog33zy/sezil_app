@@ -92,5 +92,6 @@ class PostPlantingProvider with ChangeNotifier {
           ),
         )
         .toList();
+    notifyListeners();
   }
 }

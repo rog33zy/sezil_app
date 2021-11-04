@@ -45,11 +45,56 @@ class SynchronizeTraitsProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  int get totalNumberOfItemsToBeSynced {
+    return postPlantingObjectsToBeSynced!.length;
+  }
+
+  dynamic postUnsyncedObjectsToServer(
+    body,
+    postingUrlPortion,
+    checkObjectExistsResponse,
+    unsyncedObject,
+  ) async {
+    var postingUrl;
+    var response;
+
+    if (checkObjectExistsResponse.statusCode == 200) {
+      postingUrl = Uri.parse(
+        'https://${BaseUrls.sezilUrl}/api/$postingUrlPortion/${unsyncedObject.id}/',
+      );
+      response = await http.patch(
+        postingUrl,
+        body: json.encode(body),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Token $accessToken',
+        },
+      );
+    } else if (checkObjectExistsResponse.statusCode == 404) {
+      postingUrl = Uri.parse(
+        'https://${BaseUrls.sezilUrl}/api/$postingUrlPortion/',
+      );
+
+      response = await http.post(
+        postingUrl,
+        body: json.encode(body),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Token $accessToken',
+        },
+      );
+    }
+
+    final responseData = json.decode(response.body);
+    return responseData;
+  }
+
   Future<void> postPostPlantingObjectsToServer() async {
     for (int i = 0; i < postPlantingObjectsToBeSynced!.length; i++) {
       final unsyncedObject = postPlantingObjectsToBeSynced![i];
       final checkObjectExistsUrl = Uri.parse(
-          'https://${BaseUrls.sezilUrl}/api/traits/check_post_planting_object/${unsyncedObject.id}/');
+        'https://${BaseUrls.sezilUrl}/api/traits/check_post_planting_object/${unsyncedObject.id}/',
+      );
       final checkObjectExistsResponse = await http.get(
         checkObjectExistsUrl,
         headers: {
@@ -57,12 +102,10 @@ class SynchronizeTraitsProvider with ChangeNotifier {
           'Authorization': 'Token $accessToken',
         },
       );
-      var postingUrl;
-      var response;
       var body = {
         'id': unsyncedObject.id,
         'farmer_id': farmerId,
-        'last_updated': unsyncedObject.lastUpdated,
+        'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
         'plot_id': unsyncedObject.plotId,
         'seedling_vigour': unsyncedObject.seedlingVigour,
         'seedling_vigour_comments': unsyncedObject.seedlingVigourComments,
@@ -75,34 +118,13 @@ class SynchronizeTraitsProvider with ChangeNotifier {
             unsyncedObject.diseasesResistanceComments,
       };
 
-      if (checkObjectExistsResponse.statusCode == 200) {
-        postingUrl = Uri.parse(
-          'https://${BaseUrls.sezilUrl}/api/traits/post_planting_objects/${unsyncedObject.id}/',
-        );
-        response = await http.patch(
-          postingUrl,
-          body: json.encode(body),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Token $accessToken',
-          },
-        );
-      } else if (checkObjectExistsResponse.statusCode == 404) {
-        postingUrl = Uri.parse(
-          'https://${BaseUrls.sezilUrl}/api/traits/post_planting_objects/',
-        );
-        response = await http.post(
-          postingUrl,
-          body: json.encode(body),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Token $accessToken',
-          },
-        );
-      }
-
-      final responseData = json.decode(response.body);
-
+      final Map<String, dynamic> responseData =
+          await postUnsyncedObjectsToServer(
+        body,
+        'traits/post_planting_objects',
+        checkObjectExistsResponse,
+        unsyncedObject,
+      );
       await DBHelper.insert(
         'postPlanting',
         {
@@ -121,7 +143,6 @@ class SynchronizeTraitsProvider with ChangeNotifier {
           'isUpToDateInServer': 'Yes',
         },
       );
-
       notifyListeners();
     }
   }

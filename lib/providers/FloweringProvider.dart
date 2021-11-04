@@ -88,5 +88,6 @@ class FloweringProvider with ChangeNotifier {
           ),
         )
         .toList();
+    notifyListeners();
   }
 }

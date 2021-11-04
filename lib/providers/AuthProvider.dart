@@ -22,6 +22,7 @@ class AuthProvider with ChangeNotifier {
   bool? _isHRAdmin;
   bool? _isSezilMotherTrialFarmer;
   String _crop = 'Maize';
+  UserModel _activeUser = UserModel();
 
   bool get isAuth {
     return _accessToken != null;
@@ -195,11 +196,12 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<void> login(UserModel userObject) async {
+    _activeUser = userObject;
     return _authenticateUser(userObject);
   }
 
-  Future<void> refreshToken(UserModel userObject) async {
-    return _authenticateUser(userObject, isRefreshing: true);
+  Future<void> refreshToken() async {
+    return _authenticateUser(_activeUser, isRefreshing: true);
   }
 
   Future<bool> tryAutoLogin() async {

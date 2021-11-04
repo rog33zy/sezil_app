@@ -92,7 +92,6 @@ class FertilizationProvider with ChangeNotifier {
           ),
         )
         .toList();
+    notifyListeners();
   }
-
-  notifyListeners();
 }

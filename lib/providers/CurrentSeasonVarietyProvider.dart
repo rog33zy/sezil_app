@@ -78,5 +78,6 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
         isUpToDateInServer: _updatedMap['isUpToDateInServer'],
       );
     }
+    notifyListeners();
   }
 }

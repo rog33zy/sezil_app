@@ -108,6 +108,18 @@ class MyApp extends StatelessWidget {
               harvestProvider,
               syncTraitsProvider) {
             syncTraitsProvider!.accessToken = authProvider.accessToken;
+            syncTraitsProvider.crop = authProvider.crop;
+            syncTraitsProvider.farmerId = authProvider.farmerId;
+            syncTraitsProvider.floweringObjectsToBeSynced =
+                floweringProvider.floweringObjectsToBeSynced;
+            syncTraitsProvider.harvestObjectsToBeSynced =
+                harvestProvider.harvestObjectsToBeSynced;
+            syncTraitsProvider.postFloweringObjectsToBeSynced =
+                postFloweringProvider.postFloweringObjectsToBeSynced;
+            syncTraitsProvider.postPlantingObjectsToBeSynced =
+                postPlantingProvider.postPlantingObjectsToBeSynced;
+            syncTraitsProvider.preHarvestObjectsToBeSynced =
+                preHarvestProvider.preHarvestObjectsToBeSynced;
             return syncTraitsProvider;
           },
         )

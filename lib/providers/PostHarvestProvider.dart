@@ -110,5 +110,6 @@ class PostHarvestProvider with ChangeNotifier {
           ),
         )
         .toList();
+    notifyListeners();
   }
 }

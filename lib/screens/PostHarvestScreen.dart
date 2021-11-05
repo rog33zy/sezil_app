@@ -109,20 +109,20 @@ class PostHarvestScreen extends StatelessWidget {
       updatedPostHarvestObject.grainsYieldComments = value;
     }
 
-    void grainSizeHandler(value) {
-      updatedPostHarvestObject.grainSize = value;
+    void grainSizeAppreciationHandler(value) {
+      updatedPostHarvestObject.grainSizeAppreciation = value;
     }
 
-    void grainSizeCommentsHandler(value) {
-      updatedPostHarvestObject.grainSizeComments = value;
+    void grainSizeAppreciationCommentsHandler(value) {
+      updatedPostHarvestObject.grainSizeAppreciationComments = value;
     }
 
-    void grainColourHandler(value) {
-      updatedPostHarvestObject.grainColour = value;
+    void grainColourAppreciationHandler(value) {
+      updatedPostHarvestObject.grainColourAppreciation = value;
     }
 
-    void grainColourCommentsHandler(value) {
-      updatedPostHarvestObject.grainColourComments = value;
+    void grainColourAppreciationCommentsHandler(value) {
+      updatedPostHarvestObject.grainColourAppreciationComments = value;
     }
 
     void onSubmitHandler() {
@@ -256,10 +256,10 @@ class PostHarvestScreen extends StatelessWidget {
           if (crop == 'Sunflower')
             ListWidgetComponent(
               title: 'Grain Size',
-              subtitle: postHarvestObject.grainSize,
-              value: postHarvestObject.grainSize,
+              subtitle: postHarvestObject.grainSizeAppreciation,
+              value: postHarvestObject.grainSizeAppreciation,
               onChangeDateValueHandler: () {},
-              onChangeTextValueHandler: grainSizeHandler,
+              onChangeTextValueHandler: grainSizeAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: <String>[
@@ -271,16 +271,16 @@ class PostHarvestScreen extends StatelessWidget {
               ],
               isTrait: true,
               isTextField: false,
-              onChangeGenComValueHandler: grainSizeCommentsHandler,
-              genComSubtitle: postHarvestObject.grainSizeComments,
+              onChangeGenComValueHandler: grainSizeAppreciationCommentsHandler,
+              genComSubtitle: postHarvestObject.grainSizeAppreciationComments,
             ),
           if (crop == 'Beans')
             ListWidgetComponent(
               title: 'Grain Colour',
-              subtitle: postHarvestObject.grainColour,
-              value: postHarvestObject.grainColour,
+              subtitle: postHarvestObject.grainColourAppreciation,
+              value: postHarvestObject.grainColourAppreciation,
               onChangeDateValueHandler: () {},
-              onChangeTextValueHandler: grainColourHandler,
+              onChangeTextValueHandler: grainColourAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: <String>[
@@ -292,8 +292,9 @@ class PostHarvestScreen extends StatelessWidget {
               ],
               isTrait: true,
               isTextField: false,
-              onChangeGenComValueHandler: grainColourCommentsHandler,
-              genComSubtitle: postHarvestObject.grainColourComments,
+              onChangeGenComValueHandler:
+                  grainColourAppreciationCommentsHandler,
+              genComSubtitle: postHarvestObject.grainColourAppreciationComments,
             ),
         ],
       ),

@@ -69,10 +69,13 @@ class PostHarvestProvider with ChangeNotifier {
             updatedPostHarvestObject.yieldOfDriedPodsComments,
         'grainsYield': updatedPostHarvestObject.grainsYield,
         'grainsYieldComments': updatedPostHarvestObject.grainsYieldComments,
-        'grainSize': updatedPostHarvestObject.grainSize,
-        'grainSizeComments': updatedPostHarvestObject.grainSizeComments,
-        'grainColour': updatedPostHarvestObject.grainColour,
-        'grainColourComments': updatedPostHarvestObject.grainColourComments,
+        'grainSizeAppreciation': updatedPostHarvestObject.grainSizeAppreciation,
+        'grainSizeAppreciationComments':
+            updatedPostHarvestObject.grainSizeAppreciationComments,
+        'grainColourAppreciation':
+            updatedPostHarvestObject.grainColourAppreciation,
+        'grainColourAppreciationComments':
+            updatedPostHarvestObject.grainColourAppreciationComments,
         'isUpToDateInServer': updatedPostHarvestObject.isUpToDateInServer,
         'existsInServer': updatedPostHarvestObject.existsInServer,
       },
@@ -103,10 +106,13 @@ class PostHarvestProvider with ChangeNotifier {
                 postHarvestObject['yieldOfDriedPodsComments'],
             grainsYield: postHarvestObject['grainsYield'],
             grainsYieldComments: postHarvestObject['grainsYieldComments'],
-            grainSize: postHarvestObject['grainSize'],
-            grainSizeComments: postHarvestObject['grainSizeComments'],
-            grainColour: postHarvestObject['grainColour'],
-            grainColourComments: postHarvestObject['grainColourComments'],
+            grainSizeAppreciation: postHarvestObject['grainSizeAppreciation'],
+            grainSizeAppreciationComments:
+                postHarvestObject['grainSizeAppreciationComments'],
+            grainColourAppreciation:
+                postHarvestObject['grainColourAppreciation'],
+            grainColourAppreciationComments:
+                postHarvestObject['grainColourAppreciationComments'],
             isUpToDateInServer: postHarvestObject['isUpToDateInServer'],
             existsInServer: postHarvestObject['existsInServer'],
           ),

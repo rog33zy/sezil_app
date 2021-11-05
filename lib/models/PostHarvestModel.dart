@@ -14,10 +14,10 @@ class PostHarvestModel {
   String yieldOfDriedPodsComments;
   double? grainsYield;
   String grainsYieldComments;
-  String grainSize;
-  String grainSizeComments;
-  String grainColour;
-  String grainColourComments;
+  String grainSizeAppreciation;
+  String grainSizeAppreciationComments;
+  String grainColourAppreciation;
+  String grainColourAppreciationComments;
   String isUpToDateInServer;
   String existsInServer;
 
@@ -37,10 +37,10 @@ class PostHarvestModel {
     this.yieldOfDriedPodsComments = 'Blank',
     this.grainsYield,
     this.grainsYieldComments = 'Blank',
-    this.grainSize = 'Blank',
-    this.grainSizeComments = 'Blank',
-    this.grainColour = 'Blank',
-    this.grainColourComments = 'Blank',
+    this.grainSizeAppreciation = 'Blank',
+    this.grainSizeAppreciationComments = 'Blank',
+    this.grainColourAppreciation = 'Blank',
+    this.grainColourAppreciationComments = 'Blank',
     this.isUpToDateInServer = 'No',
     this.existsInServer = 'No',
   });

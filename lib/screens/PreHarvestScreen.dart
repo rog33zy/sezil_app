@@ -74,12 +74,12 @@ class PreHarvestScreen extends StatelessWidget {
       updatedPreHarvestObject.huskCoverComments = value;
     }
 
-    void cobSizeHandler(String value) {
-      updatedPreHarvestObject.cobSize = value;
+    void cobSizeAppreciationHandler(String value) {
+      updatedPreHarvestObject.cobSizeAppreciation = value;
     }
 
-    void cobSizeCommentsHandler(String value) {
-      updatedPreHarvestObject.cobSizeComments = value;
+    void cobSizeAppreciationCommentsHandler(String value) {
+      updatedPreHarvestObject.cobSizeAppreciationComments = value;
     }
 
     void numberOfCobsPerPlantHandler(String value) {
@@ -226,10 +226,10 @@ class PreHarvestScreen extends StatelessWidget {
           if (crop == 'Maize')
             ListWidgetComponent(
               title: 'Cob Size',
-              subtitle: preHarvestObject.cobSize,
-              value: preHarvestObject.cobSize,
+              subtitle: preHarvestObject.cobSizeAppreciation,
+              value: preHarvestObject.cobSizeAppreciation,
               onChangeDateValueHandler: () {},
-              onChangeTextValueHandler: cobSizeHandler,
+              onChangeTextValueHandler: cobSizeAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: <String>[
@@ -241,8 +241,8 @@ class PreHarvestScreen extends StatelessWidget {
               ],
               isTrait: true,
               isTextField: false,
-              onChangeGenComValueHandler: cobSizeCommentsHandler,
-              genComSubtitle: preHarvestObject.cobSizeComments,
+              onChangeGenComValueHandler: cobSizeAppreciationCommentsHandler,
+              genComSubtitle: preHarvestObject.cobSizeAppreciationComments,
             ),
           if (crop == 'Maize')
             ListWidgetComponent(

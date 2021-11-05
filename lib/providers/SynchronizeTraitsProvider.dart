@@ -58,7 +58,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
     var postingUrl;
     var response;
 
-    if (checkObjectExistsResponse.statusCode == 200) {
+    if (checkObjectExistsResponse == 'Yes') {
       postingUrl = Uri.parse(
         'https://${BaseUrls.sezilUrl}/api/$postingUrlPortion/${unsyncedObject.id}/',
       );
@@ -70,7 +70,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
           'Authorization': 'Token $accessToken',
         },
       );
-    } else if (checkObjectExistsResponse.statusCode == 404) {
+    } else if (checkObjectExistsResponse == 'No') {
       postingUrl = Uri.parse(
         'https://${BaseUrls.sezilUrl}/api/$postingUrlPortion/',
       );
@@ -92,16 +92,17 @@ class SynchronizeTraitsProvider with ChangeNotifier {
   Future<void> postPostPlantingObjectsToServer() async {
     for (int i = 0; i < postPlantingObjectsToBeSynced!.length; i++) {
       final unsyncedObject = postPlantingObjectsToBeSynced![i];
-      final checkObjectExistsUrl = Uri.parse(
-        'https://${BaseUrls.sezilUrl}/api/traits/check_post_planting_object/${unsyncedObject.id}/',
-      );
-      final checkObjectExistsResponse = await http.get(
-        checkObjectExistsUrl,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Token $accessToken',
-        },
-      );
+      // final checkObjectExistsUrl = Uri.parse(
+      //   'https://${BaseUrls.sezilUrl}/api/traits/check_post_planting_object/${unsyncedObject.id}/',
+      // );
+      // final checkObjectExistsResponse = await http.get(
+      //   checkObjectExistsUrl,
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': 'Token $accessToken',
+      //   },
+      // );
+      String checkObjectExistsResponse = unsyncedObject.existsInServer;
       var body = {
         'id': unsyncedObject.id,
         'farmer_id': farmerId,
@@ -141,6 +142,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
           'diseasesResistanceComments':
               responseData['diseases_resistance_comments'],
           'isUpToDateInServer': 'Yes',
+          'existsInServer': 'Yes',
         },
       );
       notifyListeners();

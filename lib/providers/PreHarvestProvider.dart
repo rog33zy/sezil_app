@@ -58,8 +58,9 @@ class PreHarvestProvider with ChangeNotifier {
             updatedPreHarvestObject.lodgingResistanceComments,
         'huskCover': updatedPreHarvestObject.huskCover,
         'huskCoverComments': updatedPreHarvestObject.huskCoverComments,
-        'cobSize': updatedPreHarvestObject.cobSize,
-        'cobSizeComments': updatedPreHarvestObject.cobSizeComments,
+        'cobSizeAppreciation': updatedPreHarvestObject.cobSizeAppreciation,
+        'cobSizeAppreciationComments':
+            updatedPreHarvestObject.cobSizeAppreciationComments,
         'numberOfCobsPerPlant': updatedPreHarvestObject.numberOfCobsPerPlant,
         'numberOfCobsPerPlantComments':
             updatedPreHarvestObject.numberOfCobsPerPlantComments,
@@ -111,8 +112,9 @@ class PreHarvestProvider with ChangeNotifier {
                 preHarvestObject['lodgingResistanceComments'],
             huskCover: preHarvestObject['huskCover'],
             huskCoverComments: preHarvestObject['huskCoverComments'],
-            cobSize: preHarvestObject['cobSize'],
-            cobSizeComments: preHarvestObject['cobSizeComments'],
+            cobSizeAppreciation: preHarvestObject['cobSizeAppreciation'],
+            cobSizeAppreciationComments:
+                preHarvestObject['cobSizeAppreciationComments'],
             numberOfCobsPerPlant: preHarvestObject['numberOfCobsPerPlant'],
             numberOfCobsPerPlantComments:
                 preHarvestObject['numberOfCobsPerPlantComments'],

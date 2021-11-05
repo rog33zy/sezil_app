@@ -11,6 +11,7 @@ class PostPlantingModel {
   String diseasesResistance;
   String diseasesResistanceComments;
   String isUpToDateInServer;
+  String existsInServer;
 
   PostPlantingModel({
     required this.id,
@@ -25,5 +26,6 @@ class PostPlantingModel {
     this.diseasesResistance = 'Blank',
     this.diseasesResistanceComments = 'Blank',
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

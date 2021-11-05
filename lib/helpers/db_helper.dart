@@ -35,7 +35,8 @@ class DBHelper {
                   secondWeedingIsManual TEXT,
                   secondWeedingHerbicideName TEXT,
                   secondWeedingHerbicideQty REAL,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -52,7 +53,8 @@ class DBHelper {
                   sourceOfSeed TEXT,
                   numberOfYearsGrown INTEGER,
                   percentFarmersGrowingVariety INTEGER,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -69,7 +71,8 @@ class DBHelper {
                   nameOfSyntheticFertilizer TEXT,
                   quantityApplied REAL,
                   timeOfApplication TEXT,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -88,7 +91,8 @@ class DBHelper {
                   cropGrownTwoSeasonsAgo TEXT,
                   prevSeasonWeedingManual TEXT,
                   prevSeasonWeedingChemicalName TEXT,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -108,7 +112,8 @@ class DBHelper {
                   pestResistanceComments TEXT,
                   diseasesResistance TEXT,
                   diseasesResistanceComments TEXT,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -126,7 +131,8 @@ class DBHelper {
                   pestResistanceComments TEXT,
                   diseasesResistance TEXT,
                   diseasesResistanceComments TEXT,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -142,7 +148,8 @@ class DBHelper {
                   pestResistanceComments TEXT,
                   diseasesResistance TEXT,
                   diseasesResistanceComments TEXT,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -180,7 +187,8 @@ class DBHelper {
                   podLengthAppreciationComments TEXT,
                   willingnessToCultivateNextSeason TEXT,
                   willingnessToCultivateNextSeasonComments TEXT,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -211,7 +219,8 @@ class DBHelper {
                   numberOfHarvestedPodsComments TEXT,
                   yieldOfHarvestedPods REAL,
                   yieldOfHarvestedPodsComments TEXT,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );
@@ -239,7 +248,8 @@ class DBHelper {
                   grainSizeComments TEXT,
                   grainColour TEXT,
                   grainColourComments TEXT,
-                  isUpToDateInServer TEXT
+                  isUpToDateInServer TEXT,
+                  existsInServer TEXT
                 )
           ''',
         );

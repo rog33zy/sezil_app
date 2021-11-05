@@ -24,6 +24,7 @@ class FieldProfileProvider with ChangeNotifier {
       prevSeasonWeedingChemicalName:
           _fieldProfileObject.prevSeasonWeedingChemicalName,
       isUpToDateInServer: _fieldProfileObject.isUpToDateInServer,
+      existsInServer: _fieldProfileObject.existsInServer,
     );
     return _newFieldProfileObject;
   }
@@ -51,6 +52,7 @@ class FieldProfileProvider with ChangeNotifier {
         'prevSeasonWeedingChemicalName':
             updatedFieldProfileObject.prevSeasonWeedingChemicalName,
         'isUpToDateInServer': updatedFieldProfileObject.isUpToDateInServer,
+        'existsInServer': updatedFieldProfileObject.existsInServer,
       },
     );
   }
@@ -76,6 +78,7 @@ class FieldProfileProvider with ChangeNotifier {
         prevSeasonWeedingChemicalName:
             _updatedMap['prevSeasonWeedingChemicalName'],
         isUpToDateInServer: _updatedMap['isUpToDateInServer'],
+        existsInServer: _updatedMap['existsInServer'],
       );
     }
     notifyListeners();

@@ -19,6 +19,7 @@ class PostHarvestModel {
   String grainColour;
   String grainColourComments;
   String isUpToDateInServer;
+  String existsInServer;
 
   PostHarvestModel({
     required this.id,
@@ -41,5 +42,6 @@ class PostHarvestModel {
     this.grainColour = 'Blank',
     this.grainColourComments = 'Blank',
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

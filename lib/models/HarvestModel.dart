@@ -22,6 +22,7 @@ class HarvestModel {
   double? yieldOfHarvestedPods;
   String yieldOfHarvestedPodsComments;
   String isUpToDateInServer;
+  String existsInServer;
 
   HarvestModel({
     required this.id,
@@ -47,5 +48,6 @@ class HarvestModel {
     this.yieldOfHarvestedPods,
     this.yieldOfHarvestedPodsComments = 'Blank',
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

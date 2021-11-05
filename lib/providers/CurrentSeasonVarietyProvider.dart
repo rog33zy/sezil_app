@@ -24,6 +24,8 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
       numberOfYearsGrown: _currentSeasonVarietyObject.numberOfYearsGrown,
       percentFarmersGrowingVariety:
           _currentSeasonVarietyObject.percentFarmersGrowingVariety,
+      isUpToDateInServer: _currentSeasonVarietyObject.isUpToDateInServer,
+      existsInServer: _currentSeasonVarietyObject.existsInServer,
     );
     return _newCurrentSeasonVarietyObject;
   }
@@ -53,6 +55,7 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
             updatedCurrentSeasonVarietyObject.percentFarmersGrowingVariety,
         'isUpToDateInServer':
             updatedCurrentSeasonVarietyObject.isUpToDateInServer,
+        'existsInServer': updatedCurrentSeasonVarietyObject.existsInServer,
       },
     );
   }
@@ -76,6 +79,7 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
         percentFarmersGrowingVariety:
             _updatedMap['percentFarmersGrowingVariety'],
         isUpToDateInServer: _updatedMap['isUpToDateInServer'],
+        existsInServer: _updatedMap['existsInServer'],
       );
     }
     notifyListeners();

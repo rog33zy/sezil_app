@@ -18,7 +18,7 @@ class SynchronizeScreen extends StatefulWidget {
 
 class _SynchronizeScreenState extends State<SynchronizeScreen> {
   var _isLoading = false;
-  var _errorMessage;
+  String _errorMessage = '';
   @override
   Widget build(BuildContext context) {
     final int numberOfItemsToBeSynced = Provider.of<SynchronizeTraitsProvider>(
@@ -69,16 +69,25 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               await Provider.of<SynchronizeTraitsProvider>(
                                 context,
                                 listen: false,
-                              ).postPostPlantingObjectsToServer();
-                              //     .catchError((error) {
-                              //   setState(() {
-                              //     _errorMessage = error;
-                              //   });
-                              // });
+                              )
+                                  .postPostPlantingObjectsToServer()
+                                  .catchError((error) {
+                                setState(() {
+                                  _errorMessage = error;
+                                });
+                              });
                               Navigator.of(context).pushReplacementNamed('/');
                             },
                       child: const Text('Sync'),
                     ),
+            ),
+          ),
+          Center(
+            child: Text(
+              _errorMessage,
+              style: TextStyle(
+                color: Colors.red,
+              ),
             ),
           ),
         ],

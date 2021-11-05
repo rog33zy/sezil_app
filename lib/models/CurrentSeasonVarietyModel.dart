@@ -8,6 +8,7 @@ class CurrentSeasonVarietyModel {
   int? numberOfYearsGrown;
   int? percentFarmersGrowingVariety;
   String isUpToDateInServer;
+  String existsInServer;
 
   CurrentSeasonVarietyModel({
     required this.id,
@@ -19,5 +20,6 @@ class CurrentSeasonVarietyModel {
     this.numberOfYearsGrown,
     this.percentFarmersGrowingVariety,
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

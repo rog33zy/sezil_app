@@ -93,6 +93,7 @@ class PreHarvestProvider with ChangeNotifier {
         'willingnessToCultivateNextSeasonComments':
             updatedPreHarvestObject.willingnessToCultivateNextSeasonComments,
         'isUpToDateInServer': updatedPreHarvestObject.isUpToDateInServer,
+        'existsInServer': updatedPreHarvestObject.existsInServer,
       },
     );
   }
@@ -145,6 +146,7 @@ class PreHarvestProvider with ChangeNotifier {
             willingnessToCultivateNextSeasonComments:
                 preHarvestObject['willingnessToCultivateNextSeasonComments'],
             isUpToDateInServer: preHarvestObject['isUpToDateInServer'],
+            existsInServer: preHarvestObject['existsInServer'],
           ),
         )
         .toList();

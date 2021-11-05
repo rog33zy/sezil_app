@@ -63,6 +63,7 @@ class FloweringProvider with ChangeNotifier {
         'diseasesResistanceComments':
             updatedFloweringObject.diseasesResistanceComments,
         'isUpToDateInServer': updatedFloweringObject.isUpToDateInServer,
+        'existsInServer': updatedFloweringObject.existsInServer,
       },
     );
   }
@@ -85,6 +86,7 @@ class FloweringProvider with ChangeNotifier {
             diseasesResistanceComments:
                 floweringObject['diseasesResistanceComments'],
             isUpToDateInServer: floweringObject['isUpToDateInServer'],
+            existsInServer: floweringObject['existsInServer'],
           ),
         )
         .toList();

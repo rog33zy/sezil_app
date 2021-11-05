@@ -34,6 +34,7 @@ class FieldOperationsProvider with ChangeNotifier {
       secondWeedingHerbicideQty:
           _fieldOperationsObject.secondWeedingHerbicideQty,
       isUpToDateInServer: _fieldOperationsObject.isUpToDateInServer,
+      existsInServer: _fieldOperationsObject.existsInServer,
     );
     return _newFieldOperationsModel;
   }
@@ -95,6 +96,7 @@ class FieldOperationsProvider with ChangeNotifier {
         'secondWeedingHerbicideQty':
             updatedFieldOperationsObject.secondWeedingHerbicideQty,
         'isUpToDateInServer': 'No',
+        'existsInServer': updatedFieldOperationsObject.existsInServer,
       },
     );
   }
@@ -140,6 +142,7 @@ class FieldOperationsProvider with ChangeNotifier {
         secondWeedingHerbicideName: _updatedMap['secondWeedingHerbicideName'],
         secondWeedingHerbicideQty: _updatedMap['secondWeedingHerbicideQty'],
         isUpToDateInServer: _updatedMap['isUpToDateInServer'],
+        existsInServer: _updatedMap['existsInServer'],
       );
     }
     notifyListeners();

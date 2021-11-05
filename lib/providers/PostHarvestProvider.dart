@@ -74,6 +74,7 @@ class PostHarvestProvider with ChangeNotifier {
         'grainColour': updatedPostHarvestObject.grainColour,
         'grainColourComments': updatedPostHarvestObject.grainColourComments,
         'isUpToDateInServer': updatedPostHarvestObject.isUpToDateInServer,
+        'existsInServer': updatedPostHarvestObject.existsInServer,
       },
     );
   }
@@ -107,6 +108,7 @@ class PostHarvestProvider with ChangeNotifier {
             grainColour: postHarvestObject['grainColour'],
             grainColourComments: postHarvestObject['grainColourComments'],
             isUpToDateInServer: postHarvestObject['isUpToDateInServer'],
+            existsInServer: postHarvestObject['existsInServer'],
           ),
         )
         .toList();

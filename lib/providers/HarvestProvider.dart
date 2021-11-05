@@ -85,6 +85,7 @@ class HarvestProvider with ChangeNotifier {
         'yieldOfHarvestedPodsComments':
             updatedHarvestObject.yieldOfHarvestedPodsComments,
         'isUpToDateInServer': updatedHarvestObject.isUpToDateInServer,
+        'existsInServer': updatedHarvestObject.existsInServer,
       },
     );
   }
@@ -128,6 +129,7 @@ class HarvestProvider with ChangeNotifier {
             yieldOfHarvestedPodsComments:
                 harvestObject['yieldOfHarvestedPodsComments'],
             isUpToDateInServer: harvestObject['isUpToDateInServer'],
+            existsInServer: harvestObject['existsInServer'],
           ),
         )
         .toList();

@@ -29,6 +29,7 @@ class PreHarvestModel {
   String willingnessToCultivateNextSeason;
   String willingnessToCultivateNextSeasonComments;
   String isUpToDateInServer;
+  String existsInServer;
 
   PreHarvestModel({
     required this.id,
@@ -61,5 +62,6 @@ class PreHarvestModel {
     this.willingnessToCultivateNextSeason = 'Blank',
     this.willingnessToCultivateNextSeasonComments = 'Blank',
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

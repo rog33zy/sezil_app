@@ -17,6 +17,7 @@ class FieldOperationsModel {
   String secondWeedingHerbicideName;
   double? secondWeedingHerbicideQty;
   String isUpToDateInServer;
+  String existsInServer;
 
   FieldOperationsModel({
     required this.id,
@@ -37,5 +38,6 @@ class FieldOperationsModel {
     this.secondWeedingHerbicideName = 'Blank',
     this.secondWeedingHerbicideQty,
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

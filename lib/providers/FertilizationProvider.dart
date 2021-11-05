@@ -60,6 +60,7 @@ class FertilizationProvider with ChangeNotifier {
             ? null
             : updatedFertilizationObject.timeOfApplication!.toIso8601String(),
         'isUpToDateInServer': updatedFertilizationObject.isUpToDateInServer,
+        'existsInServer': updatedFertilizationObject.existsInServer,
       },
     );
   }
@@ -89,6 +90,7 @@ class FertilizationProvider with ChangeNotifier {
                         fertilizationObjectMap['timeOfApplication'],
                       ),
             isUpToDateInServer: fertilizationObjectMap['isUpToDateInServer'],
+            existsInServer: fertilizationObjectMap['existsInServer'],
           ),
         )
         .toList();

@@ -9,6 +9,7 @@ class FloweringModel {
   String diseasesResistance;
   String diseasesResistanceComments;
   String isUpToDateInServer;
+  String existsInServer;
 
   FloweringModel({
     required this.id,
@@ -21,5 +22,6 @@ class FloweringModel {
     this.diseasesResistance = 'Blank',
     this.diseasesResistanceComments = 'Blank',
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

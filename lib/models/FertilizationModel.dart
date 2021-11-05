@@ -8,6 +8,7 @@ class FertilizationModel {
   double? quantityApplied;
   DateTime? timeOfApplication;
   String isUpToDateInServer;
+  String existsInServer;
 
   FertilizationModel({
     required this.id,
@@ -19,5 +20,6 @@ class FertilizationModel {
     this.quantityApplied,
     this.timeOfApplication,
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

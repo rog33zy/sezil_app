@@ -65,6 +65,7 @@ class PostPlantingProvider with ChangeNotifier {
         'diseasesResistanceComments':
             updatedPostPlantingObject.diseasesResistanceComments,
         'isUpToDateInServer': updatedPostPlantingObject.isUpToDateInServer,
+        'existsInServer': updatedPostPlantingObject.existsInServer,
       },
     );
   }
@@ -89,6 +90,7 @@ class PostPlantingProvider with ChangeNotifier {
             diseasesResistanceComments:
                 postPlantingObject['diseasesResistanceComments'],
             isUpToDateInServer: postPlantingObject['isUpToDateInServer'],
+            existsInServer: postPlantingObject['existsInServer'],
           ),
         )
         .toList();

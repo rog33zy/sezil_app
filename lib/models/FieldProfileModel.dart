@@ -10,6 +10,7 @@ class FieldProfileModel {
   String prevSeasonWeedingManual;
   String prevSeasonWeedingChemicalName;
   String isUpToDateInServer;
+  String existsInServer;
 
   FieldProfileModel({
     required this.id,
@@ -23,5 +24,6 @@ class FieldProfileModel {
     this.prevSeasonWeedingManual = 'Blank',
     this.prevSeasonWeedingChemicalName = 'Blank',
     this.isUpToDateInServer = 'No',
+    this.existsInServer = 'No',
   });
 }

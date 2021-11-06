@@ -61,9 +61,10 @@ class PreHarvestProvider with ChangeNotifier {
         'cobSizeAppreciation': updatedPreHarvestObject.cobSizeAppreciation,
         'cobSizeAppreciationComments':
             updatedPreHarvestObject.cobSizeAppreciationComments,
-        'numberOfCobsPerPlant': updatedPreHarvestObject.numberOfCobsPerPlant,
-        'numberOfCobsPerPlantComments':
-            updatedPreHarvestObject.numberOfCobsPerPlantComments,
+        'numberOfCobsPerPlantAppreciation':
+            updatedPreHarvestObject.numberOfCobsPerPlantAppreciation,
+        'numberOfCobsPerPlantAppreciationComments':
+            updatedPreHarvestObject.numberOfCobsPerPlantAppreciationComments,
         'plantHeight': updatedPreHarvestObject.plantHeight,
         'plantHeightComments': updatedPreHarvestObject.plantHeightComments,
         'birdDamage': updatedPreHarvestObject.birdDamage,
@@ -115,9 +116,10 @@ class PreHarvestProvider with ChangeNotifier {
             cobSizeAppreciation: preHarvestObject['cobSizeAppreciation'],
             cobSizeAppreciationComments:
                 preHarvestObject['cobSizeAppreciationComments'],
-            numberOfCobsPerPlant: preHarvestObject['numberOfCobsPerPlant'],
-            numberOfCobsPerPlantComments:
-                preHarvestObject['numberOfCobsPerPlantComments'],
+            numberOfCobsPerPlantAppreciation:
+                preHarvestObject['numberOfCobsPerPlantAppreciation'],
+            numberOfCobsPerPlantAppreciationComments:
+                preHarvestObject['numberOfCobsPerPlantAppreciationComments'],
             plantHeight: preHarvestObject['plantHeight'],
             plantHeightComments: preHarvestObject['plantHeightComments'],
             birdDamage: preHarvestObject['birdDamage'],

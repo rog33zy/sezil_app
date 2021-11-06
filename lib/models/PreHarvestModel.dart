@@ -8,8 +8,8 @@ class PreHarvestModel {
   String huskCoverComments;
   String cobSizeAppreciation;
   String cobSizeAppreciationComments;
-  String numberOfCobsPerPlant;
-  String numberOfCobsPerPlantComments;
+  String numberOfCobsPerPlantAppreciation;
+  String numberOfCobsPerPlantAppreciationComments;
   String plantHeight;
   String plantHeightComments;
   String birdDamage;
@@ -41,8 +41,8 @@ class PreHarvestModel {
     this.huskCoverComments = 'Blank',
     this.cobSizeAppreciation = 'Blank',
     this.cobSizeAppreciationComments = 'Blank',
-    this.numberOfCobsPerPlant = 'Blank',
-    this.numberOfCobsPerPlantComments = 'Blank',
+    this.numberOfCobsPerPlantAppreciation = 'Blank',
+    this.numberOfCobsPerPlantAppreciationComments = 'Blank',
     this.plantHeight = 'Blank',
     this.plantHeightComments = 'Blank',
     this.birdDamage = 'Blank',

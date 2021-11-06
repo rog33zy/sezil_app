@@ -82,12 +82,12 @@ class PreHarvestScreen extends StatelessWidget {
       updatedPreHarvestObject.cobSizeAppreciationComments = value;
     }
 
-    void numberOfCobsPerPlantHandler(String value) {
-      updatedPreHarvestObject.numberOfCobsPerPlant = value;
+    void numberOfCobsPerPlantAppreciationHandler(String value) {
+      updatedPreHarvestObject.numberOfCobsPerPlantAppreciation = value;
     }
 
-    void numberOfCobsPerPlantCommentsHandler(String value) {
-      updatedPreHarvestObject.numberOfCobsPerPlantComments = value;
+    void numberOfCobsPerPlantAppreciationCommentsHandler(String value) {
+      updatedPreHarvestObject.numberOfCobsPerPlantAppreciationComments = value;
     }
 
     void plantHeightHandler(String value) {
@@ -247,10 +247,10 @@ class PreHarvestScreen extends StatelessWidget {
           if (crop == 'Maize')
             ListWidgetComponent(
               title: 'Number of Cobs per Plant',
-              subtitle: preHarvestObject.numberOfCobsPerPlant,
-              value: preHarvestObject.numberOfCobsPerPlant,
+              subtitle: preHarvestObject.numberOfCobsPerPlantAppreciation,
+              value: preHarvestObject.numberOfCobsPerPlantAppreciation,
               onChangeDateValueHandler: () {},
-              onChangeTextValueHandler: numberOfCobsPerPlantHandler,
+              onChangeTextValueHandler: numberOfCobsPerPlantAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: <String>[
@@ -262,8 +262,10 @@ class PreHarvestScreen extends StatelessWidget {
               ],
               isTrait: true,
               isTextField: false,
-              onChangeGenComValueHandler: numberOfCobsPerPlantCommentsHandler,
-              genComSubtitle: preHarvestObject.numberOfCobsPerPlantComments,
+              onChangeGenComValueHandler:
+                  numberOfCobsPerPlantAppreciationCommentsHandler,
+              genComSubtitle:
+                  preHarvestObject.numberOfCobsPerPlantAppreciationComments,
             ),
           if (crop == 'Sorghum')
             ListWidgetComponent(

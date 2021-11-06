@@ -39,11 +39,11 @@ class SynchronizeTraitsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  set setPostPlantingObjectsToBeSynced(
-      List<PostPlantingModel> postPlantingObjectsToBeSynced) {
-    this.postPlantingObjectsToBeSynced = postPlantingObjectsToBeSynced;
-    notifyListeners();
-  }
+  // set setPostPlantingObjectsToBeSynced(
+  //     List<PostPlantingModel> postPlantingObjectsToBeSynced) {
+  //   this.postPlantingObjectsToBeSynced = postPlantingObjectsToBeSynced;
+  //   notifyListeners();
+  // }
 
   int get totalNumberOfItemsToBeSynced {
     return postPlantingObjectsToBeSynced!.length +

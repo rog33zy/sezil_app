@@ -19,8 +19,18 @@ class SynchronizeScreen extends StatefulWidget {
 class _SynchronizeScreenState extends State<SynchronizeScreen> {
   var _isLoading = false;
   String _errorMessage = '';
+
   @override
   Widget build(BuildContext context) {
+    var syncTraitsProvider = Provider.of<SynchronizeTraitsProvider>(
+      context,
+      listen: false,
+    );
+
+    var requestRefreshToken = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    ).refreshToken();
     final int numberOfItemsToBeSynced = Provider.of<SynchronizeTraitsProvider>(
       context,
       listen: true,
@@ -62,20 +72,70 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                                   _isLoading = true;
                                 },
                               );
-                              await Provider.of<AuthProvider>(
-                                context,
-                                listen: false,
-                              ).refreshToken();
-                              await Provider.of<SynchronizeTraitsProvider>(
-                                context,
-                                listen: false,
-                              )
-                                  .postPostPlantingObjectsToServer()
-                                  .catchError((error) {
-                                setState(() {
-                                  _errorMessage = error;
+                              if (syncTraitsProvider
+                                      .postPlantingObjectsToBeSynced!.length >
+                                  0) {
+                                await requestRefreshToken;
+                                await syncTraitsProvider
+                                    .postPostPlantingObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
                                 });
-                              });
+                              }
+
+                              if (syncTraitsProvider
+                                      .floweringObjectsToBeSynced!.length >
+                                  0) {
+                                await requestRefreshToken;
+                                await syncTraitsProvider
+                                    .postFloweringObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
+
+                              if (syncTraitsProvider
+                                      .postFloweringObjectsToBeSynced!.length >
+                                  0) {
+                                await requestRefreshToken;
+                                await syncTraitsProvider
+                                    .postPostFloweringObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
+
+                              if (syncTraitsProvider
+                                      .preHarvestObjectsToBeSynced!.length >
+                                  0) {
+                                await requestRefreshToken;
+                                await syncTraitsProvider
+                                    .postPreHarvestObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
+
+                              if (syncTraitsProvider
+                                      .harvestObjectsToBeSynced!.length >
+                                  0) {
+                                await requestRefreshToken;
+                                await syncTraitsProvider
+                                    .postHarvestObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
                               Navigator.of(context).pushReplacementNamed('/');
                             },
                       child: const Text('Sync'),

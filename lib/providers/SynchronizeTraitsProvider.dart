@@ -297,43 +297,47 @@ class SynchronizeTraitsProvider with ChangeNotifier {
           'id': responseData['id'],
           'lastUpdated': responseData['last_updated'],
           'plotId': responseData['plot_id'],
-          'lodgingResistance': responseData['pest_resistance'],
-          'lodgingResistanceComments': responseData['pest_resistance_comments'],
-          'huskCover': responseData['diseases_resistance'],
-          'huskCoverComments': responseData['diseases_resistance_comments'],
-          'cobSizeAppreciation': responseData['pest_resistance'],
+          'lodgingResistance': responseData['lodging_resistance'],
+          'lodgingResistanceComments':
+              responseData['lodging_resistance_comments'],
+          'huskCover': responseData['husk_cover'],
+          'huskCoverComments': responseData['husk_cover_comments'],
+          'cobSizeAppreciation': responseData['cob_size_appreciation'],
           'cobSizeAppreciationComments':
-              responseData['pest_resistance_comments'],
+              responseData['cob_size_appreciation_comments'],
           'numberOfCobsPerPlantAppreciation':
-              responseData['diseases_resistance'],
+              responseData['number_of_cobs_per_plant_appreciation'],
           'numberOfCobsPerPlantAppreciationComments':
-              responseData['diseases_resistance_comments'],
-          'plantHeight': responseData['pest_resistance'],
-          'plantHeightComments': responseData['pest_resistance_comments'],
-          'birdDamage': responseData['diseases_resistance'],
-          'birdDamageComments': responseData['diseases_resistance_comments'],
-          'panicleAppreciation': responseData['pest_resistance'],
+              responseData['number_of_cobs_per_plant_appreciation_comments'],
+          'plantHeight': responseData['plant_height'],
+          'plantHeightComments': responseData['plant_height_comments'],
+          'birdDamage': responseData['bird_damage'],
+          'birdDamageComments': responseData['bird_damage_comments'],
+          'panicleAppreciation': responseData['panicle_appreciation'],
           'panicleAppreciationComments':
-              responseData['pest_resistance_comments'],
-          'grainQualityAppreciation': responseData['diseases_resistance'],
+              responseData['panicle_appreciation_comments'],
+          'grainQualityAppreciation':
+              responseData['grain_quality_appreciation'],
           'grainQualityAppreciationComments':
-              responseData['diseases_resistance_comments'],
-          'headSizeAppreciation': responseData['pest_resistance'],
+              responseData['grain_quality_appreciation_comments'],
+          'headSizeAppreciation': responseData['head_size_appreciation'],
           'headSizeAppreciationComments':
-              responseData['pest_resistance_comments'],
-          'numberOfHeadsAppreciation': responseData['diseases_resistance'],
+              responseData['head_size_appreciation_comments'],
+          'numberOfHeadsAppreciation':
+              responseData['number_of_heads_appreciation'],
           'numberOfHeadsAppreciationComments':
-              responseData['diseases_resistance_comments'],
-          'plantGrowthHabitAppreciation': responseData['diseases_resistance'],
+              responseData['number_of_heads_appreciation_comments'],
+          'plantGrowthHabitAppreciation':
+              responseData['plant_growth_habit_appreciation'],
           'plantGrowthHabitAppreciationComments':
-              responseData['diseases_resistance_comments'],
-          'podLengthAppreciation': responseData['pest_resistance'],
+              responseData['plant_growth_habit_appreciation_comments'],
+          'podLengthAppreciation': responseData['pod_length_appreciation'],
           'podLengthAppreciationComments':
-              responseData['pest_resistance_comments'],
+              responseData['pod_length_appreciation_comments'],
           'willingnessToCultivateNextSeason':
-              responseData['diseases_resistance'],
+              responseData['willingness_to_cultivate_next_season'],
           'willingnessToCultivateNextSeasonComments':
-              responseData['diseases_resistance_comments'],
+              responseData['willingness_to_cultivate_next_season_comments'],
           'isUpToDateInServer': 'Yes',
           'existsInServer': 'Yes',
         },

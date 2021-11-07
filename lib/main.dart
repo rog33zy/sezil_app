@@ -17,6 +17,7 @@ import './providers/PostHarvestProvider.dart';
 import './providers/AuthProvider.dart';
 import './providers/SynchronizeTraitsProvider.dart';
 import './providers/RegisterSezilFarmerProvider.dart';
+import './providers/SynchronizeTraitsProvider2.dart';
 
 import './screens/HomePageScreen.dart';
 import 'screens/PlotsScreen.dart';
@@ -121,6 +122,40 @@ class MyApp extends StatelessWidget {
             syncTraitsProvider.harvestObjectsToBeSynced =
                 harvestProvider.harvestObjectsToBeSynced;
             return syncTraitsProvider;
+          },
+        ),
+        ChangeNotifierProxyProvider6<
+            AuthProvider,
+            PostHarvestProvider,
+            CurrentSeasonVarietyProvider,
+            FertilizationProvider,
+            FieldProfileProvider,
+            FieldOperationsProvider,
+            SynchronizeTraitsProvider2>(
+          create: (_) => SynchronizeTraitsProvider2(),
+          update: (ctx,
+              authProvider,
+              postHarvestProvider,
+              currentSeasonVarietyProvider,
+              fertilizationProvider,
+              fieldProfileProvider,
+              fieldOperationsProvider,
+              syncTraitsProvider2) {
+            syncTraitsProvider2!.accessToken = authProvider.accessToken;
+            syncTraitsProvider2.crop = authProvider.crop;
+            syncTraitsProvider2.farmerId = authProvider.farmerId;
+            syncTraitsProvider2.postHarvestObjectsToBeSynced =
+                postHarvestProvider.postHarvestObjectsToBeSynced;
+            syncTraitsProvider2.currentSeasonVarietyObjectToBeSynced =
+                currentSeasonVarietyProvider
+                    .currentSeasonVarietytObjectToBeSynced;
+            syncTraitsProvider2.fertilizationObjectsToBeSynced =
+                fertilizationProvider.fertilizationObjectsToBeSynced;
+            syncTraitsProvider2.fieldProfileObjectToBeSynced =
+                fieldProfileProvider.fieldProfileObjectToBeSynced;
+            syncTraitsProvider2.fieldOperationObjectToBeSynced =
+                fieldOperationsProvider.fieldOperationObjectToBeSynced;
+            return syncTraitsProvider2;
           },
         )
       ],

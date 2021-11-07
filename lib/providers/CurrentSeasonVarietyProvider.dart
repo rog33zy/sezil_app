@@ -30,6 +30,28 @@ class CurrentSeasonVarietyProvider with ChangeNotifier {
     return _newCurrentSeasonVarietyObject;
   }
 
+  CurrentSeasonVarietyModel? get currentSeasonVarietytObjectToBeSynced {
+    if (_currentSeasonVarietyObject.isUpToDateInServer == 'No') {
+      return CurrentSeasonVarietyModel(
+        id: _currentSeasonVarietyObject.id,
+        lastUpdated: _currentSeasonVarietyObject.lastUpdated,
+        varietyName: _currentSeasonVarietyObject.varietyName,
+        previousSeasonHarvest:
+            _currentSeasonVarietyObject.previousSeasonHarvest,
+        previousSeasonHectarage:
+            _currentSeasonVarietyObject.previousSeasonHectarage,
+        sourceOfSeed: _currentSeasonVarietyObject.sourceOfSeed,
+        numberOfYearsGrown: _currentSeasonVarietyObject.numberOfYearsGrown,
+        percentFarmersGrowingVariety:
+            _currentSeasonVarietyObject.percentFarmersGrowingVariety,
+        isUpToDateInServer: _currentSeasonVarietyObject.isUpToDateInServer,
+        existsInServer: _currentSeasonVarietyObject.existsInServer,
+      );
+    } else {
+      return null;
+    }
+  }
+
   Future<void>? updateCurrentSeasonVarietyObject(
       CurrentSeasonVarietyModel updatedCurrentSeasonVarietyObject) async {
     _currentSeasonVarietyObject = updatedCurrentSeasonVarietyObject;

@@ -39,6 +39,39 @@ class FieldOperationsProvider with ChangeNotifier {
     return _newFieldOperationsModel;
   }
 
+  FieldOperationsModel? get fieldOperationObjectToBeSynced {
+    if (_fieldOperationsObject.isUpToDateInServer == 'No') {
+      return FieldOperationsModel(
+        id: _fieldOperationsObject.id,
+        lastUpdated: _fieldOperationsObject.lastUpdated,
+        dateOfLandPreparation: _fieldOperationsObject.dateOfLandPreparation,
+        methodOfLandPreparation: _fieldOperationsObject.methodOfLandPreparation,
+        dateOfPlanting: _fieldOperationsObject.dateOfPlanting,
+        dateOfThinning: _fieldOperationsObject.dateOfThinning,
+        dateOfFirstWeeding: _fieldOperationsObject.dateOfFirstWeeding,
+        firstWeedingIsManual: _fieldOperationsObject.firstWeedingIsManual,
+        firstWeedingHerbicideName:
+            _fieldOperationsObject.firstWeedingHerbicideName,
+        firstWeedingHerbicideQty:
+            _fieldOperationsObject.firstWeedingHerbicideQty,
+        dateOfPesticideApplication:
+            _fieldOperationsObject.dateOfPesticideApplication,
+        pesticideName: _fieldOperationsObject.pesticideName,
+        pesticideApplicationQty: _fieldOperationsObject.pesticideApplicationQty,
+        dateOfSecondWeeding: _fieldOperationsObject.dateOfSecondWeeding,
+        secondWeedingIsManual: _fieldOperationsObject.secondWeedingIsManual,
+        secondWeedingHerbicideName:
+            _fieldOperationsObject.secondWeedingHerbicideName,
+        secondWeedingHerbicideQty:
+            _fieldOperationsObject.secondWeedingHerbicideQty,
+        isUpToDateInServer: _fieldOperationsObject.isUpToDateInServer,
+        existsInServer: _fieldOperationsObject.existsInServer,
+      );
+    } else {
+      return null;
+    }
+  }
+
   Future<void>? updateFieldOperationsObject(
       FieldOperationsModel updatedFieldOperationsObject) async {
     _fieldOperationsObject = updatedFieldOperationsObject;

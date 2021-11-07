@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/AuthProvider.dart';
 import '../providers/SynchronizeTraitsProvider.dart';
+import '../providers/SynchronizeTraitsProvider2.dart';
 
 import '../components/UI/AppDrawer.dart';
 
@@ -27,14 +28,27 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
       listen: false,
     );
 
+    var syncTraitsProvider2 = Provider.of<SynchronizeTraitsProvider2>(
+      context,
+      listen: false,
+    );
+
     var requestRefreshToken = Provider.of<AuthProvider>(
       context,
       listen: false,
     ).refreshToken();
+
     final int numberOfItemsToBeSynced = Provider.of<SynchronizeTraitsProvider>(
       context,
       listen: true,
     ).totalNumberOfItemsToBeSynced;
+
+    final int numberOfItemsToBeSynced2 =
+        Provider.of<SynchronizeTraitsProvider2>(
+      context,
+      listen: true,
+    ).totalNumberOfItemsToBeSynced2;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Synchronize'),
@@ -45,8 +59,9 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
             height: MediaQuery.of(context).size.height * 0.3,
           ),
           Center(
-            child:
-                Text('There are $numberOfItemsToBeSynced items to be synced.'),
+            child: Text(
+              'There are ${numberOfItemsToBeSynced + numberOfItemsToBeSynced2} items to be synced.',
+            ),
           ),
           Center(
             child: ConstrainedBox(
@@ -130,6 +145,74 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                                 await requestRefreshToken;
                                 await syncTraitsProvider
                                     .postHarvestObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
+
+                              if (syncTraitsProvider2
+                                      .postHarvestObjectsToBeSynced!.length >
+                                  0) {
+                                await requestRefreshToken;
+                                await syncTraitsProvider2
+                                    .postPostHarvestObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
+
+                              if (syncTraitsProvider2
+                                      .fertilizationObjectsToBeSynced!.length >
+                                  0) {
+                                await requestRefreshToken;
+                                await syncTraitsProvider2
+                                    .postFertilizationObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
+
+                              if (syncTraitsProvider2
+                                      .currentSeasonVarietyObjectToBeSynced!
+                                      .isUpToDateInServer ==
+                                  'No') {
+                                await requestRefreshToken;
+                                await syncTraitsProvider2
+                                    .postCurrentSeasonVarietyObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
+
+                              if (syncTraitsProvider2
+                                      .fieldOperationObjectToBeSynced!
+                                      .isUpToDateInServer ==
+                                  'No') {
+                                await requestRefreshToken;
+                                await syncTraitsProvider2
+                                    .postFieldOperationObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
+                              }
+
+                              if (syncTraitsProvider2
+                                      .fieldProfileObjectToBeSynced!
+                                      .isUpToDateInServer ==
+                                  'No') {
+                                await requestRefreshToken;
+                                await syncTraitsProvider2
+                                    .postFieldProfileObjectsToServer()
                                     .catchError((error) {
                                   setState(() {
                                     _errorMessage = error;

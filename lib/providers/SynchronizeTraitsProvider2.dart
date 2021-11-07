@@ -44,6 +44,29 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
   //   this.postHarvestObjectsToBeSynced = postHarvestObjectsToBeSynced;
   //   notifyListeners();
   // }
+  int get totalNumberOfItemsToBeSynced2 {
+    int fieldProfileCount = 0;
+    int fieldOperationsCount = 0;
+    int currentSeasonVarietyCount = 0;
+
+    if (fieldProfileObjectToBeSynced!.isUpToDateInServer == 'No') {
+      fieldProfileCount = 1;
+    }
+
+    if (fieldOperationObjectToBeSynced!.isUpToDateInServer == 'No') {
+      fieldOperationsCount = 1;
+    }
+
+    if (currentSeasonVarietyObjectToBeSynced!.isUpToDateInServer == 'No') {
+      currentSeasonVarietyCount = 1;
+    }
+    return postHarvestObjectsToBeSynced!.length +
+        fertilizationObjectsToBeSynced!.length +
+        fieldProfileCount +
+        fieldOperationsCount +
+        currentSeasonVarietyCount;
+  }
+
   dynamic postUnsyncedObjectsToServer(
     body,
     postingUrlPortion,
@@ -156,5 +179,202 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
       );
       notifyListeners();
     }
+  }
+
+  Future<void> postCurrentSeasonVarietyObjectsToServer() async {
+    final unsyncedObject = currentSeasonVarietyObjectToBeSynced!;
+    String checkObjectExistsResponse = unsyncedObject.existsInServer;
+    var body = {
+      'id': unsyncedObject.id,
+      'crop': crop,
+      'farmer_id': farmerId,
+      'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
+      'variety_name': unsyncedObject.varietyName,
+      'previous_season_harvest': unsyncedObject.previousSeasonHarvest,
+      'previous_season_hectarage': unsyncedObject.previousSeasonHectarage,
+      'source_of_seed': unsyncedObject.sourceOfSeed,
+      'number_of_years_grown': unsyncedObject.numberOfYearsGrown,
+      'percent_farmers_growing_variety':
+          unsyncedObject.percentFarmersGrowingVariety,
+    };
+
+    final Map<String, dynamic> responseData = await postUnsyncedObjectsToServer(
+      body,
+      'current_season_variety/current_season_variety_objects',
+      checkObjectExistsResponse,
+      unsyncedObject,
+    );
+    await DBHelper.insert(
+      'currentSeasonVariety',
+      {
+        'id': responseData['id'],
+        'lastUpdated': responseData['last_updated'],
+        'varietyName': responseData['variety_name'],
+        'previousSeasonHarvest': responseData['previous_season_harvest'],
+        'previousSeasonHectarage': responseData['previous_season_hectarage'],
+        'sourceOfSeed': responseData['source_of_seed'],
+        'numberOfYearsGrown': responseData['number_of_years_grown'],
+        'percentFarmersGrowingVariety':
+            responseData['percent_farmers_growing_variety'],
+        'isUpToDateInServer': 'Yes',
+        'existsInServer': 'Yes',
+      },
+    );
+    notifyListeners();
+  }
+
+  Future<void> postFertilizationObjectsToServer() async {
+    for (int i = 0; i < fertilizationObjectsToBeSynced!.length; i++) {
+      final unsyncedObject = fertilizationObjectsToBeSynced![i];
+      String checkObjectExistsResponse = unsyncedObject.existsInServer;
+      var body = {
+        'id': unsyncedObject.id,
+        'crop': crop,
+        'farmer_id': farmerId,
+        'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
+        'season': unsyncedObject.season,
+        'type_of_dressing': unsyncedObject.typeOfDressing,
+        'name_of_organic_fertilizer': unsyncedObject.nameOfOrganicFertilizer,
+        'name_of_synthetic_fertilizer':
+            unsyncedObject.nameOfSyntheticFertilizer,
+        'quantity_applied': unsyncedObject.quantityApplied,
+        'time_of_application': unsyncedObject.timeOfApplication,
+      };
+
+      final Map<String, dynamic> responseData =
+          await postUnsyncedObjectsToServer(
+        body,
+        'fertilization/fertilization_objects',
+        checkObjectExistsResponse,
+        unsyncedObject,
+      );
+      await DBHelper.insert(
+        'fertilization',
+        {
+          'id': responseData['id'],
+          'lastUpdated': responseData['last_updated'],
+          'season': responseData['season'],
+          'typeOfDressing': responseData['type_of_dressing'],
+          'nameOfOrganicFertilizer': responseData['name_of_organic_fertilizer'],
+          'nameOfSyntheticFertilizer':
+              responseData['name_of_synthetic_fertilizer'],
+          'quantityApplied': responseData['quantity_applied'],
+          'timeOfApplication': responseData['time_of_application'],
+          'isUpToDateInServer': 'Yes',
+          'existsInServer': 'Yes',
+        },
+      );
+      notifyListeners();
+    }
+  }
+
+  Future<void> postFieldProfileObjectsToServer() async {
+    final unsyncedObject = fieldProfileObjectToBeSynced!;
+    String checkObjectExistsResponse = unsyncedObject.existsInServer;
+    var body = {
+      'id': unsyncedObject.id,
+      'crop': crop,
+      'farmer_id': farmerId,
+      'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
+      'field_size': unsyncedObject.fieldSize,
+      'soil_type': unsyncedObject.soilType,
+      'latitude': unsyncedObject.latitude,
+      'longitude': unsyncedObject.longitude,
+      'crop_grown_prev_season': unsyncedObject.cropGrownPrevSeason,
+      'crop_grown_two_seasons_ago': unsyncedObject.cropGrownTwoSeasonsAgo,
+      'prev_season_weeding_manual': unsyncedObject.prevSeasonWeedingManual,
+      'prev_season_weeding_chemical_name':
+          unsyncedObject.prevSeasonWeedingChemicalName,
+    };
+
+    final Map<String, dynamic> responseData = await postUnsyncedObjectsToServer(
+      body,
+      'field_profile/field_profile_objects',
+      checkObjectExistsResponse,
+      unsyncedObject,
+    );
+    await DBHelper.insert(
+      'fieldProfile',
+      {
+        'id': responseData['id'],
+        'lastUpdated': responseData['last_updated'],
+        'fieldSize': responseData['field_size'],
+        'soilType': responseData['soil_type'],
+        'latitude': responseData['latitude'],
+        'longitude': responseData['longitude'],
+        'cropGrownPrevSeason': responseData['crop_grown_prev_season'],
+        'cropGrownTwoSeasonsAgo': responseData['crop_grown_two_seasons_ago'],
+        'prevSeasonWeedingManual': responseData['prev_season_weeding_manual'],
+        'prevSeasonWeedingChemicalName':
+            responseData['prev_season_weeding_chemical_name'],
+        'isUpToDateInServer': 'Yes',
+        'existsInServer': 'Yes',
+      },
+    );
+    notifyListeners();
+  }
+
+  Future<void> postFieldOperationObjectsToServer() async {
+    final unsyncedObject = fieldOperationObjectToBeSynced!;
+    String checkObjectExistsResponse = unsyncedObject.existsInServer;
+    var body = {
+      'id': unsyncedObject.id,
+      'crop': crop,
+      'farmer_id': farmerId,
+      'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
+      'date_of_land_preparation': unsyncedObject.dateOfLandPreparation,
+      'method_of_land_preparation': unsyncedObject.methodOfLandPreparation,
+      'date_of_planting': unsyncedObject.dateOfPlanting,
+      'date_of_thinning': unsyncedObject.dateOfThinning,
+      'date_of_first_weeding': unsyncedObject.dateOfFirstWeeding,
+      'first_weeding_is_manual': unsyncedObject.firstWeedingIsManual,
+      'first_weeding_herbicide_name': unsyncedObject.firstWeedingHerbicideName,
+      'first_weeding_herbicide_qty': unsyncedObject.firstWeedingHerbicideQty,
+      'date_of_pesticide_application':
+          unsyncedObject.dateOfPesticideApplication,
+      'pesticide_name': unsyncedObject.pesticideName,
+      'pesticide_application_qty': unsyncedObject.pesticideApplicationQty,
+      'date_of_second_weeding': unsyncedObject.dateOfSecondWeeding,
+      'second_weeding_is_manual': unsyncedObject.secondWeedingIsManual,
+      'second_weeding_herbicide_name':
+          unsyncedObject.secondWeedingHerbicideName,
+      'second_weeding_herbicide_qty': unsyncedObject.secondWeedingHerbicideQty,
+    };
+
+    final Map<String, dynamic> responseData = await postUnsyncedObjectsToServer(
+      body,
+      'field_operations/field_operations_objects',
+      checkObjectExistsResponse,
+      unsyncedObject,
+    );
+    await DBHelper.insert(
+      'fieldOperations',
+      {
+        'id': responseData['id'],
+        'lastUpdated': responseData['last_updated'],
+        'dateOfLandPreparation': responseData['date_of_land_preparation'],
+        'methodOfLandPreparation': responseData['method_of_land_preparation'],
+        'dateOfPlanting': responseData['date_of_planting'],
+        'dateOfThinning': responseData['date_of_thinning'],
+        'dateOfFirstWeeding': responseData['date_of_first_weeding'],
+        'firstWeedingIsManual': responseData['first_weeding_is_manual'],
+        'firstWeedingHerbicideName':
+            responseData['first_weeding_herbicide_name'],
+        'firstWeedingHerbicideQty': responseData['first_weeding_herbicide_qty'],
+        'dateOfPesticideApplication':
+            responseData['date_of_pesticide_application'],
+        'pesticideName': responseData['pesticide_name'],
+        'pesticideApplicationQty': responseData['pesticide_application_qty'],
+        'dateOfSecondWeeding': responseData['date_of_second_weeding'],
+        'secondWeedingIsManual': responseData['second_weeding_is_manual'],
+        'secondWeedingHerbicideName':
+            responseData['second_weeding_herbicide_name'],
+        'secondWeedingHerbicideQty':
+            responseData['second_weeding_herbicide_qty'],
+        'isUpToDateInServer': 'Yes',
+        'existsInServer': 'Yes',
+      },
+    );
+    notifyListeners();
   }
 }

@@ -11,6 +11,14 @@ class FertilizationProvider with ChangeNotifier {
     return [..._fertilizationObjectsList];
   }
 
+  List<FertilizationModel> get fertilizationObjectsToBeSynced {
+    return _fertilizationObjectsList
+        .where(
+          (element) => element.isUpToDateInServer == 'No',
+        )
+        .toList();
+  }
+
   bool isExisting(String season, String typeOfDressing) {
     final relevantList = _fertilizationObjectsList.where(
       (element) =>

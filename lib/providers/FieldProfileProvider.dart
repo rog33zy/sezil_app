@@ -29,6 +29,28 @@ class FieldProfileProvider with ChangeNotifier {
     return _newFieldProfileObject;
   }
 
+  FieldProfileModel? get fieldProfileObjectToBeSynced {
+    if (_fieldProfileObject.isUpToDateInServer == 'No') {
+      return FieldProfileModel(
+        id: _fieldProfileObject.id,
+        lastUpdated: _fieldProfileObject.lastUpdated,
+        fieldSize: _fieldProfileObject.fieldSize,
+        soilType: _fieldProfileObject.soilType,
+        latitude: _fieldProfileObject.latitude,
+        longitude: _fieldProfileObject.longitude,
+        cropGrownPrevSeason: _fieldProfileObject.cropGrownPrevSeason,
+        cropGrownTwoSeasonsAgo: _fieldProfileObject.cropGrownTwoSeasonsAgo,
+        prevSeasonWeedingManual: _fieldProfileObject.prevSeasonWeedingManual,
+        prevSeasonWeedingChemicalName:
+            _fieldProfileObject.prevSeasonWeedingChemicalName,
+        isUpToDateInServer: _fieldProfileObject.isUpToDateInServer,
+        existsInServer: _fieldProfileObject.existsInServer,
+      );
+    } else {
+      return null;
+    }
+  }
+
   Future<void>? updateFieldProfileObject(
       FieldProfileModel updatedFieldProfileObject) async {
     _fieldProfileObject = updatedFieldProfileObject;

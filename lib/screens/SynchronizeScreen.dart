@@ -49,6 +49,9 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
       listen: true,
     ).totalNumberOfItemsToBeSynced2;
 
+    int totalNumberOfItemsToBeSynced =
+        numberOfItemsToBeSynced + numberOfItemsToBeSynced2;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Synchronize'),
@@ -60,7 +63,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
           ),
           Center(
             child: Text(
-              'There are ${numberOfItemsToBeSynced + numberOfItemsToBeSynced2} items to be synced.',
+              'There are $totalNumberOfItemsToBeSynced items to be synced.',
             ),
           ),
           Center(
@@ -79,7 +82,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFFFF6C00),
                       ),
-                      onPressed: numberOfItemsToBeSynced == 0
+                      onPressed: totalNumberOfItemsToBeSynced == 0
                           ? null
                           : () async {
                               setState(
@@ -170,18 +173,17 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                                   0) {
                                 await requestRefreshToken;
                                 await syncTraitsProvider2
-                                    .postFertilizationObjectsToServer()
-                                    .catchError((error) {
-                                  setState(() {
-                                    _errorMessage = error;
-                                  });
-                                });
+                                    .postFertilizationObjectsToServer();
+                                //     .catchError((error) {
+                                //   setState(() {
+                                //     _errorMessage = error;
+                                //   });
+                                // });
                               }
 
                               if (syncTraitsProvider2
-                                      .currentSeasonVarietyObjectToBeSynced!
-                                      .isUpToDateInServer ==
-                                  'No') {
+                                      .currentSeasonVarietyCount >
+                                  0) {
                                 await requestRefreshToken;
                                 await syncTraitsProvider2
                                     .postCurrentSeasonVarietyObjectsToServer()
@@ -192,10 +194,8 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                                 });
                               }
 
-                              if (syncTraitsProvider2
-                                      .fieldOperationObjectToBeSynced!
-                                      .isUpToDateInServer ==
-                                  'No') {
+                              if (syncTraitsProvider2.fieldOperationsCount >
+                                  0) {
                                 await requestRefreshToken;
                                 await syncTraitsProvider2
                                     .postFieldOperationObjectsToServer()
@@ -206,10 +206,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                                 });
                               }
 
-                              if (syncTraitsProvider2
-                                      .fieldProfileObjectToBeSynced!
-                                      .isUpToDateInServer ==
-                                  'No') {
+                              if (syncTraitsProvider2.fieldProfileCount > 0) {
                                 await requestRefreshToken;
                                 await syncTraitsProvider2
                                     .postFieldProfileObjectsToServer()

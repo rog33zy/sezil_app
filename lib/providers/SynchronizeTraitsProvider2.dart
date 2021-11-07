@@ -44,22 +44,48 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
   //   this.postHarvestObjectsToBeSynced = postHarvestObjectsToBeSynced;
   //   notifyListeners();
   // }
-  int get totalNumberOfItemsToBeSynced2 {
+  int get fieldProfileCount {
     int fieldProfileCount = 0;
+    try {
+      if (fieldProfileObjectToBeSynced!.isUpToDateInServer == 'No' &&
+          fieldProfileObjectToBeSynced?.lastUpdated != null) {
+        fieldProfileCount = 1;
+      }
+    } catch (error) {
+      fieldProfileCount = 0;
+    }
+    return fieldProfileCount;
+  }
+
+  int get fieldOperationsCount {
     int fieldOperationsCount = 0;
+    try {
+      if (fieldOperationObjectToBeSynced!.isUpToDateInServer == 'No' &&
+          fieldOperationObjectToBeSynced?.lastUpdated != null) {
+        fieldOperationsCount = 1;
+      }
+    } catch (error) {
+      fieldOperationsCount = 0;
+    }
+    return fieldOperationsCount;
+  }
+
+  int get currentSeasonVarietyCount {
     int currentSeasonVarietyCount = 0;
+    try {
+      if (currentSeasonVarietyObjectToBeSynced!.isUpToDateInServer == 'No' &&
+          currentSeasonVarietyObjectToBeSynced?.lastUpdated != null) {
+        currentSeasonVarietyCount = 1;
+      }
+    } catch (error) {}
+    return currentSeasonVarietyCount;
+  }
 
-    if (fieldProfileObjectToBeSynced!.isUpToDateInServer == 'No') {
-      fieldProfileCount = 1;
-    }
+  int get totalNumberOfItemsToBeSynced2 {
+    int fieldProfileCount = this.fieldProfileCount;
+    int fieldOperationsCount = this.fieldOperationsCount;
+    int currentSeasonVarietyCount = this.currentSeasonVarietyCount;
 
-    if (fieldOperationObjectToBeSynced!.isUpToDateInServer == 'No') {
-      fieldOperationsCount = 1;
-    }
-
-    if (currentSeasonVarietyObjectToBeSynced!.isUpToDateInServer == 'No') {
-      currentSeasonVarietyCount = 1;
-    }
     return postHarvestObjectsToBeSynced!.length +
         fertilizationObjectsToBeSynced!.length +
         fieldProfileCount +
@@ -102,7 +128,6 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
         },
       );
     }
-
     final responseData = json.decode(response.body);
     return responseData;
   }
@@ -197,7 +222,6 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
       'percent_farmers_growing_variety':
           unsyncedObject.percentFarmersGrowingVariety,
     };
-
     final Map<String, dynamic> responseData = await postUnsyncedObjectsToServer(
       body,
       'current_season_variety/current_season_variety_objects',
@@ -238,7 +262,9 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
         'name_of_synthetic_fertilizer':
             unsyncedObject.nameOfSyntheticFertilizer,
         'quantity_applied': unsyncedObject.quantityApplied,
-        'time_of_application': unsyncedObject.timeOfApplication,
+        'time_of_application': unsyncedObject.timeOfApplication == null
+            ? null
+            : unsyncedObject.timeOfApplication!.toIso8601String(),
       };
 
       final Map<String, dynamic> responseData =
@@ -317,24 +343,39 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
   Future<void> postFieldOperationObjectsToServer() async {
     final unsyncedObject = fieldOperationObjectToBeSynced!;
     String checkObjectExistsResponse = unsyncedObject.existsInServer;
-    var body = {
+
+    Map<String, dynamic> body = {
       'id': unsyncedObject.id,
       'crop': crop,
       'farmer_id': farmerId,
-      'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
-      'date_of_land_preparation': unsyncedObject.dateOfLandPreparation,
+      'last_updated': unsyncedObject.lastUpdated == null
+          ? null
+          : unsyncedObject.lastUpdated!.toIso8601String(),
+      'date_of_land_preparation': unsyncedObject.dateOfLandPreparation == null
+          ? null
+          : unsyncedObject.dateOfLandPreparation!.toIso8601String(),
       'method_of_land_preparation': unsyncedObject.methodOfLandPreparation,
-      'date_of_planting': unsyncedObject.dateOfPlanting,
-      'date_of_thinning': unsyncedObject.dateOfThinning,
-      'date_of_first_weeding': unsyncedObject.dateOfFirstWeeding,
+      'date_of_planting': unsyncedObject.dateOfPlanting == null
+          ? null
+          : unsyncedObject.dateOfPlanting!.toIso8601String(),
+      'date_of_thinning': unsyncedObject.dateOfThinning == null
+          ? null
+          : unsyncedObject.dateOfThinning!.toIso8601String(),
+      'date_of_first_weeding': unsyncedObject.dateOfFirstWeeding == null
+          ? null
+          : unsyncedObject.dateOfFirstWeeding!.toIso8601String(),
       'first_weeding_is_manual': unsyncedObject.firstWeedingIsManual,
       'first_weeding_herbicide_name': unsyncedObject.firstWeedingHerbicideName,
       'first_weeding_herbicide_qty': unsyncedObject.firstWeedingHerbicideQty,
       'date_of_pesticide_application':
-          unsyncedObject.dateOfPesticideApplication,
+          unsyncedObject.dateOfPesticideApplication == null
+              ? null
+              : unsyncedObject.dateOfPesticideApplication!.toIso8601String(),
       'pesticide_name': unsyncedObject.pesticideName,
       'pesticide_application_qty': unsyncedObject.pesticideApplicationQty,
-      'date_of_second_weeding': unsyncedObject.dateOfSecondWeeding,
+      'date_of_second_weeding': unsyncedObject.dateOfSecondWeeding == null
+          ? null
+          : unsyncedObject.dateOfSecondWeeding!.toIso8601String(),
       'second_weeding_is_manual': unsyncedObject.secondWeedingIsManual,
       'second_weeding_herbicide_name':
           unsyncedObject.secondWeedingHerbicideName,

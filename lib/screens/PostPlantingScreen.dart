@@ -101,41 +101,55 @@ class PostPlantingScreen extends StatelessWidget {
       updatedPostPlantingObject.diseasesResistanceComments = value;
     }
 
-    final String crop = Provider.of<AuthProvider>(
+    final authProvider = Provider.of<AuthProvider>(
       context,
       listen: false,
-    ).crop;
+    );
+
+    final String crop = authProvider.crop;
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Post Planting - Plot $plotId'),
+        title: isFarmer!
+            ? Text('Pambuyo Po Byala - Plot $plotId')
+            : Text('Post Planting - Plot $plotId'),
         centerTitle: true,
-        backgroundColor: Color(0xFF257150),
+        // backgroundColor: Color(0xFF257150),
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: 'Seedling Vigour',
+            title: isFarmer ? 'Mphamvu Ya Mbeu' : 'Seedling Vigour',
             subtitle: postPlantingObject.seedlingVigour,
             value: postPlantingObject.seedlingVigour,
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: seedlingVigourHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
-            listOfValues: <String>[
-              '1-Very Good',
-              '2-Good',
-              '3-Fair',
-              '4-Bad',
-              '5-Very Bad',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    '1-Yaikulu kwambili',
+                    '2-Yaikulu',
+                    '3-Yapakati',
+                    '4-Yoing\'ono',
+                    '5-Yaing\'ono kwambili',
+                  ]
+                : <String>[
+                    '1-Very Good',
+                    '2-Good',
+                    '3-Fair',
+                    '4-Bad',
+                    '5-Very Bad',
+                  ],
             isTrait: true,
             isTextField: false,
             onChangeGenComValueHandler: seedlingVigourCommentsHandler,
             genComSubtitle: postPlantingObject.seedlingVigourComments,
           ),
           ListWidgetComponent(
-            title: 'Plant Stand',
+            title: isFarmer ? 'Kameledwe' : 'Plant Stand',
             subtitle: postPlantingObject.plantStand == null
                 ? 'Blank'
                 : postPlantingObject.plantStand.toString(),
@@ -152,7 +166,7 @@ class PostPlantingScreen extends StatelessWidget {
           ),
           if (crop == 'Beans')
             ListWidgetComponent(
-              title: 'Pest Resistance',
+              title: isFarmer ? 'Kukakaniza Kwa Tudoyo' : 'Pest Resistance',
               subtitle: postPlantingObject.pestResistance,
               value: postPlantingObject.pestResistance,
               onChangeDateValueHandler: () {},
@@ -173,7 +187,7 @@ class PostPlantingScreen extends StatelessWidget {
             ),
           if (crop == 'Beans')
             ListWidgetComponent(
-              title: 'Disease Resistance',
+              title: isFarmer ? 'Kukakaniza Kwa Matenda' : 'Disease Resistance',
               subtitle: postPlantingObject.diseasesResistance,
               value: postPlantingObject.diseasesResistance,
               onChangeDateValueHandler: () {},

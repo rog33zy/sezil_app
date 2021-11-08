@@ -20,10 +20,14 @@ class PreHarvestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String crop = Provider.of<AuthProvider>(
+    final authProvider = Provider.of<AuthProvider>(
       context,
       listen: false,
-    ).crop;
+    );
+
+    final String crop = authProvider.crop;
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
 
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
@@ -179,7 +183,9 @@ class PreHarvestScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pre Harvest - Plot $plotId'),
+        title: isFarmer!
+            ? Text('Musana Kolole - Plot $plotId')
+            : Text('Pre Harvest - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(
@@ -207,17 +213,22 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Husk Cover',
+              title: isFarmer ? 'Chikhoko' : 'Husk Cover',
               subtitle: preHarvestObject.huskCover,
               value: preHarvestObject.huskCover,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: huskCoverHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Fully',
-                '2-Partially',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Mbali Yonse',
+                      '2-Mbai Ina',
+                    ]
+                  : <String>[
+                      '1-Fully',
+                      '2-Partially',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: huskCoverCommentsHandler,
@@ -225,7 +236,7 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Cob Size',
+              title: 'Cob Size Appreciation',
               subtitle: preHarvestObject.cobSizeAppreciation,
               value: preHarvestObject.cobSizeAppreciation,
               onChangeDateValueHandler: () {},
@@ -246,7 +257,7 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Number of Cobs per Plant',
+              title: 'Number of Cobs per Plant AppreciationB',
               subtitle: preHarvestObject.numberOfCobsPerPlantAppreciation,
               value: preHarvestObject.numberOfCobsPerPlantAppreciation,
               onChangeDateValueHandler: () {},
@@ -441,20 +452,30 @@ class PreHarvestScreen extends StatelessWidget {
               genComSubtitle: preHarvestObject.podLengthAppreciationComments,
             ),
           ListWidgetComponent(
-            title: 'Willingness to Cultivate Next Season',
+            title: isFarmer
+                ? 'Kuzipeleka Kulima Nyengo Ikubwela'
+                : 'Willingness to Cultivate Next Season',
             subtitle: preHarvestObject.willingnessToCultivateNextSeason,
             value: preHarvestObject.willingnessToCultivateNextSeason,
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: willingnessHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
-            listOfValues: <String>[
-              '1-Yes, Very Sure',
-              '2-Yes',
-              '3-Perhaps, Not Sure',
-              '4-No',
-              '5-Definitely Not',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    '1-Inde, Kwambili',
+                    '2-Inde',
+                    '3-Mulindichikayiko',
+                    '4-Ai',
+                    '5-Ai Kwambili',
+                  ]
+                : <String>[
+                    '1-Yes, Very Sure',
+                    '2-Yes',
+                    '3-Perhaps, Not Sure',
+                    '4-No',
+                    '5-Definitely Not',
+                  ],
             isTrait: true,
             isTextField: false,
             onChangeGenComValueHandler: willingnessCommentsHandler,

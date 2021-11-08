@@ -35,6 +35,8 @@ class HomePageScreen extends StatelessWidget {
       listen: false,
     );
 
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     Provider.of<FieldOperationsProvider>(
       context,
       listen: false,
@@ -99,23 +101,25 @@ class HomePageScreen extends StatelessWidget {
               height: 10.0,
             ),
             HomePageScreenOption(
-              title: 'Traits',
+              title: isFarmer! ? 'Maonekedwe' : 'Traits',
               routeName: TraitsScreen.routeName,
             ),
             HomePageScreenOption(
-              title: 'Field Profile',
+              title: isFarmer ? 'Miri ya Munda' : 'Field Profile',
               routeName: FieldProfileScreen.routeName,
             ),
             HomePageScreenOption(
-              title: 'Field Operations',
+              title: isFarmer ? 'Nchito za mumunda' : 'Field Operations',
               routeName: FieldOperationsScreen.routeName,
             ),
             HomePageScreenOption(
-              title: '${Seasons.currentSeason} Variety',
+              title: isFarmer
+                  ? 'Mtundu wa mbeu'
+                  : '${Seasons.currentSeason} Variety',
               routeName: CurrentSeasonVarietyScreen.routeName,
             ),
             HomePageScreenOption(
-              title: 'Fertilization',
+              title: isFarmer ? 'Fataleza' : 'Fertilization',
               routeName: FertilizationScreen.routeName,
             ),
           ],

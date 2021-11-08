@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:recase/recase.dart';
 
 import '../providers/CurrentSeasonVarietyProvider.dart';
+import '../providers/AuthProvider.dart';
 
 import '../models/CurrentSeasonVarietyModel.dart';
 
@@ -68,6 +69,13 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
       Navigator.of(context).pop();
     }
 
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
+    final isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${Seasons.currentSeason} Variety'),
@@ -76,7 +84,7 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: 'Variety\'s Name',
+            title: isFarmer! ? 'Dzina La Mbeu' : 'Variety\'s Name',
             subtitle: currentSeasonVarietyObject.varietyName,
             value: currentSeasonVarietyObject.varietyName,
             onChangeDateValueHandler: () {},
@@ -85,7 +93,9 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: '${Seasons.previousSeason} Harvest (Kg)',
+            title: isFarmer
+                ? 'Zokolola Za ${Seasons.previousSeason}'
+                : '${Seasons.previousSeason} Harvest (Kg)',
             subtitle: currentSeasonVarietyObject.previousSeasonHarvest == null
                 ? 'Blank'
                 : currentSeasonVarietyObject.previousSeasonHarvest.toString(),
@@ -99,7 +109,9 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: '${Seasons.previousSeason} Hectarage Grown (ha)',
+            title: isFarmer
+                ? 'Kukula Kwa Munda Munalima Mu ${Seasons.previousSeason} (Ha)'
+                : '${Seasons.previousSeason} Hectarage Grown (ha)',
             subtitle: currentSeasonVarietyObject.previousSeasonHectarage == null
                 ? 'Blank'
                 : currentSeasonVarietyObject.previousSeasonHectarage.toString(),
@@ -113,7 +125,7 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Source of Seed',
+            title: isFarmer ? 'Komwe Munachosa Mbeu' : 'Source of Seed',
             subtitle: currentSeasonVarietyObject.sourceOfSeed,
             value: currentSeasonVarietyObject.sourceOfSeed,
             onChangeDateValueHandler: () {},
@@ -122,7 +134,9 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Num of Years You\'ve Grown This Variety',
+            title: isFarmer
+                ? 'Dzaka Zomwe Mwakhala Mukulima Mbeu Iyi'
+                : 'Num of Years You\'ve Grown This Variety',
             subtitle: currentSeasonVarietyObject.numberOfYearsGrown == null
                 ? 'Blank'
                 : currentSeasonVarietyObject.numberOfYearsGrown.toString(),
@@ -136,7 +150,9 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Percent of Farmers Who Grow This Variety in Village',
+            title: isFarmer
+                ? 'Peresenti Ya Alimi Akulima Mbeu Iyi Mumuzi'
+                : 'Percent of Farmers Who Grow This Variety in Village',
             subtitle:
                 currentSeasonVarietyObject.percentFarmersGrowingVariety == null
                     ? 'Blank'

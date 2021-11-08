@@ -22,7 +22,6 @@ class AuthProvider with ChangeNotifier {
   bool? _isHRAdmin;
   bool? _isSezilMotherTrialFarmer;
   String _crop = 'Maize';
-  UserModel _activeUser = UserModel();
 
   bool get isAuth {
     return _accessToken != null;
@@ -124,7 +123,6 @@ class AuthProvider with ChangeNotifier {
           },
         );
       }
-
       final responseData = json.decode(response.body);
       final accessToken = responseData['access_token'];
       final refreshToken = responseData['refresh_token'];
@@ -196,16 +194,16 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<void> login(UserModel userObject) async {
-    _activeUser = userObject;
     return _authenticateUser(userObject);
   }
 
   Future<void> refreshToken() async {
-    return _authenticateUser(_activeUser, isRefreshing: true);
+    return _authenticateUser(UserModel(), isRefreshing: true);
   }
 
   Future<bool> tryAutoLogin() async {
     final prefs = await SharedPreferences.getInstance();
+
     if (!prefs.containsKey('userData')) {
       return false;
     }

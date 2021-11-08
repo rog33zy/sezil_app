@@ -21,10 +21,13 @@ class HarvestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String crop = Provider.of<AuthProvider>(
+    final authProvider = Provider.of<AuthProvider>(
       context,
       listen: false,
-    ).crop;
+    );
+    final String crop = authProvider.crop;
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
 
@@ -150,13 +153,15 @@ class HarvestScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Harvest - Plot $plotId'),
+        title: isFarmer!
+            ? Text('Kukolola - Plot $plotId')
+            : Text('Harvest - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: 'Date of Harvest',
+            title: isFarmer ? 'Tsiku Lo Kolola' : 'Date of Harvest',
             subtitle: harvestObject.harvestDate == null
                 ? 'Blank'
                 : _formatDate(harvestObject.harvestDate),
@@ -170,7 +175,7 @@ class HarvestScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Number of Plants',
+            title: isFarmer ? 'Nambala Ya Mbeu' : 'Number of Plants',
             subtitle: harvestObject.numberOfPlants == null
                 ? 'Blank'
                 : harvestObject.numberOfPlants.toString(),
@@ -187,7 +192,9 @@ class HarvestScreen extends StatelessWidget {
           ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Number of Harvested Cobs',
+              title: isFarmer
+                  ? 'Nambala Ya Cisononkho'
+                  : 'Number of Harvested Cobs',
               subtitle: harvestObject.numberOfHarvestedCobs == null
                   ? 'Blank'
                   : harvestObject.numberOfHarvestedCobs.toString(),
@@ -204,7 +211,9 @@ class HarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Yield of Harvested Cobs (Kg)',
+              title: isFarmer
+                  ? 'Zokolola Muma Kg'
+                  : 'Yield of Harvested Cobs (Kg)',
               subtitle: harvestObject.yieldOfHarvestedCobs == null
                   ? 'Blank'
                   : harvestObject.yieldOfHarvestedCobs.toString(),

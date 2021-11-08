@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import '../helpers/id_generator_helper.dart';
 
 import '../providers/FertilizationProvider.dart';
+import '../providers/AuthProvider.dart';
 
 import '../models/FertilizationModel.dart';
 
@@ -85,6 +86,13 @@ class DetailedFertilizationScreen extends StatelessWidget {
       Navigator.of(context).pop();
     }
 
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('$season $typeOfDressing Dressing'),
@@ -92,41 +100,60 @@ class DetailedFertilizationScreen extends StatelessWidget {
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: 'Organic Fertilizer',
+            title: isFarmer!
+                ? 'Fataleza Wopangidwa Kuzinthu Zamoyo'
+                : 'Organic Fertilizer',
             subtitle: fertilizationObject.nameOfOrganicFertilizer,
             value: fertilizationObject.nameOfOrganicFertilizer,
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: organicFertilizerHandler,
             onSubmitHandler: onSubmitHandler,
             onChangeGenComValueHandler: () {},
-            listOfValues: <String>[
-              'Kraal Manure',
-              'Other',
-              'None',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    'Manyowa a Ng\'ombe',
+                    'Ena',
+                    'Palibe',
+                  ]
+                : <String>[
+                    'Kraal Manure',
+                    'Other',
+                    'None',
+                  ],
             isDropDownField: true,
             isTextField: false,
           ),
           ListWidgetComponent(
-            title: 'Synthetic Fertilizer',
+            title: isFarmer
+                ? 'Fataleza Wopangidwa Kumankhwala'
+                : 'Synthetic Fertilizer',
             subtitle: fertilizationObject.nameOfSyntheticFertilizer,
             value: fertilizationObject.nameOfSyntheticFertilizer,
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: syntheticFertilizerHandler,
             onSubmitHandler: onSubmitHandler,
             onChangeGenComValueHandler: () {},
-            listOfValues: <String>[
-              'D Compount 10-20-10',
-              'Urea 46% N',
-              'Ammonium Nitrate',
-              'Other',
-              'None',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    'D Compount 10-20-10',
+                    'Urea 46% N',
+                    'Ammonium Nitrate',
+                    'Ena',
+                    'Palibe',
+                  ]
+                : <String>[
+                    'D Compount 10-20-10',
+                    'Urea 46% N',
+                    'Ammonium Nitrate',
+                    'Other',
+                    'None',
+                  ],
             isDropDownField: true,
             isTextField: false,
           ),
           ListWidgetComponent(
-            title: 'Quantity Applied (Kg)',
+            title:
+                isFarmer ? 'Unyingi Wa Fataleza (Kg)' : 'Quantity Applied (Kg)',
             subtitle: fertilizationObject.quantityApplied == null
                 ? 'Blank'
                 : fertilizationObject.quantityApplied.toString(),
@@ -140,7 +167,8 @@ class DetailedFertilizationScreen extends StatelessWidget {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Time of Application',
+            title:
+                isFarmer ? 'Nthawi Yo Thila Fataleza' : 'Time of Application',
             subtitle: fertilizationObject.timeOfApplication == null
                 ? 'Blank'
                 : _formatDate(

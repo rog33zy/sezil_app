@@ -19,10 +19,14 @@ class PostFloweringScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String crop = Provider.of<AuthProvider>(
+    final authProvider = Provider.of<AuthProvider>(
       context,
       listen: false,
-    ).crop;
+    );
+
+    final String crop = authProvider.crop;
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
 
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
@@ -93,13 +97,15 @@ class PostFloweringScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('PostFlowering - Plot $plotId'),
+        title: isFarmer!
+            ? Text('PosatilaMaluwa - Plot $plotId')
+            : Text('PostFlowering - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: 'Pest Resistance',
+            title: isFarmer ? 'Kukakaniza Kwa Tudoyo' : 'Pest Resistance',
             subtitle: postFloweringObject.pestResistance,
             value: postFloweringObject.pestResistance,
             onChangeDateValueHandler: () {},
@@ -119,7 +125,7 @@ class PostFloweringScreen extends StatelessWidget {
             genComSubtitle: postFloweringObject.pestResistanceComments,
           ),
           ListWidgetComponent(
-            title: 'Disease Resistance',
+            title: isFarmer ? 'Kukakaniza Kwa Matenda' : 'Disease Resistance',
             subtitle: postFloweringObject.diseasesResistance,
             value: postFloweringObject.diseasesResistance,
             onChangeDateValueHandler: () {},

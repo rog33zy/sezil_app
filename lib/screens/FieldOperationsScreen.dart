@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
 import '../providers/FieldOperationsProvider.dart';
+import '../providers/AuthProvider.dart';
 
 import '../models/FieldOperationsModel.dart';
 
@@ -220,6 +221,13 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
       Navigator.of(context).pop();
     }
 
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Field Operations'),
@@ -228,7 +236,8 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: 'Date of Land Preparation',
+            title:
+                isFarmer! ? 'Tsiku Lokonza Munda' : 'Date of Land Preparation',
             subtitle: fieldOperationsObject.dateOfLandPreparation == null
                 ? 'Blank'
                 : _formatDate(fieldOperationsObject.dateOfLandPreparation!),
@@ -243,7 +252,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Method of Land Preparation',
+            title: isFarmer
+                ? 'Njira Yo Konzela Munda'
+                : 'Method of Land Preparation',
             subtitle: fieldOperationsObject.methodOfLandPreparation == ''
                 ? 'Blank'
                 : fieldOperationsObject.methodOfLandPreparation,
@@ -259,7 +270,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Date of Planting',
+            title: isFarmer ? 'Tsiku Lo Byala' : 'Date of Planting',
             value: fieldOperationsObject.dateOfPlanting == null
                 ? 'Blank'
                 : fieldOperationsObject.dateOfPlanting!.toIso8601String(),
@@ -273,7 +284,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Date of Thinning',
+            title: isFarmer ? 'Tsiku Lo Nyula Mbeu' : 'Date of Thinning',
             value: fieldOperationsObject.dateOfThinning == null
                 ? 'Blank'
                 : fieldOperationsObject.dateOfThinning!.toIso8601String(),
@@ -287,7 +298,8 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Date of First Weeding',
+            title:
+                isFarmer ? 'Tsiku Lopalila Koyamba' : 'Date of First Weeding',
             value: fieldOperationsObject.dateOfFirstWeeding == null
                 ? 'Blank'
                 : fieldOperationsObject.dateOfFirstWeeding!.toIso8601String(),
@@ -301,7 +313,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Was First Weeding Manual?',
+            title: isFarmer ? '' : 'Was First Weeding Manual?',
             subtitle: fieldOperationsObject.firstWeedingIsManual,
             value: fieldOperationsObject.firstWeedingIsManual,
             isDateField: false,
@@ -385,7 +397,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Date of Second Weeding',
+            title: isFarmer
+                ? 'Tsiku Lopalila Kachiwili'
+                : 'Date of Second Weeding',
             value: fieldOperationsObject.dateOfSecondWeeding == null
                 ? 'Blank'
                 : fieldOperationsObject.dateOfSecondWeeding!.toIso8601String(),

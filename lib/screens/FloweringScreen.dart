@@ -20,10 +20,12 @@ class FloweringScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String crop = Provider.of<AuthProvider>(
+    final authProvider = Provider.of<AuthProvider>(
       context,
       listen: false,
-    ).crop;
+    );
+    final String crop = authProvider.crop;
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
 
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
@@ -128,7 +130,7 @@ class FloweringScreen extends StatelessWidget {
           ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title: 'Pest Resistance',
+              title: isFarmer! ? 'Kukakaniza Kwa Tudoyo' : 'Pest Resistance',
               subtitle: floweringObject.pestResistance,
               value: floweringObject.pestResistance,
               onChangeDateValueHandler: () {},
@@ -149,7 +151,8 @@ class FloweringScreen extends StatelessWidget {
             ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title: 'Disease Resistance',
+              title:
+                  isFarmer! ? 'Kukakaniza Kwa Matenda' : 'Disease Resistance',
               subtitle: floweringObject.diseasesResistance,
               value: floweringObject.diseasesResistance,
               onChangeDateValueHandler: () {},

@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:location/location.dart';
 
 import '../providers/FieldProfileProvider.dart';
+import '../providers/AuthProvider.dart';
 
 import '../models/FieldProfileModel.dart';
 
@@ -484,6 +485,13 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
       Navigator.of(context).pop();
     }
 
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Field Profile"),
@@ -492,7 +500,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: 'Field Size',
+            title: isFarmer! ? 'Kukula Kwa Munda' : 'Field Size',
             subtitle: fieldProfileObject.fieldSize,
             value: fieldProfileObject.fieldSize,
             onChangeDateValueHandler: () {},
@@ -502,7 +510,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Soil Type',
+            title: isFarmer ? 'Gulu La Doti' : 'Soil Type',
             subtitle: fieldProfileObject.soilType,
             value: fieldProfileObject.soilType,
             onChangeDateValueHandler: () {},
@@ -510,15 +518,21 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             isTextField: false,
-            listOfValues: <String>[
-              'Light',
-              'Heavy',
-              'Other',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    'Dothi Lopepuka',
+                    'Dothi Lolema',
+                    'Zina',
+                  ]
+                : <String>[
+                    'Light',
+                    'Heavy',
+                    'Other',
+                  ],
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Field Coordinates',
+            title: isFarmer ? 'Malo a Munda' : 'Field Coordinates',
             subtitle: fieldProfileObject.latitude == null
                 ? 'Blank'
                 : '${fieldProfileObject.latitude}, ${fieldProfileObject.longitude}',
@@ -532,7 +546,9 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Crop(s) Grown ${Seasons.previousSeason} Season',
+            title: isFarmer
+                ? 'Mbeu Zinlimidwa Nyengo ${Seasons.previousSeason}'
+                : 'Crop(s) Grown ${Seasons.previousSeason} Season',
             subtitle: fieldProfileObject.cropGrownPrevSeason == ''
                 ? 'Blank'
                 : fieldProfileObject.cropGrownPrevSeason,
@@ -547,7 +563,9 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             isLeadingToCheckBoxScreen: true,
           ),
           ListWidgetComponent(
-            title: 'Crop(s) Grown ${Seasons.seasonBeforeLast} Season',
+            title: isFarmer
+                ? 'Mbeu Zinlimidwa Nyengo ${Seasons.seasonBeforeLast}'
+                : 'Crop(s) Grown ${Seasons.seasonBeforeLast} Season',
             subtitle: fieldProfileObject.cropGrownTwoSeasonsAgo == ''
                 ? 'Blank'
                 : fieldProfileObject.cropGrownTwoSeasonsAgo,

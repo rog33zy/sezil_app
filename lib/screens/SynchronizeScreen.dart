@@ -33,10 +33,10 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
       listen: false,
     );
 
-    var requestRefreshToken = Provider.of<AuthProvider>(
+    var authProvider = Provider.of<AuthProvider>(
       context,
       listen: false,
-    ).refreshToken();
+    );
 
     final int numberOfItemsToBeSynced = Provider.of<SynchronizeTraitsProvider>(
       context,
@@ -93,7 +93,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               if (syncTraitsProvider
                                       .postPlantingObjectsToBeSynced!.length >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider
                                     .postPostPlantingObjectsToServer()
                                     .catchError((error) {
@@ -106,7 +106,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               if (syncTraitsProvider
                                       .floweringObjectsToBeSynced!.length >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider
                                     .postFloweringObjectsToServer()
                                     .catchError((error) {
@@ -119,7 +119,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               if (syncTraitsProvider
                                       .postFloweringObjectsToBeSynced!.length >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider
                                     .postPostFloweringObjectsToServer()
                                     .catchError((error) {
@@ -132,7 +132,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               if (syncTraitsProvider
                                       .preHarvestObjectsToBeSynced!.length >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider
                                     .postPreHarvestObjectsToServer()
                                     .catchError((error) {
@@ -145,7 +145,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               if (syncTraitsProvider
                                       .harvestObjectsToBeSynced!.length >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider
                                     .postHarvestObjectsToServer()
                                     .catchError((error) {
@@ -158,7 +158,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               if (syncTraitsProvider2
                                       .postHarvestObjectsToBeSynced!.length >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider2
                                     .postPostHarvestObjectsToServer()
                                     .catchError((error) {
@@ -171,20 +171,20 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               if (syncTraitsProvider2
                                       .fertilizationObjectsToBeSynced!.length >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider2
-                                    .postFertilizationObjectsToServer();
-                                //     .catchError((error) {
-                                //   setState(() {
-                                //     _errorMessage = error;
-                                //   });
-                                // });
+                                    .postFertilizationObjectsToServer()
+                                    .catchError((error) {
+                                  setState(() {
+                                    _errorMessage = error;
+                                  });
+                                });
                               }
 
                               if (syncTraitsProvider2
                                       .currentSeasonVarietyCount >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider2
                                     .postCurrentSeasonVarietyObjectsToServer()
                                     .catchError((error) {
@@ -196,7 +196,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
 
                               if (syncTraitsProvider2.fieldOperationsCount >
                                   0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider2
                                     .postFieldOperationObjectsToServer()
                                     .catchError((error) {
@@ -207,7 +207,7 @@ class _SynchronizeScreenState extends State<SynchronizeScreen> {
                               }
 
                               if (syncTraitsProvider2.fieldProfileCount > 0) {
-                                await requestRefreshToken;
+                                await authProvider.refreshToken();
                                 await syncTraitsProvider2
                                     .postFieldProfileObjectsToServer()
                                     .catchError((error) {

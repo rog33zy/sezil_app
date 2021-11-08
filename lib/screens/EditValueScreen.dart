@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../providers/AuthProvider.dart';
+
 import '../components/forms/GenericTextField.dart';
 import '../components/forms/DropdownTextField.dart';
 
@@ -50,6 +54,13 @@ class EditValueScreen extends StatelessWidget {
         argumentsMap['onChangeGenComValueHandler'];
     final genComSubtitle = argumentsMap['genComSubtitle'];
 
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -68,6 +79,7 @@ class EditValueScreen extends StatelessWidget {
         isTextField,
         onChangeGenComValueHandler,
         genComSubtitle,
+        isFarmer,
       ),
     );
   }
@@ -86,6 +98,7 @@ class EditValueScreen extends StatelessWidget {
     isTextField,
     onChangeGenComValueHandler,
     genComSubtitle,
+    isFarmer,
   ) {
     return Form(
       key: _formKey,
@@ -114,7 +127,7 @@ class EditValueScreen extends StatelessWidget {
             ),
           if (isTrait)
             GenericTextField(
-              labelText: 'General Comments',
+              labelText: isFarmer ? 'Zina Zilizonse' : 'General Comments',
               validator: generalCommentsValidator(),
               initialValue: genComSubtitle == "Blank" ? null : genComSubtitle,
               updateTextFieldInAllInputsMap: onChangeGenComValueHandler,

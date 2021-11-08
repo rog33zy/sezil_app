@@ -20,10 +20,15 @@ class PostHarvestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String crop = Provider.of<AuthProvider>(
+    final authProvider = Provider.of<AuthProvider>(
       context,
       listen: false,
-    ).crop;
+    );
+
+    final String crop = authProvider.crop;
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     final argumentsMap = ModalRoute.of(context)?.settings.arguments as Map;
     final plotId = argumentsMap['argument'];
 
@@ -142,14 +147,18 @@ class PostHarvestScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Post Harvest - Plot $plotId'),
+        title: isFarmer!
+            ? Text('Pa Mbuyo Po Kolola - Plot $plotId')
+            : Text('Post Harvest - Plot $plotId'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Yield of Dried Cobs (Kg)',
+              title: isFarmer
+                  ? 'Cisunokho Chokololedwa Chouma'
+                  : 'Yield of Dried Cobs (Kg)',
               subtitle: postHarvestObject.yieldOfDriedCobs == null
                   ? 'Blank'
                   : postHarvestObject.yieldOfDriedCobs.toString(),
@@ -166,7 +175,7 @@ class PostHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Grain Hardness',
+              title: isFarmer ? 'Kukosa Kwa Mbeu' : 'Grain Hardness',
               subtitle: postHarvestObject.grainHardness,
               value: postHarvestObject.grainHardness,
               onChangeDateValueHandler: () {},

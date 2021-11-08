@@ -20,13 +20,16 @@ class TraitsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String crop = Provider.of<AuthProvider>(
+    final authProvider = Provider.of<AuthProvider>(
       context,
       listen: false,
-    ).crop;
+    );
+    final String crop = authProvider.crop;
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Traits'),
+        title: isFarmer! ? const Text('Maonekedwe ') : const Text('Traits'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -36,41 +39,41 @@ class TraitsScreen extends StatelessWidget {
               height: 10.0,
             ),
             HomePageScreenOption(
-              title: 'Post-Planting',
+              title: isFarmer ? 'Pambuyo Po Byala' : 'Post-Planting',
               routeName: PlotsScreen.routeName,
               argument: PostPlantingScreen.routeName,
-              argument2: 'Post Planting',
+              argument2: isFarmer ? 'Pambuyo po byala' : 'Post Planting',
             ),
             HomePageScreenOption(
-              title: 'Flowering',
+              title: isFarmer ? 'Maluwa' : 'Flowering',
               routeName: PlotsScreen.routeName,
               argument: FloweringScreen.routeName,
-              argument2: 'Flowering',
+              argument2: isFarmer ? 'Maluwa' : 'Flowering',
             ),
             if (crop != 'Sorghum')
               HomePageScreenOption(
-                title: 'Post-Flowering',
+                title: isFarmer ? 'Posatila Maluwa' : 'Post-Flowering',
                 routeName: PlotsScreen.routeName,
                 argument: PostFloweringScreen.routeName,
-                argument2: 'Post Flowering',
+                argument2: isFarmer ? 'Posatila Maluwa' : 'Post Flowering',
               ),
             HomePageScreenOption(
-              title: 'Pre-Harvest',
+              title: isFarmer ? 'Musana Kolole' : 'Pre-Harvest',
               routeName: PlotsScreen.routeName,
               argument: PreHarvestScreen.routeName,
-              argument2: 'Pre Harvest',
+              argument2: isFarmer ? 'Musana Kolole' : 'Pre Harvest',
             ),
             HomePageScreenOption(
-              title: 'Harvest',
+              title: isFarmer ? 'Kukolola' : 'Harvest',
               routeName: PlotsScreen.routeName,
               argument: HarvestScreen.routeName,
-              argument2: 'Harvest',
+              argument2: isFarmer ? 'Kukolola' : 'Harvest',
             ),
             HomePageScreenOption(
-              title: 'Post-Harvest',
+              title: isFarmer ? 'Pa Mbuyo Po Kolola' : 'Post-Harvest',
               routeName: PlotsScreen.routeName,
               argument: PostHarvestScreen.routeName,
-              argument2: 'Post Harvest',
+              argument2: isFarmer ? 'Pa Mbuyo Po Kolola' : 'Post Harvest',
             ),
           ],
         ),

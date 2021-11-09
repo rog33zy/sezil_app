@@ -93,14 +93,29 @@ class DetailedFertilizationScreen extends StatelessWidget {
 
     final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
 
+    var chewaTypeOfDressing;
+
+    if (typeOfDressing == 'Basal') {
+      chewaTypeOfDressing = 'Wa Pansi';
+    } else if (typeOfDressing == 'Top') {
+      chewaTypeOfDressing = 'Wo Belekesa';
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('$season $typeOfDressing Dressing'),
+        title: isFarmer!
+            ? Text(
+                '$season $chewaTypeOfDressing',
+              )
+            : Text(
+                '$season $typeOfDressing Dressing',
+                style: TextStyle(fontSize: 19),
+              ),
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: isFarmer!
+            title: isFarmer
                 ? 'Fataleza Wopangidwa Kuzinthu Zamoyo'
                 : 'Organic Fertilizer',
             subtitle: fertilizationObject.nameOfOrganicFertilizer,

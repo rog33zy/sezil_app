@@ -148,7 +148,10 @@ class PostHarvestScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: isFarmer!
-            ? Text('Pa Mbuyo Po Kolola - Plot $plotId')
+            ? Text(
+                'Pa Mbuyo Po Kolola - Plot $plotId',
+                style: TextStyle(fontSize: 17),
+              )
             : Text('Post Harvest - Plot $plotId'),
         centerTitle: true,
       ),
@@ -157,7 +160,7 @@ class PostHarvestScreen extends StatelessWidget {
           if (crop == 'Maize')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Cisunokho Chokololedwa Chouma'
+                  ? 'Cisonokho Chokololedwa Chouma'
                   : 'Yield of Dried Cobs (Kg)',
               subtitle: postHarvestObject.yieldOfDriedCobs == null
                   ? 'Blank'
@@ -271,13 +274,21 @@ class PostHarvestScreen extends StatelessWidget {
               onChangeTextValueHandler: grainSizeAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Yaikulu Kwambili',
+                      '2-Yaikulu',
+                      '3-Yapakati',
+                      '4-Yaing\'ono',
+                      '5-Yaing\'ono Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: grainSizeAppreciationCommentsHandler,
@@ -292,13 +303,21 @@ class PostHarvestScreen extends StatelessWidget {
               onChangeTextValueHandler: grainColourAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Yaikulu Kwambili',
+                      '2-Yaikulu',
+                      '3-Yapakati',
+                      '4-Yaing\'ono',
+                      '5-Yaing\'ono Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler:

@@ -62,27 +62,6 @@ class AuthProvider with ChangeNotifier {
 
   Future<void> _authenticateUser(UserModel userObject,
       {bool isRefreshing = false}) async {
-    // _accessToken = 'accessToken';
-    // _refreshToken = 'refreshToken';
-    // _username = userObject.username;
-    // _expiryDate = DateTime(2022);
-
-    // if (_username == 'sorghum') {
-    //   _crop = 'Sorghum';
-    //   _firstName = 'SorghumFarmer';
-    // } else if (_username == 'maize') {
-    //   _crop = 'Maize';
-    //   _firstName = 'MaizeFarmer';
-    // } else if (_username == 'beans') {
-    //   _crop = 'Beans';
-    //   _firstName = 'BeansFarmer';
-    // } else if (_username == 'sunflower') {
-    //   _crop = 'Sunflower';
-    //   _firstName = 'SunflowerFarmer';
-    // } else {
-    //   _crop = 'Maize';
-    //   _firstName = 'MaizeFarmer';
-    // }
     Uri url;
     if (isRefreshing) {
       url = Uri.parse(

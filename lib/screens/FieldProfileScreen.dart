@@ -61,18 +61,28 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
     finalOptionsPrevSeasonSet =
         updatedFieldProfileObject.cropGrownPrevSeason.split(',').toSet();
 
-    maizeValuePrevSeason = finalOptionsPrevSeasonSet.contains('Maize');
-    sorghumValuePrevSeason = finalOptionsPrevSeasonSet.contains('Sorghum');
-    beansValuePrevSeason = finalOptionsPrevSeasonSet.contains('Beans');
-    soybeansValuePrevSeason = finalOptionsPrevSeasonSet.contains('Soybeans');
+    maizeValuePrevSeason = finalOptionsPrevSeasonSet.contains('Maize') ||
+        finalOptionsPrevSeasonSet.contains('Chimanga');
+    sorghumValuePrevSeason = finalOptionsPrevSeasonSet.contains('Sorghum') ||
+        finalOptionsPrevSeasonSet.contains('Mapila');
+    beansValuePrevSeason = finalOptionsPrevSeasonSet.contains('Beans') ||
+        finalOptionsPrevSeasonSet.contains('Kayela');
+    soybeansValuePrevSeason = finalOptionsPrevSeasonSet.contains('Soybeans') ||
+        finalOptionsPrevSeasonSet.contains('Soya');
 
     groundnutsValuePrevSeason =
-        finalOptionsPrevSeasonSet.contains('Groundnuts');
-    cowpeasValuePrevSeason = finalOptionsPrevSeasonSet.contains('Cowpeas');
-    sunflowerValuePrevSeason = finalOptionsPrevSeasonSet.contains('Sunflower');
-    fallowValuePrevSeason = finalOptionsPrevSeasonSet.contains('Fallow');
+        finalOptionsPrevSeasonSet.contains('Groundnuts') ||
+            finalOptionsPrevSeasonSet.contains('Nshawa');
+    cowpeasValuePrevSeason = finalOptionsPrevSeasonSet.contains('Cowpeas') ||
+        finalOptionsPrevSeasonSet.contains('Nyemba');
+    sunflowerValuePrevSeason =
+        finalOptionsPrevSeasonSet.contains('Sunflower') ||
+            finalOptionsPrevSeasonSet.contains('Sunifulawa');
+    fallowValuePrevSeason = finalOptionsPrevSeasonSet.contains('Fallow') ||
+        finalOptionsPrevSeasonSet.contains('Kugoneka-Munda');
 
-    otherValuePrevSeason = finalOptionsPrevSeasonSet.contains('Other');
+    otherValuePrevSeason = finalOptionsPrevSeasonSet.contains('Other') ||
+        finalOptionsPrevSeasonSet.contains('Zina');
 
     finalStringPrevSeason = finalOptionsPrevSeasonSet.join(',');
 
@@ -80,25 +90,34 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
         updatedFieldProfileObject.cropGrownTwoSeasonsAgo.split(',').toSet();
 
     maizeValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Maize');
+        finalOptionsSeasonBeforeLastSet.contains('Maize') ||
+            finalOptionsSeasonBeforeLastSet.contains('Chimanga');
     sorghumValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Sorghum');
+        finalOptionsSeasonBeforeLastSet.contains('Sorghum') ||
+            finalOptionsSeasonBeforeLastSet.contains('Mapila');
     beansValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Beans');
+        finalOptionsSeasonBeforeLastSet.contains('Beans') ||
+            finalOptionsSeasonBeforeLastSet.contains('Kayela');
     soybeansValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Soybeans');
+        finalOptionsSeasonBeforeLastSet.contains('Soybeans') ||
+            finalOptionsSeasonBeforeLastSet.contains('Soya');
 
     groundnutsValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Groundnuts');
+        finalOptionsSeasonBeforeLastSet.contains('Groundnuts') ||
+            finalOptionsSeasonBeforeLastSet.contains('Nshawa');
     cowpeasValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Cowpeas');
+        finalOptionsSeasonBeforeLastSet.contains('Cowpeas') ||
+            finalOptionsSeasonBeforeLastSet.contains('Nyemba');
     sunflowerValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Sunflower');
+        finalOptionsSeasonBeforeLastSet.contains('Sunflower') ||
+            finalOptionsSeasonBeforeLastSet.contains('Sunifulawa');
     fallowValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Fallow');
+        finalOptionsSeasonBeforeLastSet.contains('Fallow') ||
+            finalOptionsSeasonBeforeLastSet.contains('Kugoneka-Munda');
 
     otherValueSeasonBeforeLast =
-        finalOptionsSeasonBeforeLastSet.contains('Other');
+        finalOptionsSeasonBeforeLastSet.contains('Other') ||
+            finalOptionsSeasonBeforeLastSet.contains('Zina');
 
     finalStringSeasonBeforeLast = finalOptionsSeasonBeforeLastSet.join(',');
   }
@@ -339,6 +358,13 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     FieldProfileModel fieldProfileObject = Provider.of<FieldProfileProvider>(
       context,
       listen: true,
@@ -346,47 +372,47 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
 
     List cropOptionsPrevSeason = [
       {
-        'label': 'Maize',
+        'label': isFarmer! ? 'Chimanga' : 'Maize',
         'value': maizeValuePrevSeason as bool,
         'onChanged': onChangedMaizePrevSeasonValue,
       },
       {
-        'label': 'Sorghum',
+        'label': isFarmer ? 'Mapila' : 'Sorghum',
         'value': sorghumValuePrevSeason as bool,
         'onChanged': onChangedSorghumPrevSeasonValue,
       },
       {
-        'label': 'Beans',
+        'label': isFarmer ? 'Kayela' : 'Beans',
         'value': beansValuePrevSeason as bool,
         'onChanged': onChangedBeansPrevSeasonValue,
       },
       {
-        'label': 'Soybeans',
+        'label': isFarmer ? 'Soya' : 'Soybeans',
         'value': soybeansValuePrevSeason as bool,
         'onChanged': onChangedSoybeansPrevSeasonValue,
       },
       {
-        'label': 'Groundnuts',
+        'label': isFarmer ? 'Nshawa' : 'Groundnuts',
         'value': groundnutsValuePrevSeason as bool,
         'onChanged': onChangedGroundnutsPrevSeasonValue,
       },
       {
-        'label': 'Cowpeas',
+        'label': isFarmer ? 'Nyemba' : 'Cowpeas',
         'value': cowpeasValuePrevSeason as bool,
         'onChanged': onChangedCowpeasPrevSeasonValue,
       },
       {
-        'label': 'Sunflower',
+        'label': isFarmer ? 'Sunifulawa' : 'Sunflower',
         'value': sunflowerValuePrevSeason as bool,
         'onChanged': onChangedSunflowerPrevSeasonValue,
       },
       {
-        'label': 'Fallow',
+        'label': isFarmer ? 'Kugoneka-Munda' : 'Fallow',
         'value': fallowValuePrevSeason as bool,
         'onChanged': onChangedFallowPrevSeasonValue,
       },
       {
-        'label': 'Other',
+        'label': isFarmer ? 'Zina' : 'Other',
         'value': otherValuePrevSeason as bool,
         'onChanged': onChangedOtherPrevSeasonValue,
       },
@@ -394,47 +420,47 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
 
     List cropOptionsSeasonBeforeLast = [
       {
-        'label': 'Maize',
+        'label': isFarmer ? 'Chimanga' : 'Maize',
         'value': maizeValueSeasonBeforeLast as bool,
         'onChanged': onChangedMaizeSeasonBeforeLastValue,
       },
       {
-        'label': 'Sorghum',
+        'label': isFarmer ? 'Mapila' : 'Sorghum',
         'value': sorghumValueSeasonBeforeLast as bool,
         'onChanged': onChangedSorghumSeasonBeforeLastValue,
       },
       {
-        'label': 'Beans',
+        'label': isFarmer ? 'Kayela' : 'Beans',
         'value': beansValueSeasonBeforeLast as bool,
         'onChanged': onChangedBeansSeasonBeforeLastValue,
       },
       {
-        'label': 'Soybeans',
+        'label': isFarmer ? 'Soya' : 'Soybeans',
         'value': soybeansValueSeasonBeforeLast as bool,
         'onChanged': onChangedSoybeansSeasonBeforeLastValue,
       },
       {
-        'label': 'Groundnuts',
+        'label': isFarmer ? 'Nshawa' : 'Groundnuts',
         'value': groundnutsValueSeasonBeforeLast as bool,
         'onChanged': onChangedGroundnutsSeasonBeforeLastValue,
       },
       {
-        'label': 'Cowpeas',
+        'label': isFarmer ? 'Nyemba' : 'Cowpeas',
         'value': cowpeasValueSeasonBeforeLast as bool,
         'onChanged': onChangedCowpeasSeasonBeforeLastValue,
       },
       {
-        'label': 'Sunflower',
+        'label': isFarmer ? 'Sunifulawa' : 'Sunflower',
         'value': sunflowerValueSeasonBeforeLast as bool,
         'onChanged': onChangedSunflowerSeasonBeforeLastValue,
       },
       {
-        'label': 'Fallow',
+        'label': isFarmer ? 'Kugoneka-Munda' : 'Fallow',
         'value': fallowValueSeasonBeforeLast as bool,
         'onChanged': onChangedFallowSeasonBeforeLastValue,
       },
       {
-        'label': 'Other',
+        'label': isFarmer ? 'Zina' : 'Other',
         'value': otherValueSeasonBeforeLast as bool,
         'onChanged': onChangedOtherSeasonBeforeLastValue,
       },
@@ -485,22 +511,15 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
       Navigator.of(context).pop();
     }
 
-    final authProvider = Provider.of<AuthProvider>(
-      context,
-      listen: false,
-    );
-
-    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Field Profile"),
+        title: isFarmer ? Text('Mbiri Ya Munda') : Text("Field Profile"),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: isFarmer! ? 'Kukula Kwa Munda' : 'Field Size',
+            title: isFarmer ? 'Kukula Kwa Munda' : 'Field Size',
             subtitle: fieldProfileObject.fieldSize,
             value: fieldProfileObject.fieldSize,
             onChangeDateValueHandler: () {},

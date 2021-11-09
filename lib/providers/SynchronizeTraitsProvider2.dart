@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../constants/BaseUrls.dart';
+import '../constants/Seasons.dart';
 
 import '../helpers/db_helper.dart';
 
@@ -18,6 +19,7 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
   String? accessToken;
   String? farmerId;
   String? crop;
+  String season = Seasons.currentSeason;
   List<PostHarvestModel>? postHarvestObjectsToBeSynced;
   List<FertilizationModel>? fertilizationObjectsToBeSynced;
   FieldProfileModel? fieldProfileObjectToBeSynced;
@@ -39,11 +41,6 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
     notifyListeners();
   }
 
-  // set setPostHarvestObjectsToBeSynced(
-  //     List<PostHarvestModel> postHarvestObjectsToBeSynced) {
-  //   this.postHarvestObjectsToBeSynced = postHarvestObjectsToBeSynced;
-  //   notifyListeners();
-  // }
   int get fieldProfileCount {
     int fieldProfileCount = 0;
     try {
@@ -138,6 +135,7 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
       String checkObjectExistsResponse = unsyncedObject.existsInServer;
       var body = {
         'id': unsyncedObject.id,
+        'season': season,
         'farmer_id': farmerId,
         'last_updated': unsyncedObject.lastUpdated.toIso8601String(),
         'plot_id': unsyncedObject.plotId,
@@ -211,6 +209,7 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
     String checkObjectExistsResponse = unsyncedObject.existsInServer;
     var body = {
       'id': unsyncedObject.id,
+      'season': season,
       'crop': crop,
       'farmer_id': farmerId,
       'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
@@ -299,6 +298,7 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
     String checkObjectExistsResponse = unsyncedObject.existsInServer;
     var body = {
       'id': unsyncedObject.id,
+      'season': season,
       'crop': crop,
       'farmer_id': farmerId,
       'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
@@ -346,6 +346,7 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
 
     Map<String, dynamic> body = {
       'id': unsyncedObject.id,
+      'season': season,
       'crop': crop,
       'farmer_id': farmerId,
       'last_updated': unsyncedObject.lastUpdated == null

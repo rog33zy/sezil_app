@@ -105,16 +105,16 @@ class HomePageScreen extends StatelessWidget {
               routeName: TraitsScreen.routeName,
             ),
             HomePageScreenOption(
-              title: isFarmer ? 'Miri ya Munda' : 'Field Profile',
+              title: isFarmer ? 'Mbiri Ya Munda' : 'Field Profile',
               routeName: FieldProfileScreen.routeName,
             ),
             HomePageScreenOption(
-              title: isFarmer ? 'Nchito za mumunda' : 'Field Operations',
+              title: isFarmer ? 'Nchito Za Mumunda' : 'Field Operations',
               routeName: FieldOperationsScreen.routeName,
             ),
             HomePageScreenOption(
               title: isFarmer
-                  ? 'Mtundu wa mbeu'
+                  ? '${Seasons.currentSeason} Mtundu Wa Mbeu'
                   : '${Seasons.currentSeason} Variety',
               routeName: CurrentSeasonVarietyScreen.routeName,
             ),

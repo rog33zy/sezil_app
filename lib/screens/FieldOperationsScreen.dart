@@ -42,11 +42,16 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
 
     finalOptionsSet =
         updatedFieldOperationsObject.methodOfLandPreparation.split(',').toSet();
-    ploughingValue = finalOptionsSet.contains('Ploughing');
-    rippingValue = finalOptionsSet.contains('Ripping');
-    plantingBasinsValue = finalOptionsSet.contains('Planting-Basins');
-    byHandValue = finalOptionsSet.contains('By-Hand');
-    otherValue = finalOptionsSet.contains('Other');
+    ploughingValue = finalOptionsSet.contains('Ploughing') ||
+        finalOptionsSet.contains('Geje');
+    rippingValue = finalOptionsSet.contains('Ripping') ||
+        finalOptionsSet.contains('Maripa');
+    plantingBasinsValue = finalOptionsSet.contains('Planting-Basins') ||
+        finalOptionsSet.contains('Mazenge');
+    byHandValue = finalOptionsSet.contains('By-Hand') ||
+        finalOptionsSet.contains('Manja');
+    otherValue =
+        finalOptionsSet.contains('Other') || finalOptionsSet.contains('Zina');
 
     finalString = finalOptionsSet.join(',');
   }
@@ -118,6 +123,13 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     FieldOperationsModel fieldOperationsObject =
         Provider.of<FieldOperationsProvider>(
       context,
@@ -126,27 +138,27 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
 
     List methodOfLandPreparationOptions = [
       {
-        'label': 'Ploughing',
+        'label': isFarmer! ? 'Geje' : 'Ploughing',
         'value': ploughingValue as bool,
         'onChanged': onChangedPloughingValue,
       },
       {
-        'label': 'Ripping',
+        'label': isFarmer ? 'Maripa' : 'Ripping',
         'value': rippingValue as bool,
         'onChanged': onChangedRippingValue,
       },
       {
-        'label': 'Planting-Basins',
+        'label': isFarmer ? 'Mazenge' : 'Planting-Basins',
         'value': plantingBasinsValue as bool,
         'onChanged': onChangedPlantingBasinsValue,
       },
       {
-        'label': 'By-Hand',
+        'label': isFarmer ? 'Manja' : 'By-Hand',
         'value': byHandValue as bool,
         'onChanged': onChangedByHandValue,
       },
       {
-        'label': 'Other',
+        'label': isFarmer ? 'Zina' : 'Other',
         'value': otherValue as bool,
         'onChanged': onChangedOtherValue,
       },
@@ -221,23 +233,16 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
       Navigator.of(context).pop();
     }
 
-    final authProvider = Provider.of<AuthProvider>(
-      context,
-      listen: false,
-    );
-
-    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Field Operations'),
+        title: isFarmer ? Text('Nchito Za Mumunda') : Text('Field Operations'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
             title:
-                isFarmer! ? 'Tsiku Lokonza Munda' : 'Date of Land Preparation',
+                isFarmer ? 'Tsiku Lokonza Munda' : 'Date of Land Preparation',
             subtitle: fieldOperationsObject.dateOfLandPreparation == null
                 ? 'Blank'
                 : _formatDate(fieldOperationsObject.dateOfLandPreparation!),
@@ -313,7 +318,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: isFarmer ? '' : 'Was First Weeding Manual?',
+            title: 'Was First Weeding Manual?',
             subtitle: fieldOperationsObject.firstWeedingIsManual,
             value: fieldOperationsObject.firstWeedingIsManual,
             isDateField: false,

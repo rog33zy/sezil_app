@@ -103,7 +103,13 @@ class FloweringScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flowering - Plot $plotId'),
+        title: isFarmer!
+            ? Text(
+                'Maluwa - Plot $plotId',
+              )
+            : Text(
+                'Flowering - Plot $plotId',
+              ),
         centerTitle: true,
       ),
       body: ListView(
@@ -130,7 +136,7 @@ class FloweringScreen extends StatelessWidget {
           ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title: isFarmer! ? 'Kukakaniza Kwa Tudoyo' : 'Pest Resistance',
+              title: isFarmer ? 'Kukakaniza Kwa Tudoyo' : 'Pest Resistance',
               subtitle: floweringObject.pestResistance,
               value: floweringObject.pestResistance,
               onChangeDateValueHandler: () {},
@@ -151,8 +157,7 @@ class FloweringScreen extends StatelessWidget {
             ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title:
-                  isFarmer! ? 'Kukakaniza Kwa Matenda' : 'Disease Resistance',
+              title: isFarmer ? 'Kukakaniza Kwa Matenda' : 'Disease Resistance',
               subtitle: floweringObject.diseasesResistance,
               value: floweringObject.diseasesResistance,
               onChangeDateValueHandler: () {},

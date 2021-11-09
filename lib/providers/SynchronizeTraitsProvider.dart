@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../constants/BaseUrls.dart';
+import '../constants/Seasons.dart';
 
 import '../helpers/db_helper.dart';
 
@@ -18,6 +19,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
   String? accessToken;
   String? farmerId;
   String? crop;
+  String season = Seasons.currentSeason;
   List<PostPlantingModel>? postPlantingObjectsToBeSynced;
   List<FloweringModel>? floweringObjectsToBeSynced;
   List<PostFloweringModel>? postFloweringObjectsToBeSynced;
@@ -38,12 +40,6 @@ class SynchronizeTraitsProvider with ChangeNotifier {
     this.crop = crop;
     notifyListeners();
   }
-
-  // set setPostPlantingObjectsToBeSynced(
-  //     List<PostPlantingModel> postPlantingObjectsToBeSynced) {
-  //   this.postPlantingObjectsToBeSynced = postPlantingObjectsToBeSynced;
-  //   notifyListeners();
-  // }
 
   int get totalNumberOfItemsToBeSynced {
     return postPlantingObjectsToBeSynced!.length +
@@ -99,6 +95,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
       String checkObjectExistsResponse = unsyncedObject.existsInServer;
       var body = {
         'id': unsyncedObject.id,
+        'season': season,
         'farmer_id': farmerId,
         'last_updated': unsyncedObject.lastUpdated!.toIso8601String(),
         'plot_id': unsyncedObject.plotId,
@@ -149,6 +146,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
       String checkObjectExistsResponse = unsyncedObject.existsInServer;
       var body = {
         'id': unsyncedObject.id,
+        'season': season,
         'farmer_id': farmerId,
         'last_updated': unsyncedObject.lastUpdated.toIso8601String(),
         'plot_id': unsyncedObject.plotId,
@@ -198,6 +196,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
       String checkObjectExistsResponse = unsyncedObject.existsInServer;
       var body = {
         'id': unsyncedObject.id,
+        'season': season,
         'farmer_id': farmerId,
         'last_updated': unsyncedObject.lastUpdated.toIso8601String(),
         'plot_id': unsyncedObject.plotId,
@@ -240,6 +239,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
       String checkObjectExistsResponse = unsyncedObject.existsInServer;
       var body = {
         'id': unsyncedObject.id,
+        'season': season,
         'farmer_id': farmerId,
         'last_updated': unsyncedObject.lastUpdated.toIso8601String(),
         'plot_id': unsyncedObject.plotId,
@@ -295,6 +295,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
         'preHarvest',
         {
           'id': responseData['id'],
+          'season': season,
           'lastUpdated': responseData['last_updated'],
           'plotId': responseData['plot_id'],
           'lodgingResistance': responseData['lodging_resistance'],
@@ -352,6 +353,7 @@ class SynchronizeTraitsProvider with ChangeNotifier {
       String checkObjectExistsResponse = unsyncedObject.existsInServer;
       var body = {
         'id': unsyncedObject.id,
+        'season': season,
         'farmer_id': farmerId,
         'last_updated': unsyncedObject.lastUpdated.toIso8601String(),
         'plot_id': unsyncedObject.plotId,

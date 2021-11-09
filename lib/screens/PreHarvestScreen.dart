@@ -257,7 +257,7 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Number of Cobs per Plant AppreciationB',
+              title: 'Number of Cobs per Plant Appreciation',
               subtitle: preHarvestObject.numberOfCobsPerPlantAppreciation,
               value: preHarvestObject.numberOfCobsPerPlantAppreciation,
               onChangeDateValueHandler: () {},

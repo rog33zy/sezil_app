@@ -78,13 +78,18 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${Seasons.currentSeason} Variety'),
+        title: isFarmer!
+            ? Text(
+                '${Seasons.currentSeason} Mtundu Wa Mbeu',
+                style: TextStyle(fontSize: 17.5),
+              )
+            : Text('${Seasons.currentSeason} Variety'),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: isFarmer! ? 'Dzina La Mbeu' : 'Variety\'s Name',
+            title: isFarmer ? 'Dzina La Mbeu' : 'Variety\'s Name',
             subtitle: currentSeasonVarietyObject.varietyName,
             value: currentSeasonVarietyObject.varietyName,
             onChangeDateValueHandler: () {},

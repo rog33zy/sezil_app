@@ -98,7 +98,10 @@ class PostFloweringScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: isFarmer!
-            ? Text('PosatilaMaluwa - Plot $plotId')
+            ? Text(
+                'Posatila Maluwa - Plot $plotId',
+                style: TextStyle(fontSize: 17.5),
+              )
             : Text('PostFlowering - Plot $plotId'),
         centerTitle: true,
       ),

@@ -113,9 +113,13 @@ class PostPlantingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: isFarmer!
-            ? Text('Pambuyo Po Byala - Plot $plotId')
+            ? Text(
+                'Pambuyo Po Byala - Plot $plotId',
+                style: TextStyle(fontSize: 17.5),
+              )
             : Text('Post Planting - Plot $plotId'),
         centerTitle: true,
+
         // backgroundColor: Color(0xFF257150),
       ),
       body: ListView(
@@ -130,11 +134,11 @@ class PostPlantingScreen extends StatelessWidget {
             isDropDownField: true,
             listOfValues: isFarmer
                 ? <String>[
-                    '1-Yaikulu kwambili',
+                    '1-Yaikulu Kwambili',
                     '2-Yaikulu',
                     '3-Yapakati',
-                    '4-Yoing\'ono',
-                    '5-Yaing\'ono kwambili',
+                    '4-Yaing\'ono',
+                    '5-Yaing\'ono Kwambili',
                   ]
                 : <String>[
                     '1-Very Good',

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../providers/AuthProvider.dart';
+
 import '../components/homePageScreen/HomePageScreenOption.dart';
 
 import './FertDressingScreen.dart';
@@ -30,9 +34,15 @@ class FertilizationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+    final bool? isFarmer = authProvider.isSezilMotherTrialFarmer;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fertilization'),
+        title: isFarmer! ? Text('Fataleza') : Text('Fertilization'),
         centerTitle: true,
       ),
       body: GridView.count(

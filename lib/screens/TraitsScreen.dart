@@ -42,7 +42,7 @@ class TraitsScreen extends StatelessWidget {
               title: isFarmer ? 'Pambuyo Po Byala' : 'Post-Planting',
               routeName: PlotsScreen.routeName,
               argument: PostPlantingScreen.routeName,
-              argument2: isFarmer ? 'Pambuyo po byala' : 'Post Planting',
+              argument2: isFarmer ? 'Pambuyo Po Byala' : 'Post Planting',
             ),
             HomePageScreenOption(
               title: isFarmer ? 'Maluwa' : 'Flowering',
@@ -70,10 +70,10 @@ class TraitsScreen extends StatelessWidget {
               argument2: isFarmer ? 'Kukolola' : 'Harvest',
             ),
             HomePageScreenOption(
-              title: isFarmer ? 'Pa Mbuyo Po Kolola' : 'Post-Harvest',
+              title: isFarmer ? 'Pambuyo Po Kolola' : 'Post-Harvest',
               routeName: PlotsScreen.routeName,
               argument: PostHarvestScreen.routeName,
-              argument2: isFarmer ? 'Pa Mbuyo Po Kolola' : 'Post Harvest',
+              argument2: isFarmer ? 'Pambuyo Po Kolola' : 'Post Harvest',
             ),
           ],
         ),

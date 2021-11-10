@@ -84,7 +84,6 @@ class SynchronizeTraitsProvider with ChangeNotifier {
         },
       );
     }
-
     final responseData = json.decode(response.body);
     return responseData;
   }
@@ -295,7 +294,6 @@ class SynchronizeTraitsProvider with ChangeNotifier {
         'preHarvest',
         {
           'id': responseData['id'],
-          'season': season,
           'lastUpdated': responseData['last_updated'],
           'plotId': responseData['plot_id'],
           'lodgingResistance': responseData['lodging_resistance'],

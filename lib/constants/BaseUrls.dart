@@ -1,4 +1,4 @@
 class BaseUrls {
-  static const authBaseUrl = "c1b8-41-174-26-54.ngrok.io";
-  static const sezilUrl = "7323-41-174-26-54.ngrok.io";
+  static const authBaseUrl = "d61f-41-174-16-202.ngrok.io";
+  static const sezilUrl = "f5cc-41-174-16-202.ngrok.io";
 }

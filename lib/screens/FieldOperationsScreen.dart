@@ -194,7 +194,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
     }
 
     void dateOfPesticideApplicationHandler(value) {
-      updatedFieldOperationsObject.dateOfSecondWeeding = value;
+      updatedFieldOperationsObject.dateOfPesticideApplication = value;
     }
 
     void pesticideNameHandler(String value) {
@@ -318,7 +318,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Was First Weeding Manual?',
+            title: isFarmer
+                ? 'Muna Palila Ndi Manja Koyamba?'
+                : 'Was First Weeding Manual?',
             subtitle: fieldOperationsObject.firstWeedingIsManual,
             value: fieldOperationsObject.firstWeedingIsManual,
             isDateField: false,
@@ -326,15 +328,22 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeTextValueHandler: firstWeedingIsManualHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
-            listOfValues: <String>[
-              'Yes',
-              'No',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    'Inde',
+                    'Ai',
+                  ]
+                : <String>[
+                    'Yes',
+                    'No',
+                  ],
             isTextField: false,
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'First Weeding Herbicide Name',
+            title: isFarmer
+                ? 'Dzina La Munkhwala Wophera Udzu Munaswenzesa Kupalila Koyamba'
+                : 'First Weeding Herbicide Name',
             subtitle: fieldOperationsObject.firstWeedingHerbicideName,
             value: fieldOperationsObject.firstWeedingHerbicideName,
             isDateField: false,
@@ -345,7 +354,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'First Weeding Herbicide Qty (Kg)',
+            title: isFarmer
+                ? 'Unyinji Wa Munkhwala Munaswenzesa Koyamba Muma Kg'
+                : 'First Weeding Herbicide Qty (Kg)',
             subtitle: fieldOperationsObject.firstWeedingHerbicideQty == null
                 ? 'Blank'
                 : fieldOperationsObject.firstWeedingHerbicideQty.toString(),
@@ -360,7 +371,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Date of Pesticide Application',
+            title: isFarmer
+                ? 'Tsiku Lomwe Munaika Munkhwala Wophera Tudoyo'
+                : 'Date of Pesticide Application',
             value: fieldOperationsObject.dateOfPesticideApplication == null
                 ? 'Blank'
                 : fieldOperationsObject.dateOfPesticideApplication!
@@ -376,7 +389,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Pesticide Name',
+            title: isFarmer
+                ? 'Dzina la Munkhwala Wophera Tudoyo Munaswenzesa'
+                : 'Pesticide Name',
             subtitle: fieldOperationsObject.pesticideName,
             value: fieldOperationsObject.pesticideName,
             isDateField: false,
@@ -387,7 +402,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Pesticide Qty (Kg)',
+            title: isFarmer
+                ? 'Unyinji Wa Munkhwala Munaswenzesa Muma Kg'
+                : 'Pesticide Qty (Kg)',
             subtitle: fieldOperationsObject.pesticideApplicationQty == null
                 ? 'Blank'
                 : fieldOperationsObject.pesticideApplicationQty.toString(),
@@ -418,7 +435,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Was Second Weeding Manual?',
+            title: isFarmer
+                ? 'Muna Palila Ndi Manja Kachiwiri?'
+                : 'Was Second Weeding Manual?',
             subtitle: fieldOperationsObject.secondWeedingIsManual,
             value: fieldOperationsObject.secondWeedingIsManual,
             isDateField: false,
@@ -426,15 +445,22 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeTextValueHandler: secondWeedingIsManualHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
-            listOfValues: <String>[
-              'Yes',
-              'No',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    'Inde',
+                    'Ai',
+                  ]
+                : <String>[
+                    'Yes',
+                    'No',
+                  ],
             isTextField: false,
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Second Weeding Herbicide Name',
+            title: isFarmer
+                ? 'Dzina La Munkhwala Wophera Udzu Munaswenzesa Kupalila Kachiwiri'
+                : 'Second Weeding Herbicide Name',
             subtitle: fieldOperationsObject.secondWeedingHerbicideName,
             value: fieldOperationsObject.secondWeedingHerbicideName,
             isDateField: false,
@@ -445,7 +471,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Second Weeding Herbicide Qty (Kg)',
+            title: isFarmer
+                ? 'Unyinji Wa Munkhwala Munaswenzesa Kachiwiri Muma Kg'
+                : 'Second Weeding Herbicide Qty (Kg)',
             subtitle: fieldOperationsObject.secondWeedingHerbicideQty == null
                 ? 'Blank'
                 : fieldOperationsObject.secondWeedingHerbicideQty.toString(),

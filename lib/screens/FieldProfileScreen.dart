@@ -474,8 +474,8 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
       updatedFieldProfileObject.soilType = value;
     }
 
-    void prevSeasonWeedingManualHandler(value) {
-      updatedFieldProfileObject.prevSeasonWeedingManual = value;
+    void prevSeasonWeedingChemicalHandler(value) {
+      updatedFieldProfileObject.prevSeasonWeedingChemical = value;
     }
 
     void prevSeasonWeedingChemicalNameHandler(String value) {
@@ -599,22 +599,31 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             isLeadingToCheckBoxScreen: true,
           ),
           ListWidgetComponent(
-            title: 'Manual Weeding ${Seasons.previousSeason} Season?',
-            subtitle: fieldProfileObject.prevSeasonWeedingManual,
-            value: fieldProfileObject.prevSeasonWeedingManual,
+            title: isFarmer
+                ? 'Kodi Munaswenzesa Munkhwala Ophera Udzu Nyehngo Ya ${Seasons.previousSeason}'
+                : 'Chemical Weeding ${Seasons.previousSeason} Season?',
+            subtitle: fieldProfileObject.prevSeasonWeedingChemical,
+            value: fieldProfileObject.prevSeasonWeedingChemical,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: prevSeasonWeedingManualHandler,
+            onChangeTextValueHandler: prevSeasonWeedingChemicalHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             isTextField: false,
-            listOfValues: <String>[
-              'Yes',
-              'No',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    'Inde',
+                    'Ai',
+                  ]
+                : <String>[
+                    'Yes',
+                    'No',
+                  ],
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(
-            title: 'Herbicide Used ${Seasons.previousSeason} Season',
+            title: isFarmer
+                ? 'Munkwala Munaswenzesa Nyengo Ya ${Seasons.previousSeason}'
+                : 'Herbicide Used ${Seasons.previousSeason} Season',
             subtitle: fieldProfileObject.prevSeasonWeedingChemicalName,
             value: fieldProfileObject.prevSeasonWeedingChemicalName,
             onChangeDateValueHandler: () {},

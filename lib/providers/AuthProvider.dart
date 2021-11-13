@@ -102,6 +102,7 @@ class AuthProvider with ChangeNotifier {
           },
         );
       }
+
       final responseData = json.decode(response.body);
       final accessToken = responseData['access_token'];
       final refreshToken = responseData['refresh_token'];

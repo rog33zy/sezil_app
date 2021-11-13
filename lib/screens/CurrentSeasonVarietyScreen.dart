@@ -99,7 +99,7 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
           ),
           ListWidgetComponent(
             title: isFarmer
-                ? 'Zokolola Za ${Seasons.previousSeason}'
+                ? 'Zokolola Za ${Seasons.previousSeason} Muma Kg'
                 : '${Seasons.previousSeason} Harvest (Kg)',
             subtitle: currentSeasonVarietyObject.previousSeasonHarvest == null
                 ? 'Blank'

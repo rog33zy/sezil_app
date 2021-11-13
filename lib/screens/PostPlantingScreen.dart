@@ -153,7 +153,7 @@ class PostPlantingScreen extends StatelessWidget {
             genComSubtitle: postPlantingObject.seedlingVigourComments,
           ),
           ListWidgetComponent(
-            title: isFarmer ? 'Kameledwe' : 'Plant Stand',
+            title: isFarmer ? 'Nambala Ya Mbeu' : 'Plant Stand',
             subtitle: postPlantingObject.plantStand == null
                 ? 'Blank'
                 : postPlantingObject.plantStand.toString(),
@@ -177,13 +177,21 @@ class PostPlantingScreen extends StatelessWidget {
               onChangeTextValueHandler: pestResistanceHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very High',
-                '2-High',
-                '3-Moderate',
-                '4-Low',
-                '5-Very Low',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Kukanikiza Kwambili',
+                      '2-Kukanikiza',
+                      '3-Kukanikiza Mwapakati',
+                      '4-Kukanikiza Pangono',
+                      '5-Kukanikiza Pangono Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very High',
+                      '2-High',
+                      '3-Moderate',
+                      '4-Low',
+                      '5-Very Low',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: pestResistanceCommentsHandler,
@@ -198,13 +206,21 @@ class PostPlantingScreen extends StatelessWidget {
               onChangeTextValueHandler: diseasesResistanceHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very High',
-                '2-High',
-                '3-Moderate',
-                '4-Low',
-                '5-Very Low',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Kukanikiza Kwambili',
+                      '2-Kukanikiza',
+                      '3-Kukanikiza Mwapakati',
+                      '4-Kukanikiza Pangono',
+                      '5-Kukanikiza Pangono Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very High',
+                      '2-High',
+                      '3-Moderate',
+                      '4-Low',
+                      '5-Very Low',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: diseasesResistanceCommentsHandler,

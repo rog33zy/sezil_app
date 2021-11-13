@@ -115,20 +115,30 @@ class FloweringScreen extends StatelessWidget {
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: 'Growing Cycle Appreciation',
+            title: isFarmer
+                ? 'Kuyamikira Kukula kwa Mzunguliro'
+                : 'Growing Cycle Appreciation',
             subtitle: floweringObject.growingCycleAppreciation,
             value: floweringObject.growingCycleAppreciation,
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: growingCycleAppreciationHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
-            listOfValues: <String>[
-              '1-Too Early Maturing',
-              '2-Early Maturing',
-              '3-Adapted For The Locality',
-              '4-Late Maturing',
-              '5-Too Late Maturing',
-            ],
+            listOfValues: isFarmer
+                ? <String>[
+                    '1-Kukula Mwamsanga Kwambili',
+                    '2-Kukula Mwamsanga',
+                    '3-Kukula Mwanthawi',
+                    '4-Kukula Mochedwa',
+                    '5-Kukula Mochedwa Kwambili',
+                  ]
+                : <String>[
+                    '1-Too Early Maturing',
+                    '2-Early Maturing',
+                    '3-Adapted For The Locality',
+                    '4-Late Maturing',
+                    '5-Too Late Maturing',
+                  ],
             isTrait: true,
             isTextField: false,
             onChangeGenComValueHandler: growingCycleAppreciationCommentsHandler,
@@ -143,13 +153,21 @@ class FloweringScreen extends StatelessWidget {
               onChangeTextValueHandler: pestResistanceHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very High',
-                '2-High',
-                '3-Moderate',
-                '4-Low',
-                '5-Very Low',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Kukanikiza Kwambili',
+                      '2-Kukanikiza',
+                      '3-Kukanikiza Mwapakati',
+                      '4-Kukanikiza Pangono',
+                      '5-Kukanikiza Pangono Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very High',
+                      '2-High',
+                      '3-Moderate',
+                      '4-Low',
+                      '5-Very Low',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: pestResistanceCommentsHandler,
@@ -164,13 +182,21 @@ class FloweringScreen extends StatelessWidget {
               onChangeTextValueHandler: diseasesResistanceHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very High',
-                '2-High',
-                '3-Moderate',
-                '4-Low',
-                '5-Very Low',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Kukanikiza Kwambili',
+                      '2-Kukanikiza',
+                      '3-Kukanikiza Mwapakati',
+                      '4-Kukanikiza Pangono',
+                      '5-Kukanikiza Pangono Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very High',
+                      '2-High',
+                      '3-Moderate',
+                      '4-Low',
+                      '5-Very Low',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: diseasesResistanceCommentsHandler,

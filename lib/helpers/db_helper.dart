@@ -89,7 +89,7 @@ class DBHelper {
                   longitude REAL,
                   cropGrownPrevSeason TEXT,
                   cropGrownTwoSeasonsAgo TEXT,
-                  prevSeasonWeedingManual TEXT,
+                  prevSeasonWeedingChemical TEXT,
                   prevSeasonWeedingChemicalName TEXT,
                   isUpToDateInServer TEXT,
                   existsInServer TEXT

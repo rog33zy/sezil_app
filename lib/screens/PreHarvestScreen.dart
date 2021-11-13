@@ -192,20 +192,30 @@ class PreHarvestScreen extends StatelessWidget {
         children: [
           if (crop == 'Sunflower')
             ListWidgetComponent(
-              title: 'Lodging Resistance',
+              title: isFarmer
+                  ? 'Kukanikiza Kwa Kupindika Pamwamba Pa Tsinde Pafupi Ndi Nthaka'
+                  : 'Lodging Resistance',
               subtitle: preHarvestObject.lodgingResistance,
               value: preHarvestObject.lodgingResistance,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: lodgingResistanceHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very High',
-                '2-High',
-                '3-Moderate',
-                '4-Low',
-                '5-Very Low',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Kukanikiza Kwambili',
+                      '2-Kukanikiza',
+                      '3-Kukanikiza Mwapakati',
+                      '4-Kukanikiza Pangono',
+                      '5-Kukanikiza Pangono Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very High',
+                      '2-High',
+                      '3-Moderate',
+                      '4-Low',
+                      '5-Very Low',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: lodgingResistanceCommentsHandler,
@@ -236,20 +246,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Cob Size Appreciation',
+              title: isFarmer
+                  ? 'Kuthokoza Kukula Kwa Cisonkho'
+                  : 'Cob Size Appreciation',
               subtitle: preHarvestObject.cobSizeAppreciation,
               value: preHarvestObject.cobSizeAppreciation,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: cobSizeAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: cobSizeAppreciationCommentsHandler,
@@ -257,20 +277,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Maize')
             ListWidgetComponent(
-              title: 'Number of Cobs per Plant Appreciation',
+              title: isFarmer
+                  ? 'Kuthokoza Nambala Ya Zisononkho'
+                  : 'Number of Cobs per Plant Appreciation',
               subtitle: preHarvestObject.numberOfCobsPerPlantAppreciation,
               value: preHarvestObject.numberOfCobsPerPlantAppreciation,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: numberOfCobsPerPlantAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler:
@@ -280,20 +310,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title: 'Plant Height',
+              title: isFarmer
+                  ? 'Kuthokoza Ku Talika Kwa Mbeu'
+                  : 'Plant Height Appreciation',
               subtitle: preHarvestObject.plantHeight,
               value: preHarvestObject.plantHeight,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: plantHeightHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: plantHeightCommentsHandler,
@@ -301,20 +341,28 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title: 'Bird Damage',
+              title: isFarmer ? 'Kuonongeka Ndi Mbalame' : 'Bird Damage',
               subtitle: preHarvestObject.birdDamage,
               value: preHarvestObject.birdDamage,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: birdDamageHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Slight Damage',
-                '2-Light Damage',
-                '3-Moderate',
-                '4-Heavy',
-                '5-Very Heavy',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Kuonongeka Pang\'ono Kwambili',
+                      '2-Kuonongeka Pang\'ono',
+                      '3-Kuonongeka Mwa Pakati',
+                      '4-Kuonongeka Kwambili',
+                      '5-Kuonongeka Kwakulu Kwambili',
+                    ]
+                  : <String>[
+                      '1-Slight Damage',
+                      '2-Light Damage',
+                      '3-Moderate',
+                      '4-Heavy',
+                      '5-Very Heavy',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: birdDamageCommentsHandler,
@@ -322,20 +370,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title: 'Panicle Appreciation',
+              title: isFarmer
+                  ? 'Kuthokoza Nsonga Za Tiligu'
+                  : 'Panicle Appreciation',
               subtitle: preHarvestObject.panicleAppreciation,
               value: preHarvestObject.panicleAppreciation,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: panicleAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: panicleAppreciationCommentsHandler,
@@ -343,20 +401,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title: 'Grain Quality Appreciation',
+              title: isFarmer
+                  ? 'Kuthokoza Maonekedwe a Mbeu'
+                  : 'Grain Quality Appreciation',
               subtitle: preHarvestObject.grainQualityAppreciation,
               value: preHarvestObject.grainQualityAppreciation,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: grainQualityAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler:
@@ -365,20 +433,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sunflower')
             ListWidgetComponent(
-              title: 'Head Size Appreciation',
+              title: isFarmer
+                  ? 'Kuthokoza Kukula Kwa Mutu'
+                  : 'Head Size Appreciation',
               subtitle: preHarvestObject.headSizeAppreciation,
               value: preHarvestObject.headSizeAppreciation,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: headSizeAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: headSizeAppreciationCommentsHandler,
@@ -386,20 +464,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sunflower')
             ListWidgetComponent(
-              title: 'Number of Heads Appreciation',
+              title: isFarmer
+                  ? 'Kuthokoza Nambala Ya Mitu'
+                  : 'Number of Heads Appreciation',
               subtitle: preHarvestObject.numberOfHeadsAppreciation,
               value: preHarvestObject.numberOfHeadsAppreciation,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: numberOfHeadsAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler:
@@ -409,20 +497,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Beans')
             ListWidgetComponent(
-              title: 'Plant Growth Habit Appreciation',
+              title: isFarmer
+                  ? 'Kuthokoza Makulidwe a Mbeu'
+                  : 'Plant Growth Habit Appreciation',
               subtitle: preHarvestObject.plantGrowthHabitAppreciation,
               value: preHarvestObject.plantGrowthHabitAppreciation,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: plantGrowthHabitAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler:
@@ -432,20 +530,30 @@ class PreHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Beans')
             ListWidgetComponent(
-              title: 'Pod Length Appreciation',
+              title: isFarmer
+                  ? 'Kuthokoza Kutalika Kwa Nkhonje'
+                  : 'Pod Length Appreciation',
               subtitle: preHarvestObject.podLengthAppreciation,
               value: preHarvestObject.podLengthAppreciation,
               onChangeDateValueHandler: () {},
               onChangeTextValueHandler: podLengthAppreciationHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Good',
-                '2-Good',
-                '3-Fair',
-                '4-Bad',
-                '5-Very Bad',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Good',
+                      '2-Good',
+                      '3-Fair',
+                      '4-Bad',
+                      '5-Very Bad',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: podLengthAppreciationCommentsHandler,

@@ -20,7 +20,7 @@ class FieldProfileProvider with ChangeNotifier {
       longitude: _fieldProfileObject.longitude,
       cropGrownPrevSeason: _fieldProfileObject.cropGrownPrevSeason,
       cropGrownTwoSeasonsAgo: _fieldProfileObject.cropGrownTwoSeasonsAgo,
-      prevSeasonWeedingManual: _fieldProfileObject.prevSeasonWeedingManual,
+      prevSeasonWeedingChemical: _fieldProfileObject.prevSeasonWeedingChemical,
       prevSeasonWeedingChemicalName:
           _fieldProfileObject.prevSeasonWeedingChemicalName,
       isUpToDateInServer: _fieldProfileObject.isUpToDateInServer,
@@ -40,7 +40,8 @@ class FieldProfileProvider with ChangeNotifier {
         longitude: _fieldProfileObject.longitude,
         cropGrownPrevSeason: _fieldProfileObject.cropGrownPrevSeason,
         cropGrownTwoSeasonsAgo: _fieldProfileObject.cropGrownTwoSeasonsAgo,
-        prevSeasonWeedingManual: _fieldProfileObject.prevSeasonWeedingManual,
+        prevSeasonWeedingChemical:
+            _fieldProfileObject.prevSeasonWeedingChemical,
         prevSeasonWeedingChemicalName:
             _fieldProfileObject.prevSeasonWeedingChemicalName,
         isUpToDateInServer: _fieldProfileObject.isUpToDateInServer,
@@ -69,8 +70,8 @@ class FieldProfileProvider with ChangeNotifier {
         'cropGrownPrevSeason': updatedFieldProfileObject.cropGrownPrevSeason,
         'cropGrownTwoSeasonsAgo':
             updatedFieldProfileObject.cropGrownTwoSeasonsAgo,
-        'prevSeasonWeedingManual':
-            updatedFieldProfileObject.prevSeasonWeedingManual,
+        'prevSeasonWeedingChemical':
+            updatedFieldProfileObject.prevSeasonWeedingChemical,
         'prevSeasonWeedingChemicalName':
             updatedFieldProfileObject.prevSeasonWeedingChemicalName,
         'isUpToDateInServer': updatedFieldProfileObject.isUpToDateInServer,
@@ -96,7 +97,7 @@ class FieldProfileProvider with ChangeNotifier {
         longitude: _updatedMap['longitude'],
         cropGrownPrevSeason: _updatedMap['cropGrownPrevSeason'],
         cropGrownTwoSeasonsAgo: _updatedMap['cropGrownTwoSeasonsAgo'],
-        prevSeasonWeedingManual: _updatedMap['prevSeasonWeedingManual'],
+        prevSeasonWeedingChemical: _updatedMap['prevSeasonWeedingChemical'],
         prevSeasonWeedingChemicalName:
             _updatedMap['prevSeasonWeedingChemicalName'],
         isUpToDateInServer: _updatedMap['isUpToDateInServer'],

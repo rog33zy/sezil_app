@@ -160,7 +160,7 @@ class PostHarvestScreen extends StatelessWidget {
           if (crop == 'Maize')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Cisonokho Chokololedwa Chouma'
+                  ? 'Nambala Ya Cisononkho Chokololedwa Chouma Muma Kg'
                   : 'Yield of Dried Cobs (Kg)',
               subtitle: postHarvestObject.yieldOfDriedCobs == null
                   ? 'Blank'
@@ -185,13 +185,21 @@ class PostHarvestScreen extends StatelessWidget {
               onChangeTextValueHandler: grainHardnessHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
-              listOfValues: <String>[
-                '1-Very Soft',
-                '2-Soft',
-                '3-Medium',
-                '4-Hard',
-                '5-Very Hard',
-              ],
+              listOfValues: isFarmer
+                  ? <String>[
+                      '1-Yofewa Kwambili',
+                      '2-Yofewa',
+                      '3-Pakati Ni Pakati',
+                      '4-Yokosa',
+                      '5-Yokosa Kwambili',
+                    ]
+                  : <String>[
+                      '1-Very Soft',
+                      '2-Soft',
+                      '3-Medium',
+                      '4-Hard',
+                      '5-Very Hard',
+                    ],
               isTrait: true,
               isTextField: false,
               onChangeGenComValueHandler: grainHardnessCommentsHandler,
@@ -199,7 +207,9 @@ class PostHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sorghum')
             ListWidgetComponent(
-              title: 'Yield of Dried Panicles (Kg)',
+              title: isFarmer
+                  ? 'Nsonga Za Tiligu Zokololedwa Zouma Muma Kg'
+                  : 'Yield of Dried Panicles (Kg)',
               subtitle: postHarvestObject.yieldOfDriedPanicles == null
                   ? 'Blank'
                   : postHarvestObject.yieldOfDriedPanicles.toString(),
@@ -216,7 +226,9 @@ class PostHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sunflower')
             ListWidgetComponent(
-              title: 'Yield of Dried Heads (Kg)',
+              title: isFarmer
+                  ? 'Mitu Zokololedwa Zouma Muma Kg'
+                  : 'Yield of Dried Heads (Kg)',
               subtitle: postHarvestObject.yieldOfDriedHeads == null
                   ? 'Blank'
                   : postHarvestObject.yieldOfDriedHeads.toString(),
@@ -233,7 +245,9 @@ class PostHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Beans')
             ListWidgetComponent(
-              title: 'Yield of Dried Pods (Kg)',
+              title: isFarmer
+                  ? 'Nkhonje Zokololedwa Zouma Muma Kg'
+                  : 'Yield of Dried Pods (Kg)',
               subtitle: postHarvestObject.yieldOfDriedPods == null
                   ? 'Blank'
                   : postHarvestObject.yieldOfDriedPods.toString(),
@@ -250,7 +264,9 @@ class PostHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sunflower')
             ListWidgetComponent(
-              title: 'Grain Yield (Kg)',
+              title: isFarmer
+                  ? 'Mbeu Yokololedwa Zouma Muma Kg'
+                  : 'Grain Yield (Kg)',
               subtitle: postHarvestObject.grainsYield == null
                   ? 'Blank'
                   : postHarvestObject.grainsYield.toString(),
@@ -267,7 +283,7 @@ class PostHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Sunflower')
             ListWidgetComponent(
-              title: 'Grain Size',
+              title: isFarmer ? 'Kukula Kwa Mbeu' : 'Grain Size',
               subtitle: postHarvestObject.grainSizeAppreciation,
               value: postHarvestObject.grainSizeAppreciation,
               onChangeDateValueHandler: () {},
@@ -276,11 +292,11 @@ class PostHarvestScreen extends StatelessWidget {
               isDropDownField: true,
               listOfValues: isFarmer
                   ? <String>[
-                      '1-Yaikulu Kwambili',
-                      '2-Yaikulu',
-                      '3-Yapakati',
-                      '4-Yaing\'ono',
-                      '5-Yaing\'ono Kwambili',
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
                     ]
                   : <String>[
                       '1-Very Good',
@@ -296,7 +312,7 @@ class PostHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Beans')
             ListWidgetComponent(
-              title: 'Grain Colour',
+              title: isFarmer ? 'Mitundu Ya Mbeu' : 'Grain Colour',
               subtitle: postHarvestObject.grainColourAppreciation,
               value: postHarvestObject.grainColourAppreciation,
               onChangeDateValueHandler: () {},
@@ -305,11 +321,11 @@ class PostHarvestScreen extends StatelessWidget {
               isDropDownField: true,
               listOfValues: isFarmer
                   ? <String>[
-                      '1-Yaikulu Kwambili',
-                      '2-Yaikulu',
-                      '3-Yapakati',
-                      '4-Yaing\'ono',
-                      '5-Yaing\'ono Kwambili',
+                      '1-Bwino Kwambili',
+                      '2-Bwino',
+                      '3-Pakati Ni Pakati',
+                      '4-Woipa',
+                      '5-Woipa Kwambili',
                     ]
                   : <String>[
                       '1-Very Good',

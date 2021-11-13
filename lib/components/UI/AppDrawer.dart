@@ -32,18 +32,19 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
-          const Divider(),
-          ListTile(
-            leading: Icon(
-              Icons.app_registration,
+          if (!authProvider.isSezilMotherTrialFarmer!) const Divider(),
+          if (!authProvider.isSezilMotherTrialFarmer!)
+            ListTile(
+              leading: Icon(
+                Icons.app_registration,
+              ),
+              title: const Text('REGISTER FARMER'),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed(
+                  RegisterSezilFarmerScreen.routeName,
+                );
+              },
             ),
-            title: const Text('REGISTER FARMER'),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed(
-                RegisterSezilFarmerScreen.routeName,
-              );
-            },
-          ),
           const Divider(),
           ListTile(
             leading: const Icon(

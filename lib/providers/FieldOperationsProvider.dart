@@ -165,7 +165,7 @@ class FieldOperationsProvider with ChangeNotifier {
         dateOfPesticideApplication:
             _updatedMap['dateOfPesticideApplication'] == null
                 ? null
-                : _updatedMap['dateOfPesticideApplication'],
+                : DateTime.parse(_updatedMap['dateOfPesticideApplication']),
         pesticideName: _updatedMap['pesticideName'],
         pesticideApplicationQty: _updatedMap['pesticideApplicationQty'],
         dateOfSecondWeeding: _updatedMap['dateOfSecondWeeding'] == null

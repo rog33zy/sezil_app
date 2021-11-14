@@ -32,8 +32,8 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
-          if (!authProvider.isSezilMotherTrialFarmer!) const Divider(),
-          if (!authProvider.isSezilMotherTrialFarmer!)
+          if (authProvider.isHRAdmin!) const Divider(),
+          if (authProvider.isHRAdmin!)
             ListTile(
               leading: Icon(
                 Icons.app_registration,
@@ -45,34 +45,35 @@ class AppDrawer extends StatelessWidget {
                 );
               },
             ),
+          if (authProvider.isSezilMotherTrialFarmer!) const Divider(),
+          if (authProvider.isSezilMotherTrialFarmer!)
+            ListTile(
+              leading: const Icon(
+                Icons.sync,
+              ),
+              title: const Text(
+                'SYNCHRONIZE',
+              ),
+              onTap: () {
+                Navigator.of(context)
+                    .pushReplacementNamed(SynchronizeScreen.routeName);
+              },
+            ),
           const Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.sync,
-            ),
-            title: const Text(
-              'SYNCHRONIZE',
-            ),
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(SynchronizeScreen.routeName);
-            },
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.exit_to_app,
-            ),
-            title: const Text(
-              'LOGOUT',
-            ),
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pushReplacementNamed('/');
-              authProvider.logout();
-            },
-          ),
-          const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.exit_to_app,
+          //   ),
+          //   title: const Text(
+          //     'LOGOUT',
+          //   ),
+          //   onTap: () {
+          //     Navigator.of(context).pop();
+          //     Navigator.of(context).pushReplacementNamed('/');
+          //     authProvider.logout();
+          //   },
+          // ),
+          // const Divider(),
         ],
       ),
     );

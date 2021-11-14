@@ -193,7 +193,7 @@ class PreHarvestScreen extends StatelessWidget {
           if (crop == 'Sunflower')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Kukanikiza Kwa Kupindika Pamwamba Pa Tsinde Pafupi Ndi Nthaka'
+                  ? 'Kukanikiza Kwa Kugwa Pansi Kwa Mbeu'
                   : 'Lodging Resistance',
               subtitle: preHarvestObject.lodgingResistance,
               value: preHarvestObject.lodgingResistance,

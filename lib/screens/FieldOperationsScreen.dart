@@ -340,6 +340,8 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             isTextField: false,
             onChangeGenComValueHandler: () {},
           ),
+
+          if (fieldOperationsObject.firstWeedingIsManual == 'Ai' || fieldOperationsObject.firstWeedingIsManual == 'No')
           ListWidgetComponent(
             title: isFarmer
                 ? 'Dzina La Munkhwala Wophera Udzu Munasewenzesa Kupalila Koyamba'
@@ -449,6 +451,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             isTextField: false,
             onChangeGenComValueHandler: () {},
           ),
+          if (fieldOperationsObject.secondWeedingIsManual == 'Ai' || fieldOperationsObject.secondWeedingIsManual == 'No')
           ListWidgetComponent(
             title: isFarmer
                 ? 'Dzina La Munkhwala Wophera Udzu Munasewenzesa Kupalila Kachiwiri'

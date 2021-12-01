@@ -622,6 +622,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
                   ],
             onChangeGenComValueHandler: () {},
           ),
+          if (fieldProfileObject.prevSeasonWeedingManual == 'Ai' ||fieldProfileObject.prevSeasonWeedingManual == 'No' )
           ListWidgetComponent(
             title: isFarmer
                 ? 'Munkwala Munasewenzesa Nyengo Ya ${Seasons.previousSeason}'

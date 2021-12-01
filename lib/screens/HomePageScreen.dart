@@ -91,13 +91,13 @@ class HomePageScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Welcome, ${authProvider.firstName!} 😃'),
         centerTitle: true,
-        // backgroundColor: Theme.of(context).primaryColor,
-        backgroundColor: Color(0xFF257150),
+        backgroundColor: Theme.of(context).primaryColor,
+        // backgroundColor: const Color(0xFF257150),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             HomePageScreenOption(
@@ -126,7 +126,7 @@ class HomePageScreen extends StatelessWidget {
         ),
       ),
       // floatingActionButton: QRViewFloatingActionButtonComp(),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
     );
   }
 }

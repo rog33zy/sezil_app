@@ -35,7 +35,7 @@ class TraitsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+           const SizedBox(
               height: 10.0,
             ),
             HomePageScreenOption(

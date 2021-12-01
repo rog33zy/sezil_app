@@ -116,14 +116,14 @@ class PostFloweringScreen extends StatelessWidget {
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: isFarmer
-                ? <String>[
+                ? const <String>[
                     '1-Kukanikiza Kwambili',
                     '2-Kukanikiza',
                     '3-Kukanikiza Mwapakati',
                     '4-Kukanikiza Pangono',
-                    '5-Kukanikiza Pangono Kwambili',
+                    '5-Kusakanikiza',
                   ]
-                : <String>[
+                : const <String>[
                     '1-Very High',
                     '2-High',
                     '3-Moderate',
@@ -144,14 +144,14 @@ class PostFloweringScreen extends StatelessWidget {
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: isFarmer
-                ? <String>[
+                ? const <String>[
                     '1-Kukanikiza Kwambili',
                     '2-Kukanikiza',
                     '3-Kukanikiza Mwapakati',
                     '4-Kukanikiza Pangono',
-                    '5-Kukanikiza Pangono Kwambili',
+                    '5-Kusakanikiza',
                   ]
-                : <String>[
+                : const <String>[
                     '1-Very High',
                     '2-High',
                     '3-Moderate',

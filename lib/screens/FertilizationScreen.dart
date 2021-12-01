@@ -42,7 +42,7 @@ class FertilizationScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: isFarmer! ? Text('Fataleza') : Text('Fertilization'),
+        title: isFarmer! ? const Text('Fataleza') : const Text('Fertilization'),
         centerTitle: true,
       ),
       body: GridView.count(

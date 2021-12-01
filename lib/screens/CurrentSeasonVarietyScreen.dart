@@ -81,7 +81,7 @@ class CurrentSeasonVarietyScreen extends StatelessWidget {
         title: isFarmer!
             ? Text(
                 '${Seasons.currentSeason} Mtundu Wa Mbeu',
-                style: TextStyle(fontSize: 17.5),
+                style: const TextStyle(fontSize: 17.5),
               )
             : Text('${Seasons.currentSeason} Variety'),
         centerTitle: true,

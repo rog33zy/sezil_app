@@ -133,14 +133,14 @@ class PostPlantingScreen extends StatelessWidget {
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: isFarmer
-                ? <String>[
+                ? const <String>[
                     '1-Yaikulu Kwambili',
                     '2-Yaikulu',
                     '3-Yapakati',
                     '4-Yaing\'ono',
                     '5-Yaing\'ono Kwambili',
                   ]
-                : <String>[
+                : const <String>[
                     '1-Very Good',
                     '2-Good',
                     '3-Fair',
@@ -178,14 +178,14 @@ class PostPlantingScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Kukanikiza Kwambili',
                       '2-Kukanikiza',
                       '3-Kukanikiza Mwapakati',
                       '4-Kukanikiza Pangono',
                       '5-Kukanikiza Pangono Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very High',
                       '2-High',
                       '3-Moderate',
@@ -207,14 +207,14 @@ class PostPlantingScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Kukanikiza Kwambili',
                       '2-Kukanikiza',
                       '3-Kukanikiza Mwapakati',
                       '4-Kukanikiza Pangono',
                       '5-Kukanikiza Pangono Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very High',
                       '2-High',
                       '3-Moderate',

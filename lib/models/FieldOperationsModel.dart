@@ -8,14 +8,14 @@ class FieldOperationsModel {
   DateTime? dateOfFirstWeeding;
   String firstWeedingIsManual;
   String firstWeedingHerbicideName;
-  double? firstWeedingHerbicideQty;
+  String firstWeedingHerbicideQty;
   DateTime? dateOfPesticideApplication;
   String pesticideName;
-  double? pesticideApplicationQty;
+  String pesticideApplicationQty;
   DateTime? dateOfSecondWeeding;
   String secondWeedingIsManual;
   String secondWeedingHerbicideName;
-  double? secondWeedingHerbicideQty;
+  String secondWeedingHerbicideQty;
   String isUpToDateInServer;
   String existsInServer;
 
@@ -29,14 +29,14 @@ class FieldOperationsModel {
     this.dateOfFirstWeeding,
     this.firstWeedingIsManual = 'Blank',
     this.firstWeedingHerbicideName = 'Blank',
-    this.firstWeedingHerbicideQty,
+    this.firstWeedingHerbicideQty='Blank',
     this.dateOfPesticideApplication,
     this.pesticideName = 'Blank',
-    this.pesticideApplicationQty,
+    this.pesticideApplicationQty='Blank',
     this.dateOfSecondWeeding,
     this.secondWeedingIsManual = 'Blank',
     this.secondWeedingHerbicideName = 'Blank',
-    this.secondWeedingHerbicideQty,
+    this.secondWeedingHerbicideQty='Blank',
     this.isUpToDateInServer = 'No',
     this.existsInServer = 'No',
   });

@@ -64,7 +64,7 @@ class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register Farmer'),
+        title: const Text('Register Farmer'),
         centerTitle: true,
       ),
       body: Form(
@@ -106,7 +106,7 @@ class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
               if (_isLoading) const CircularProgressIndicator(),
               if (!_isLoading)
                 Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 0,
                     vertical: 10,
                   ),

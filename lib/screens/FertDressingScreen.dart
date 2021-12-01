@@ -27,12 +27,12 @@ class FertDressingScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fertilizer Dressing'),
+        title: const Text('Fertilizer Dressing'),
         centerTitle: true,
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10.0,
           ),
           HomePageScreenOption(

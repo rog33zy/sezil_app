@@ -27,14 +27,14 @@ class DBHelper {
                   dateOfFirstWeeding TEXT,
                   firstWeedingIsManual TEXT,
                   firstWeedingHerbicideName TEXT,
-                  firstWeedingHerbicideQty REAL,
+                  firstWeedingHerbicideQty TEXT,
                   dateOfPesticideApplication TEXT,
                   pesticideName TEXT,
-                  pesticideApplicationQty REAL,
+                  pesticideApplicationQty TEXT,
                   dateOfSecondWeeding TEXT,
                   secondWeedingIsManual TEXT,
                   secondWeedingHerbicideName TEXT,
-                  secondWeedingHerbicideQty REAL,
+                  secondWeedingHerbicideQty TEXT,
                   isUpToDateInServer TEXT,
                   existsInServer TEXT
                 )
@@ -89,7 +89,7 @@ class DBHelper {
                   longitude REAL,
                   cropGrownPrevSeason TEXT,
                   cropGrownTwoSeasonsAgo TEXT,
-                  prevSeasonWeedingChemical TEXT,
+                  prevSeasonWeedingManual TEXT,
                   prevSeasonWeedingChemicalName TEXT,
                   isUpToDateInServer TEXT,
                   existsInServer TEXT

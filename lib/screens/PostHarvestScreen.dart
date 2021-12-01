@@ -186,19 +186,19 @@ class PostHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
-                      '1-Yofewa Kwambili',
-                      '2-Yofewa',
-                      '3-Pakati Ni Pakati',
-                      '4-Yokosa',
-                      '5-Yokosa Kwambili',
+                  ? const <String>[
+                      '1-Yokosa Kwambili',
+                      '2-Yokosa',
+                      '3-Yapakati',
+                      '4-Yofewa',
+                      '5-Yofewa Kwambili',
                     ]
-                  : <String>[
-                      '1-Very Soft',
-                      '2-Soft',
+                  : const <String>[
+                      '1-Very Hard',
+                      '2-Hard',
                       '3-Medium',
-                      '4-Hard',
-                      '5-Very Hard',
+                      '4-Soft',
+                      '5-Very Soft',
                     ],
               isTrait: true,
               isTextField: false,
@@ -291,14 +291,14 @@ class PostHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -312,7 +312,7 @@ class PostHarvestScreen extends StatelessWidget {
             ),
           if (crop == 'Beans')
             ListWidgetComponent(
-              title: isFarmer ? 'Mitundu Ya Mbeu' : 'Grain Colour',
+              title: isFarmer ? 'Utoto Wa Mbeu' : 'Grain Colour',
               subtitle: postHarvestObject.grainColourAppreciation,
               value: postHarvestObject.grainColourAppreciation,
               onChangeDateValueHandler: () {},
@@ -320,14 +320,14 @@ class PostHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',

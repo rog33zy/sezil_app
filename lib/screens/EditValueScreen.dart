@@ -104,7 +104,7 @@ class EditValueScreen extends StatelessWidget {
       key: _formKey,
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10.0,
           ),
           if (isTextField)

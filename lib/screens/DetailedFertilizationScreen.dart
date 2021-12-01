@@ -125,12 +125,12 @@ class DetailedFertilizationScreen extends StatelessWidget {
             onSubmitHandler: onSubmitHandler,
             onChangeGenComValueHandler: () {},
             listOfValues: isFarmer
-                ? <String>[
+                ? const <String>[
                     'Manyowa a Ng\'ombe',
                     'Ena',
                     'Palibe',
                   ]
-                : <String>[
+                : const <String>[
                     'Kraal Manure',
                     'Other',
                     'None',
@@ -149,14 +149,14 @@ class DetailedFertilizationScreen extends StatelessWidget {
             onSubmitHandler: onSubmitHandler,
             onChangeGenComValueHandler: () {},
             listOfValues: isFarmer
-                ? <String>[
+                ? const <String>[
                     'D Compount 10-20-10',
                     'Urea 46% N',
                     'Ammonium Nitrate',
                     'Ena',
                     'Palibe',
                   ]
-                : <String>[
+                : const <String>[
                     'D Compount 10-20-10',
                     'Urea 46% N',
                     'Ammonium Nitrate',
@@ -183,7 +183,7 @@ class DetailedFertilizationScreen extends StatelessWidget {
           ),
           ListWidgetComponent(
             title:
-                isFarmer ? 'Nthawi Yo Thila Fataleza' : 'Time of Application',
+                isFarmer ? 'Tsiku Lotila Fataleza' : 'Date of Application',
             subtitle: fertilizationObject.timeOfApplication == null
                 ? 'Blank'
                 : _formatDate(

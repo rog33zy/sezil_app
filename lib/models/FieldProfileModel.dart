@@ -7,7 +7,7 @@ class FieldProfileModel {
   double? longitude;
   String cropGrownPrevSeason;
   String cropGrownTwoSeasonsAgo;
-  String prevSeasonWeedingChemical;
+  String prevSeasonWeedingManual;
   String prevSeasonWeedingChemicalName;
   String isUpToDateInServer;
   String existsInServer;
@@ -21,7 +21,7 @@ class FieldProfileModel {
     this.longitude,
     this.cropGrownPrevSeason = 'Blank',
     this.cropGrownTwoSeasonsAgo = 'Blank',
-    this.prevSeasonWeedingChemical = 'Blank',
+    this.prevSeasonWeedingManual = 'Blank',
     this.prevSeasonWeedingChemicalName = 'Blank',
     this.isUpToDateInServer = 'No',
     this.existsInServer = 'No',

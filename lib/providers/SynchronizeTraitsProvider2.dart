@@ -308,7 +308,7 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
       'longitude': unsyncedObject.longitude,
       'crop_grown_prev_season': unsyncedObject.cropGrownPrevSeason,
       'crop_grown_two_seasons_ago': unsyncedObject.cropGrownTwoSeasonsAgo,
-      'prev_season_weeding_chemical': unsyncedObject.prevSeasonWeedingChemical,
+      'prev_season_weeding_manual': unsyncedObject.prevSeasonWeedingManual,
       'prev_season_weeding_chemical_name':
           unsyncedObject.prevSeasonWeedingChemicalName,
     };
@@ -330,8 +330,8 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
         'longitude': responseData['longitude'],
         'cropGrownPrevSeason': responseData['crop_grown_prev_season'],
         'cropGrownTwoSeasonsAgo': responseData['crop_grown_two_seasons_ago'],
-        'prevSeasonWeedingChemical':
-            responseData['prev_season_weeding_chemical'],
+        'prevSeasonWeedingManual':
+            responseData['prev_season_weeding_manual'],
         'prevSeasonWeedingChemicalName':
             responseData['prev_season_weeding_chemical_name'],
         'isUpToDateInServer': 'Yes',

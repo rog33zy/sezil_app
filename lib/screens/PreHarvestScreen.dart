@@ -202,14 +202,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Kukanikiza Kwambili',
                       '2-Kukanikiza',
                       '3-Kukanikiza Mwapakati',
                       '4-Kukanikiza Pangono',
-                      '5-Kukanikiza Pangono Kwambili',
+                      '5-Kusakanikiza',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very High',
                       '2-High',
                       '3-Moderate',
@@ -231,11 +231,11 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Mbali Yonse',
                       '2-Mbai Ina',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Fully',
                       '2-Partially',
                     ],
@@ -256,14 +256,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -287,14 +287,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -320,14 +320,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -349,15 +349,15 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
-                      '1-Kuonongeka Pang\'ono Kwambili',
+                  ? const <String>[
+                      '1-Yosaonongeka',
                       '2-Kuonongeka Pang\'ono',
                       '3-Kuonongeka Mwa Pakati',
                       '4-Kuonongeka Kwambili',
                       '5-Kuonongeka Kwakulu Kwambili',
                     ]
-                  : <String>[
-                      '1-Slight Damage',
+                  : const <String>[
+                      '1-No Damage',
                       '2-Light Damage',
                       '3-Moderate',
                       '4-Heavy',
@@ -380,14 +380,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -411,14 +411,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -443,14 +443,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -474,14 +474,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -507,14 +507,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -540,14 +540,14 @@ class PreHarvestScreen extends StatelessWidget {
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
-                  ? <String>[
+                  ? const <String>[
                       '1-Bwino Kwambili',
                       '2-Bwino',
                       '3-Pakati Ni Pakati',
                       '4-Woipa',
                       '5-Woipa Kwambili',
                     ]
-                  : <String>[
+                  : const <String>[
                       '1-Very Good',
                       '2-Good',
                       '3-Fair',
@@ -570,14 +570,14 @@ class PreHarvestScreen extends StatelessWidget {
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: isFarmer
-                ? <String>[
+                ? const <String>[
                     '1-Inde, Kwambili',
                     '2-Inde',
                     '3-Mulindichikayiko',
                     '4-Ai',
                     '5-Ai Kwambili',
                   ]
-                : <String>[
+                : const <String>[
                     '1-Yes, Very Sure',
                     '2-Yes',
                     '3-Perhaps, Not Sure',

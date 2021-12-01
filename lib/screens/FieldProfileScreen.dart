@@ -474,12 +474,12 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
       updatedFieldProfileObject.soilType = value;
     }
 
-    void prevSeasonWeedingChemicalHandler(value) {
-      updatedFieldProfileObject.prevSeasonWeedingChemical = value;
+    void prevSeasonWeedingManualHandler(value) {
+      updatedFieldProfileObject.prevSeasonWeedingManual = value;
     }
 
     void prevSeasonWeedingChemicalNameHandler(String value) {
-      updatedFieldProfileObject.prevSeasonWeedingChemicalName = value.titleCase;
+      updatedFieldProfileObject.prevSeasonWeedingManualName = value.titleCase;
     }
 
     void fieldCoordinatesHandler() async {
@@ -513,7 +513,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: isFarmer ? Text('Mbiri Ya Munda') : Text("Field Profile"),
+        title: isFarmer ? const Text('Mbiri Ya Munda') : const Text("Field Profile"),
         centerTitle: true,
       ),
       body: ListView(
@@ -538,13 +538,15 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
             isDropDownField: true,
             isTextField: false,
             listOfValues: isFarmer
-                ? <String>[
+                ? const <String>[
                     'Dothi Lopepuka',
+                    'Dothi Lapakati Ni Pakati',
                     'Dothi Lolema',
                     'Zina',
                   ]
-                : <String>[
+                : const <String>[
                     'Light',
+                    'Sandy-Loam',
                     'Heavy',
                     'Other',
                   ],
@@ -566,7 +568,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
           ),
           ListWidgetComponent(
             title: isFarmer
-                ? 'Mbeu Zinlimidwa Nyengo ${Seasons.previousSeason}'
+                ? 'Mbeu Zinalimidwa Nyengo Ya ${Seasons.previousSeason}'
                 : 'Crop(s) Grown ${Seasons.previousSeason} Season',
             subtitle: fieldProfileObject.cropGrownPrevSeason == ''
                 ? 'Blank'
@@ -583,7 +585,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
           ),
           ListWidgetComponent(
             title: isFarmer
-                ? 'Mbeu Zinlimidwa Nyengo ${Seasons.seasonBeforeLast}'
+                ? 'Mbeu Zinalimidwa Nyengo Ya ${Seasons.seasonBeforeLast}'
                 : 'Crop(s) Grown ${Seasons.seasonBeforeLast} Season',
             subtitle: fieldProfileObject.cropGrownTwoSeasonsAgo == ''
                 ? 'Blank'
@@ -600,21 +602,21 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
           ),
           ListWidgetComponent(
             title: isFarmer
-                ? 'Kodi Munaswenzesa Munkhwala Ophera Udzu Nyehngo Ya ${Seasons.previousSeason}'
-                : 'Chemical Weeding ${Seasons.previousSeason} Season?',
-            subtitle: fieldProfileObject.prevSeasonWeedingChemical,
-            value: fieldProfileObject.prevSeasonWeedingChemical,
+                ? 'Muna Palila Ndi Manja Nyengo Ya ${Seasons.previousSeason}'
+                : 'Manual Weeding ${Seasons.previousSeason} Season?',
+            subtitle: fieldProfileObject.prevSeasonWeedingManual,
+            value: fieldProfileObject.prevSeasonWeedingManual,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: prevSeasonWeedingChemicalHandler,
+            onChangeTextValueHandler: prevSeasonWeedingManualHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             isTextField: false,
             listOfValues: isFarmer
-                ? <String>[
+                ? const <String>[
                     'Inde',
                     'Ai',
                   ]
-                : <String>[
+                : const <String>[
                     'Yes',
                     'No',
                   ],
@@ -622,7 +624,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
           ),
           ListWidgetComponent(
             title: isFarmer
-                ? 'Munkwala Munaswenzesa Nyengo Ya ${Seasons.previousSeason}'
+                ? 'Munkwala Munasewenzesa Nyengo Ya ${Seasons.previousSeason}'
                 : 'Herbicide Used ${Seasons.previousSeason} Season',
             subtitle: fieldProfileObject.prevSeasonWeedingChemicalName,
             value: fieldProfileObject.prevSeasonWeedingChemicalName,

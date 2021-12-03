@@ -330,8 +330,7 @@ class SynchronizeTraitsProvider2 with ChangeNotifier {
         'longitude': responseData['longitude'],
         'cropGrownPrevSeason': responseData['crop_grown_prev_season'],
         'cropGrownTwoSeasonsAgo': responseData['crop_grown_two_seasons_ago'],
-        'prevSeasonWeedingManual':
-            responseData['prev_season_weeding_manual'],
+        'prevSeasonWeedingManual': responseData['prev_season_weeding_manual'],
         'prevSeasonWeedingChemicalName':
             responseData['prev_season_weeding_chemical_name'],
         'isUpToDateInServer': 'Yes',

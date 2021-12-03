@@ -479,7 +479,7 @@ class _FieldProfileScreenState extends State<FieldProfileScreen> {
     }
 
     void prevSeasonWeedingChemicalNameHandler(String value) {
-      updatedFieldProfileObject.prevSeasonWeedingManualName = value.titleCase;
+      updatedFieldProfileObject.prevSeasonWeedingChemicalName = value.titleCase;
     }
 
     void fieldCoordinatesHandler() async {

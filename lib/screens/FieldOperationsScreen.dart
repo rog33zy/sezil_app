@@ -409,7 +409,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             onChangeDateValueHandler: () {},
             onChangeTextValueHandler: pesticideApplicationQtyHandler,
             onSubmitHandler: onSubmitHandler,
-            isNumberField: true,
+            isTextField: true,
             onChangeGenComValueHandler: () {},
           ),
           ListWidgetComponent(

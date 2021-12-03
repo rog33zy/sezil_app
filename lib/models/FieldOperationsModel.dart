@@ -32,7 +32,7 @@ class FieldOperationsModel {
     this.firstWeedingHerbicideQty='Blank',
     this.dateOfPesticideApplication,
     this.pesticideName = 'Blank',
-    this.pesticideApplicationQty='Blank',
+    this.pesticideApplicationQty = 'Blank',
     this.dateOfSecondWeeding,
     this.secondWeedingIsManual = 'Blank',
     this.secondWeedingHerbicideName = 'Blank',

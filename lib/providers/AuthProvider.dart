@@ -632,8 +632,8 @@ class AuthProvider with ChangeNotifier {
             'cropGrownPrevSeason': objectToBeSynced['crop_grown_prev_season'],
             'cropGrownTwoSeasonsAgo':
                 objectToBeSynced['crop_grown_two_seasons_ago'],
-            'prevSeasonWeedingChemical':
-                objectToBeSynced['prev_season_weeding_chemical'],
+            'prevSeasonWeedingManual':
+                objectToBeSynced['prev_season_weeding_manual'],
             'prevSeasonWeedingChemicalName':
                 objectToBeSynced['prev_season_weeding_chemical_name'],
             'isUpToDateInServer': 'Yes',

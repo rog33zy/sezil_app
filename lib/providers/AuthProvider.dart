@@ -336,6 +336,10 @@ class AuthProvider with ChangeNotifier {
             'diseasesResistance': objectToBeSynced['diseases_resistance'],
             'diseasesResistanceComments':
                 objectToBeSynced['diseases_resistance_comments'],
+            'pestAndDiseasesResistance':
+                objectToBeSynced['pest_and_diseases_resistance'],
+            'pestAndDiseasesResistanceComments':
+                objectToBeSynced['pest_and_diseases_resistance_comments'],
             'isUpToDateInServer': 'Yes',
             'existsInServer': 'Yes',
           },
@@ -366,6 +370,13 @@ class AuthProvider with ChangeNotifier {
             'diseasesResistance': objectToBeSynced['diseases_resistance'],
             'diseasesResistanceComments':
                 objectToBeSynced['diseases_resistance_comments'],
+            'pestAndDiseasesResistance':
+                objectToBeSynced['pest_and_diseases_resistance'],
+            'pestAndDiseasesResistanceComments':
+                objectToBeSynced['pest_and_diseases_resistance_comments'],
+            'droughtTolerance': objectToBeSynced['drought_tolerance'],
+            'droughtToleranceComments':
+                objectToBeSynced['drought_tolerance_comments'],
             'isUpToDateInServer': 'Yes',
             'existsInServer': 'Yes',
           },

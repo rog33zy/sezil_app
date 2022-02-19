@@ -59,6 +59,13 @@ class PostFloweringProvider with ChangeNotifier {
         'diseasesResistance': updatedPostFloweringObject.diseasesResistance,
         'diseasesResistanceComments':
             updatedPostFloweringObject.diseasesResistanceComments,
+        'pestAndDiseasesResistance':
+            updatedPostFloweringObject.pestAndDiseasesResistance,
+        'pestAndDiseasesResistanceComments':
+            updatedPostFloweringObject.pestAndDiseasesResistanceComments,
+        'droughtTolerance': updatedPostFloweringObject.droughtTolerance,
+        'droughtToleranceComments':
+            updatedPostFloweringObject.droughtToleranceComments,
         'isUpToDateInServer': updatedPostFloweringObject.isUpToDateInServer,
         'existsInServer': updatedPostFloweringObject.existsInServer,
       },
@@ -79,6 +86,13 @@ class PostFloweringProvider with ChangeNotifier {
             diseasesResistance: postFloweringObject['diseasesResistance'],
             diseasesResistanceComments:
                 postFloweringObject['diseasesResistanceComments'],
+            pestAndDiseasesResistance:
+                postFloweringObject['pestAndDiseasesResistance'],
+            pestAndDiseasesResistanceComments:
+                postFloweringObject['pestAndDiseasesResistanceComments'],
+            droughtTolerance: postFloweringObject['droughtTolerance'],
+            droughtToleranceComments:
+                postFloweringObject['droughtToleranceComments'],
             isUpToDateInServer: postFloweringObject['isUpToDateInServer'],
             existsInServer: postFloweringObject['existsInServer'],
           ),

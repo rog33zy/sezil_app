@@ -189,8 +189,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
     }
 
     void firstWeedingHerbicideQtyHandler(String value) {
-      updatedFieldOperationsObject.firstWeedingHerbicideQty =
-          value.titleCase;
+      updatedFieldOperationsObject.firstWeedingHerbicideQty = value.titleCase;
     }
 
     void dateOfPesticideApplicationHandler(value) {
@@ -202,8 +201,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
     }
 
     void pesticideApplicationQtyHandler(String value) {
-      updatedFieldOperationsObject.pesticideApplicationQty =
-          value.titleCase;
+      updatedFieldOperationsObject.pesticideApplicationQty = value.titleCase;
     }
 
     void dateOfSecondWeedingHandler(value) {
@@ -219,8 +217,7 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
     }
 
     void secondWeedingHerbicideQtyHandler(String value) {
-      updatedFieldOperationsObject.secondWeedingHerbicideQty =
-          value.titleCase;
+      updatedFieldOperationsObject.secondWeedingHerbicideQty = value.titleCase;
     }
 
     void onSubmitHandler() {
@@ -235,7 +232,9 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: isFarmer ? const Text('Nchito Za Mumunda') : const Text('Field Operations'),
+        title: isFarmer
+            ? const Text('Nchito Za Mumunda')
+            : const Text('Field Operations'),
         centerTitle: true,
       ),
       body: ListView(
@@ -340,34 +339,36 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             isTextField: false,
             onChangeGenComValueHandler: () {},
           ),
-
-          if (fieldOperationsObject.firstWeedingIsManual == 'Ai' || fieldOperationsObject.firstWeedingIsManual == 'No')
-          ListWidgetComponent(
-            title: isFarmer
-                ? 'Dzina La Munkhwala Wophera Udzu Munasewenzesa Kupalila Koyamba'
-                : 'First Weeding Herbicide Name',
-            subtitle: fieldOperationsObject.firstWeedingHerbicideName,
-            value: fieldOperationsObject.firstWeedingHerbicideName,
-            isDateField: false,
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: firstWeedingHerbicideNameHandler,
-            onSubmitHandler: onSubmitHandler,
-            isTextField: true,
-            onChangeGenComValueHandler: () {},
-          ),
-          ListWidgetComponent(
-            title: isFarmer
-                ? 'Unyinji Wa Munkhwala Munasewenzesa Koyamba (Kg or Litres)'
-                : 'First Weeding Herbicide Qty (Kg or Litres)',
-            subtitle: fieldOperationsObject.firstWeedingHerbicideQty,
-            value: fieldOperationsObject.firstWeedingHerbicideQty,
-            isDateField: false,
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: firstWeedingHerbicideQtyHandler,
-            onSubmitHandler: onSubmitHandler,
-            isTextField: true,
-            onChangeGenComValueHandler: () {},
-          ),
+          if (fieldOperationsObject.firstWeedingIsManual == 'Ai' ||
+              fieldOperationsObject.firstWeedingIsManual == 'No')
+            ListWidgetComponent(
+              title: isFarmer
+                  ? 'Dzina La Munkhwala Wophera Udzu Munasewenzesa Kupalila Koyamba'
+                  : 'First Weeding Herbicide Name',
+              subtitle: fieldOperationsObject.firstWeedingHerbicideName,
+              value: fieldOperationsObject.firstWeedingHerbicideName,
+              isDateField: false,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: firstWeedingHerbicideNameHandler,
+              onSubmitHandler: onSubmitHandler,
+              isTextField: true,
+              onChangeGenComValueHandler: () {},
+            ),
+          if (fieldOperationsObject.firstWeedingIsManual == 'Ai' ||
+              fieldOperationsObject.firstWeedingIsManual == 'No')
+            ListWidgetComponent(
+              title: isFarmer
+                  ? 'Unyinji Wa Munkhwala Munasewenzesa Koyamba (Kg or Litres)'
+                  : 'First Weeding Herbicide Qty (Kg or Litres)',
+              subtitle: fieldOperationsObject.firstWeedingHerbicideQty,
+              value: fieldOperationsObject.firstWeedingHerbicideQty,
+              isDateField: false,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: firstWeedingHerbicideQtyHandler,
+              onSubmitHandler: onSubmitHandler,
+              isTextField: true,
+              onChangeGenComValueHandler: () {},
+            ),
           ListWidgetComponent(
             title: isFarmer
                 ? 'Tsiku Lomwe Munaika Munkhwala Wophera Tudoyo'
@@ -451,33 +452,36 @@ class _FieldOperationsScreenState extends State<FieldOperationsScreen> {
             isTextField: false,
             onChangeGenComValueHandler: () {},
           ),
-          if (fieldOperationsObject.secondWeedingIsManual == 'Ai' || fieldOperationsObject.secondWeedingIsManual == 'No')
-          ListWidgetComponent(
-            title: isFarmer
-                ? 'Dzina La Munkhwala Wophera Udzu Munasewenzesa Kupalila Kachiwiri'
-                : 'Second Weeding Herbicide Name',
-            subtitle: fieldOperationsObject.secondWeedingHerbicideName,
-            value: fieldOperationsObject.secondWeedingHerbicideName,
-            isDateField: false,
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: secondWeedingHerbicideNameHandler,
-            onSubmitHandler: onSubmitHandler,
-            isTextField: true,
-            onChangeGenComValueHandler: () {},
-          ),
-          ListWidgetComponent(
-            title: isFarmer
-                ? 'Unyinji Wa Munkhwala Munasewenzesa Kachiwiri (Kg or Litres)'
-                : 'Second Weeding Herbicide Qty (Kg or Litres)',
-            subtitle: fieldOperationsObject.secondWeedingHerbicideQty,
-            value: fieldOperationsObject.secondWeedingHerbicideQty,
-            isDateField: false,
-            onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: secondWeedingHerbicideQtyHandler,
-            onSubmitHandler: onSubmitHandler,
-            isTextField: true,
-            onChangeGenComValueHandler: () {},
-          ),
+          if (fieldOperationsObject.secondWeedingIsManual == 'Ai' ||
+              fieldOperationsObject.secondWeedingIsManual == 'No')
+            ListWidgetComponent(
+              title: isFarmer
+                  ? 'Dzina La Munkhwala Wophera Udzu Munasewenzesa Kupalila Kachiwiri'
+                  : 'Second Weeding Herbicide Name',
+              subtitle: fieldOperationsObject.secondWeedingHerbicideName,
+              value: fieldOperationsObject.secondWeedingHerbicideName,
+              isDateField: false,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: secondWeedingHerbicideNameHandler,
+              onSubmitHandler: onSubmitHandler,
+              isTextField: true,
+              onChangeGenComValueHandler: () {},
+            ),
+          if (fieldOperationsObject.secondWeedingIsManual == 'Ai' ||
+              fieldOperationsObject.secondWeedingIsManual == 'No')
+            ListWidgetComponent(
+              title: isFarmer
+                  ? 'Unyinji Wa Munkhwala Munasewenzesa Kachiwiri (Kg or Litres)'
+                  : 'Second Weeding Herbicide Qty (Kg or Litres)',
+              subtitle: fieldOperationsObject.secondWeedingHerbicideQty,
+              value: fieldOperationsObject.secondWeedingHerbicideQty,
+              isDateField: false,
+              onChangeDateValueHandler: () {},
+              onChangeTextValueHandler: secondWeedingHerbicideQtyHandler,
+              onSubmitHandler: onSubmitHandler,
+              isTextField: true,
+              onChangeGenComValueHandler: () {},
+            ),
         ],
       ),
     );

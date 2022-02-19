@@ -160,7 +160,7 @@ class PostHarvestScreen extends StatelessWidget {
           if (crop == 'Maize')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nambala Ya Cisononkho Chokololedwa Chouma Muma Kg'
+                  ? 'Kulema kwa Zisononkho Zokololedwa Zouma (Kg)'
                   : 'Yield of Dried Cobs (Kg)',
               subtitle: postHarvestObject.yieldOfDriedCobs == null
                   ? 'Blank'
@@ -208,7 +208,7 @@ class PostHarvestScreen extends StatelessWidget {
           if (crop == 'Sorghum')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nsonga Za Tiligu Zokololedwa Zouma Muma Kg'
+                  ? 'Kulema Kwa Zisa Zokololedwa Zouma Muma Kg'
                   : 'Yield of Dried Panicles (Kg)',
               subtitle: postHarvestObject.yieldOfDriedPanicles == null
                   ? 'Blank'
@@ -227,7 +227,7 @@ class PostHarvestScreen extends StatelessWidget {
           if (crop == 'Sunflower')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Mitu Zokololedwa Zouma Muma Kg'
+                  ? 'Kulema Kwa Mitu Zokololedwa Zouma Muma Kg'
                   : 'Yield of Dried Heads (Kg)',
               subtitle: postHarvestObject.yieldOfDriedHeads == null
                   ? 'Blank'
@@ -246,7 +246,7 @@ class PostHarvestScreen extends StatelessWidget {
           if (crop == 'Beans')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nkhonje Zokololedwa Zouma Muma Kg'
+                  ? 'Kulema Kwa Nkhonje Zokololedwa Zouma Muma Kg'
                   : 'Yield of Dried Pods (Kg)',
               subtitle: postHarvestObject.yieldOfDriedPods == null
                   ? 'Blank'

@@ -231,7 +231,7 @@ class HarvestScreen extends StatelessWidget {
           if (crop == 'Sorghum')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nambala Ya Nsonga Za Tiligu Yokololedwa'
+                  ? 'Nambala Ya Zisa Yokololedwa'
                   : 'Number of Harvested Panicles',
               subtitle: harvestObject.numberOfHarvestedPanicles == null
                   ? 'Blank'
@@ -251,7 +251,7 @@ class HarvestScreen extends StatelessWidget {
           if (crop == 'Sorghum')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nsonga Za Tiligu Yokololedwa Muma Kg'
+                  ? 'Kulema Kwa Zisa Zokololedwa Muma Kg'
                   : 'Yield of Harvested Panicles (Kg)',
               subtitle: harvestObject.yieldOfHarvestedPanicles == null
                   ? 'Blank'
@@ -271,7 +271,7 @@ class HarvestScreen extends StatelessWidget {
           if (crop == 'Sunflower')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nambala Ya Mitu Ya Kololedwa'
+                  ? 'Nambala Ya Mitu Zokololedwa'
                   : 'Number of Harvested Heads',
               subtitle: harvestObject.numberOfHarvestedHeads == null
                   ? 'Blank'
@@ -290,7 +290,7 @@ class HarvestScreen extends StatelessWidget {
           if (crop == 'Sunflower')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nambala Ya Mitu Ya Kololedwa Muma Kg'
+                  ? 'Kulema Kwa Mitu Zokololedwa Muma Kg'
                   : 'Yield of Harvested Heads (Kg)',
               subtitle: harvestObject.yieldOfHarvestedHeads == null
                   ? 'Blank'
@@ -309,8 +309,8 @@ class HarvestScreen extends StatelessWidget {
           if (crop == 'Beans')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nambala Ya Nkhonje Zokololedwa'
-                  : 'Number of Harvested Pods',
+                  ? 'Nambala Ya Nkhonje Pa Mbeu Iliyonse'
+                  : 'Number of Harvested Pods per Plant',
               subtitle: harvestObject.numberOfHarvestedPods == null
                   ? 'Blank'
                   : harvestObject.numberOfHarvestedPods.toString(),
@@ -328,7 +328,7 @@ class HarvestScreen extends StatelessWidget {
           if (crop == 'Beans')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Nambala Ya Nkhonje Zokololedwa Muma Kg'
+                  ? 'Kulema Kwa Nkhonje Zokololedwa Muma Kg'
                   : 'Yield of Harvested Pods (Kg)',
               subtitle: harvestObject.yieldOfHarvestedPods == null
                   ? 'Blank'

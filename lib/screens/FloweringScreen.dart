@@ -70,20 +70,12 @@ class FloweringScreen extends StatelessWidget {
       updatedFloweringObject.growingCycleAppreciationComments = value;
     }
 
-    void pestResistanceHandler(value) {
-      updatedFloweringObject.pestResistance = value;
+    void pestAndDiseasesResistanceHandler(value) {
+      updatedFloweringObject.pestAndDiseasesResistance = value;
     }
 
-    void pestResistanceCommentsHandler(value) {
-      updatedFloweringObject.pestResistanceComments = value;
-    }
-
-    void diseasesResistanceHandler(value) {
-      updatedFloweringObject.diseasesResistance = value;
-    }
-
-    void diseasesResistanceCommentsHandler(value) {
-      updatedFloweringObject.diseasesResistanceComments = value;
+    void pestAndDiseasesResistanceCommentsHandler(value) {
+      updatedFloweringObject.pestAndDiseasesResistanceComments = value;
     }
 
     void onSubmitHandler() {
@@ -144,13 +136,15 @@ class FloweringScreen extends StatelessWidget {
             onChangeGenComValueHandler: growingCycleAppreciationCommentsHandler,
             genComSubtitle: floweringObject.growingCycleAppreciationComments,
           ),
-          if (crop == 'Sorghum')
+          if (crop == 'Sorghum' || crop == 'Sunflower')
             ListWidgetComponent(
-              title: isFarmer ? 'Kukakaniza Kwa Tudoyo' : 'Pest Resistance',
-              subtitle: floweringObject.pestResistance,
-              value: floweringObject.pestResistance,
+              title: isFarmer
+                  ? 'Kukakaniza Kwa Tudoyo Ndi Matenda'
+                  : 'Pest and Diseseases Resistance',
+              subtitle: floweringObject.pestAndDiseasesResistance,
+              value: floweringObject.pestAndDiseasesResistance,
               onChangeDateValueHandler: () {},
-              onChangeTextValueHandler: pestResistanceHandler,
+              onChangeTextValueHandler: pestAndDiseasesResistanceHandler,
               onSubmitHandler: onSubmitHandler,
               isDropDownField: true,
               listOfValues: isFarmer
@@ -170,37 +164,9 @@ class FloweringScreen extends StatelessWidget {
                     ],
               isTrait: true,
               isTextField: false,
-              onChangeGenComValueHandler: pestResistanceCommentsHandler,
-              genComSubtitle: floweringObject.pestResistanceComments,
-            ),
-          if (crop == 'Sorghum')
-            ListWidgetComponent(
-              title: isFarmer ? 'Kukakaniza Kwa Matenda' : 'Disease Resistance',
-              subtitle: floweringObject.diseasesResistance,
-              value: floweringObject.diseasesResistance,
-              onChangeDateValueHandler: () {},
-              onChangeTextValueHandler: diseasesResistanceHandler,
-              onSubmitHandler: onSubmitHandler,
-              isDropDownField: true,
-              listOfValues: isFarmer
-                  ? const <String>[
-                      '1-Kukanikiza Kwambili',
-                      '2-Kukanikiza',
-                      '3-Kukanikiza Mwapakati',
-                      '4-Kukanikiza Pangono',
-                      '5-Kukanikiza Pangono Kwambili',
-                    ]
-                  : const <String>[
-                      '1-Very High',
-                      '2-High',
-                      '3-Moderate',
-                      '4-Low',
-                      '5-Very Low',
-                    ],
-              isTrait: true,
-              isTextField: false,
-              onChangeGenComValueHandler: diseasesResistanceCommentsHandler,
-              genComSubtitle: floweringObject.diseasesResistanceComments,
+              onChangeGenComValueHandler:
+                  pestAndDiseasesResistanceCommentsHandler,
+              genComSubtitle: floweringObject.pestAndDiseasesResistanceComments,
             ),
         ],
       ),

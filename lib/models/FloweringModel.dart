@@ -8,6 +8,8 @@ class FloweringModel {
   String pestResistanceComments;
   String diseasesResistance;
   String diseasesResistanceComments;
+  String pestAndDiseasesResistance;
+  String pestAndDiseasesResistanceComments;
   String isUpToDateInServer;
   String existsInServer;
 
@@ -21,6 +23,8 @@ class FloweringModel {
     this.pestResistanceComments = 'Blank',
     this.diseasesResistance = 'Blank',
     this.diseasesResistanceComments = 'Blank',
+    this.pestAndDiseasesResistance = 'Blank',
+    this.pestAndDiseasesResistanceComments = 'Blank',
     this.isUpToDateInServer = 'No',
     this.existsInServer = 'No',
   });

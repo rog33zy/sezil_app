@@ -2,9 +2,9 @@ import '../helpers/plots_list_helper.dart';
 
 class Varieties {
   static final varieties = {
-    'Maize': PlotsListHelper.plotsListGenerator(22),
-    'Sorghum': PlotsListHelper.plotsListGenerator(12),
-    'Sunflower': PlotsListHelper.plotsListGenerator(15),
-    'Beans': PlotsListHelper.plotsListGenerator(27),
+    'Maize': PlotsListHelper.plotsListGenerator(24),
+    'Sorghum': PlotsListHelper.plotsListGenerator(8, "sorghum"),
+    'Sunflower': PlotsListHelper.plotsListGenerator(16),
+    'Beans': PlotsListHelper.plotsListGenerator(24),
   };
 }

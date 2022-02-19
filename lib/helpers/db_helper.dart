@@ -131,6 +131,8 @@ class DBHelper {
                   pestResistanceComments TEXT,
                   diseasesResistance TEXT,
                   diseasesResistanceComments TEXT,
+                  pestAndDiseasesResistance TEXT,
+                  pestAndDiseasesResistanceComments TEXT,
                   isUpToDateInServer TEXT,
                   existsInServer TEXT
                 )
@@ -148,6 +150,10 @@ class DBHelper {
                   pestResistanceComments TEXT,
                   diseasesResistance TEXT,
                   diseasesResistanceComments TEXT,
+                  pestAndDiseasesResistance TEXT,
+                  pestAndDiseasesResistanceComments TEXT,
+                  droughtTolerance TEXT,
+                  droughtToleranceComments TEXT,
                   isUpToDateInServer TEXT,
                   existsInServer TEXT
                 )

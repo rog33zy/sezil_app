@@ -64,20 +64,20 @@ class PostFloweringScreen extends StatelessWidget {
       listen: false,
     ).findByPlot(plotId);
 
-    void pestResistanceHandler(value) {
-      updatedPostFloweringObject.pestResistance = value;
+    void pestAndDiseasesResistanceHandler(value) {
+      updatedPostFloweringObject.pestAndDiseasesResistance = value;
     }
 
-    void pestResistanceCommentsHandler(value) {
-      updatedPostFloweringObject.pestResistanceComments = value;
+    void pestAndDiseasesResistanceCommentsHandler(value) {
+      updatedPostFloweringObject.pestAndDiseasesResistanceComments = value;
     }
 
-    void diseasesResistanceHandler(value) {
-      updatedPostFloweringObject.diseasesResistance = value;
+    void droughtToleranceHandler(value) {
+      updatedPostFloweringObject.droughtTolerance = value;
     }
 
-    void diseasesResistanceCommentsHandler(value) {
-      updatedPostFloweringObject.diseasesResistanceComments = value;
+    void droughtToleranceCommentsHandler(value) {
+      updatedPostFloweringObject.droughtToleranceComments = value;
     }
 
     void onSubmitHandler() {
@@ -108,11 +108,13 @@ class PostFloweringScreen extends StatelessWidget {
       body: ListView(
         children: [
           ListWidgetComponent(
-            title: isFarmer ? 'Kukakaniza Kwa Tudoyo' : 'Pest Resistance',
-            subtitle: postFloweringObject.pestResistance,
-            value: postFloweringObject.pestResistance,
+            title: isFarmer
+                ? 'Kukakaniza Kwa Tudoyo Ndi Matenda'
+                : 'Pest and Diseases Resistance',
+            subtitle: postFloweringObject.pestAndDiseasesResistance,
+            value: postFloweringObject.pestAndDiseasesResistance,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: pestResistanceHandler,
+            onChangeTextValueHandler: pestAndDiseasesResistanceHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: isFarmer
@@ -132,24 +134,26 @@ class PostFloweringScreen extends StatelessWidget {
                   ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: pestResistanceCommentsHandler,
-            genComSubtitle: postFloweringObject.pestResistanceComments,
+            onChangeGenComValueHandler:
+                pestAndDiseasesResistanceCommentsHandler,
+            genComSubtitle:
+                postFloweringObject.pestAndDiseasesResistanceComments,
           ),
           ListWidgetComponent(
-            title: isFarmer ? 'Kukakaniza Kwa Matenda' : 'Disease Resistance',
-            subtitle: postFloweringObject.diseasesResistance,
-            value: postFloweringObject.diseasesResistance,
+            title: isFarmer ? 'Kulimba Ku Cilala' : 'Drought Tolerance',
+            subtitle: postFloweringObject.droughtTolerance,
+            value: postFloweringObject.droughtTolerance,
             onChangeDateValueHandler: () {},
-            onChangeTextValueHandler: diseasesResistanceHandler,
+            onChangeTextValueHandler: droughtToleranceHandler,
             onSubmitHandler: onSubmitHandler,
             isDropDownField: true,
             listOfValues: isFarmer
                 ? const <String>[
-                    '1-Kukanikiza Kwambili',
-                    '2-Kukanikiza',
-                    '3-Kukanikiza Mwapakati',
-                    '4-Kukanikiza Pangono',
-                    '5-Kusakanikiza',
+                    '1-Kulimba Kwambili',
+                    '2-Kulimba',
+                    '3-Kulimba Mwapakati',
+                    '4-Kulimba Pangono',
+                    '5-Kusalimba',
                   ]
                 : const <String>[
                     '1-Very High',
@@ -160,8 +164,8 @@ class PostFloweringScreen extends StatelessWidget {
                   ],
             isTrait: true,
             isTextField: false,
-            onChangeGenComValueHandler: diseasesResistanceCommentsHandler,
-            genComSubtitle: postFloweringObject.diseasesResistanceComments,
+            onChangeGenComValueHandler: droughtToleranceCommentsHandler,
+            genComSubtitle: postFloweringObject.droughtToleranceComments,
           ),
         ],
       ),

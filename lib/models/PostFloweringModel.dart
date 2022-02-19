@@ -6,6 +6,10 @@ class PostFloweringModel {
   String pestResistanceComments;
   String diseasesResistance;
   String diseasesResistanceComments;
+  String pestAndDiseasesResistance;
+  String pestAndDiseasesResistanceComments;
+  String droughtTolerance;
+  String droughtToleranceComments;
   String isUpToDateInServer;
   String existsInServer;
 
@@ -17,6 +21,10 @@ class PostFloweringModel {
     this.pestResistanceComments = 'Blank',
     this.diseasesResistance = 'Blank',
     this.diseasesResistanceComments = 'Blank',
+    this.pestAndDiseasesResistance = 'Blank',
+    this.pestAndDiseasesResistanceComments = 'Blank',
+    this.droughtTolerance = 'Blank',
+    this.droughtToleranceComments = 'Blank',
     this.isUpToDateInServer = 'No',
     this.existsInServer = 'No',
   });

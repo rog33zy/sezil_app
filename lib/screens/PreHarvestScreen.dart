@@ -190,7 +190,7 @@ class PreHarvestScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          if (crop == 'Sunflower')
+          if (crop == 'Sunflower' || crop == 'Maize')
             ListWidgetComponent(
               title: isFarmer
                   ? 'Kukanikiza Kwa Kugwa Pansi Kwa Mbeu'
@@ -354,7 +354,7 @@ class PreHarvestScreen extends StatelessWidget {
                       '2-Kuonongeka Pang\'ono',
                       '3-Kuonongeka Mwa Pakati',
                       '4-Kuonongeka Kwambili',
-                      '5-Kuonongeka Kwakulu Kwambili',
+                      '5-Kuonongeka Kwakukulu Kwambili',
                     ]
                   : const <String>[
                       '1-No Damage',
@@ -371,7 +371,7 @@ class PreHarvestScreen extends StatelessWidget {
           if (crop == 'Sorghum')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Kuthokoza Nsonga Za Tiligu'
+                  ? 'Kuthokoza Nsonga Za Zisa'
                   : 'Panicle Appreciation',
               subtitle: preHarvestObject.panicleAppreciation,
               value: preHarvestObject.panicleAppreciation,
@@ -498,7 +498,7 @@ class PreHarvestScreen extends StatelessWidget {
           if (crop == 'Beans')
             ListWidgetComponent(
               title: isFarmer
-                  ? 'Kuthokoza Makulidwe a Mbeu'
+                  ? 'Kuthokoza Kukula Kwa Mbeu'
                   : 'Plant Growth Habit Appreciation',
               subtitle: preHarvestObject.plantGrowthHabitAppreciation,
               value: preHarvestObject.plantGrowthHabitAppreciation,

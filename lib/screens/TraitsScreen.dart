@@ -35,7 +35,7 @@ class TraitsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-           const SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             HomePageScreenOption(
@@ -50,7 +50,7 @@ class TraitsScreen extends StatelessWidget {
               argument: FloweringScreen.routeName,
               argument2: isFarmer ? 'Maluwa' : 'Flowering',
             ),
-            if (crop != 'Sorghum')
+            if (crop != 'Sorghum' || crop != 'Sunflower')
               HomePageScreenOption(
                 title: isFarmer ? 'Posatila Maluwa' : 'Post-Flowering',
                 routeName: PlotsScreen.routeName,

@@ -62,6 +62,10 @@ class FloweringProvider with ChangeNotifier {
         'diseasesResistance': updatedFloweringObject.diseasesResistance,
         'diseasesResistanceComments':
             updatedFloweringObject.diseasesResistanceComments,
+        'pestAndDiseasesResistance':
+            updatedFloweringObject.pestAndDiseasesResistance,
+        'pestAndDiseasesResistanceComments':
+            updatedFloweringObject.pestAndDiseasesResistanceComments,
         'isUpToDateInServer': updatedFloweringObject.isUpToDateInServer,
         'existsInServer': updatedFloweringObject.existsInServer,
       },
@@ -85,6 +89,10 @@ class FloweringProvider with ChangeNotifier {
             diseasesResistance: floweringObject['diseasesResistance'],
             diseasesResistanceComments:
                 floweringObject['diseasesResistanceComments'],
+            pestAndDiseasesResistance:
+                floweringObject['pestAndDiseasesResistance'],
+            pestAndDiseasesResistanceComments:
+                floweringObject['pestAndDiseasesResistanceComments'],
             isUpToDateInServer: floweringObject['isUpToDateInServer'],
             existsInServer: floweringObject['existsInServer'],
           ),

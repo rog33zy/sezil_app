@@ -19,11 +19,11 @@ import '../components/UI/AppDrawer.dart';
 
 import 'FieldProfileScreen.dart';
 import 'FieldOperationsScreen.dart';
-import 'CurrentSeasonVarietyScreen.dart';
+// import 'CurrentSeasonVarietyScreen.dart';
 import 'FertilizationScreen.dart';
 import 'TraitsScreen.dart';
 
-import '../constants/Seasons.dart';
+// import '../constants/Seasons.dart';
 
 class HomePageScreen extends StatelessWidget {
   const HomePageScreen({Key? key}) : super(key: key);
@@ -112,12 +112,12 @@ class HomePageScreen extends StatelessWidget {
               title: isFarmer ? 'Nchito Za Mumunda' : 'Field Operations',
               routeName: FieldOperationsScreen.routeName,
             ),
-            HomePageScreenOption(
-              title: isFarmer
-                  ? '${Seasons.currentSeason} Mtundu Wa Mbeu'
-                  : '${Seasons.currentSeason} Variety',
-              routeName: CurrentSeasonVarietyScreen.routeName,
-            ),
+            // HomePageScreenOption(
+            //   title: isFarmer
+            //       ? '${Seasons.currentSeason} Mtundu Wa Mbeu'
+            //       : '${Seasons.currentSeason} Variety',
+            //   routeName: CurrentSeasonVarietyScreen.routeName,
+            // ),
             HomePageScreenOption(
               title: isFarmer ? 'Fataleza' : 'Fertilization',
               routeName: FertilizationScreen.routeName,

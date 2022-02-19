@@ -157,6 +157,10 @@ class SynchronizeTraitsProvider with ChangeNotifier {
         'diseases_resistance': unsyncedObject.diseasesResistance,
         'diseases_resistance_comments':
             unsyncedObject.diseasesResistanceComments,
+        'pest_and_diseases_resistance':
+            unsyncedObject.pestAndDiseasesResistance,
+        'pest_and_diseases_resistance_comments':
+            unsyncedObject.pestAndDiseasesResistanceComments,
       };
 
       final Map<String, dynamic> responseData =
@@ -181,6 +185,10 @@ class SynchronizeTraitsProvider with ChangeNotifier {
           'diseasesResistance': responseData['diseases_resistance'],
           'diseasesResistanceComments':
               responseData['diseases_resistance_comments'],
+          'pestAndDiseasesResistance':
+              responseData['pest_and_diseases_resistance'],
+          'pestAndDiseasesResistanceComments':
+              responseData['pest_and_diseases_resistance_comments'],
           'isUpToDateInServer': 'Yes',
           'existsInServer': 'Yes',
         },
@@ -204,6 +212,12 @@ class SynchronizeTraitsProvider with ChangeNotifier {
         'diseases_resistance': unsyncedObject.diseasesResistance,
         'diseases_resistance_comments':
             unsyncedObject.diseasesResistanceComments,
+        'pest_and_diseases_resistance':
+            unsyncedObject.pestAndDiseasesResistance,
+        'pest_and_diseases_resistance_comments':
+            unsyncedObject.pestAndDiseasesResistanceComments,
+        'drought_tolerance': unsyncedObject.droughtTolerance,
+        'drought_tolerance_comments': unsyncedObject.droughtToleranceComments,
       };
 
       final Map<String, dynamic> responseData =
@@ -224,6 +238,13 @@ class SynchronizeTraitsProvider with ChangeNotifier {
           'diseasesResistance': responseData['diseases_resistance'],
           'diseasesResistanceComments':
               responseData['diseases_resistance_comments'],
+          'pestAndDiseasesResistance':
+              responseData['pest_and_diseases_resistance'],
+          'pestAndDiseasesResistanceComments':
+              responseData['pest_and_diseases_resistance_comments'],
+          'droughtTolerance': responseData['drought_tolerance'],
+          'droughtToleranceComments':
+              responseData['drought_tolerance_comments'],
           'isUpToDateInServer': 'Yes',
           'existsInServer': 'Yes',
         },

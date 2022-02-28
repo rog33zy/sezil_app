@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:recase/recase.dart';
 
+import '../providers/AuthProvider.dart';
 import '../providers/RegisterSezilFarmerProvider.dart';
 
 import '../models/UserModel.dart';
@@ -62,6 +63,11 @@ class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var authProvider = Provider.of<AuthProvider>(
+      context,
+      listen: false,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Register Farmer'),
@@ -121,6 +127,7 @@ class _RegisterSezilFarmerScreenState extends State<RegisterSezilFarmerScreen> {
                             setState(() {
                               _isLoading = true;
                             });
+                            await authProvider.refreshToken();
                             await Provider.of<RegisterSezilFarmerProvider>(
                               context,
                               listen: false,
